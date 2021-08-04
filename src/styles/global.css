@@ -20,7 +20,7 @@ body {
     scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-snap-type: y proximity;
-    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
 }
 ::-webkit-scrollbar {
     display: none;
