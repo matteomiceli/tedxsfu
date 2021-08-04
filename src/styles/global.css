@@ -4,14 +4,37 @@ html {
     scroll-behavior: smooth;
 }
 
-.scroll-container {
-    /* scroll-snap-type: x proximity; */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.outer-scroll-container {
+    width: 100%;
+    height: 100vw;
+    transform: rotate(-90deg) translateX(-100%);
+    transform-origin: top left;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+.inner-scroll-container {
+    /* scroll-snap-type: x mandatory; */
+    transform: rotate(90deg) translateY(-100vh);
+    transform-origin: top left;
+    height: 90vh;
 }
 
 .scroll-item {
     min-width: 100vw !important;
     width: 100vw;
-    scroll-snap-align: center;
+    /* scroll-snap-align: center; */
 }
 
 @tailwind base;
