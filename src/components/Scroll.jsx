@@ -20,7 +20,7 @@ speakers.forEach((speaker) => {
 
 function Scroll() {
 	return (
-		<div className="outer-scroll-container ">
+		<div className="outer-scroll-container">
 			<div className="inner-scroll-container flex flex-nowrap">
 				{scrolls}
 			</div>

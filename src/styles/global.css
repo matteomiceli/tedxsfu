@@ -20,6 +20,7 @@ body {
     scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-snap-type: y proximity;
+    overscroll-behavior-y: none;
 }
 ::-webkit-scrollbar {
     display: none;
@@ -38,7 +39,7 @@ body {
 }
 
 .scroll-speaker1 {
-    background-image: url('/static/speaker1.png');
+    background-image: url('../static/images/speaker1.png');
     background-size: 90vh;
     background-repeat: no-repeat;
     background-position-x: center;
@@ -46,7 +47,7 @@ body {
 }
 
 .scroll-speaker2 {
-    background-image: url('/static/speaker2.png');
+    background-image: url('../static/images/speaker2.png');
     background-size: 70vh;
     background-repeat: no-repeat;
     background-position-x: center;
