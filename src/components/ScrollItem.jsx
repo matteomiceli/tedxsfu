@@ -1,9 +1,9 @@
 import * as React from "react"
 
-function ScrollItem() {
+function ScrollItem({ speaker }) {
     return (
-        <div className="scroll-item bg-black text-white text-9xl flex justify-center items-center">
-            1
+        <div className={`scroll-item scroll-${speaker.img} bg-black text-white text-9xl flex justify-center items-center`}>
+            
         </div>  
     );
 }

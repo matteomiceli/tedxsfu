@@ -37,6 +37,29 @@ body {
     scroll-snap-align: center;
 }
 
+.scroll-speaker1 {
+    background-image: url('/static/speaker1.png');
+    background-size: 90vh;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: bottom;
+}
+
+.scroll-speaker2 {
+    background-image: url('/static/speaker2.png');
+    background-size: 70vh;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: bottom;
+}
+
+.glass {
+    background: inherit;
+    background-size: 90vh;
+    background-position: center;
+    filter: blur(20px);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
