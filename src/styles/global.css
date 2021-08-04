@@ -10,31 +10,31 @@ body {
 }
 
 .outer-scroll-container {
-    width: 100%;
+    width: 100vh;
     height: 100vw;
-    transform: rotate(-90deg) translateX(-100%);
+    transform: rotate(-90deg) translateX(-100vh);
     transform-origin: top left;
     overflow-y: scroll;
     overflow-x: hidden;
     position: absolute;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    scroll-snap-type: y proximity;
 }
 ::-webkit-scrollbar {
     display: none;
 }
 
 .inner-scroll-container {
-    /* scroll-snap-type: x mandatory; */
     transform: rotate(90deg) translateY(-100vh);
     transform-origin: top left;
-    height: 90vh;
+    height: 100vh;
 }
 
 .scroll-item {
     min-width: 100vw !important;
     width: 100vw;
-    /* scroll-snap-align: center; */
+    scroll-snap-align: center;
 }
 
 @tailwind base;
