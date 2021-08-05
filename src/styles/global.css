@@ -1,5 +1,10 @@
 /* ./src/styles/global.css */
 
+@font-face {
+    font-family: NeueHaas;
+    src: url(../static/fonts/NeueHaasVariableV1.2.ttf);
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -40,7 +45,7 @@ body {
 
 .scroll-speaker1 {
     background-image: url('../static/images/speaker1.png');
-    background-size: 90vh;
+    background-size: 95vh;
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: bottom;
@@ -52,6 +57,18 @@ body {
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: bottom;
+}
+
+.scroll-speaker3 {
+    background-image: url('../static/images/speaker3.png');
+    background-size: 80vh;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: bottom;
+}
+
+.one-px {
+    width: 1px;
 }
 
 .glass {

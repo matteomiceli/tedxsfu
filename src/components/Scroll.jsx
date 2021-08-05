@@ -9,6 +9,10 @@ const speakers = [
 	{
 		speaker: 'Test 2',
 		img: 'speaker2'
+	},
+	{
+		speaker: 'Test 3',
+		img: 'speaker3'
 	}
 ]
 
