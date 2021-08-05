@@ -14,12 +14,12 @@ function Navbar() {
                     </div>
                     <div className="one-px h-14 bg-ted-red"></div>
                     <div className="h-16 flex flex-col mx-2 justify-between">
-                        <p className="text-white font-NeueHaas text-2xl w-32">Nov 20<sup>th</sup></p>
+                        <p className="text-white font-NeueHaas text-3xl w-32">Nov 20<sup>th</sup></p>
                         <p className="text-gray-400 font-NeueHaas text-sm">Date</p>
                     </div>
                     <div className="one-px h-14 bg-ted-red"></div>
                     <div className="h-16 flex flex-col mx-2 justify-between">
-                        <p className="text-white font-NeueHaas text-2xl w-32">1-8 pm</p>
+                        <p className="text-white font-NeueHaas text-3xl w-32">1-8 pm</p>
                         <p className="text-gray-400 font-NeueHaas text-sm">Time</p>
                     </div>
                 </div>
