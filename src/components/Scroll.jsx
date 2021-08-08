@@ -18,9 +18,11 @@ const speakers = [
 
 const scrolls = [];
 
-speakers.forEach((speaker) => {
-	scrolls.push(<ScrollItem speaker={speaker} />);
-})
+for (let i = 0; i < speakers.length; i++) {
+	const speaker = speakers[i];
+
+	scrolls.push(<ScrollItem speaker={speaker} key={i}/>);
+}
 
 function Scroll() {
 	return (
