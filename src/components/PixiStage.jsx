@@ -1,12 +1,12 @@
-// import React, { useCallback } from 'react';
-// import { Stage } from '@inlet/react-pixi';
+import React, { useCallback } from "react";
+import { Stage } from "@inlet/react-pixi";
 
-// function PixiStage() {
-//     return (
-//         <Stage>
-            
-//         </Stage>
-//     );
-// }
+function PixiStage() {
+  return (
+    <Stage>
+      
+    </Stage>
+  );
+}
 
-// export default PixiStage;
+export default PixiStage;

@@ -1,16 +1,15 @@
-import * as React from "react"
+import * as React from "react";
 
-import Scroll from '../components/Scroll';
+import Scroll from "../components/Scroll";
 import Navbar from "../components/Navbar";
-
 
 const IndexPage = () => {
   return (
-	<div>
-		<Navbar />
-		<Scroll />
-	</div>
-  )
-}
+    <div>
+      <Navbar page={1} />
+      <Scroll />
+    </div>
+  );
+};
 
-export default IndexPage
+export default IndexPage;
