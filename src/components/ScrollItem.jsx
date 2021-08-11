@@ -1,5 +1,5 @@
 import * as React from "react";
-import Pixi from "./Rectangle";
+import Pixi from "./PixiStage";
 
 function ScrollItem({ speaker }) {
   return (
