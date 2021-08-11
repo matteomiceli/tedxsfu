@@ -14,6 +14,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@loadable/component": "^5.15.0",
     "gatsby": "^3.10.2",
     "react": "^17.0.1",
     "react-backdrop-filter": "^2.1.0",

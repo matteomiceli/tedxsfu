@@ -4,7 +4,15 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         module: {
           rules: [
             {
-              test: "react-backdrop-filter",
+              test: /react-backdrop-filter/,
+              use: loaders.null(),
+            },
+            {
+              test: /html2canvas/,
+              use: loaders.null(),
+            },
+            {
+              test: /resize-observer-polyfill/,
               use: loaders.null(),
             },
           ],

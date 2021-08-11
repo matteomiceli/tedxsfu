@@ -1,15 +1,12 @@
-
-
-import React, { useCallback } from "react";
-import { Component } from "react";
-import BackdropFilter from "react-backdrop-filter";
-
-
+import React, { useCallback, useEffect } from "react";
+import loadable from '@loadable/component';
+const BackdropFilter = loadable(() => import('react-backdrop-filter'))
 
 function Overlay() {
+  const isBrowser = typeof window !== "undefined";
+
   return (
-      
-    <BackdropFilter 
+      <BackdropFilter 
       className="glass h-24 w-48 bg-white absolute opacity-10"
       filter={"blur(10px)"}
       canvasFallback={true}
@@ -20,8 +17,7 @@ function Overlay() {
           console.log("Rendered !");
       }}
     ></BackdropFilter>
-
-  );
+  ); 
 }
 
 export default Overlay;
