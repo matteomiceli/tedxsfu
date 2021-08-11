@@ -72,10 +72,7 @@ body {
 }
 
 .glass {
-    background: inherit;
-    background-size: 90vh;
-    background-position: center;
-    filter: blur(20px);
+
 }
 
 @tailwind base;

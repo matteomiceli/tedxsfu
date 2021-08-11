@@ -1,5 +1,6 @@
 import * as React from "react"
 import ScrollItem from '../components/ScrollItem'
+import Overlay from "./Overlay";
 
 const speakers = [
 	{

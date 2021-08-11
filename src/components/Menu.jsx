@@ -17,33 +17,28 @@ function Menu({ isActive, setActive, page }) {
           setActive(isActive === true ? (isActive = false) : (isActive = true))
         }
       >
-        <a className={page === 1 ? "text-white text-sm mr-6 hover:text-gray-400 font-semibold" : "text-white text-sm mr-6 hover:text-gray-400" } href="/">
+        <a
+          className={
+            page === 1
+              ? "text-white text-sm mr-6 hover:text-gray-400 font-semibold"
+              : "text-white text-sm mr-6 hover:text-gray-400"
+          }
+          href="/"
+        >
           <p>1</p>
           <li>SPEAKERS</li>
         </a>
         <a className="text-white text-sm mr-6 hover:text-gray-400" href="#">
           <p>2</p>
-          <li>
-            <a className="" href="/">
-              LEGACY
-            </a>
-          </li>
+          <li>LEGACY</li>
         </a>
         <a className="text-white text-sm mr-6 hover:text-gray-400" href="#">
           <p>3</p>
-          <li>
-            <a className="" href="/">
-              TEAM
-            </a>
-          </li>
+          <li>TEAM</li>
         </a>
         <a className="text-white text-sm mr-6 hover:text-gray-400" href="#">
           <p>4</p>
-          <li>
-            <a className="" href="/">
-              SPONSORS
-            </a>
-          </li>
+          <li>SPONSORS</li>
         </a>
       </ul>
       <div
