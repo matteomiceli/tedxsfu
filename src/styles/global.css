@@ -71,8 +71,14 @@ body {
     width: 1px;
 }
 
-.glass {
+.glass-container {
+    background: url('../static/images/speaker4.png');
+    background-position: center;
+    border-radius: none;    
+}
 
+.glass {
+   
 }
 
 @tailwind base;
