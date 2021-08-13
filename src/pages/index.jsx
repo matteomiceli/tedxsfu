@@ -12,7 +12,7 @@ const IndexPage = () => {
   return (
     <div onWheel={() => {
       const scroll1 = document.querySelector('.scroll-speaker1')
-      console.log(scroll1.getBoundingClientRect())
+      console.log(scroll1.getBoundingClientRect().left)
       }
     }>
       <Navbar page={1} />
