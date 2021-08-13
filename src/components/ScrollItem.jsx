@@ -1,7 +1,6 @@
 import * as React from "react";
 import Overlay from "./Overlay";
 import loadable from "@loadable/component";
-import { ParallaxProvider } from "react-scroll-parallax";
 
 
 function ScrollItem({ speaker, i }) {

@@ -1,17 +1,19 @@
 import * as React from "react";
-import { Parallax, ParallaxProvider } from "react-scroll-parallax";
 
 import Scroll from "../components/Scroll";
 import Navbar from "../components/Navbar";
 
 const IndexPage = () => {
+  const offset = (e) => {
+    e.preventDefault();
+    console.log(e.deltaX)
+  }
+
   return (
-    <ParallaxProvider>
-      <div>
-        <Navbar page={1} />
-        <Scroll />
-      </div>
-    </ParallaxProvider>
+    <div onWheel={() => console.log(window.pageYOffset)}>
+      <Navbar page={1} />
+      <Scroll />
+    </div>
   );
 };
 
