@@ -78,7 +78,7 @@ body {
 }
 
 .glass {
-   backdrop-filter: blur(10px)
+   backdrop-filter: blur(15px)
 }
 
 @tailwind base;
