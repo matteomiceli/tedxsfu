@@ -43,6 +43,7 @@ body {
     scroll-snap-align: center;
 }
 
+/* collapse repeating elements into scroll item */
 .scroll-speaker1 {
     background-image: url('../static/images/speaker1.png');
     background-size: 95vh;
@@ -78,7 +79,7 @@ body {
 }
 
 .glass {
-   backdrop-filter: blur(10px)
+   backdrop-filter: blur(10px);
 }
 
 @tailwind base;
