@@ -31,7 +31,7 @@ function Scroll() {
 
   return (
 			<div className="outer-scroll-container">
-				<div className="inner-scroll-container flex flex-nowrap" >
+				<div className="inner-scroll-container flex " >
 					{scrolls}
 				</div>
 			</div>

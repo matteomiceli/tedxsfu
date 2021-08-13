@@ -10,7 +10,11 @@ const IndexPage = () => {
   }
 
   return (
-    <div onWheel={() => console.log(window.pageYOffset)}>
+    <div onWheel={() => {
+      const scroll1 = document.querySelector('.scroll-speaker1')
+      console.log(scroll1.getBoundingClientRect())
+      }
+    }>
       <Navbar page={1} />
       <Scroll />
     </div>
