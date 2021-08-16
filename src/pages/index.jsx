@@ -4,13 +4,10 @@ import Scroll from "../components/Scroll";
 import Navbar from "../components/Navbar";
 
 const IndexPage = () => {
-  const offset = (e) => {
-    e.preventDefault();
-    console.log(e.deltaX)
-  }
+
 
   return (
-    <div onWheel={() => console.log(window.pageYOffset)}>
+    <div >
       <Navbar page={1} />
       <Scroll />
     </div>
