@@ -1,19 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ScrollItem from "../components/ScrollItem";
-import Overlay from "./Overlay";
+import loadable from "@loadable/component";
 
 function Scroll() {
+  const [deltaVal, setDelta] = useState(0);
 
-  const handleScroll = ((e, target) => {
-    let delta = e.deltaY;
-    console.log(delta);
-    e.scrollLeft += delta;
+  const handleScroll = ((e, container, parallaxLayer ) => {
+    setDelta(e.deltaY)
+    console.log(deltaVal);
+    e.currentTarget.scrollLeft +=deltaVal;
   });
-
-  useEffect(() => {
-    const scroll = document.querySelector('.outer-scroll-container');
-    scroll.addEventListener('scroll', handleScroll(scroll));
-  })
 
   const speakers = [
     {
@@ -35,11 +31,11 @@ function Scroll() {
   for (let i = 0; i < speakers.length; i++) {
     const speaker = speakers[i];
   
-    scrolls.push(<ScrollItem speaker={speaker} key={i} />);
+    scrolls.push(<ScrollItem speaker={speaker} key={i} delta={deltaVal} />);
   }
 
   return (
-			<div className="outer-scroll-container" onScroll={(e) => handleScroll}>
+			<div className="outer-scroll-container" onWheel={(e) => { handleScroll(e) }}>
 				<div className="inner-scroll-container flex" >
 					{scrolls}
 				</div>
