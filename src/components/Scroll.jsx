@@ -4,10 +4,15 @@ import loadable from "@loadable/component";
 
 function Scroll() {
   const [deltaVal, setDelta] = useState(0);
+  const [width, setWidth] = useState(0);
 
   const handleScroll = ((e) => {
     setDelta(e.deltaY)
     e.currentTarget.scrollLeft +=deltaVal;
+
+    // set width of page
+    setWidth(e.currentTarget.getBoundingClientRect().right)
+    console.log(e.currentTarget.getBoundingClientRect().right)
   });
 
   const speakers = [
@@ -30,11 +35,11 @@ function Scroll() {
   for (let i = 0; i < speakers.length; i++) {
     const speaker = speakers[i];
   
-    scrolls.push(<ScrollItem speaker={speaker} key={i} delta={deltaVal} />);
+    scrolls.push(<ScrollItem speaker={speaker} key={i} delta={deltaVal} width={width} />);
   }
 
   return (
-			<div className="outer-scroll-container" onWheel={(e) => { handleScroll(e) }}>
+			<div className="outer-scroll-container" onScroll={(e) => {console.log('scroll' + e.currentTarget.scrollLeft)}} onWheel={(e) => { handleScroll(e) }}>
 				<div className="inner-scroll-container flex" >
 					{scrolls}
 				</div>

@@ -21,15 +21,6 @@ body {
     overscroll-behavior-x: none;
     overscroll-behavior-y: none;
     scrollbar-width: none;
-    /* scroll-snap-type: x proximity; */
-    /* width: 100%;
-    height: 100vw;
-    transform: rotate(-90deg) translateX(-100vh);
-    transform-origin: top left;
-    overflow-y: scroll;
-    overflow-x: scroll;
-    position: absolute;
-    -ms-overflow-style: none; */
 }
 ::-webkit-scrollbar {
     display: none;
@@ -85,7 +76,8 @@ body {
 }
 
 .glass {
-   backdrop-filter: blur(10px);
+   /* backdrop-filter: blur(10px); */
+   background: white;
 }
 
 @tailwind base;
