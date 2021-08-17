@@ -5,9 +5,8 @@ import loadable from "@loadable/component";
 function Scroll() {
   const [deltaVal, setDelta] = useState(0);
 
-  const handleScroll = ((e, container, parallaxLayer ) => {
+  const handleScroll = ((e) => {
     setDelta(e.deltaY)
-    console.log(deltaVal);
     e.currentTarget.scrollLeft +=deltaVal;
   });
 
