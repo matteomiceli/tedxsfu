@@ -32,6 +32,10 @@ function Scroll() {
       speaker: "Test 3",
       img: "speaker3",
     },
+    {
+      speaker: '',
+      img: ''
+    }
   ];
   
   const scrolls = [];

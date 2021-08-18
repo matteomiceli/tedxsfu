@@ -76,8 +76,8 @@ body {
 }
 
 .glass {
-   /* backdrop-filter: blur(10px); */
-   background: white;
+   backdrop-filter: blur(15px);
+   /* background: green; */
 }
 
 @tailwind base;

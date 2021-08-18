@@ -12,9 +12,11 @@ function Overlay({ delta, width, scroll }) {
 
 
   return (
-    <div className="h-full w-full flex justify-center items-center">
-      <div style={{transform: `translateX(${-scrollVal/2}px)`}} className={`glass h-24 w-48 z-10 left-10`}></div>
-      <div style={{transform: `translateX(${-scrollVal/2}px)`}} className={`glass h-24 w-48 z-10 translate-y-24 `}></div>
+    <div style={{transform: `translateX(${-scrollVal/2}px)`}} className="h-full w-full flex ">
+      <div className={`glass h-32 w-52 z-10 relative top-64 right-1/2`}></div>
+      <div className={`glass h-32 w-52 z-10 relative top-64 -right-3/4`}></div>
+      <div className={`glass h-32 w-52 z-10 relative top-2/3 left-12`}></div>
+      <div className={`glass h-32 w-52 z-10 relative top-3/4 -right-1/2`}></div>
     </div>
   );
 }
