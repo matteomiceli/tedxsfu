@@ -76,12 +76,8 @@ body {
 }
 
 .glass {
-<<<<<<< HEAD
-   backdrop-filter: blur(15px)
-=======
    backdrop-filter: blur(15px);
    /* background: green; */
->>>>>>> parallax
 }
 
 @tailwind base;
