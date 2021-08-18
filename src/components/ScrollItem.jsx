@@ -3,12 +3,12 @@ import Overlay from "./Overlay";
 import loadable from "@loadable/component";
 
 
-function ScrollItem({ speaker, i }) {
+function ScrollItem({ speaker, width, delta, scroll }) {
   return (
     <div
       className={`scroll-item scroll-${speaker.img} bg-black text-white text-9xl flex justify-center items-center`}
     >
-        <Overlay />
+        <Overlay delta={delta} width={width} scroll={scroll} />
     </div>
   );
 }

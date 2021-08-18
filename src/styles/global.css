@@ -12,22 +12,15 @@ html {
 body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 .outer-scroll-container {
     height: 100vh;
     overflow-y: hidden;
     overscroll-behavior-x: none;
-    /* width: 100%;
-    height: 100vw;
-    transform: rotate(-90deg) translateX(-100vh);
-    transform-origin: top left;
-    overflow-y: scroll;
-    overflow-x: scroll;
-    position: absolute;
+    overscroll-behavior-y: none;
     scrollbar-width: none;
-    -ms-overflow-style: none;
-    scroll-snap-type: y proximity; */
 }
 ::-webkit-scrollbar {
     display: none;
@@ -83,7 +76,16 @@ body {
 }
 
 .glass {
+<<<<<<< HEAD
    backdrop-filter: blur(10px);
+=======
+<<<<<<< HEAD
+   backdrop-filter: blur(15px)
+=======
+   backdrop-filter: blur(15px);
+   /* background: green; */
+>>>>>>> parallax
+>>>>>>> main
 }
 
 @tailwind base;

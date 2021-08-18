@@ -7,7 +7,7 @@ const IndexPage = () => {
 
 
   return (
-    <div >
+    <div>
       <Navbar page={1} />
       <Scroll />
     </div>
