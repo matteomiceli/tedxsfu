@@ -11,8 +11,9 @@ function Scroll() {
   const [scroll, setScroll] = useState(0)
 
   const handleScroll = ((e) => {
+    e.preventDefault();
     setDelta(e.deltaY)
-    e.currentTarget.scrollLeft +=deltaVal;
+    e.currentTarget.scrollLeft += deltaVal;
     console.log(e.currentTarget.scrollLeft)
 
     // set width of page
