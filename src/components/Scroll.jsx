@@ -14,7 +14,7 @@ function Scroll() {
     e.preventDefault();
     setDelta(e.deltaY)
     e.currentTarget.scrollLeft += deltaVal;
-    console.log(e.currentTarget.scrollLeft)
+    console.log(e.deltaY)
 
     // set width of page
     setWidth(e.currentTarget.getBoundingClientRect().right)
@@ -48,7 +48,7 @@ function Scroll() {
   }
 
   return (
-			<div className="outer-scroll-container" onScroll={(e) => {setScroll(e.currentTarget.scrollLeft); console.log(scroll)}} onWheel={(e) => { handleScroll(e) }}>
+			<div className="outer-scroll-container" onScroll={(e) => {setScroll(e.currentTarget.scrollLeft)}} onWheel={(e) => { handleScroll(e) }}>
 				<div className="inner-scroll-container flex" >
 					{scrolls}
 				</div>
