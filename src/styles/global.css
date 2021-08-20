@@ -6,7 +6,7 @@
 }
 
 html {
-    
+    scroll-behavior: smooth;
 }
 
 body {
@@ -21,7 +21,6 @@ body {
     overscroll-behavior-x: none;
     overscroll-behavior-y: none;
     scrollbar-width: 2px;
-    scroll-behavior: smooth;
 }
 ::-webkit-scrollbar {
     display: none;
