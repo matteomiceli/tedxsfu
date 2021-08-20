@@ -20,7 +20,7 @@ body {
     overflow-y: hidden;
     overscroll-behavior-x: none;
     overscroll-behavior-y: none;
-    scrollbar-width: 2px;
+    scrollbar-width: none;
 }
 ::-webkit-scrollbar {
     display: none;
