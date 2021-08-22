@@ -27,9 +27,6 @@ body {
 }
 
 .inner-scroll-container {
-    /* transform: rotate(90deg) translateY(-100vh);
-    transform-origin: top left;
-    height: 100vh; */
     height:100%;
 }
 
@@ -63,6 +60,25 @@ body {
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: bottom;
+}
+
+.panel-active {
+    border-top: 1px solid red;
+}
+
+.panel-speaker1{
+    background: url('../static/images/speaker1.png') center no-repeat;
+    background-size: 150%;
+}
+
+.panel-speaker2{
+    background: url('../static/images/speaker2.png') center no-repeat;
+    background-size: 110%;
+}
+
+.panel-speaker3{
+    background: url('../static/images/speaker3.png') center no-repeat;
+    background-size: 150%;
 }
 
 .one-px {
