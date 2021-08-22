@@ -20,7 +20,7 @@ function Navigation() {
         className={
           isActive
             ? "hidden transition-all duration-200 ease-in-out"
-            : "text-white absolute font-NeueHaas w-full h-full flex justify-center top-8 transition-all duration-200 ease-in-out"
+            : "text-white absolute font-NeueHaas w-full h-full flex justify-center top-8 transition-all duration-200 ease-in-out z-50"
         }
       >
         <p className="text-sm font-medium">ALL SPEAKERS</p>
