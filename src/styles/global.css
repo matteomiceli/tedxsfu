@@ -94,7 +94,6 @@ body {
 .glass {
    backdrop-filter: blur(15px);
    /* background: green; */
-
 }
 
 @tailwind base;
