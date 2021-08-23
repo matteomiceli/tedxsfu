@@ -13,16 +13,11 @@ function NavPanels({
   setScroll
 }) {
 
+  // handles smooth scroll function and sets speaker on click
   const handleNavClick = (e) => {
     scrollTo(`#scroll-${speaker.img}`);
     setSpeaker(speaker.i);
   };
-
-  useEffect(() => {
-    if (spySpeaker === speaker.i) {
-      setSpeaker(speaker.i)
-    }
-  }, [spySpeaker])
 
   // changes focus when div scrolled into view
   useEffect(() => {
@@ -32,6 +27,12 @@ function NavPanels({
     if (scroll != 0) {
       setSpeaker(parseInt(speakerPos) + 1);
     }
+
+    // if at end, spy last speaker (addresses bug at final scrollPos)
+    if (scroll === width) {
+      setSpeaker(speakers.length);
+    } 
+
   }, [scroll])
 
   return (
