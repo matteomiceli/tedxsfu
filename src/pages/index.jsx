@@ -1,17 +1,17 @@
-import * as React from "react";
+import React, { useState } from "react";
 
 import Scroll from "../components/Scroll";
 import Navbar from "../components/Navbar";
 import Navigation from "../components/Navigation";
 
 const IndexPage = () => {
-
+  const [spySpeaker, setSpeaker] = useState(1);
 
   return (
-    <div>
-      <Navbar page={1} />
+    <div className="bg-black">
+      <Navbar page={1} speaker={ [spySpeaker, setSpeaker] } />
       <Scroll />
-      <Navigation />
+      <Navigation speakerState={ [spySpeaker, setSpeaker] } />
     </div>
   );
 };

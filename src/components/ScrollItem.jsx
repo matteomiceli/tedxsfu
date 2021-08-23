@@ -1,14 +1,10 @@
 import * as React from "react";
 import Overlay from "./Overlay";
 import loadable from "@loadable/component";
-import {useInView} from 'react-intersection-observer';
 
 
-function ScrollItem({ speaker, width, delta, scroll }) {
-  const [] = useInView({
-    threshold: 1
-  })
-  
+
+function ScrollItem({ speaker, width, delta, scroll }) {  
   return (
     <div
       id={`scroll-${speaker.img}`}

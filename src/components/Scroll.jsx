@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ScrollItem from "../components/ScrollItem";
 import loadable from "@loadable/component";
 
@@ -12,13 +12,24 @@ function Scroll() {
   // page scroll location
   const [scroll, setScroll] = useState(0);
 
+  const scrollRef = useRef();
+
   const handleScroll = ((e) => {
     e.preventDefault();
     setDelta(e.deltaY)
-    e.currentTarget.scrollLeft += deltaVal;
+    
+    
     // set width of page
-    setWidth(e.currentTarget.getBoundingClientRect().right)
+    setWidth(e.currentTarget.scrollWidth - e.currentTarget.clientWidth)
+    console.log(e.deltaY)
+    console.log(scroll)
+    console.log(width)
   });
+
+  useEffect(() => {
+    scrollRef.current.scrollLeft += deltaVal;
+    setDelta(0);
+  }, [deltaVal])
   
   const scrolls = [];
   
@@ -28,7 +39,7 @@ function Scroll() {
   }
 
   return (
-			<div id="outer-scroll-container" className="outer-scroll-container" onScroll={(e) => {setScroll(e.currentTarget.scrollLeft)}} onWheel={(e) => { handleScroll(e) }}>
+			<div ref={scrollRef} className="outer-scroll-container" onScroll={(e) => {setScroll(e.currentTarget.scrollLeft)}} onWheel={(e) => { handleScroll(e) }}>
 				<div className="inner-scroll-container flex" >
 					{scrolls}
 				</div>
