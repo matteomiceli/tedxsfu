@@ -16,6 +16,9 @@
   "dependencies": {
     "@loadable/component": "^5.15.0",
     "gatsby": "^3.10.2",
+    "gatsby-plugin-smoothscroll": "^1.2.0",
+    "install": "^0.13.0",
+    "npm": "^7.21.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
