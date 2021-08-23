@@ -10,9 +10,8 @@ function NavPanels({
   width,
   setWidth,
   scroll,
-  setScroll
+  setScroll,
 }) {
-
   // handles smooth scroll function and sets speaker on click
   const handleNavClick = (e) => {
     scrollTo(`#scroll-${speaker.img}`);
@@ -29,19 +28,22 @@ function NavPanels({
     }
 
     // if at end, spy last speaker (addresses bug at final scrollPos)
-    if (scroll === width) {
+    if (scroll === width && scroll != 0) {
       setSpeaker(speakers.length);
-    } 
-
-  }, [scroll])
+    }
+  }, [scroll, width]);
 
   return (
     <button
       onClick={(e) => handleNavClick(e)}
       className={
         isActive
-          ? `panel-${speaker.img} h-full w-full mx-1 ${spySpeaker === speaker.i ? 'panel-active' : 'panel-notactive'}`
-          : `panel-${speaker.img} h-full w-full mx-1 opacity-50 ${spySpeaker === speaker.i ? 'panel-active' : 'panel-notactive'}`
+          ? `panel-${speaker.img} h-full w-full mx-1 ${
+              spySpeaker === speaker.i ? "panel-active" : "panel-notactive"
+            }`
+          : `panel-${speaker.img} h-full w-full mx-1 opacity-50 ${
+              spySpeaker === speaker.i ? "panel-active" : "panel-notactive"
+            }`
       }
     ></button>
   );
