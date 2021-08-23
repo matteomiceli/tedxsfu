@@ -66,6 +66,10 @@ body {
     border-top: 1px solid #E61B2E;
 }
 
+.panel-notactive {
+    border-top: 1px solid transparent;
+}
+
 .panel-speaker1{
     background: url('../static/images/speaker1.png') center no-repeat;
     background-size: 150%;
