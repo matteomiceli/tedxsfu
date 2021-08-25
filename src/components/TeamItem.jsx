@@ -6,7 +6,7 @@ function TeamItem({ team, width, delta, scroll }) {
   return (
     <div
       id={`team-${team.i}`}
-      className={`scroll-item scroll-${team.img} bg-black`}
+      className={`scroll-item bg-black`}
     >
       {/* <Overlay delta={delta} width={width} scroll={scroll} /> */}
         <p className="text-white">Poop</p>
