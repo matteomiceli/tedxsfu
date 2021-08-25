@@ -32,7 +32,7 @@ function Menu({ isActive, setActive, page }) {
           <p>2</p>
           <li>LEGACY</li>
         </a>
-        <a className="text-white text-sm mr-6 hover:text-gray-400" href="#">
+        <a className="text-white text-sm mr-6 hover:text-gray-400" href="/team">
           <p>3</p>
           <li>TEAM</li>
         </a>
