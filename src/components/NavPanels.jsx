@@ -20,23 +20,11 @@ function NavPanels({
     setSpeaker(speaker.i);
   };
 
-  // sets clicked element to in focus when speaker changes
-  // useEffect(() => {
-  //   if (speaker.i === spySpeaker) {
-  //     setFocus(true);
-  //   } else {
-  //     setFocus(false);
-  //   }
-  // }, [spySpeaker]);
 
   // changes focus when div scrolled into view
   useEffect(() => {
     let speakerWidth = width / speakers.length;
     let speakerPos = scroll / speakerWidth;
-
-    // if (parseInt(speakerPos) === speaker.i) {
-    //   setSpeaker(speakerPos + 1);
-    // }
 
     setSpeaker(parseInt(speakerPos) + 1);
     console.log(speakerPos)
