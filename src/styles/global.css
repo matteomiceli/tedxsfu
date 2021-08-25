@@ -35,35 +35,39 @@ body {
     width: 100vw;
     scroll-snap-align: center;
     height:100%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: bottom;
 }
 
 /* collapse repeating elements into scroll item */
 .scroll-speaker1 {
     background-image: url('../static/images/speaker1.png');
     background-size: 95vh;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: bottom;
+    
 }
 
 .scroll-speaker2 {
     background-image: url('../static/images/speaker2.png');
     background-size: 70vh;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: bottom;
 }
 
 .scroll-speaker3 {
     background-image: url('../static/images/speaker3.png');
     background-size: 80vh;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: bottom;
+}
+
+.scroll-speaker4 {
+    background-image: url('../static/images/speaker4.png');
+    background-size: 80vh;
 }
 
 .panel-active {
     border-top: 1px solid #E61B2E;
+}
+
+.panel-notactive {
+    border-top: 1px solid transparent;
 }
 
 .panel-speaker1{
@@ -78,6 +82,11 @@ body {
 
 .panel-speaker3{
     background: url('../static/images/speaker3.png') center no-repeat;
+    background-size: 150%;
+}
+
+.panel-speaker4{
+    background: url('../static/images/speaker4.png') center no-repeat;
     background-size: 150%;
 }
 
