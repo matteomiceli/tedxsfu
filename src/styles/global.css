@@ -7,6 +7,8 @@
 
 html {
     scroll-behavior: smooth;
+    font-family: 'NeueHaas';
+    letter-spacing: 1px;
 }
 
 body {
@@ -40,7 +42,9 @@ body {
     background-position-y: bottom;
 }
 
-/* collapse repeating elements into scroll item */
+
+/* SPEAKERS */
+
 .scroll-speaker1 {
     background-image: url('../static/images/speaker1.png');
     background-size: 95vh;
@@ -104,6 +108,11 @@ body {
    backdrop-filter: blur(15px);
    /* background: green; */
 }
+
+
+/* TEAMS */
+
+
 
 @tailwind base;
 @tailwind components;
