@@ -1,7 +1,34 @@
+import { Link } from "gatsby";
 import React from "react";
 import menu from "../static/images/menu.svg";
 
+const MENU_ITEMS = [
+  {
+    label: "Speakers",
+    href: "/",
+  },
+  {
+    label: "Partners",
+    href: "/sponsors",
+  },
+  {
+    label: "Team",
+    href: "/team",
+  },
+  {
+    label: "About",
+    href: "/about",
+  },
+];
+
 function Menu({ isActive, setActive, page }) {
+  // grab the path from url
+  const currentPath = (() => {
+    if (typeof window !== "undefined") {
+      return window.location.pathname;
+    }
+  })();
+
   return (
     <nav className="flex">
       <ul
@@ -17,41 +44,16 @@ function Menu({ isActive, setActive, page }) {
           setActive(isActive === true ? (isActive = false) : (isActive = true))
         }
       >
-        <a
-          className={
-            page === 1
-              ? "text-white text-sm mr-6 hover:text-gray-400 font-semibold"
-              : "text-white text-sm mr-6 hover:text-gray-400"
-          }
-          href="/"
-        >
-          <p>1</p>
-          <li>SPEAKERS</li>
-        </a>
-        <a className={
-            page === 2
-              ? "text-white text-sm mr-6 hover:text-gray-400 font-semibold"
-              : "text-white text-sm mr-6 hover:text-gray-400"
-          } href="#">
-          <p>2</p>
-          <li>LEGACY</li>
-        </a>
-        <a className={
-            page === 3
-              ? "text-white text-sm mr-6 hover:text-gray-400 font-semibold"
-              : "text-white text-sm mr-6 hover:text-gray-400"
-          } href="/team">
-          <p>3</p>
-          <li>TEAM</li>
-        </a>
-        <a className={
-            page === 4
-              ? "text-white text-sm mr-6 hover:text-gray-400 font-semibold"
-              : "text-white text-sm mr-6 hover:text-gray-400"
-          } href="#">
-          <p>4</p>
-          <li>SPONSORS</li>
-        </a>
+        {MENU_ITEMS.map((item, index) => (
+          <MenuItem
+            key={index}
+            href={item.href}
+            pageId={index}
+            isCurrent={item.href === currentPath}
+          >
+            {item.label}
+          </MenuItem>
+        ))}
       </ul>
       <div
         className={
@@ -84,6 +86,22 @@ function Menu({ isActive, setActive, page }) {
         />
       </div>
     </nav>
+  );
+}
+
+function MenuItem({ pageId, href, isCurrent, children }) {
+  return (
+    <Link
+      className={
+        isCurrent
+          ? "text-white text-sm mr-6 hover:text-gray-400 font-semibold"
+          : "text-white text-sm mr-6 hover:text-gray-400"
+      }
+      to={href}
+    >
+      <p>{pageId}</p>
+      <li className={"uppercase tracking-wider"}>{children}</li>
+    </Link>
   );
 }
 

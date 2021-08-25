@@ -32,7 +32,7 @@ function Navbar({ page }) {
           </div>
         </div>
       </div>
-      <Menu isActive={isActive} setActive={setActive} page={ page }/>
+      <Menu isActive={isActive} setActive={setActive} page={page} />
     </div>
   );
 }
