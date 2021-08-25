@@ -28,15 +28,27 @@ function Menu({ isActive, setActive, page }) {
           <p>1</p>
           <li>SPEAKERS</li>
         </a>
-        <a className="text-white text-sm mr-6 hover:text-gray-400" href="#">
+        <a className={
+            page === 2
+              ? "text-white text-sm mr-6 hover:text-gray-400 font-semibold"
+              : "text-white text-sm mr-6 hover:text-gray-400"
+          } href="#">
           <p>2</p>
           <li>LEGACY</li>
         </a>
-        <a className="text-white text-sm mr-6 hover:text-gray-400" href="/team">
+        <a className={
+            page === 3
+              ? "text-white text-sm mr-6 hover:text-gray-400 font-semibold"
+              : "text-white text-sm mr-6 hover:text-gray-400"
+          } href="/team">
           <p>3</p>
           <li>TEAM</li>
         </a>
-        <a className="text-white text-sm mr-6 hover:text-gray-400" href="#">
+        <a className={
+            page === 4
+              ? "text-white text-sm mr-6 hover:text-gray-400 font-semibold"
+              : "text-white text-sm mr-6 hover:text-gray-400"
+          } href="#">
           <p>4</p>
           <li>SPONSORS</li>
         </a>
