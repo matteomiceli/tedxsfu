@@ -14,7 +14,6 @@ const TeamPage = () => {
 
     return (
         <div className="bg-black">
-            <Navbar page={3} />
             <TeamNav 
                 spyTeam={spyTeam}
                 setTeam={setTeam}
