@@ -15,14 +15,14 @@ const TeamPage = () => {
     return (
         <div className="bg-black">
             <Navbar page={3} />
-            {/* <TeamNav 
+            <TeamNav 
                 spyTeam={spyTeam}
                 setTeam={setTeam}
                 scroll={scroll}
                 setScroll={setScroll}
                 width={width}
                 setWidth={setWidth}
-            /> */}
+            />
             <TeamScroll 
                 spyTeam={spyTeam}
                 setTeam={setTeam}

@@ -3,7 +3,6 @@ import scrollTo from "gatsby-plugin-smoothscroll";
 import teams from "../content/teams";
 
 function TeamPanels({
-  isActive,
   team,
   setTeam,
   spyTeam,
@@ -14,7 +13,7 @@ function TeamPanels({
 }) {
   // handles smooth scroll function and sets team on click
   const handleNavClick = (e) => {
-    scrollTo(`#scroll-${team.img}`);
+    scrollTo(`#team-${team.i}`);
     setTeam(team.i);
   };
 
@@ -37,15 +36,9 @@ function TeamPanels({
     <button
       onClick={(e) => handleNavClick(e)}
       className={
-        isActive
-          ? `panel-${team.img} h-full w-full mx-1 ${
-              spyTeam === team.i ? "panel-active" : "panel-notactive"
-            }`
-          : `panel-${team.img} h-full w-full mx-1 opacity-50 ${
-              spyTeam === team.i ? "panel-active" : "panel-notactive"
-            }`
+        spyTeam === team.i ? "team-panel-active" : "team-panel-notactive"
       }
-    ></button>
+    >{team.team}</button>
   );
 }
 
