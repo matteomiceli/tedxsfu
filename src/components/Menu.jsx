@@ -65,7 +65,7 @@ function Menu({ isActive, setActive, page }) {
       >
         <Button>Get Tickets Now</Button>
         <img
-          className="h-8 cursor-pointer p-2"
+          className="h-8 cursor-pointer p-2 ml-6"
           src={menu}
           alt="Menu Icon"
           onMouseEnter={() =>
