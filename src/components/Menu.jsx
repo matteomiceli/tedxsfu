@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import menu from "../static/images/menu.svg";
+import Button from "./Button";
 
 const MENU_ITEMS = [
   {
@@ -62,13 +63,7 @@ function Menu({ isActive, setActive, page }) {
             : "flex items-center transition-all duration-300 ease-in-out h-24"
         }
       >
-        <a
-          className="transition-all duration-300 ease-in-out text-xs bg-white rounded-full border border-ted-red py-1 px-2 mr-6"
-          href="#"
-          target="_blank"
-        >
-          GET TICKETS NOW
-        </a>
+        <Button>Get Tickets Now</Button>
         <img
           className="h-8 cursor-pointer p-2"
           src={menu}
