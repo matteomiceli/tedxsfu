@@ -12,6 +12,7 @@ const Button = ({
   tertiary,
   cta,
   text,
+  ...props
 }) => {
   const [isHover, setIsHover] = useState(false);
   const [isActive, setIsActive] = useState(false);
@@ -44,6 +45,7 @@ const Button = ({
       onMouseDown={() => setIsActive(true)}
       onMouseUp={() => setIsActive(false)}
       animate={{ scale: isActive ? 0.97 : 1 }}
+      {...props}
     >
       {/* ring on cta button */}
       {cta && (
