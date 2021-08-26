@@ -63,9 +63,9 @@ function Menu({ isActive, setActive, page }) {
             : "flex items-center transition-all duration-300 ease-in-out h-24"
         }
       >
-        <Button>Get Tickets Now</Button>
+        <Button cta>Get Tickets Now</Button>
         <img
-          className="h-8 cursor-pointer p-2"
+          className="h-8 cursor-pointer p-2 ml-6"
           src={menu}
           alt="Menu Icon"
           onMouseEnter={() =>
