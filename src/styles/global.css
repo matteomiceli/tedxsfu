@@ -1,119 +1,149 @@
 /* ./src/styles/global.css */
 
 @font-face {
-    font-family: NeueHaas;
-    src: url(../static/fonts/NeueHaasVariableV1.2.ttf);
+  font-family: NeueHaas;
+  src: url(../static/fonts/NeueHaasVariableV1.2.ttf);
 }
 
 html {
-    scroll-behavior: smooth;
-    font-family: 'NeueHaas';
-    letter-spacing: 1px;
+  scroll-behavior: smooth;
+  font-family: "NeueHaas";
+  letter-spacing: 1px;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  background-color: black;
+  color: white;
 }
 
 .outer-scroll-container {
-    height: 100vh;
-    overflow-y: hidden;
-    overscroll-behavior-x: none;
-    overscroll-behavior-y: none;
-    scrollbar-width: none;
+  height: 100vh;
+  overflow-y: hidden;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
+  scrollbar-width: none;
 }
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .inner-scroll-container {
-    height:100%;
+  height: 100%;
 }
 
 .scroll-item {
-    min-width: 100vw !important;
-    width: 100vw;
+  min-width: 100vw !important;
+  width: 100vw;
     scroll-snap-align: center;
-    height:100%;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: bottom;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: bottom;
 }
-
 
 /* SPEAKERS */
 
 .scroll-speaker1 {
-    background-image: url('../static/images/speaker1.png');
-    background-size: 95vh;
-    
+  background-image: url("../static/images/speaker1.png");
+  background-size: 95vh;
 }
 
 .scroll-speaker2 {
-    background-image: url('../static/images/speaker2.png');
-    background-size: 70vh;
+  background-image: url("../static/images/speaker2.png");
+  background-size: 70vh;
 }
 
 .scroll-speaker3 {
-    background-image: url('../static/images/speaker3.png');
-    background-size: 80vh;
+  background-image: url("../static/images/speaker3.png");
+  background-size: 80vh;
 }
 
 .scroll-speaker4 {
-    background-image: url('../static/images/speaker4.png');
-    background-size: 80vh;
+  background-image: url("../static/images/speaker4.png");
+  background-size: 80vh;
 }
 
 .panel-active {
-    border-top: 1px solid #E61B2E;
+  border-top: 1px solid #e61b2e;
 }
 
 .panel-notactive {
-    border-top: 1px solid transparent;
+  border-top: 1px solid transparent;
 }
 
-.panel-speaker1{
-    background: url('../static/images/speaker1.png') center no-repeat;
-    background-size: 150%;
+.panel-speaker1 {
+  background: url("../static/images/speaker1.png") center no-repeat;
+  background-size: 150%;
 }
 
-.panel-speaker2{
-    background: url('../static/images/speaker2.png') center no-repeat;
-    background-size: 110%;
+.panel-speaker2 {
+  background: url("../static/images/speaker2.png") center no-repeat;
+  background-size: 110%;
 }
 
-.panel-speaker3{
-    background: url('../static/images/speaker3.png') center no-repeat;
-    background-size: 150%;
+.panel-speaker3 {
+  background: url("../static/images/speaker3.png") center no-repeat;
+  background-size: 150%;
 }
 
-.panel-speaker4{
-    background: url('../static/images/speaker4.png') center no-repeat;
-    background-size: 150%;
+.panel-speaker4 {
+  background: url("../static/images/speaker4.png") center no-repeat;
+  background-size: 150%;
 }
 
 .one-px {
-    width: 1px;
+  width: 1px;
 }
 
 .glass-container {
-    background: url('../static/images/speaker4.png');
-    background-position: center;
-    border-radius: none;    
+  background: url("../static/images/speaker4.png");
+  background-position: center;
+  border-radius: none;
 }
 
 .glass {
-   backdrop-filter: blur(15px);
-   /* background: green; */
+  backdrop-filter: blur(15px);
+  /* background: green; */
 }
 
-
 /* TEAMS */
-
-
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* utilities for adjusting font weight adjustments in variable fonts */
+/* https://github.com/tailwindlabs/tailwindcss/discussions/3225 */
+@layer utilities {
+  .font-thin {
+    font-variation-settings: "wght" 100;
+  }
+  .font-extralight {
+    font-variation-settings: "wght" 200;
+  }
+  .font-light {
+    font-variation-settings: "wght" 300;
+  }
+  .font-normal {
+    font-variation-settings: "wght" 400;
+  }
+  .font-medium {
+    font-variation-settings: "wght" 500;
+  }
+  .font-semibold {
+    font-variation-settings: "wght" 600;
+  }
+  .font-bold {
+    font-variation-settings: "wght" 700;
+  }
+  .font-extrabold {
+    font-variation-settings: "wght" 800;
+  }
+  .font-black {
+    font-variation-settings: "wght" 900;
+  }
+}
