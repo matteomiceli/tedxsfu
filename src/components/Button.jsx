@@ -9,6 +9,7 @@ const Button = ({
   blank,
   primary,
   secondary,
+  tertiary,
   cta,
   text,
 }) => {
@@ -19,10 +20,15 @@ const Button = ({
   const buttonStyle = (() => {
     if (cta)
       return "text-interactive py-2 px-6 bg-white text-black rounded-full relative inline-block";
+    if (primary)
+      return "text-interactive py-2 px-6 bg-white text-black rounded-full relative inline-block";
     if (secondary)
       return "text-interactive py-2 px-6 text-white rounded-full relative inline-block border border-white";
-    // default as primary
-    return "text-interactive py-2 px-6 bg-white text-black rounded-full relative inline-block";
+    if (tertiary)
+      return "text-interactive py-2 px-6 text-white rounded-full relative inline-block";
+
+    // default as inline text button
+    return "text-interactive relative inline-block";
   })();
 
   return (
