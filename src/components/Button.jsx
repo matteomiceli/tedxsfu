@@ -3,14 +3,31 @@ import { motion } from "framer-motion";
 
 const isSSR = typeof window === "undefined";
 
-const Button = ({ href = "#", children, blank, secondary }) => {
+const Button = ({
+  href = "#",
+  children,
+  blank,
+  primary,
+  secondary,
+  cta,
+  text,
+}) => {
   const [isHover, setIsHover] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
+  const buttonStyle = (() => {
+    if (cta)
+      return "text-interactive py-2 px-6 bg-white text-black rounded-full relative inline-block";
+    if (secondary)
+      return "text-interactive py-2 px-6 text-white rounded-full relative inline-block border border-white";
+    // default as primary
+    return "text-interactive py-2 px-6 bg-white text-black rounded-full relative inline-block";
+  })();
+
   return (
     <motion.a
-      className="text-interactive py-2 px-6 bg-white text-black rounded-full relative"
+      className={buttonStyle}
       href={href}
       target={blank ? "_blank" : "_self"}
       onMouseEnter={(e) => {
@@ -22,14 +39,38 @@ const Button = ({ href = "#", children, blank, secondary }) => {
       onMouseUp={() => setIsActive(false)}
       animate={{ scale: isActive ? 0.97 : 1 }}
     >
-      <motion.div
-        className="rounded-full absolute -left-1 -top-1 -right-1 -bottom-1 border border-ted-red"
-        animate={{
-          scaleX: isHover ? 1.02 : 1,
-          scaleY: isHover ? 1.1 : 1,
-          borderWidth: isHover ? 1.5 : 1,
-        }}
-      ></motion.div>
+      {/* ring on cta button */}
+      {cta && (
+        <motion.div
+          className={`rounded-full absolute -left-1 -top-1 -right-1 -bottom-1 border border-ted-red`}
+          initial={{
+            scaleX: 1,
+            scaleY: 1,
+            borderWidth: 1,
+          }}
+          animate={{
+            scaleX: isHover ? 1.02 : 1,
+            scaleY: isHover ? 1.1 : 1,
+            borderWidth: isHover ? 1 : 1,
+          }}
+        />
+      )}
+      {/* ring on primary button */}
+      {primary && (
+        <motion.div
+          className={`rounded-full absolute -left-1 -top-1 -right-1 -bottom-1 border border-ted-white`}
+          initial={{
+            scaleX: 1,
+            scaleY: 1,
+            borderWidth: 1,
+          }}
+          animate={{
+            scaleX: isHover ? 1.02 : 1,
+            scaleY: isHover ? 1.1 : 1,
+            borderWidth: isHover ? 1 : 1,
+          }}
+        />
+      )}
       <RippleText isActive={isHover} originPos={mousePos}>
         {children}
       </RippleText>
