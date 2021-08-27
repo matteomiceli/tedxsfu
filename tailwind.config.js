@@ -1,5 +1,5 @@
 module.exports = {
-  // mode:'jit',
+  // mode: "jit",
   purge: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -32,10 +32,13 @@ module.exports = {
           },
         ],
       },
+      gridTemplateColumns: {
+        sponsorInfoModal: "auto 2rem",
+      },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: ["gatsby-plugin-postcss"],
+  plugins: ["gatsby-plugin-postcss", require("tailwindcss-fluid")],
 };

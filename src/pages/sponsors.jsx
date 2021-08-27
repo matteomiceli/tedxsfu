@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import HorizontalScrollContainer from "../components/HorizontalScrollContainer";
 import sponsors from "../content/sponsors";
 import Button from "../components/Button";
 import SocialButton from "../components/SocialButton";
+import CloseIcon from "../static/images/icons/close.svg";
 
 //@ts-check
 const SponsorshipPage = () => {
   return (
-    <div style={{ marginTop: "25vh" }}>
+    <div className="mt-flowline-sm sm:mt-flowline">
       <HorizontalScrollContainer>
-        <div className="flex flex-row flex-nowrap ml-12">
+        <div className="flex flex-col sm:flex-row flex-nowrap mx-document">
           <SponsorshipHeader />
-          <PlatinumTierSection sponsorList={sponsors.platinum} />
-          <InKindTierSection sponsorList={sponsors.inkind} />
+          <div className="flex flex-row flex-nowrap">
+            <PlatinumTierSection sponsorList={sponsors.platinum} />
+            <InKindTierSection sponsorList={sponsors.inkind} />
+          </div>
         </div>
       </HorizontalScrollContainer>
     </div>
@@ -20,9 +24,9 @@ const SponsorshipPage = () => {
 };
 
 const SponsorshipHeader = () => (
-  <div className="mb-24">
-    <h1 className="text-display font-light">Partners</h1>
-    <p className="text-xl w-96">
+  <div className="mb-12 sm:mb-24">
+    <h1 className="text-4xl sm:text-display font-light">Partners</h1>
+    <p className="text-sm sm:text-xl w-96">
       We've partnered with these amazing organizations and businesses to make
       TEDxSFU happen this year.
     </p>
@@ -31,9 +35,9 @@ const SponsorshipHeader = () => (
 
 const PlatinumTierSection = ({ sponsorList }) => (
   <div className="pr-24">
-    <div className="flex">
-      <div className="inline-block whitespace-nowrap uppercase tracking-widest mr-6 align-middle">
-        01&nbsp;Platinum Sponsors
+    <div className="flex opacity-60">
+      <div className="text-sm sm:text-base inline-block whitespace-nowrap uppercase tracking-widest mr-6 align-middle">
+        01<span className="ml-2">Platinum Sponsors</span>
       </div>
       <div className="ruler" />
     </div>
@@ -47,9 +51,9 @@ const PlatinumTierSection = ({ sponsorList }) => (
 
 const InKindTierSection = ({ sponsorList }) => (
   <div className="pr-12">
-    <div className="flex">
-      <div className="inline-block whitespace-nowrap uppercase tracking-widest mr-6 align-middle">
-        02&nbsp;In-kind Sponsors
+    <div className="flex opacity-60">
+      <div className="text-sm sm:text-base inline-block whitespace-nowrap uppercase tracking-widest mr-6 align-middle">
+        02<span className="ml-2">In Kind Sponsors</span>
       </div>
       <div className="ruler" />
     </div>
@@ -61,53 +65,172 @@ const InKindTierSection = ({ sponsorList }) => (
   </div>
 );
 
-const Sponsor = ({ name, logo, about, website, facebook, twitter }) => (
-  <div className="flex flex-nowrap mt-8">
-    <div className="w-sponsor-logo col-start-1 row-start-1 row-end-4 mr-8">
-      <img src={logo} alt={`${name}'s logo`} />
-    </div>
-    <div className="w-sponsor-text flex flex-col">
-      <h3 className="text-3xl mb-4">{name}</h3>
-      <div className="text-base mb-4">{about}</div>
-      <div className="">
-        <Button secondary blank href={website}>
-          Visit Site
-        </Button>
+const Sponsor = ({ name, logo, about, website, facebook, twitter }) => {
+  const [isModalShowing, setIsModalShowing] = useState(false);
+
+  return (
+    <>
+      <SponsorInfoModal
+        name={name}
+        logo={logo}
+        about={about}
+        website={website}
+        facebook={facebook}
+        twitter={twitter}
+        isShowing={isModalShowing}
+        onExit={() => setIsModalShowing(false)}
+      />
+      <div className="flex flex-nowrap mt-8">
+        <div className="w-sponsor-logo sm:mr-8">
+          <a href="#" onClick={() => setIsModalShowing(true)}>
+            <img src={logo} alt={`${name}'s logo`} />
+          </a>
+        </div>
+        <div className="w-sponsor-text hidden sm:flex flex-col">
+          <h3 className="text-3xl mb-4">{name}</h3>
+          <div className="text-base mb-4">{about}</div>
+          <div className="">
+            <Button secondary blank href={website}>
+              Visit Site
+            </Button>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    </>
+  );
+};
+
+const SponsorSmall = ({
+  name,
+  logo,
+  about,
+  website,
+  facebook,
+  twitter,
+  instagram,
+}) => {
+  const [isModalShowing, setIsModalShowing] = useState(false);
+
+  return (
+    <>
+      <SponsorInfoModal
+        name={name}
+        logo={logo}
+        about={about}
+        website={website}
+        facebook={facebook}
+        twitter={twitter}
+        isShowing={isModalShowing}
+        onExit={() => setIsModalShowing(false)}
+      />
+      <div className="flex flex-nowrap mt-8 mr-24">
+        <div className="w-sponsor-logo sm:mr-8">
+          <a href="#" onClick={() => setIsModalShowing(true)}>
+            <img src={logo} alt={`${name}'s logo`} />
+          </a>
+        </div>
+        <div
+          className="w-sponsor-text hidden sm:flex flex-col"
+          style={{ maxWidth: 333 }}
+        >
+          <h3 className="text-3xl mb-4">{name}</h3>
+          <div className="text-xs mb-4">{about}</div>
+          <div className="flex items-center">
+            <Button secondary blank href={website}>
+              Visit Site
+            </Button>
+            {facebook && (
+              <SocialButton className="ml-4" href={facebook} type="facebook" />
+            )}
+            {twitter && (
+              <SocialButton className="ml-4" href={twitter} type="twitter" />
+            )}
+            {instagram && (
+              <SocialButton
+                className="ml-4"
+                href={instagram}
+                type="instagram"
+              />
+            )}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const CloseButton = (props) => (
+  <a href="#" {...props}>
+    {/* center the origin point */}
+    <img src={CloseIcon} alt="close company info" />
+  </a>
 );
 
-const SponsorSmall = ({ name, logo, about, website, facebook, twitter }) => (
-  <div className="flex flex-nowrap mt-8 mr-24">
-    <div className="w-sponsor-logo col-start-1 row-start-1 row-end-4 mr-8">
-      <img src={logo} alt={`${name}'s logo`} />
-    </div>
-    <div className="w-sponsor-text flex flex-col" style={{ maxWidth: 333 }}>
-      <h3 className="text-3xl mb-4">{name}</h3>
-      <div className="text-xs mb-4">{about}</div>
-      <div className="flex items-center">
-        <Button secondary blank href={website}>
-          Visit Site
-        </Button>
-        <SocialButton
-          className="ml-4"
-          href="https://google.com"
-          type="facebook"
-        />
-        <SocialButton
-          className="ml-4"
-          href="https://google.com"
-          type="twitter"
-        />
-        <SocialButton
-          className="ml-4"
-          href="https://google.com"
-          type="instagram"
-        />
-      </div>
-    </div>
-  </div>
-);
+const SponsorInfoModal = ({
+  isShowing,
+  onExit,
+  name,
+  logo,
+  about,
+  website,
+  facebook,
+  twitter,
+  instagram,
+}) => {
+  return (
+    <AnimatePresence>
+      {isShowing && (
+        <motion.div
+          className="fixed left-0 right-0 top-0 bottom-0 z-20 backdrop-filter backdrop-blur-lg"
+          style={{ backgroundColor: "rgba(0,0,0,.6)" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            className="grid gap-4 grid-cols-sponsorInfoModal sm:mx-auto mx-document mt-document"
+            style={{ maxWidth: 600 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+          >
+            <img className="col-start-1" src={logo} alt={`${name}'s logo`} />
+            <CloseButton className="mcol-start-2" onClick={onExit} />
+            <div className="flex flex-col">
+              <h3 className="text-3xl mb-4">{name}</h3>
+              <div className="text-xs mb-4">{about}</div>
+              <div className="flex items-center">
+                <Button secondary blank href={website}>
+                  Visit Site
+                </Button>
+                {facebook && (
+                  <SocialButton
+                    className="ml-4"
+                    href={facebook}
+                    type="facebook"
+                  />
+                )}
+                {twitter && (
+                  <SocialButton
+                    className="ml-4"
+                    href={twitter}
+                    type="twitter"
+                  />
+                )}
+                {instagram && (
+                  <SocialButton
+                    className="ml-4"
+                    href={instagram}
+                    type="instagram"
+                  />
+                )}
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
 
 export default SponsorshipPage;
