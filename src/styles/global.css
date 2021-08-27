@@ -131,7 +131,7 @@ body {
 /* TEAMS */
 
 .team-scroll {
-    min-width: 64vw !important;
+    min-width: 70vw !important;
     width: 100vw;
     height: 100%;
 }
@@ -152,6 +152,10 @@ body {
     border-top: 1px solid transparent;
     padding: 16px 0 10px 0;
     margin: 0 20px 0 0;
+}
+
+.team-image {
+  max-width: 95%;
 }
 
 
