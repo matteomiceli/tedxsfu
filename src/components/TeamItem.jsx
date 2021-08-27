@@ -16,7 +16,7 @@ function TeamItem({ team, width, delta, scroll }) {
     >
       <div className="flex justify-center h-full w-full">
         <div className="relative top-1/4 mt-8">
-          <img src={team.img} alt="" />
+          <img className="h-1/2" src={team.img} alt="" />
           {console.log(team.img)}
         </div>
       </div>

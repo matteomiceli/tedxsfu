@@ -144,14 +144,14 @@ body {
     color: white;
     border-top: 1px solid #e61b2e;
     padding: 16px 0 10px 0;
-    margin: 0 24px 0 0;
+    margin: 0 20px 0 0;
 }
 
 .team-panel-notactive {
     color: #949494;
     border-top: 1px solid transparent;
     padding: 16px 0 10px 0;
-    margin: 0 24px 0 0;
+    margin: 0 20px 0 0;
 }
 
 .team1 {
