@@ -15,6 +15,14 @@ module.exports = {
         "sponsor-logo": "200px",
       },
       fontSize: {
+        xs: [
+          "12px",
+          {
+            letterSpacing: "0.08em",
+            lineHeight: "16px",
+          },
+        ],
+        sm: ["14px", "18px"],
         base: ["16px", "20px"],
         display: [
           "72px",
