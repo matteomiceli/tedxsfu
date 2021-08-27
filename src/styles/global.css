@@ -137,7 +137,7 @@ body {
 }
 
 .team-nav-container {
-    top: 20%;
+    top: 18%;
 }
 
 .team-panel-active {
@@ -154,9 +154,6 @@ body {
     margin: 0 20px 0 0;
 }
 
-.team1 {
-    background-image: url('../static/images/teams/leads.jpg')
-}
 
 @tailwind base;
 @tailwind components;
