@@ -8,7 +8,7 @@ function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
     <div className="w-full flex justify-center">
       <div className="team-nav-container absolute flex justify-between items-end w-5/6">
         <div>
-          <h1 className="text-5xl 2xl:text-6xl">Meet the Team</h1>
+          <h1 className="text-5xl 2xl:text-6xl 2xl:pl-16">Meet the Team</h1>
         </div>
         <div className="flex">
           {teams.map((team) => {
