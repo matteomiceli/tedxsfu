@@ -1,17 +1,30 @@
-import * as React from "react";
+import React, {useEffect} from "react";
 import Overlay from "./Overlay";
 import loadable from "@loadable/component";
+// import { StaticImage } from "gatsby-plugin-image"
+
+
+
 
 function TeamItem({ team, width, delta, scroll }) {
-  return (
+
+  return (  
+
     <div
       id={`team-${team.i}`}
-      className={`scroll-item bg-black`}
+      className="team-scroll bg-black h-full"
     >
-      {/* <Overlay delta={delta} width={width} scroll={scroll} /> */}
-        <p className="text-white">Poop</p>
+      <div className="flex justify-center h-full w-full">
+        <div className="relative top-1/4 mt-8">
+          <img src={team.img} alt="" />
+          {console.log(team.img)}
+        </div>
+      </div>
     </div>
   );
 }
 
 export default TeamItem;
+
+
+{/* <Overlay delta={delta} width={width} scroll={scroll} /> */}

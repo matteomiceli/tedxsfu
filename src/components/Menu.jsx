@@ -94,7 +94,7 @@ function MenuItem({ pageId, href, isCurrent, children }) {
       }
       to={href}
     >
-      <p>{pageId}</p>
+      <p>{pageId + 1}</p>
       <li className={"uppercase tracking-wider"}>{children}</li>
     </Link>
   );

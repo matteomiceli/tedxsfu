@@ -1,7 +1,17 @@
+// image imports to avoid StaticImage limitations
+import leads from '../static/images/teams/leads.jpg'
+import creative from '../static/images/teams/creative.jpg'
+import content from '../static/images/teams/content.jpg'
+import events from '../static/images/teams/events.jpg'
+import internal from '../static/images/teams/internal.jpg'
+import marketing from '../static/images/teams/marketing.jpg'
+import pr from '../static/images/teams/pr.jpg'
+
 const teams = [
     {
         i: 1,
         team: 'Project Leads',
+        img: leads,
         members: [
             {
                 name: 'Sara Milosavic',
@@ -17,7 +27,8 @@ const teams = [
     },
     {
         i: 2,
-        team: 'Events Team',
+        team: 'Events',
+        img: events,
         members: [
             {
                 name: 'Palak Jain',
@@ -38,7 +49,8 @@ const teams = [
     },
     {
         i: 3,
-        team: 'Content Team',
+        team: 'Content',
+        img: content,
         members: [
             {
                 name: 'Naghmi Shireen',
@@ -59,7 +71,8 @@ const teams = [
     },
     {
         i: 4,
-        team: 'Creative Team',
+        team: 'Creative',
+        img: creative,
         members: [
             {
                 name: 'Alvin Leung',
@@ -90,7 +103,8 @@ const teams = [
     },
     {
         i: 5,
-        team: 'Marketing Team',
+        team: 'Marketing',
+        img: marketing,
         members: [
             {
                 name: 'Diana Kulikova',
@@ -111,7 +125,8 @@ const teams = [
     },
     {
         i: 6,
-        team: 'Partner Relations Team',
+        team: 'Partner Relations',
+        img: pr,
         members: [
             {
                 name: 'Shabnam Raufi',
@@ -132,7 +147,8 @@ const teams = [
     },
     {
         i: 7,
-        team: 'Internal Relations Team',
+        team: 'Internal Relations',
+        img: internal,
         members: [
             {
                 name: 'Christina Walker',

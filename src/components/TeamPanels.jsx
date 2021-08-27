@@ -36,9 +36,9 @@ function TeamPanels({
     <button
       onClick={(e) => handleNavClick(e)}
       className={
-        spyTeam === team.i ? "team-panel-active" : "team-panel-notactive"
+        spyTeam === team.i ? "team-panel-active text-base" : "team-panel-notactive text-base"
       }
-    >{team.team}</button>
+    >{team.team.toUpperCase()}</button>
   );
 }
 

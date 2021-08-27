@@ -4,25 +4,31 @@ import TeamPanels from "./TeamPanels";
 import teams from "../content/teams";
 
 function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
-
   return (
-    <div
-      className="flex"
-    >
-      {teams.map((team) => {
-        return (
-          <TeamPanels
-            team={team}
-            key={team.i}
-            spyTeam={spyTeam}
-            setTeam={setTeam}
-            scroll={scroll}
-            setScroll={setScroll}
-            width={width}
-            setWidth={setWidth}
-          />
-        );
-      })}
+    <div className="w-full flex justify-center">
+      <div className="team-nav-container absolute flex justify-between items-end w-5/6">
+        <div>
+          <h1 className="text-6xl pl-24">Meet the Team</h1>
+        </div>
+        <div className="flex">
+          {teams.map((team) => {
+            return (
+              <div>
+                <TeamPanels
+                  team={team}
+                  key={team.i}
+                  spyTeam={spyTeam}
+                  setTeam={setTeam}
+                  scroll={scroll}
+                  setScroll={setScroll}
+                  width={width}
+                  setWidth={setWidth}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
