@@ -20,7 +20,29 @@ const SponsorshipPage = () => {
       <HorizontalScrollContainer>
         <div className="flex flex-col sm:flex-row flex-nowrap mx-document">
           {!isMobile && <SponsorshipHeader />}
-          <div className="flex flex-row flex-nowrap">
+          <motion.div
+            className="flex flex-row flex-nowrap"
+            initial={{
+              opacity: 0,
+              x: 200,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              transition: {
+                ease: AnimationConfig.EASING,
+                duration: AnimationConfig.NORMAL,
+              },
+            }}
+            exit={{
+              opacity: 0,
+              x: 0,
+              transition: {
+                ease: AnimationConfig.EASING_INVERTED,
+                duration: AnimationConfig.NORMAL,
+              },
+            }}
+          >
             <PlatinumTierSection
               sponsorList={sponsors.platinum}
               isMobile={isMobile}
@@ -29,7 +51,7 @@ const SponsorshipPage = () => {
               sponsorList={sponsors.inkind}
               isMobile={isMobile}
             />
-          </div>
+          </motion.div>
         </div>
       </HorizontalScrollContainer>
     </div>
@@ -247,13 +269,13 @@ const SponsorInfoModal = ({
             }}
           >
             <img
-              className="col-start-1 max-h-72"
+              className="col-start-1 max-h-72 mb-4"
               src={logo}
               alt={`${name}'s logo`}
             />
             <CloseButton className="mcol-start-2" onClick={onExit} />
             <div className="flex flex-col">
-              <h3 className="text-3xl mb-4">{name}</h3>
+              <h3 className="text-xs font-bold mb-2">{name}</h3>
               <div className="text-xs mb-4">{about}</div>
               <div className="flex items-center">
                 <Button secondary blank href={website}>

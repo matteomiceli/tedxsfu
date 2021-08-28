@@ -6,6 +6,7 @@ export const AnimationConfig = {
   VERY_FAST: 0.1,
   FAST: 0.2,
   NORMAL: 0.5,
+  SLOW: 0.8,
   DEBUG: 10,
   EASING: [0.16, 1, 0.3, 1], // ease out expo
   EASING_INVERTED: [0.7, 0, 0.84, 0], // ease out expo
