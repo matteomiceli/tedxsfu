@@ -31,12 +31,12 @@ function Menu({ isActive, setActive, page }) {
   })();
 
   return (
-    <nav className="flex">
+    <nav>
       <ul
         className={
           isActive === true
-            ? "flex font-NeueHaas transition-all duration-300 ease-in-out h-24 items-center pr-4 pl-16"
-            : "transition-all duration-300 ease-in-out max-w-0 max-h-0 opacity-0 overflow-hidden transform translate-x-12 h-24 items-center"
+            ? "flex font-NeueHaas transition-all duration-300 ease-in-out items-center pr-4 pl-16"
+            : "transition-all duration-300 ease-in-out max-w-0 max-h-0 opacity-0 overflow-hidden transform translate-x-12 items-center"
         }
         onMouseEnter={() =>
           setActive(isActive === true ? (isActive = false) : (isActive = true))
@@ -60,7 +60,7 @@ function Menu({ isActive, setActive, page }) {
         className={
           isActive === true
             ? "transition-all duration-300 ease-in-out max-w-0 max-h-0 opacity-0 overflow-hidden"
-            : "flex items-center transition-all duration-300 ease-in-out h-24"
+            : "flex items-center transition-all duration-300 ease-in-out"
         }
       >
         <Button cta>Get Tickets Now</Button>

@@ -13,6 +13,7 @@ module.exports = {
       width: {
         "sponsor-text": "600px",
         "sponsor-logo": "200px",
+        axis: "14rem",
       },
       fontSize: {
         xs: [
