@@ -63,6 +63,19 @@ body {
   background-position-y: bottom;
 }
 
+/* NAV BAR */
+.site-logo {
+  margin-top: -2;
+  width: 124px;
+}
+
+@media only screen and (min-width: 680px) {
+  .site-logo {
+    margin-top: -2;
+    width: 184px;
+  }
+}
+
 /* SPEAKERS */
 
 .scroll-speaker1 {
@@ -206,11 +219,13 @@ body {
   }
 }
 
-/* margins spacing for the main document content */
+/* Margin size of the page */
 @layer utilities {
   :root {
     --mobile-margin: 20px;
+    --mobile-margin-top: 20px;
     --desktop-margin: 56px;
+    --desktop-margin-top: 48px;
   }
   .ml-document {
     margin-left: var(--mobile-margin);
@@ -219,7 +234,7 @@ body {
     margin-right: var(--mobile-margin);
   }
   .mt-document {
-    margin-top: var(--mobile-margin);
+    margin-top: var(--mobile-margin-top);
   }
   .mx-document {
     margin-left: var(--mobile-margin);
@@ -234,7 +249,7 @@ body {
       margin-right: var(--desktop-margin);
     }
     .mt-document {
-      margin-top: var(--desktop-margin);
+      margin-top: var(--desktop-margin-top);
     }
     .mx-document {
       margin-left: var(--desktop-margin);

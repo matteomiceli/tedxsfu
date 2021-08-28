@@ -7,12 +7,16 @@ module.exports = {
       fontFamily: {
         NeueHaas: "NeueHaas",
       },
+      screens: {
+        smh: { raw: "(min-height: 1234px)" },
+      },
       colors: {
         "ted-red": "#E61B2E",
       },
       width: {
         "sponsor-text": "600px",
         "sponsor-logo": "200px",
+        axis: "14rem",
       },
       fontSize: {
         xs: [
