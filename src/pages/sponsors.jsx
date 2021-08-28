@@ -60,7 +60,7 @@ const SponsorshipPage = () => {
 
 const SponsorshipHeader = ({ isMobile }) => (
   <motion.div
-    className="ml-document sm:ml-0 xl:mr-32 mb-12"
+    className="ml-document sm:ml-0 md:mr-36 mb-12"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
   >
