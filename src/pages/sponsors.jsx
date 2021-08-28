@@ -59,9 +59,9 @@ const SponsorshipPage = () => {
 };
 
 const SponsorshipHeader = ({ isMobile }) => (
-  <div className={isMobile ? "ml-document mb-12 sm:mb-24" : "mb-24"}>
+  <div className="ml-document sm:ml-0 xl:mr-32 mb-12">
     <h1 className="text-4xl sm:text-display font-light">Partners</h1>
-    <p className="text-sm sm:text-xl w-96">
+    <p className="text-sm sm:text-xl w-96 sm:leading-6">
       We've partnered with these amazing organizations and businesses to make
       TEDxSFU happen this year.
     </p>
