@@ -9,12 +9,7 @@ import tailwindConfig from "../../tailwind.config.js";
 const fullConfig = resolveConfig(tailwindConfig);
 
 export function useBreakpoint(breakpointSize) {
-  const initialState = useMemo(() => {
-    if (typeof window !== "undefined")
-      return window.innerWidth > breakpointSize;
-    return false;
-  });
-  const [isOverBreakpoint, setIsOverBreakpoint] = useState(initialState);
+  const [isOverBreakpoint, setIsOverBreakpoint] = useState(false);
 
   useEffect(() => {
     function handleResize() {
