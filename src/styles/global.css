@@ -221,6 +221,12 @@ body {
     .mt-flowline {
       margin-top: 25vh;
     }
+    .pt-flowline-sm {
+      padding-top: 6rem;
+    }
+    .pt-flowline {
+      padding-top: 25vh;
+    }
   }
 }
 

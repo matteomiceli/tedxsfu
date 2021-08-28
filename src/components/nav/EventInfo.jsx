@@ -33,7 +33,7 @@ const MinModule = () => (
         className="text-white text-sm"
         style={{ marginTop: 1, lineHeight: 1 }}
       >
-        <span className="font-bold">Nov 20</span> <br />
+        <span className="font-bold">Nov 20th</span> <br />
         1-8pm
       </div>
     </div>
