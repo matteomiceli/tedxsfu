@@ -7,6 +7,8 @@ import SocialButton from "../components/SocialButton";
 import CloseIcon from "../static/images/icons/close.svg";
 import { AnimationConfig } from "../AnimationConfig";
 import { useMobileBreakpoint } from "../hooks/useBreakpoint";
+import { useRef } from "react";
+import useClickOutside from "../hooks/useClickOutside";
 
 //@ts-check
 const SponsorshipPage = () => {
@@ -186,18 +188,22 @@ const SponsorInfoModal = ({
   twitter,
   instagram,
 }) => {
+  // for quick exiting
+  const containerRef = useRef();
+  useClickOutside(containerRef, () => isShowing && onExit(), isShowing);
   return (
     <AnimatePresence>
       {isShowing && (
         <motion.div
-          className="fixed left-0 right-0 top-0 bottom-0 z-20 backdrop-filter backdrop-blur-lg"
+          className="fixed left-0 right-0 top-0 bottom-0 z-20 backdrop-filter backdrop-blur-lg cursor-pointer"
           style={{ backgroundColor: "rgba(0,0,0,.6)" }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="grid gap-4 grid-cols-sponsorInfoModal sm:mx-auto mx-document mt-flowline-sm"
+            ref={containerRef}
+            className="grid gap-4 grid-cols-sponsorInfoModal sm:mx-auto mx-document mt-flowline-sm cursor-auto"
             style={{ maxWidth: 600 }}
             initial={{ opacity: 0, y: 50 }}
             animate={{
