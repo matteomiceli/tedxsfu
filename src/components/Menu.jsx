@@ -2,25 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import menu from "../static/images/menu.svg";
 import Button from "./Button";
-
-const MENU_ITEMS = [
-  {
-    label: "Speakers",
-    href: "/",
-  },
-  {
-    label: "Partners",
-    href: "/sponsors",
-  },
-  {
-    label: "Team",
-    href: "/team",
-  },
-  {
-    label: "About",
-    href: "/about",
-  },
-];
+import MENU_ITEMS from "../content/menuItems";
 
 function Menu({ isActive, setActive, page }) {
   // grab the path from url
