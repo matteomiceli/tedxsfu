@@ -8,7 +8,12 @@
 html {
   scroll-behavior: smooth;
   font-family: "NeueHaas";
+  font-weight: normal;
   letter-spacing: 1px;
+}
+
+* {
+  font-weight: 400 !important;
 }
 
 body {

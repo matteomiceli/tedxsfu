@@ -13,30 +13,27 @@ const EventInfo = () => {
 };
 
 const MinModule = () => (
-  <div className="flex tracking-widest" id="min-module" key="minModule">
+  <div className="flex" id="min-module" key="minModule">
     <div
       className="flex flex-col px-2 justify-between border-l border-ted-red"
       style={{ height: 28 }}
     >
       <div
-        className="text-white text-sm w-26"
+        className="text-white text-sm"
         style={{ marginTop: 1, lineHeight: 1 }}
       >
         <span className="font-bold">Anvil Theatre</span> <br /> New Westminster
       </div>
     </div>
     <div
-      className="flex flex-col px-2 justify-between border-l border-ted-red"
+      className="flex flex-col pl-2 justify-between border-l border-ted-red"
       style={{ height: 28 }}
     >
       <div
-        className="text-white text-sm w-26"
+        className="text-white text-sm"
         style={{ marginTop: 1, lineHeight: 1 }}
       >
-        <span className="font-bold">
-          Nov 20<sup>th</sup>
-        </span>{" "}
-        <br />
+        <span className="font-bold">Nov 20</span> <br />
         1-8pm
       </div>
     </div>
