@@ -60,8 +60,10 @@ const SponsorshipPage = () => {
 
 const SponsorshipHeader = ({ isMobile }) => (
   <div className="ml-document sm:ml-0 xl:mr-32 mb-12">
-    <h1 className="text-4xl sm:text-display font-light">Partners</h1>
-    <p className="text-sm sm:text-xl w-96 sm:leading-6">
+    <h1 className="text-4xl sm:text-display font-light sm:mb-4">
+      Our Partners
+    </h1>
+    <p className="text-sm sm:text-xl w-96 sm:leading-6 opacity-60">
       We've partnered with these amazing organizations and businesses to make
       TEDxSFU happen this year.
     </p>
@@ -76,7 +78,7 @@ const PlatinumTierSection = ({ sponsorList, isMobile }) => (
       </div>
       <div className="ruler" />
     </div>
-    <div className="grid grid-rows-3 sm:grid-rows-2 grid-flow-col gap-x-4 gap-y-4 sm:gap-x-24 sm:gap-y-8 mt-6 sm:mt-8">
+    <div className="grid grid-rows-3 sm:grid-rows-2 grid-flow-col gap-x-4 gap-y-4 sm:gap-x-24 sm:gap-y-8 mt-6 sm:mt-10">
       {sponsorList.map((sponsorInfo, index) => (
         <SponsorBig key={index} {...sponsorInfo} isMobile={isMobile} />
       ))}
