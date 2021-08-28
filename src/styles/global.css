@@ -69,7 +69,7 @@ body {
   width: 124px;
 }
 
-@media only screen and (min-width: 680px) {
+@media only screen and (min-width: 1024px) {
   .site-logo {
     margin-top: -2;
     width: 184px;

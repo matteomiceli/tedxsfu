@@ -2,9 +2,7 @@ import React from "react";
 import { useBreakpoint, breakpoints } from "../../hooks/useBreakpoint";
 
 const EventInfo = () => {
-  const isMinimizeModule = useBreakpoint(breakpoints.sm);
-
-  const isClient = typeof window === "undefined";
+  const isMinimizeModule = useBreakpoint(breakpoints.lg);
 
   return (
     <>
@@ -15,7 +13,7 @@ const EventInfo = () => {
 };
 
 const MinModule = () => (
-  <div className="flex" id="min-module" key="minModule">
+  <div className="flex tracking-widest" id="min-module" key="minModule">
     <div
       className="flex flex-col px-2 justify-between border-l border-ted-red"
       style={{ height: 28 }}
