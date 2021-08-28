@@ -19,6 +19,7 @@ export function useBreakpoint(breakpointSize) {
       }
       isOverBreakpoint && setIsOverBreakpoint(false);
     }
+    handleResize();
 
     window.addEventListener("resize", handleResize);
     return () => {
