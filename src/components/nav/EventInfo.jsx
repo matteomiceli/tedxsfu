@@ -2,7 +2,7 @@ import React from "react";
 import { useBreakpoint, breakpoints } from "../../hooks/useBreakpoint";
 
 const EventInfo = () => {
-  const isMinimizeModule = useBreakpoint(560);
+  const isMinimizeModule = useBreakpoint(breakpoints.sm);
 
   const isClient = typeof window === "undefined";
 
