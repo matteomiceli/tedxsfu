@@ -11,6 +11,10 @@ const fullConfig = resolveConfig(tailwindConfig);
 export function useBreakpoint(breakpointSize) {
   const [isOverBreakpoint, setIsOverBreakpoint] = useState(false);
 
+  function forceRefreshBreakpoint() {
+    setIsOverBreakpoint(window.innerWidth > breakpointSize);
+  }
+
   useEffect(() => {
     function handleResize() {
       const currentScreenWidth = window.innerWidth;
@@ -21,7 +25,7 @@ export function useBreakpoint(breakpointSize) {
       }
       isOverBreakpoint && setIsOverBreakpoint(false);
     }
-    handleResize();
+    forceRefreshBreakpoint();
 
     window.addEventListener("resize", handleResize);
     return () => {

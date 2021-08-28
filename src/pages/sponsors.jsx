@@ -59,7 +59,11 @@ const SponsorshipPage = () => {
 };
 
 const SponsorshipHeader = ({ isMobile }) => (
-  <div className="ml-document sm:ml-0 xl:mr-32 mb-12">
+  <motion.div
+    className="ml-document sm:ml-0 xl:mr-32 mb-12"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+  >
     <h1 className="text-4xl sm:text-display font-light sm:mb-4">
       Our Partners
     </h1>
@@ -67,7 +71,7 @@ const SponsorshipHeader = ({ isMobile }) => (
       We've partnered with these amazing organizations and businesses to make
       TEDxSFU happen this year.
     </p>
-  </div>
+  </motion.div>
 );
 
 const PlatinumTierSection = ({ sponsorList, isMobile }) => (

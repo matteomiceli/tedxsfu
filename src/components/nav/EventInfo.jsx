@@ -4,16 +4,18 @@ import { useBreakpoint, breakpoints } from "../../hooks/useBreakpoint";
 const EventInfo = () => {
   const isMinimizeModule = useBreakpoint(560);
 
+  const isClient = typeof window === "undefined";
+
   return (
     <>
-      {isMinimizeModule && <FullModule />}
-      {!isMinimizeModule && <MinModule />}
+      {isMinimizeModule && <FullModule key="fullModule" />}
+      {!isMinimizeModule && <MinModule key="minModule" />}
     </>
   );
 };
 
 const MinModule = () => (
-  <div className="flex">
+  <div className="flex" id="min-module" key="minModule">
     <div
       className="flex flex-col px-2 justify-between border-l border-ted-red"
       style={{ height: 28 }}
@@ -44,7 +46,7 @@ const MinModule = () => (
 );
 
 const FullModule = () => (
-  <div className="flex items-center">
+  <div className="flex items-center" key="fullModule">
     <div
       className="flex flex-col px-2 justify-between border-l border-ted-red"
       style={{ height: 52 }}
