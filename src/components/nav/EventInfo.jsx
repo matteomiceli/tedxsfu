@@ -2,9 +2,7 @@ import React from "react";
 import { useBreakpoint, breakpoints } from "../../hooks/useBreakpoint";
 
 const EventInfo = () => {
-  const isMinimizeModule = useBreakpoint(560);
-
-  const isClient = typeof window === "undefined";
+  const isMinimizeModule = useBreakpoint(breakpoints.lg);
 
   return (
     <>
@@ -21,24 +19,21 @@ const MinModule = () => (
       style={{ height: 28 }}
     >
       <div
-        className="text-white text-sm w-26"
+        className="text-white text-sm"
         style={{ marginTop: 1, lineHeight: 1 }}
       >
         <span className="font-bold">Anvil Theatre</span> <br /> New Westminster
       </div>
     </div>
     <div
-      className="flex flex-col px-2 justify-between border-l border-ted-red"
+      className="flex flex-col pl-2 justify-between border-l border-ted-red"
       style={{ height: 28 }}
     >
       <div
-        className="text-white text-sm w-26"
+        className="text-white text-sm"
         style={{ marginTop: 1, lineHeight: 1 }}
       >
-        <span className="font-bold">
-          Nov 20<sup>th</sup>
-        </span>{" "}
-        <br />
+        <span className="font-bold">Nov 20th</span> <br />
         1-8pm
       </div>
     </div>

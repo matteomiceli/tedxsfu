@@ -34,7 +34,6 @@ const Button = ({
 
   return (
     <motion.a
-      className={buttonStyle}
       href={href}
       target={blank ? "_blank" : "_self"}
       onMouseEnter={(e) => {
@@ -46,6 +45,8 @@ const Button = ({
       onMouseUp={() => setIsActive(false)}
       animate={{ scale: isActive ? 0.97 : 1 }}
       {...props}
+      // support custom classses
+      className={buttonStyle + " " + props.className}
     >
       {/* ring on cta button */}
       {cta && (
