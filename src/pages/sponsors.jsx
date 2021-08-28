@@ -21,8 +21,14 @@ const SponsorshipPage = () => {
         <div className="flex flex-col sm:flex-row flex-nowrap mx-document">
           {!isMobile && <SponsorshipHeader />}
           <div className="flex flex-row flex-nowrap">
-            <PlatinumTierSection sponsorList={sponsors.platinum} />
-            <InKindTierSection sponsorList={sponsors.inkind} />
+            <PlatinumTierSection
+              sponsorList={sponsors.platinum}
+              isMobile={isMobile}
+            />
+            <InKindTierSection
+              sponsorList={sponsors.inkind}
+              isMobile={isMobile}
+            />
           </div>
         </div>
       </HorizontalScrollContainer>
@@ -40,7 +46,7 @@ const SponsorshipHeader = ({ isMobile }) => (
   </div>
 );
 
-const PlatinumTierSection = ({ sponsorList }) => (
+const PlatinumTierSection = ({ sponsorList, isMobile }) => (
   <div className="pr-8 sm:pr-12">
     <div className="flex opacity-60">
       <div className="text-sm sm:text-base inline-block whitespace-nowrap uppercase tracking-widest mr-6 align-middle">
@@ -50,13 +56,13 @@ const PlatinumTierSection = ({ sponsorList }) => (
     </div>
     <div className="grid grid-rows-3 sm:grid-rows-2 grid-flow-col gap-x-4 gap-y-4 sm:gap-x-24 sm:gap-y-8 mt-6 sm:mt-8">
       {sponsorList.map((sponsorInfo, index) => (
-        <SponsorBig key={index} {...sponsorInfo} />
+        <SponsorBig key={index} {...sponsorInfo} isMobile={isMobile} />
       ))}
     </div>
   </div>
 );
 
-const InKindTierSection = ({ sponsorList }) => (
+const InKindTierSection = ({ sponsorList, isMobile }) => (
   <div className="pr-12">
     <div className="flex opacity-60">
       <div className="text-sm sm:text-base inline-block whitespace-nowrap uppercase tracking-widest mr-6 align-middle">
@@ -66,13 +72,21 @@ const InKindTierSection = ({ sponsorList }) => (
     </div>
     <div className="grid grid-rows-3 sm:grid-rows-2 grid-flow-col gap-x-4 gap-y-4 sm:gap-x-24 sm:gap-y-8 mt-6 sm:mt-8">
       {sponsorList.map((sponsorInfo, index) => (
-        <SponsorSmall key={index} {...sponsorInfo} />
+        <SponsorSmall key={index} {...sponsorInfo} isMobile={isMobile} />
       ))}
     </div>
   </div>
 );
 
-const SponsorBig = ({ name, logo, about, website, facebook, twitter }) => {
+const SponsorBig = ({
+  name,
+  logo,
+  about,
+  website,
+  facebook,
+  twitter,
+  isMobile,
+}) => {
   const [isModalShowing, setIsModalShowing] = useState(false);
 
   return (
@@ -89,7 +103,11 @@ const SponsorBig = ({ name, logo, about, website, facebook, twitter }) => {
       />
       <div className="flex flex-nowrap">
         <div className="w-72 sm:w-56">
-          <a href="#" onClick={() => setIsModalShowing(true)}>
+          <a
+            href="#"
+            className="cursor-pointer sm:cursor-default"
+            onClick={() => isMobile && setIsModalShowing(true)}
+          >
             <img src={logo} alt={`${name}'s logo`} />
           </a>
         </div>
@@ -115,6 +133,7 @@ const SponsorSmall = ({
   facebook,
   twitter,
   instagram,
+  isMobile,
 }) => {
   const [isModalShowing, setIsModalShowing] = useState(false);
 
@@ -132,7 +151,11 @@ const SponsorSmall = ({
       />
       <div className="flex flex-nowrap">
         <div className="w-32 h-32 sm:w-32 sm:h-32">
-          <a href="#" onClick={() => setIsModalShowing(true)}>
+          <a
+            href="#"
+            className="cursor-pointer sm:cursor-default"
+            onClick={() => isMobile && setIsModalShowing(true)}
+          >
             <img
               className="max-h-full object-contain"
               src={logo}
