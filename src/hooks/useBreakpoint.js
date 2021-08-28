@@ -6,13 +6,20 @@ import tailwindConfig from "../../tailwind.config.js";
 // const isOverBreakpoint = useBreakpoint(breakpointInPixel)
 // const isMobile = useMobileBreakpoint();
 
+const fullConfig = resolveConfig(tailwindConfig);
+
 export function useBreakpoint(breakpointSize) {
-  const [isOverBreakpoint, setIsOverBreakpoint] = useState();
+  const initialState = useMemo(() => {
+    if (typeof window !== "undefined")
+      return window.innerWidth > breakpointSize;
+    return false;
+  });
+  const [isOverBreakpoint, setIsOverBreakpoint] = useState(initialState);
 
   useEffect(() => {
     function handleResize() {
       const currentScreenWidth = window.innerWidth;
-      if (currentScreenWidth < breakpointSize) {
+      if (currentScreenWidth > breakpointSize) {
         // only change when it is not the current state
         !isOverBreakpoint && setIsOverBreakpoint(true);
         return;
@@ -31,6 +38,13 @@ export function useBreakpoint(breakpointSize) {
 
 // mobild shorthand for "useBreakpoint"
 export function useMobileBreakpoint() {
-  const fullConfig = useMemo(() => resolveConfig(tailwindConfig));
   return useBreakpoint(parseInt(fullConfig.theme.screens.sm));
 }
+
+export const breakpoints = {
+  sm: parseInt(fullConfig.theme.screens.sm),
+  md: parseInt(fullConfig.theme.screens.md),
+  lg: parseInt(fullConfig.theme.screens.lg),
+  xl: parseInt(fullConfig.theme.screens.xl),
+  "2xl": parseInt(fullConfig.theme.screens["2xl"]),
+};
