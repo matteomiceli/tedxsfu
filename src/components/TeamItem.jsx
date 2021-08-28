@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "gatsby";
 import Overlay from "./Overlay";
 import loadable from "@loadable/component";
 // import { StaticImage } from "gatsby-plugin-image"
@@ -9,12 +10,12 @@ function TeamItem({ team, width, delta, scroll }) {
       <div className="flex h-full w-full">
         <div className="relative top-1/4 mt-2">
           <img className="team-image" src={team.img} alt="" />
-          <div className="flex mt-4">
+          <Link className="flex mt-4" to={`/team/${team.href}`}>
             <h2 className="font-semibold mr-36">{team.team}</h2>
             {team.members.map((member, i) => {
               return <TeamMembers member={member} />;
             })}
-          </div>
+          </Link>
         </div>
       </div>
     </div>

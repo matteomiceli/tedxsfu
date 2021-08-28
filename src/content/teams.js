@@ -10,6 +10,7 @@ import pr from '../static/images/teams/pr.jpg'
 const teams = [
     {
         i: 1,
+        href: 'leads',
         team: 'Project Leads',
         img: leads,
         members: [
