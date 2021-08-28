@@ -18,7 +18,7 @@ const SponsorshipPage = () => {
     <div className="mt-flowline-sm sm:mt-flowline">
       {isMobile && <SponsorshipHeader isMobile />}
       <HorizontalScrollContainer>
-        <div className="flex flex-col sm:flex-row flex-nowrap mx-document">
+        <div className="flex flex-col sm:flex-row flex-nowrap mx-document mt-1">
           {!isMobile && <SponsorshipHeader />}
           <motion.div
             className="flex flex-row flex-nowrap"
