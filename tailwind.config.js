@@ -1,5 +1,5 @@
 module.exports = {
-  // mode:'jit',
+  // mode: "jit",
   purge: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -15,6 +15,14 @@ module.exports = {
         "sponsor-logo": "200px",
       },
       fontSize: {
+        xs: [
+          "12px",
+          {
+            letterSpacing: "0.08em",
+            lineHeight: "16px",
+          },
+        ],
+        sm: ["14px", "18px"],
         base: ["16px", "20px"],
         display: [
           "72px",
@@ -24,10 +32,13 @@ module.exports = {
           },
         ],
       },
+      gridTemplateColumns: {
+        sponsorInfoModal: "auto 2rem",
+      },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: ["gatsby-plugin-postcss"],
+  plugins: ["gatsby-plugin-postcss", require("tailwindcss-fluid")],
 };
