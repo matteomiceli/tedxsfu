@@ -5,14 +5,19 @@ import sponsors from "../content/sponsors";
 import Button from "../components/Button";
 import SocialButton from "../components/SocialButton";
 import CloseIcon from "../static/images/icons/close.svg";
+import { AnimationConfig } from "../AnimationConfig";
+import { useMobileBreakpoint } from "../hooks/useBreakpoint";
 
 //@ts-check
 const SponsorshipPage = () => {
+  const isMobile = useMobileBreakpoint();
+
   return (
     <div className="mt-flowline-sm sm:mt-flowline">
+      {isMobile && <SponsorshipHeader isMobile />}
       <HorizontalScrollContainer>
         <div className="flex flex-col sm:flex-row flex-nowrap mx-document">
-          <SponsorshipHeader />
+          {!isMobile && <SponsorshipHeader />}
           <div className="flex flex-row flex-nowrap">
             <PlatinumTierSection sponsorList={sponsors.platinum} />
             <InKindTierSection sponsorList={sponsors.inkind} />
@@ -23,8 +28,8 @@ const SponsorshipPage = () => {
   );
 };
 
-const SponsorshipHeader = () => (
-  <div className="mb-12 sm:mb-24">
+const SponsorshipHeader = ({ isMobile }) => (
+  <div className={isMobile ? "ml-document mb-12 sm:mb-24" : "mb-24"}>
     <h1 className="text-4xl sm:text-display font-light">Partners</h1>
     <p className="text-sm sm:text-xl w-96">
       We've partnered with these amazing organizations and businesses to make
@@ -34,16 +39,16 @@ const SponsorshipHeader = () => (
 );
 
 const PlatinumTierSection = ({ sponsorList }) => (
-  <div className="pr-24">
+  <div className="pr-8 sm:pr-12">
     <div className="flex opacity-60">
       <div className="text-sm sm:text-base inline-block whitespace-nowrap uppercase tracking-widest mr-6 align-middle">
         01<span className="ml-2">Platinum Sponsors</span>
       </div>
       <div className="ruler" />
     </div>
-    <div className="grid grid-rows-2 grid-flow-col">
+    <div className="grid grid-rows-3 sm:grid-rows-2 grid-flow-col gap-x-4 gap-y-4 sm:gap-x-24 sm:gap-y-8 mt-6 sm:mt-8">
       {sponsorList.map((sponsorInfo, index) => (
-        <Sponsor key={index} {...sponsorInfo} />
+        <SponsorBig key={index} {...sponsorInfo} />
       ))}
     </div>
   </div>
@@ -57,7 +62,7 @@ const InKindTierSection = ({ sponsorList }) => (
       </div>
       <div className="ruler" />
     </div>
-    <div className="grid grid-rows-2 grid-flow-col">
+    <div className="grid grid-rows-3 sm:grid-rows-2 grid-flow-col gap-x-4 gap-y-4 sm:gap-x-24 sm:gap-y-8 mt-6 sm:mt-8">
       {sponsorList.map((sponsorInfo, index) => (
         <SponsorSmall key={index} {...sponsorInfo} />
       ))}
@@ -65,7 +70,7 @@ const InKindTierSection = ({ sponsorList }) => (
   </div>
 );
 
-const Sponsor = ({ name, logo, about, website, facebook, twitter }) => {
+const SponsorBig = ({ name, logo, about, website, facebook, twitter }) => {
   const [isModalShowing, setIsModalShowing] = useState(false);
 
   return (
@@ -80,13 +85,13 @@ const Sponsor = ({ name, logo, about, website, facebook, twitter }) => {
         isShowing={isModalShowing}
         onExit={() => setIsModalShowing(false)}
       />
-      <div className="flex flex-nowrap mt-8">
-        <div className="w-sponsor-logo sm:mr-8">
+      <div className="flex flex-nowrap">
+        <div className="w-72 sm:w-56">
           <a href="#" onClick={() => setIsModalShowing(true)}>
             <img src={logo} alt={`${name}'s logo`} />
           </a>
         </div>
-        <div className="w-sponsor-text hidden sm:flex flex-col">
+        <div className="w-sponsor-text ml-8 hidden sm:flex flex-col">
           <h3 className="text-3xl mb-4">{name}</h3>
           <div className="text-base mb-4">{about}</div>
           <div className="">
@@ -123,14 +128,18 @@ const SponsorSmall = ({
         isShowing={isModalShowing}
         onExit={() => setIsModalShowing(false)}
       />
-      <div className="flex flex-nowrap mt-8 mr-24">
-        <div className="w-sponsor-logo sm:mr-8">
+      <div className="flex flex-nowrap">
+        <div className="w-32 h-32 sm:w-32 sm:h-32">
           <a href="#" onClick={() => setIsModalShowing(true)}>
-            <img src={logo} alt={`${name}'s logo`} />
+            <img
+              className="max-h-full object-contain"
+              src={logo}
+              alt={`${name}'s logo`}
+            />
           </a>
         </div>
         <div
-          className="w-sponsor-text hidden sm:flex flex-col"
+          className="w-sponsor-text ml-4 hidden sm:flex flex-col"
           style={{ maxWidth: 333 }}
         >
           <h3 className="text-3xl mb-4">{name}</h3>
@@ -188,13 +197,31 @@ const SponsorInfoModal = ({
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="grid gap-4 grid-cols-sponsorInfoModal sm:mx-auto mx-document mt-document"
+            className="grid gap-4 grid-cols-sponsorInfoModal sm:mx-auto mx-document mt-flowline-sm"
             style={{ maxWidth: 600 }}
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                ease: AnimationConfig.EASING,
+                duration: AnimationConfig.NORMAL,
+              },
+            }}
+            exit={{
+              opacity: 0,
+              y: 50,
+              transition: {
+                ease: AnimationConfig.EASING,
+                duration: AnimationConfig.NORMAL,
+              },
+            }}
           >
-            <img className="col-start-1" src={logo} alt={`${name}'s logo`} />
+            <img
+              className="col-start-1 max-h-72"
+              src={logo}
+              alt={`${name}'s logo`}
+            />
             <CloseButton className="mcol-start-2" onClick={onExit} />
             <div className="flex flex-col">
               <h3 className="text-3xl mb-4">{name}</h3>
