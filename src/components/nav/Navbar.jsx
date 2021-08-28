@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React, { useState } from "react";
 import Logo from "../../static/images/logo.png";
 
-import Menu from "../Menu";
+import Menu from "./Menu";
 import EventInfo from "./EventInfo";
 
 import { breakpoints, useBreakpoint } from "../../hooks/useBreakpoint";

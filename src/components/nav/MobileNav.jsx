@@ -3,6 +3,8 @@ import { AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
 import Button from "../Button";
 import FullScreenMenu from "./FullScreenMenu";
+import EventInfo from "../../content/eventInfo";
+
 const MobileNav = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
 
@@ -13,7 +15,7 @@ const MobileNav = () => {
           <FullScreenMenu onExit={() => setIsMenuOpened(false)} />
         )}
       </AnimatePresence>
-      <Button cta className="flex-grow-2">
+      <Button cta className="flex-grow-2" href={EventInfo.ticketUrl} blank>
         Get Tickets Now
       </Button>
       <MenuButton

@@ -1,8 +1,9 @@
 import { Link } from "gatsby";
 import React from "react";
-import menu from "../static/images/menu.svg";
-import Button from "./Button";
-import MENU_ITEMS from "../content/menuItems";
+import menu from "../../static/images/menu.svg";
+import Button from "../Button";
+import MENU_ITEMS from "../../content/menuItems";
+import EventInfo from "../../content/eventInfo";
 
 function Menu({ isActive, setActive, page }) {
   // grab the path from url
@@ -45,7 +46,9 @@ function Menu({ isActive, setActive, page }) {
             : "flex items-center transition-all duration-300 ease-in-out"
         }
       >
-        <Button cta>Get Tickets Now</Button>
+        <Button cta blank href={EventInfo.ticketUrl}>
+          Get Tickets Now
+        </Button>
         <img
           className="h-8 cursor-pointer p-2 ml-6"
           src={menu}
