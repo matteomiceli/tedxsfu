@@ -63,6 +63,19 @@ body {
   background-position-y: bottom;
 }
 
+/* NAV BAR */
+.site-logo {
+  margin-top: -2;
+  width: 124px;
+}
+
+@media only screen and (min-width: 680px) {
+  .site-logo {
+    margin-top: -2;
+    width: 184px;
+  }
+}
+
 /* SPEAKERS */
 
 .scroll-speaker1 {
@@ -206,7 +219,7 @@ body {
   }
 }
 
-/* margins spacing for the main document content */
+/* Margin size of the page */
 @layer utilities {
   :root {
     --mobile-margin: 20px;

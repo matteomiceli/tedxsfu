@@ -12,7 +12,7 @@ import useClickOutside from "../hooks/useClickOutside";
 
 //@ts-check
 const SponsorshipPage = () => {
-  const isMobile = useMobileBreakpoint();
+  const isMobile = !useMobileBreakpoint();
 
   return (
     <div className="mt-flowline-sm sm:mt-flowline">
