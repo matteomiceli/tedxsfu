@@ -183,6 +183,15 @@ body {
   min-width: 700px;
 }
 
+.bio-container-wide {
+  min-width: 500px;
+}
+
+.teambio-img {
+  max-height: 450px;
+  max-width: 500px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

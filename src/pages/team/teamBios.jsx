@@ -40,16 +40,16 @@ export default TeamBios;
 
 function BioContainer({ member, i }) {
   return (
-    <div className="bio-container text-white grid grid-cols-2 grid-rows-1 mr-36">
+    <div className={member.imgWide ? "bio-container-wide text-white flex flex-col mr-36" : "bio-container text-white flex mr-36"}>
       <img
-        className={`pr-8 self-${i % 2 === 0 ? "start" : "end"}`}
+        className={`teambio-img pr-8 self-${i % 2 === 0 ? "start" : "end"}`}
         src={member.img}
         alt=""
       />
-      <div className={`flex flex-col justify-${i % 2 === 0 ? "start" : "end"}`}>
+      <div className={`flex flex-col justify-${i % 2 === 0 ? "start" : "end"} ${member.imgWide ? 'mt-6' : ''}`}>
         <h3 className="text-lg">{member.name}</h3>
-        <p className="text-gray-400 mb-4">{member.role}</p>
-        <p className="mb-6">{member.bio}</p>
+        <p className="text-gray-400 mb-4 text-sm">{member.role}</p>
+        <p className="mb-6 text-sm">{member.bio}</p>
         <div className="socials flex">
           {member.socials.linked ? (
             <a className="mr-4" href={member.socials.linked} target="_blank">
