@@ -174,13 +174,13 @@ body {
 
 .team-image {
   max-width: 95%;
+  max-height: 60vh;
 }
 
 /* TEAM BIOS */
 
 .bio-container {
-  min-width: 650px;
-  max-height: 
+  min-width: 700px;
 }
 
 @tailwind base;

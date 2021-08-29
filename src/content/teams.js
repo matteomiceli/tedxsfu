@@ -22,7 +22,8 @@ const teams = [
         role: "Project Lead",
         pro: "She/Her",
         socials: {
-
+            instagram: 'https://www.instagram.com/saramilosavic/',
+            linked: 'https://www.linkedin.com/in/saramilosavic/'
         }
       },
       {
@@ -31,7 +32,7 @@ const teams = [
         role: "Project Lead",
         pro: "She/Her",
         socials: {
-
+            linked: 'https://www.linkedin.com/in/vivian-wong-114032164'
         }
       },
     ],
