@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import loadable from "@loadable/component";
 
-function HorizontalScrollContainer({ children }) {
+const HorizontalScrollContainer = React.forwardRef(({ children }, ref) => {
   // page width
   const [width, setWidth] = useState(0);
   // page scroll location
@@ -34,10 +34,26 @@ function HorizontalScrollContainer({ children }) {
   }, [deltaVal]);
 
   return (
-    <div ref={scrollRef} className="outer-scroll-container">
+    <div ref={mergeRefs(scrollRef, ref)} className="outer-scroll-container">
       <div className="inner-scroll-container">{children}</div>
     </div>
   );
-}
+});
+
+//https://www.davedrinks.coffee/how-do-i-use-two-react-refs/
+const mergeRefs = (...refs) => {
+  const filteredRefs = refs.filter(Boolean);
+  if (!filteredRefs.length) return null;
+  if (filteredRefs.length === 0) return filteredRefs[0];
+  return (inst) => {
+    for (const ref of filteredRefs) {
+      if (typeof ref === "function") {
+        ref(inst);
+      } else if (ref) {
+        ref.current = inst;
+      }
+    }
+  };
+};
 
 export default HorizontalScrollContainer;
