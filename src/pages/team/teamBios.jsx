@@ -1,9 +1,11 @@
 import React from "react";
 import HorizontalScrollContainer from "../../components/HorizontalScrollContainer";
 import Button from "../../components/Button";
+import { StaticImage } from "gatsby-plugin-image";
 import arrow from "../../static/images/upArrow.svg";
 import linkedIn from "../../static/images/icons/linkedIn.svg";
 import instagram from "../../static/images/icons/instagram.svg";
+import facebook from "../../static/images/icons/facebook.svg"
 
 function TeamBios({ location, history }) {
   const team = location.state.team;
@@ -26,7 +28,7 @@ function TeamBios({ location, history }) {
 
         <div className="flex h-full">
           {team.members.map((member, i) => {
-            return <BioContainer member={member} i={i} />;
+            return <BioContainer member={member} i={i} key={i} />;
           })}
         </div>
       </div>
@@ -41,7 +43,7 @@ function BioContainer({ member, i }) {
     <div className="bio-container text-white grid grid-cols-2 grid-rows-1 mr-36">
       <img
         className={`pr-8 self-${i % 2 === 0 ? "start" : "end"}`}
-        src="https://source.unsplash.com/random"
+        src={member.img}
         alt=""
       />
       <div className={`flex flex-col justify-${i % 2 === 0 ? "start" : "end"}`}>
@@ -59,6 +61,13 @@ function BioContainer({ member, i }) {
           {member.socials.instagram ? (
             <a className="mr-4" href={member.socials.instagram} target="_blank">
               <img className="h-6" src={instagram} alt="instagram" />
+            </a>
+          ) : (
+            ""
+          )}
+          {member.socials.facebook ? (
+            <a className="mr-4" href={member.socials.facebook} target="_blank">
+              <img className="h-6" src={facebook} alt="facebook" />
             </a>
           ) : (
             ""
