@@ -8,7 +8,12 @@
 html {
   scroll-behavior: smooth;
   font-family: "NeueHaas";
+  font-weight: normal;
   letter-spacing: 1px;
+}
+
+* {
+  font-weight: 400 !important;
 }
 
 body {
@@ -69,7 +74,7 @@ body {
   width: 124px;
 }
 
-@media only screen and (min-width: 680px) {
+@media only screen and (min-width: 1024px) {
   .site-logo {
     margin-top: -2;
     width: 184px;
@@ -216,44 +221,56 @@ body {
     .mt-flowline {
       margin-top: 25vh;
     }
+    .pt-flowline-sm {
+      padding-top: 6rem;
+    }
+    .pt-flowline {
+      padding-top: 25vh;
+    }
   }
 }
 
 /* Margin size of the page */
 @layer utilities {
   :root {
-    --mobile-margin: 20px;
-    --mobile-margin-top: 20px;
-    --desktop-margin: 56px;
-    --desktop-margin-top: 48px;
+    --mobile-margin-horizontal: 20px;
+    --mobile-margin-vertical: 20px;
+    --desktop-margin-horizontal: 56px;
+    --desktop-margin-vertical: 48px;
   }
   .ml-document {
-    margin-left: var(--mobile-margin);
+    margin-left: var(--mobile-margin-horizontal);
   }
   .mr-document {
-    margin-right: var(--mobile-margin);
+    margin-right: var(--mobile-margin-horizontal);
   }
   .mt-document {
-    margin-top: var(--mobile-margin-top);
+    margin-top: var(--mobile-margin-vertical);
+  }
+  .mb-document {
+    margin-bottom: var(--mobile-margin-vertical);
   }
   .mx-document {
-    margin-left: var(--mobile-margin);
-    margin-right: var(--mobile-margin);
+    margin-left: var(--mobile-margin-horizontal);
+    margin-right: var(--mobile-margin-horizontal);
   }
 
-  @media only screen and (min-width: 640px) {
+  @media only screen and (min-width: 1024px) {
     .ml-document {
-      margin-left: var(--desktop-margin);
+      margin-left: var(--desktop-margin-horizontal);
     }
     .mr-document {
-      margin-right: var(--desktop-margin);
+      margin-right: var(--desktop-margin-horizontal);
     }
     .mt-document {
-      margin-top: var(--desktop-margin-top);
+      margin-top: var(--desktop-margin-vertical);
+    }
+    .mb-document {
+      margin-bottom: var(--desktop-margin-vertical);
     }
     .mx-document {
-      margin-left: var(--desktop-margin);
-      margin-right: var(--desktop-margin);
+      margin-left: var(--desktop-margin-horizontal);
+      margin-right: var(--desktop-margin-horizontal);
     }
   }
 }
