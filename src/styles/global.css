@@ -176,6 +176,13 @@ body {
   max-width: 95%;
 }
 
+/* TEAM BIOS */
+
+.bio-container {
+  min-width: 650px;
+  max-height: 
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
