@@ -28,6 +28,7 @@ const teams = [
     },
     {
         i: 2,
+        href: 'events',
         team: 'Events',
         img: events,
         members: [
@@ -50,6 +51,7 @@ const teams = [
     },
     {
         i: 3,
+        href: 'content',
         team: 'Content',
         img: content,
         members: [
@@ -72,6 +74,7 @@ const teams = [
     },
     {
         i: 4,
+        href: 'creative',
         team: 'Creative',
         img: creative,
         members: [
@@ -104,6 +107,7 @@ const teams = [
     },
     {
         i: 5,
+        href: 'marketing',
         team: 'Marketing',
         img: marketing,
         members: [
@@ -126,6 +130,7 @@ const teams = [
     },
     {
         i: 6,
+        href: 'pr',
         team: 'Partner Relations',
         img: pr,
         members: [
@@ -148,6 +153,7 @@ const teams = [
     },
     {
         i: 7,
+        href: 'internal',
         team: 'Internal Relations',
         img: internal,
         members: [

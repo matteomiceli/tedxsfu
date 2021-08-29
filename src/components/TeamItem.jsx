@@ -9,8 +9,10 @@ function TeamItem({ team, width, delta, scroll }) {
     <div id={`team-${team.i}`} className="team-scroll bg-black h-full">
       <div className="flex h-full w-full">
         <div className="relative top-1/4 mt-2">
-          <img className="team-image" src={team.img} alt="" />
-          <Link className="flex mt-4" to={`/team/${team.href}`}>
+          <Link to={`/team/teamBios`} state={{ team: team }} >
+            <img className="team-image" src={team.img} alt={team.team} />
+          </Link>
+          <Link className="flex mt-4" to={`/team/teamBios`} state={{ team: team }} >
             <h2 className="font-semibold mr-36">{team.team}</h2>
             {team.members.map((member, i) => {
               return <TeamMembers member={member} />;
