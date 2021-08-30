@@ -17,7 +17,7 @@ function Navbar({ page }) {
       <div className="fixed top-0 left-0 z-30 w-screen">
         <div className="flex justify-between mx-document mt-document">
           <div className="flex w-full md:w-auto">
-            <div className="site-logo lg:w-axis mr-auto md:mr-4">
+            <div className="site-logo lg:w-axis mr-auto md:mr-4 lg:mr-0">
               <Link to="/">
                 <img className="site-logo" src={Logo} alt="TEDxSFU logo" />
               </Link>

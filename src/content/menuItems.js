@@ -5,9 +5,9 @@ const MenuItems = [
     href: "/",
   },
   {
-    label: "Partners",
-    description: "Supporters of TEDxSFU Conference",
-    href: "/sponsors",
+    label: "About",
+    description: "Recap of best moments since 2013",
+    href: "/about",
   },
   {
     label: "Team",
@@ -15,9 +15,9 @@ const MenuItems = [
     href: "/team",
   },
   {
-    label: "About",
-    description: "Recap of best moments since 2013",
-    href: "/about",
+    label: "Partners",
+    description: "Supporters of TEDxSFU Conference",
+    href: "/sponsors",
   },
 ];
 
