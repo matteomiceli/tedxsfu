@@ -9,6 +9,7 @@ import { AnimationConfig } from "../AnimationConfig";
 import { useMobileBreakpoint } from "../hooks/useBreakpoint";
 import { useRef } from "react";
 import useClickOutside from "../hooks/useClickOutside";
+import GrowingTextAnimation from "../components/GrowingTextAnimation";
 
 //@ts-check
 const SponsorshipPage = () => {
@@ -65,11 +66,13 @@ const SponsorshipHeader = ({ isMobile }) => (
     animate={{ opacity: 1 }}
   >
     <h1 className="text-4xl sm:text-display font-light sm:mb-4">
-      Our Partners
+      <GrowingTextAnimation>Our Partners</GrowingTextAnimation>
     </h1>
     <p className="text-sm sm:text-xl w-96 sm:leading-6 opacity-60">
-      We've partnered with these amazing organizations and businesses to make
-      TEDxSFU happen this year.
+      <GrowingTextAnimation fontWeight={400}>
+        We've partnered with these amazing organizations and businesses to make
+        TEDxSFU happen this year.
+      </GrowingTextAnimation>
     </p>
   </motion.div>
 );

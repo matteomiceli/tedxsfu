@@ -5,6 +5,8 @@ import HorizontalScrollContainer from "../components/HorizontalScrollContainer";
 // import assets
 import IMAGE_1 from "../../static/images/about-page-assets/past-conference.jpg";
 import IMAGE_2 from "../../static/images/about-page-assets/past-conference-2.jpg";
+import GrowingTextAnimation from "../components/GrowingTextAnimation";
+import { AnimationConfig } from "../AnimationConfig";
 
 const About = () => {
   const scrollContainerRef = useRef();
@@ -22,7 +24,7 @@ const About = () => {
     }
 
     const videoScrollLength = 1;
-    const totalVideoTime = videoRef.current.duration;
+    const totalVideoTime = videoRef.current.duration * 0.5;
     const videoFpsLimit = 12;
 
     let currentVideoProgress = 0;
@@ -70,12 +72,15 @@ const About = () => {
             className="relative z-10 ml-document pr-6 w-screen text-5xl to-text-6xl font-light"
             style={{
               paddingTop: "28vh",
-              maxWidth: "18ch",
+              width: "17ch",
             }}
           >
-            TEDxSFU Bloom embraces the struggles we all face on our journey to
-            grow.
+            <GrowingTextAnimation>
+              TEDxSFU Bloom embraces the struggles we all face on our journey to
+              grow.
+            </GrowingTextAnimation>
           </motion.h1>
+
           {/* blurb overlay */}
           <div className="absolute -right-32 2xl:right-64 bottom-48 2xl:bottom-64 mb-0 z-10 w-64 md:w-72">
             <h2 className="text-2xl to-text-3xl mb-4 font-light">
@@ -87,22 +92,25 @@ const About = () => {
               against every odd symbolizing resilience.
             </p>
           </div>
+
           {/* landing video container */}
           <div className="absolute leftq-0 top-0 right-0 bottom-0 z-0">
             {/* container that control the video sizes using padding and margins */}
             <div className="flex w-full h-full mx-document pb-28 pt-48 pl-32 md:pl-axis 2xl:pr-axis">
               <motion.video
                 onLoadedMetadata={() => setIsVideoReady(true)}
-                style={
-                  {
-                    // x: videoParallaxOffset,
-                  }
-                }
                 ref={videoRef}
                 className="min-w-96 w-full h-full object-cover"
+                animate={{
+                  opacity: isVideoReady ? 1 : 0,
+                  transition: {
+                    duration: AnimationConfig.NORMAL,
+                    transition: "linear",
+                  },
+                }}
+                // autoPlay
                 width="1920"
                 height="1080"
-                // autoPlay
                 autobuffer
                 preload
                 muted
