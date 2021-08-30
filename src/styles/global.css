@@ -43,6 +43,10 @@ body {
   margin-top: 0.5em;
 }
 
+.hanging-punctuation {
+  text-indent: -0.3em;
+}
+
 .outer-scroll-container {
   height: 100vh;
   overflow-y: hidden;

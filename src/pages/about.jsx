@@ -7,7 +7,10 @@ import IMAGE_1 from "../../static/images/about-page-assets/past-conference.jpg";
 import IMAGE_2 from "../../static/images/about-page-assets/past-conference-2.jpg";
 import GrowingTextAnimation from "../components/animation/GrowingTextAnimation";
 import { AnimationConfig } from "../AnimationConfig";
-import SimpleDivAnimation from "../components/animation/SimpleDivAnimation";
+import {
+  SimpleDivAnimation,
+  SimpleSectionAnimation,
+} from "../components/animation/SimpleTransitionAnimation";
 
 const About = () => {
   const scrollContainerRef = useRef();
@@ -83,9 +86,11 @@ const About = () => {
               width: "17ch",
             }}
           >
+            <GrowingTextAnimation fontWeight={600} delay={0.1}>
+              TEDxSFU Bloom
+            </GrowingTextAnimation>
             <GrowingTextAnimation>
-              TEDxSFU Bloom embraces the struggles we all face on our journey to
-              grow.
+              embraces the struggles we all face on our journey to grow.
             </GrowingTextAnimation>
           </h1>
 
@@ -150,37 +155,33 @@ const About = () => {
         </section>
 
         {/* 2nd page */}
-        <motion.section
-          className="flex-shrink-0 z-10"
+        <SimpleSectionAnimation
+          className="flex-shrink-0 z-10 flex flex-col justify-end h-screen ml-48 lg:ml-64 2xl:-ml-24 pb-28 pt-32"
           style={{
             maxWidth: "26rem",
           }}
+          staggerIndex={0}
         >
-          <SimpleDivAnimation
-            staggerIndex="0"
-            className="flex flex-col justify-end h-screen ml-48 lg:ml-64 2xl:-ml-24 pb-28 pt-32"
-          >
-            <p className="text-base mt-32 w-96">
-              This year, TEDxSFU invites people with different backgrounds,
-              domains and expertise to share their stories of resilience in the
-              face of uncertainty, of initiatives reaching maturity, of new
-              beginnings when all you see and feel is ambiguity.
-            </p>
-            {/* Call out box */}
-            <p className="text-3xl mt-8 w-short-line opacity-50 font-light">
-              “Bloom means to flourish, to mature into achievement of one’s
-              potential.”
-            </p>
-            <img
-              className="flex-shrink flex-grow mt-8 object-cover"
-              src={IMAGE_1}
-              alt="woman dancing on stage"
-            />
-          </SimpleDivAnimation>
-        </motion.section>
+          <p className="text-base mt-32 w-96">
+            This year, TEDxSFU invites people with different backgrounds,
+            domains and expertise to share their stories of resilience in the
+            face of uncertainty, of initiatives reaching maturity, of new
+            beginnings when all you see and feel is ambiguity.
+          </p>
+          {/* Call out box */}
+          <blockquote className="text-3xl mt-8 w-short-line opacity-50 font-light hanging-punctuation">
+            “Bloom means to flourish, to mature into achievement of one’s
+            potential.”
+          </blockquote>
+          <img
+            className="flex-shrink flex-grow mt-8 object-cover"
+            src={IMAGE_1}
+            alt="woman dancing on stage"
+          />
+        </SimpleSectionAnimation>
 
         {/* 3nd page */}
-        <section className="flex-shrink-0 h-screen flex flex-col ml-8 pb-28 pr-32">
+        <SimpleSectionAnimation className="flex-shrink-0 h-screen flex flex-col ml-8 pb-28 pr-32">
           <div
             className="flex-shrink-0 flex-grow w-full"
             style={{
@@ -222,7 +223,7 @@ const About = () => {
               </p>
             </div>
           </div>
-        </section>
+        </SimpleSectionAnimation>
       </div>
     </HorizontalScrollContainer>
   );
