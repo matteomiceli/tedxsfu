@@ -8,33 +8,42 @@ import instagram from "../../static/images/icons/instagram.svg";
 import facebook from "../../static/images/icons/facebook.svg"
 
 function TeamBios({ location, history }) {
-  const team = location.state.team;
+  
+  if (location.state) {
 
-  return (
-    <HorizontalScrollContainer>
-      <div className="h-3/5 flex relative top-1/4">
-        <div className="w-full mr-36 pl-24 h-full flex flex-col justify-center">
-          <h1 className="text-5xl w-96 mb-8">{team.team}</h1>
-          <p className="mb-8">{team.teamBio}</p>
-          <Button
-            className="cursor-pointer w-24"
-            href={() => window.history.back()}
-            secondary
-            blank
-          >
-            Back
-          </Button>
-        </div>
+    const team =  location.state.team;
 
-        <div className="flex h-full">
-          {team.members.map((member, i) => {
-            return <BioContainer member={member} i={i} key={i} />;
-          })}
+    return (
+      <HorizontalScrollContainer>
+        <div className="h-3/5 flex relative top-1/4">
+          <div className="w-full mr-36 pl-24 h-full flex flex-col justify-center">
+            <h1 className="text-5xl w-96 mb-8">{team.team}</h1>
+            <p className="mb-8">{team.teamBio}</p>
+            <Button
+              className="cursor-pointer w-24"
+              href={() => window.history.back()}
+              secondary
+              blank
+            >
+              Back
+            </Button>
+          </div>
+  
+          <div className="flex h-full">
+            {team.members.map((member, i) => {
+              return <BioContainer member={member} i={i} key={i} />;
+            })}
+          </div>
         </div>
-      </div>
-    </HorizontalScrollContainer>
-  );
-}
+      </HorizontalScrollContainer>
+    );
+  } else {
+    return (
+      <p>team not selected</p>
+    );
+  }
+  }
+  
 
 export default TeamBios;
 
