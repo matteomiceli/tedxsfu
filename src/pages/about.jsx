@@ -15,34 +15,42 @@ const About = () => {
   const [isVideoReady, setIsVideoReady] = useState(false);
 
   useEffect(() => {
-    if (!isVideoReady) return;
+    if (!isVideoReady) {
+      // force firefox to load video
+      videoRef.current.load();
+      return;
+    }
 
     const videoScrollLength = 1;
     const totalVideoTime = videoRef.current.duration;
     const videoFpsLimit = 12;
 
-    const updateVideoFrame = (val) => {
-      const progress = Math.min(val / videoScrollLength, 1); // clamp the value between 0 and 1
+    let currentVideoProgress = 0;
 
-      // update video frame using fast seek if possible
-      if (videoRef.current.fastSeek) {
-        videoRef.current.fastSeek(progress * totalVideoTime);
-        return;
-      }
-
-      videoRef.current.currentTime = progress * totalVideoTime;
+    const updateVideoFrame = () => {
+      videoRef.current.currentTime = currentVideoProgress * totalVideoTime;
     };
 
     let lastUpdate = Date.now();
+    let finalUpdateTimer;
     const handleScrollPositionChange = (val) => {
       // don't process update if the video is finished
       if (val > videoScrollLength) return;
 
+      // change the curent progres value base on val
+      currentVideoProgress = Math.min(val / videoScrollLength, 1); // clamp the value between 0 and 1;
+
       // rate limit the update to prevent overwhelming the hardware
       const currentUpdate = Date.now();
-      if (currentUpdate - lastUpdate < 1000 / videoFpsLimit) return;
+      const frameUpdateInterval = 1000 / videoFpsLimit;
 
-      updateVideoFrame(val);
+      // for that extra frame
+      if (finalUpdateTimer) clearTimeout(finalUpdateTimer);
+      finalUpdateTimer = setTimeout(updateVideoFrame, frameUpdateInterval);
+
+      if (currentUpdate - lastUpdate < frameUpdateInterval) return;
+
+      requestAnimationFrame(updateVideoFrame);
       lastUpdate = currentUpdate;
     };
 
@@ -80,7 +88,7 @@ const About = () => {
             </p>
           </div>
           {/* landing video container */}
-          <div className="absolute left-0 top-0 right-0 bottom-0 z-0">
+          <div className="absolute leftq-0 top-0 right-0 bottom-0 z-0">
             {/* container that control the video sizes using padding and margins */}
             <div className="flex w-full h-full mx-document pb-28 pt-48 pl-32 md:pl-axis 2xl:pr-axis">
               <motion.video
@@ -95,6 +103,8 @@ const About = () => {
                 width="1920"
                 height="1080"
                 // autoPlay
+                autobuffer
+                preload
                 muted
                 disablePictureInPicture
                 loop
