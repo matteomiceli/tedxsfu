@@ -10,9 +10,10 @@ import { AnimationConfig } from "../AnimationConfig";
 
 const About = () => {
   const scrollContainerRef = useRef();
+  const heroSectionContainerRef = useRef();
   const videoRef = useRef();
-  const { scrollXProgress } = useElementScroll(scrollContainerRef);
-  // const videoParallaxOffset = useTransform(scrollXProgress, (val) => val * 500);
+  const { scrollXProgress, scrollX } = useElementScroll(scrollContainerRef);
+  const videoParallaxOffset = useTransform(scrollX, (val) => val / 3.25);
 
   const [isVideoReady, setIsVideoReady] = useState(false);
 
@@ -24,7 +25,7 @@ const About = () => {
     }
 
     const videoScrollLength = 1;
-    const totalVideoTime = videoRef.current.duration * 0.5;
+    const totalVideoTime = videoRef.current.duration * 0.52;
     const videoFpsLimit = 12;
 
     let currentVideoProgress = 0;
@@ -35,12 +36,17 @@ const About = () => {
 
     let lastUpdate = Date.now();
     let finalUpdateTimer;
-    const handleScrollPositionChange = (val) => {
+    const handleScrollPositionChange = (scrollX) => {
+      const videoCompleteWidth =
+        heroSectionContainerRef.current.getBoundingClientRect().width * 0.6;
+      const progress =
+        Math.min(scrollX, videoCompleteWidth) / videoCompleteWidth;
+
       // don't process update if the video is finished
-      if (val > videoScrollLength) return;
+      if (progress > videoScrollLength) return;
 
       // change the curent progres value base on val
-      currentVideoProgress = Math.min(val / videoScrollLength, 1); // clamp the value between 0 and 1;
+      currentVideoProgress = Math.min(progress / videoScrollLength, 1); // clamp the value between 0 and 1;
 
       // rate limit the update to prevent overwhelming the hardware
       const currentUpdate = Date.now();
@@ -56,7 +62,7 @@ const About = () => {
       lastUpdate = currentUpdate;
     };
 
-    scrollXProgress.onChange(handleScrollPositionChange);
+    scrollX.onChange(handleScrollPositionChange);
   }, [isVideoReady]);
 
   return (
@@ -64,6 +70,7 @@ const About = () => {
       <div className="flex flex-nowrap fluid-from-screen-sm fluid-to-screen-md">
         {/* landing hero container */}
         <section
+          ref={heroSectionContainerRef}
           className="flex-shrink-0 relative w-screen h-screen"
           style={{ minWidth: "72rem" }}
         >
@@ -101,6 +108,7 @@ const About = () => {
                 onLoadedMetadata={() => setIsVideoReady(true)}
                 ref={videoRef}
                 className="min-w-96 w-full h-full object-cover"
+                style={{ x: videoParallaxOffset }}
                 initial={{ opacity: 0, scale: 0.95, x: 20 }}
                 animate={{
                   scale: 1,
