@@ -10,13 +10,16 @@ const growItemContainerVariant = {
   initial: {},
   grown: {
     transition: {
-      ease: AnimationConfig.EASING,
-      duration: AnimationConfig.NORMAL,
       staggerDirection: -1,
       staggerChildren: 0.01,
     },
   },
-  exit: {},
+  exit: {
+    transition: {
+      staggerDirection: 1,
+      staggerChildren: 0.01,
+    },
+  },
 };
 const growItemVariant = {
   initial: {
@@ -35,14 +38,19 @@ const growItemVariant = {
       duration: AnimationConfig.SLOW,
     },
   }),
-  exit: {},
+  exit: {
+    opacity: 0,
+    y: "-.3em",
+    x: "-1.8em",
+    fontVariationSettings: `"wght" 100`,
+    transition: {
+      ease: AnimationConfig.EASING_INVERTED,
+      duration: AnimationConfig.NORMAL,
+    },
+  },
 };
 
-const GrowingTextAnimation = ({
-  children,
-  withPlaceholder,
-  fontWeight = 300,
-}) => {
+const GrowingTextAnimation = ({ children, fontWeight = 300 }) => {
   return (
     <motion.span
       variants={growItemContainerVariant}
