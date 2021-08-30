@@ -158,7 +158,7 @@ const teams = [
         role: "Coordinator",
         pro: "She/They",
         socials: {
-            
+            instagram: 'https://www.instagram.com/n_kyaaj.s/',
         }
       },
       {
