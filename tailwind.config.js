@@ -16,7 +16,14 @@ module.exports = {
       width: {
         "sponsor-text": "600px",
         "sponsor-logo": "200px",
-        axis: "14rem",
+        "short-line": "20ch",
+        axis: "16rem",
+      },
+      margin: {
+        axis: "16rem",
+      },
+      padding: {
+        axis: "16rem",
       },
       fontSize: {
         xs: [
@@ -36,13 +43,15 @@ module.exports = {
           },
         ],
       },
+
       gridTemplateColumns: {
         sponsorInfoModal: "auto 2rem",
       },
     },
   },
+
   variants: {
     extend: {},
   },
-  plugins: ["gatsby-plugin-postcss", require("tailwindcss-fluid")],
+  plugins: ["gatsby-plugin-postcss", require("@borisk47/tailwindcss-fluidify")],
 };
