@@ -21,9 +21,8 @@ function TeamBios({ location, history }) {
             <p className="mb-8">{team.teamBio}</p>
             <Button
               className="cursor-pointer w-24"
-              href={() => window.history.back()}
+              href='/team'
               secondary
-              blank
             >
               Back
             </Button>
