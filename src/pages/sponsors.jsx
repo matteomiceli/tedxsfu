@@ -9,7 +9,7 @@ import { AnimationConfig } from "../AnimationConfig";
 import { useMobileBreakpoint } from "../hooks/useBreakpoint";
 import { useRef } from "react";
 import useClickOutside from "../hooks/useClickOutside";
-import GrowingTextAnimation from "../components/GrowingTextAnimation";
+import GrowingTextAnimation from "../components/animation/GrowingTextAnimation";
 
 //@ts-check
 const SponsorshipPage = () => {

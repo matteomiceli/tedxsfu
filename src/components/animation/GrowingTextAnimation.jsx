@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { AnimationConfig } from "../AnimationConfig";
+import { AnimationConfig } from "../../AnimationConfig";
 
 // character
 // - the flag indicate the the animation is split into each

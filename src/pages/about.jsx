@@ -5,7 +5,7 @@ import HorizontalScrollContainer from "../components/HorizontalScrollContainer";
 // import assets
 import IMAGE_1 from "../../static/images/about-page-assets/past-conference.jpg";
 import IMAGE_2 from "../../static/images/about-page-assets/past-conference-2.jpg";
-import GrowingTextAnimation from "../components/GrowingTextAnimation";
+import GrowingTextAnimation from "../components/animation/GrowingTextAnimation";
 import { AnimationConfig } from "../AnimationConfig";
 
 const About = () => {
@@ -101,11 +101,14 @@ const About = () => {
                 onLoadedMetadata={() => setIsVideoReady(true)}
                 ref={videoRef}
                 className="min-w-96 w-full h-full object-cover"
+                initial={{ opacity: 0, scale: 0.95, x: 20 }}
                 animate={{
+                  scale: 1,
+                  x: 0,
                   opacity: isVideoReady ? 1 : 0,
                   transition: {
                     duration: AnimationConfig.NORMAL,
-                    transition: "linear",
+                    transition: AnimationConfig.EASING,
                   },
                 }}
                 // autoPlay
