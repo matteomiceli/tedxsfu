@@ -5,48 +5,68 @@ import HorizontalScrollContainer from "../components/HorizontalScrollContainer";
 // import assets
 import IMAGE_1 from "../../static/images/about-page-assets/past-conference.jpg";
 import IMAGE_2 from "../../static/images/about-page-assets/past-conference-2.jpg";
+import GrowingTextAnimation from "../components/animation/GrowingTextAnimation";
+import { AnimationConfig } from "../AnimationConfig";
+import {
+  SimpleDivAnimation,
+  SimpleSectionAnimation,
+} from "../components/animation/SimpleTransitionAnimation";
 
 const About = () => {
   const scrollContainerRef = useRef();
+  const heroSectionContainerRef = useRef();
   const videoRef = useRef();
-  const { scrollXProgress } = useElementScroll(scrollContainerRef);
-  // const videoParallaxOffset = useTransform(scrollXProgress, (val) => val * 500);
+  const { scrollXProgress, scrollX } = useElementScroll(scrollContainerRef);
+  const videoParallaxOffset = useTransform(scrollX, (val) => val / 3.25);
 
   const [isVideoReady, setIsVideoReady] = useState(false);
 
   useEffect(() => {
-    if (!isVideoReady) return;
+    if (!isVideoReady) {
+      // force firefox to load video
+      videoRef.current.load();
+      return;
+    }
 
     const videoScrollLength = 1;
-    const totalVideoTime = videoRef.current.duration;
+    const totalVideoTime = videoRef.current.duration * 0.52;
     const videoFpsLimit = 12;
 
-    const updateVideoFrame = (val) => {
-      const progress = Math.min(val / videoScrollLength, 1); // clamp the value between 0 and 1
+    let currentVideoProgress = 0;
 
-      // update video frame using fast seek if possible
-      if (videoRef.current.fastSeek) {
-        videoRef.current.fastSeek(progress * totalVideoTime);
-        return;
-      }
-
-      videoRef.current.currentTime = progress * totalVideoTime;
+    const updateVideoFrame = () => {
+      videoRef.current.currentTime = currentVideoProgress * totalVideoTime;
     };
 
     let lastUpdate = Date.now();
-    const handleScrollPositionChange = (val) => {
+    let finalUpdateTimer;
+    const handleScrollPositionChange = (scrollX) => {
+      const videoCompleteWidth =
+        heroSectionContainerRef.current.getBoundingClientRect().width * 0.6;
+      const progress =
+        Math.min(scrollX, videoCompleteWidth) / videoCompleteWidth;
+
       // don't process update if the video is finished
-      if (val > videoScrollLength) return;
+      if (progress > videoScrollLength) return;
+
+      // change the curent progres value base on val
+      currentVideoProgress = Math.min(progress / videoScrollLength, 1); // clamp the value between 0 and 1;
 
       // rate limit the update to prevent overwhelming the hardware
       const currentUpdate = Date.now();
-      if (currentUpdate - lastUpdate < 1000 / videoFpsLimit) return;
+      const frameUpdateInterval = 1000 / videoFpsLimit;
 
-      updateVideoFrame(val);
+      // for that extra frame
+      if (finalUpdateTimer) clearTimeout(finalUpdateTimer);
+      finalUpdateTimer = setTimeout(updateVideoFrame, frameUpdateInterval);
+
+      if (currentUpdate - lastUpdate < frameUpdateInterval) return;
+
+      requestAnimationFrame(updateVideoFrame);
       lastUpdate = currentUpdate;
     };
 
-    scrollXProgress.onChange(handleScrollPositionChange);
+    scrollX.onChange(handleScrollPositionChange);
   }, [isVideoReady]);
 
   return (
@@ -54,22 +74,32 @@ const About = () => {
       <div className="flex flex-nowrap fluid-from-screen-sm fluid-to-screen-md">
         {/* landing hero container */}
         <section
+          ref={heroSectionContainerRef}
           className="flex-shrink-0 relative w-screen h-screen"
           style={{ minWidth: "72rem" }}
         >
           {/* Headline */}
-          <motion.h1
+          <h1
             className="relative z-10 ml-document pr-6 w-screen text-5xl to-text-6xl font-light"
             style={{
               paddingTop: "28vh",
-              maxWidth: "18ch",
+              width: "17ch",
             }}
           >
-            TEDxSFU Bloom embraces the struggles we all face on our journey to
-            grow.
-          </motion.h1>
+            {/* <GrowingTextAnimation fontWeight={600} delay={0.1}>
+              TEDxSFU Bloom
+            </GrowingTextAnimation> */}
+            <GrowingTextAnimation>
+              TEDxSFU Bloom embraces the struggles we all face on our journey to
+              grow.
+            </GrowingTextAnimation>
+          </h1>
+
           {/* blurb overlay */}
-          <div className="absolute -right-32 2xl:right-64 bottom-48 2xl:bottom-64 mb-0 z-10 w-64 md:w-72">
+          <SimpleDivAnimation
+            staggerIndex={1}
+            className="absolute -right-32 2xl:right-64 bottom-48 2xl:bottom-64 mb-0 z-10 w-64 md:w-72"
+          >
             <h2 className="text-2xl to-text-3xl mb-4 font-light">
               About Bloom
             </h2>
@@ -78,23 +108,40 @@ const About = () => {
               less than a bud sprouting out of a plant in the hopes to bloom
               against every odd symbolizing resilience.
             </p>
-          </div>
+          </SimpleDivAnimation>
+
           {/* landing video container */}
-          <div className="absolute left-0 top-0 right-0 bottom-0 z-0">
+          <div className="absolute leftq-0 top-0 right-0 bottom-0 z-0">
             {/* container that control the video sizes using padding and margins */}
             <div className="flex w-full h-full mx-document pb-28 pt-48 pl-32 md:pl-axis 2xl:pr-axis">
               <motion.video
                 onLoadedMetadata={() => setIsVideoReady(true)}
-                style={
-                  {
-                    // x: videoParallaxOffset,
-                  }
-                }
                 ref={videoRef}
                 className="min-w-96 w-full h-full object-cover"
+                style={{ x: videoParallaxOffset }}
+                initial={{ opacity: 0, scale: 0.95, x: 40 }}
+                animate={{
+                  scale: 1,
+                  x: 0,
+                  opacity: isVideoReady ? 1 : 0,
+                  transition: {
+                    duration: AnimationConfig.NORMAL,
+                    transition: AnimationConfig.EASING,
+                  },
+                }}
+                exit={{
+                  opacity: 0,
+                  x: -20,
+                  transition: {
+                    duration: AnimationConfig.NORMAL,
+                    transition: AnimationConfig.EASING_INVERTED,
+                  },
+                }}
+                // autoPlay
                 width="1920"
                 height="1080"
-                // autoPlay
+                autobuffer
+                preload
                 muted
                 disablePictureInPicture
                 loop
@@ -109,11 +156,12 @@ const About = () => {
         </section>
 
         {/* 2nd page */}
-        <section
-          className="flex-shrink-0 flex flex-col justify-end h-screen ml-48 lg:ml-64 2xl:-ml-24 pb-28 pt-32 z-10"
+        <SimpleSectionAnimation
+          className="flex-shrink-0 z-10 flex flex-col justify-end h-screen ml-48 lg:ml-64 2xl:-ml-24 pb-28 pt-32"
           style={{
             maxWidth: "26rem",
           }}
+          staggerIndex={0}
         >
           <p className="text-base mt-32 w-96">
             This year, TEDxSFU invites people with different backgrounds,
@@ -122,19 +170,19 @@ const About = () => {
             beginnings when all you see and feel is ambiguity.
           </p>
           {/* Call out box */}
-          <p className="text-3xl mt-8 w-short-line opacity-50 font-light">
+          <blockquote className="text-3xl mt-8 w-short-line opacity-50 font-light hanging-punctuation">
             “Bloom means to flourish, to mature into achievement of one’s
             potential.”
-          </p>
+          </blockquote>
           <img
             className="flex-shrink flex-grow mt-8 object-cover"
             src={IMAGE_1}
             alt="woman dancing on stage"
           />
-        </section>
+        </SimpleSectionAnimation>
 
         {/* 3nd page */}
-        <section className="flex-shrink-0 h-screen flex flex-col ml-8 pb-28 pr-32">
+        <SimpleSectionAnimation className="flex-shrink-0 h-screen flex flex-col ml-8 pb-28 pr-32">
           <div
             className="flex-shrink-0 flex-grow w-full"
             style={{
@@ -176,7 +224,7 @@ const About = () => {
               </p>
             </div>
           </div>
-        </section>
+        </SimpleSectionAnimation>
       </div>
     </HorizontalScrollContainer>
   );
