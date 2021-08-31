@@ -152,12 +152,16 @@ body {
 
   /* mobile */
 
+.mobile-speaker-container {
+  scrollbar-width: none;
+}
+
 .mobile-panel-spacer {
-  min-width: 50vw;
+  min-width: calc(50vw - 31px);
 }
 
 .speaker-mobile-panel {
-  min-width: 64px;  
+  min-width: 72px; 
 }
 
 /* TEAMS */
