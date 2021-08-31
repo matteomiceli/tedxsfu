@@ -11,6 +11,9 @@ function TeamBios({ location, history, pageContext }) {
   // Entries in the team.js object
   const { teamInfo } = pageContext;
 
+  // don't build the page if teamInfo does not exist
+  if (!teamInfo) return require("../404");
+
   return (
     <HorizontalScrollContainer>
       <div className="h-3/5 flex relative top-1/4">
