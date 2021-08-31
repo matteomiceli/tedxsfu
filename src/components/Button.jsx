@@ -99,7 +99,10 @@ const RippleText = ({ children, originPos = { x: 0, y: 0 }, isActive }) => {
   const textLength = children.length;
 
   return (
-    <span ref={containerRef} className="relative">
+    <span
+      ref={containerRef}
+      className="relative inline-block whitespace-nowrap"
+    >
       {/* invisible placeholder for a fixed width */}
       <span className="font-bold opacity-0" area-hidden="true">
         {children}
