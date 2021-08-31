@@ -1,6 +1,7 @@
 import { navigate } from "gatsby-link";
 import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { AnimationConfig } from "../AnimationConfig";
 
 const isSSR = typeof window === "undefined";
 
@@ -14,6 +15,7 @@ const Button = ({
   cta,
   text,
   onClick,
+  icon, // can be a component or URL to image/svg
   ...props
 }) => {
   const [isHover, setIsHover] = useState(false);
@@ -22,13 +24,13 @@ const Button = ({
 
   const buttonStyle = (() => {
     if (cta)
-      return "text-interactive py-2 px-6 bg-white text-black rounded-full relative inline-block";
+      return "text-interactive py-2.5 px-5 bg-white text-black rounded-full relative inline-flex";
     if (primary)
-      return "text-interactive py-2 px-6 bg-white text-black rounded-full relative inline-block";
+      return "text-interactive py-2 px-4 bg-white text-black rounded-full relative inline-flex";
     if (secondary)
-      return "text-interactive py-2 px-6 text-white rounded-full relative inline-block border border-white";
+      return "text-interactive py-2 px-4 text-white rounded-full relative inline-flex border border-white";
     if (tertiary)
-      return "text-interactive py-2 px-6 text-white rounded-full relative inline-block";
+      return "text-interactive py-2 px-4 text-white rounded-full relative inline-flex";
 
     // default as inline text button
     return "text-interactive relative inline-block";
@@ -40,7 +42,7 @@ const Button = ({
 
     // for internal routing
     e.preventDefault();
-    navigate(e.target.href);
+    navigate(href);
   };
 
   return (
@@ -54,7 +56,13 @@ const Button = ({
       onMouseLeave={() => setIsHover(false)}
       onMouseDown={() => setIsActive(true)}
       onMouseUp={() => setIsActive(false)}
-      animate={{ scale: isActive ? 0.97 : 1 }}
+      whileTap={{
+        scale: 0.97,
+        transition: {
+          duration: AnimationConfig.FAST,
+          ease: AnimationConfig.EASING,
+        },
+      }}
       {...props}
       // support custom classses
       className={buttonStyle + " " + props.className}
@@ -92,6 +100,15 @@ const Button = ({
           }}
         />
       )}
+      {typeof icon === "string" ? (
+        <img
+          src={icon}
+          className="inline-block h-4 mr-2 flex-shrink-0"
+          aria-hidden="true"
+        />
+      ) : (
+        icon
+      )}
       <RippleText isActive={isHover} originPos={mousePos}>
         {children}
       </RippleText>
@@ -106,14 +123,14 @@ const RippleText = ({ children, originPos = { x: 0, y: 0 }, isActive }) => {
     setBoundingRect(containerRef.current.getBoundingClientRect());
   }, [isActive]);
 
-  if (isSSR) return <span>{children}</span>;
-
   const textLength = children.length;
 
   return (
     <span
       ref={containerRef}
-      className="relative inline-block whitespace-nowrap"
+      className="relative flex-shrink-0 inline-flex justify-between items-center whitespace-nowrap"
+      // for compensating t
+      style={{ marginTop: ".2em", lineHeight: ".55em" }}
     >
       {/* invisible placeholder for a fixed width */}
       <span className="font-bold opacity-0" area-hidden="true">
@@ -138,9 +155,10 @@ const RippleText = ({ children, originPos = { x: 0, y: 0 }, isActive }) => {
               key={index}
               initial={{ fontVariationSettings: `"wght" 400` }}
               animate={{
-                fontVariationSettings: isActive ? `"wght" 600` : `"wght" 400`,
+                fontVariationSettings:
+                  !isSSR && isActive ? `"wght" 600` : `"wght" 400`,
                 transition: {
-                  delay: delayFactor * 0.2,
+                  delay: !isSSR && delayFactor * 0.2,
                 },
               }}
             >

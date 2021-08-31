@@ -28,10 +28,27 @@ const MobileNav = () => {
 
 const MenuButton = ({ onClick, isMenuOpened }) => {
   return (
-    <Button secondary onClick={onClick}>
+    <Button
+      secondary
+      onClick={onClick}
+      icon={<HamburgerIcon isMenuOpened={isMenuOpened} />}
+    >
       {isMenuOpened ? "Close" : "Menu"}
     </Button>
   );
 };
+
+const HamburgerIcon = ({ isMenuOpened }) => (
+  <span
+    class={`hamburger hamburger--spin mr-1 h-4 ${
+      isMenuOpened ? "is-active" : ""
+    }`}
+    style={{ maxHeight: "1rem", scale: 0.5 }}
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </span>
+);
 
 export default MobileNav;
