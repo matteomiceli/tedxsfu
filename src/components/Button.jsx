@@ -1,3 +1,4 @@
+import { navigate } from "gatsby-link";
 import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 
@@ -12,6 +13,7 @@ const Button = ({
   tertiary,
   cta,
   text,
+  onClick,
   ...props
 }) => {
   const [isHover, setIsHover] = useState(false);
@@ -32,6 +34,11 @@ const Button = ({
     return "text-interactive relative inline-block";
   })();
 
+  const handleButtonClick = (e) => {
+    e.preventDefault();
+    navigate(e.target.href);
+  };
+
   return (
     <motion.a
       href={href}
@@ -47,6 +54,7 @@ const Button = ({
       {...props}
       // support custom classses
       className={buttonStyle + " " + props.className}
+      onClick={onClick || handleButtonClick}
     >
       {/* ring on cta button */}
       {cta && (
