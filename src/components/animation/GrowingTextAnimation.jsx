@@ -28,7 +28,7 @@ const growItemVariant = {
     x: "1.8em",
     fontVariationSettings: `"wght" 100`,
   },
-  grown: ({ fontWeight, delay = 0 }) => ({
+  grown: (fontWeight) => ({
     opacity: 1,
     y: 0,
     x: 0,
@@ -36,7 +36,6 @@ const growItemVariant = {
     transition: {
       ease: AnimationConfig.EASING,
       duration: AnimationConfig.SLOW,
-      delay: delay,
     },
   }),
   exit: {
@@ -51,7 +50,7 @@ const growItemVariant = {
   },
 };
 
-const GrowingTextAnimation = ({ children, fontWeight = 300, delay = 0 }) => {
+const GrowingTextAnimation = ({ children, fontWeight = 300 }) => {
   return (
     <motion.span
       variants={growItemContainerVariant}
@@ -63,7 +62,7 @@ const GrowingTextAnimation = ({ children, fontWeight = 300, delay = 0 }) => {
         return (
           <>
             <motion.span
-              custom={{ fontWeight, delay }}
+              custom={fontWeight}
               className="inline-block"
               key={index}
               variants={growItemVariant}

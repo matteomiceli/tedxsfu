@@ -86,11 +86,12 @@ const About = () => {
               width: "17ch",
             }}
           >
-            <GrowingTextAnimation fontWeight={600} delay={0.1}>
+            {/* <GrowingTextAnimation fontWeight={600} delay={0.1}>
               TEDxSFU Bloom
-            </GrowingTextAnimation>
+            </GrowingTextAnimation> */}
             <GrowingTextAnimation>
-              embraces the struggles we all face on our journey to grow.
+              TEDxSFU Bloom embraces the struggles we all face on our journey to
+              grow.
             </GrowingTextAnimation>
           </h1>
 
