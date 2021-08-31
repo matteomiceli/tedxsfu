@@ -116,14 +116,6 @@ const Button = ({
   );
 };
 
-{
-  /* <button class="hamburger hamburger--collapse" type="button">
-  <span class="hamburger-box">
-    <span class="hamburger-inner"></span>
-  </span>
-</button>; */
-}
-
 const RippleText = ({ children, originPos = { x: 0, y: 0 }, isActive }) => {
   const [boundingRect, setBoundingRect] = useState();
   const containerRef = useRef();
