@@ -150,6 +150,20 @@ body {
   /* background: green; */
 }
 
+  /* mobile */
+
+.mobile-speaker-container {
+  scrollbar-width: none;
+}
+
+.mobile-panel-spacer {
+  min-width: calc(50vw - 31px);
+}
+
+.speaker-mobile-panel {
+  min-width: 72px; 
+}
+
 /* TEAMS */
 
 .team-scroll {

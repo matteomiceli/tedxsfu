@@ -1,3 +1,4 @@
+import { navigate } from "gatsby-link";
 import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 
@@ -12,6 +13,7 @@ const Button = ({
   tertiary,
   cta,
   text,
+  onClick,
   ...props
 }) => {
   const [isHover, setIsHover] = useState(false);
@@ -32,6 +34,15 @@ const Button = ({
     return "text-interactive relative inline-block";
   })();
 
+  const handleButtonClick = (e) => {
+    // let the user open the link naturally if its an external link
+    if (blank) return;
+
+    // for internal routing
+    e.preventDefault();
+    navigate(e.target.href);
+  };
+
   return (
     <motion.a
       href={href}
@@ -47,6 +58,7 @@ const Button = ({
       {...props}
       // support custom classses
       className={buttonStyle + " " + props.className}
+      onClick={onClick || handleButtonClick}
     >
       {/* ring on cta button */}
       {cta && (
@@ -99,7 +111,10 @@ const RippleText = ({ children, originPos = { x: 0, y: 0 }, isActive }) => {
   const textLength = children.length;
 
   return (
-    <span ref={containerRef} className="relative">
+    <span
+      ref={containerRef}
+      className="relative inline-block whitespace-nowrap"
+    >
       {/* invisible placeholder for a fixed width */}
       <span className="font-bold opacity-0" area-hidden="true">
         {children}
