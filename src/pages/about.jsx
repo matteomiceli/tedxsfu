@@ -133,7 +133,7 @@ const About = () => {
                   opacity: 0,
                   x: -20,
                   transition: {
-                    duration: AnimationConfig.FAST,
+                    duration: AnimationConfig.NORMAL,
                     transition: AnimationConfig.EASING_INVERTED,
                   },
                 }}
