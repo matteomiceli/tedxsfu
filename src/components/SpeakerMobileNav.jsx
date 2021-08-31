@@ -3,14 +3,11 @@ import React from "react";
 import speakers from "../content/speakers";
 
 function SpeakerMobileNav({ width }) {
-  let windowWidth;
-  if (typeof document.window) {
-    windowWidth = window.innerWidth / 2;
-  } else {
-    windowWidth = 149; 
-  }
-  
+  if (typeof window === 'undefined') {
+    return <></>
+  }  
 
+  const windowWidth = window.innerWidth / 2;
   
   return (
     <div className="absolute text-white text-4xl w-full bottom-20">
