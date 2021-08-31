@@ -2,8 +2,15 @@ import React from "react";
 
 import speakers from "../content/speakers";
 
-function SpeakerMobileNav() {
-  const windowWidth = window.innerWidth / 2;
+function SpeakerMobileNav({ width }) {
+  let windowWidth;
+  if (typeof document.window) {
+    windowWidth = window.innerWidth / 2;
+  } else {
+    windowWidth = 149; 
+  }
+  
+
   
   return (
     <div className="absolute text-white text-4xl w-full bottom-20">

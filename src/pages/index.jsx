@@ -35,7 +35,9 @@ const IndexPage = () => {
           setWidth={setWidth}
         />
       ) : (
-        <SpeakerMobileNav />
+        <SpeakerMobileNav 
+          width={width}
+        />
       )}
     </>
   );
