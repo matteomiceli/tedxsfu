@@ -16,13 +16,13 @@
 // const marketing = require("../static/images/teams/marketing.jpg");
 // const pr = require("../static/images/teams/pr.jpg");
 
-const leads = "/images/teams/leads.jpg";
-const creative = "/images/teams/creative.jpg";
-const content = "/images/teams/content.jpg";
-const events = "/images/teams/events.jpg";
-const internal = "/images/teams/internal.jpg";
-const marketing = "/images/teams/marketing.jpg";
-const pr = "/images/teams/pr.jpg";
+const leads = "/images/teams/project-lead.jpg";
+const creative = "/images/teams/creative-team.jpg";
+const content = "/images/teams/content-team.jpg";
+const events = "/images/teams/events-team.jpg";
+const internal = "/images/teams/internal-team.jpg";
+const marketing = "/images/teams/marketing-team.jpg";
+const pr = "/images/teams/pr-team.jpg";
 
 const teams = [
   {
