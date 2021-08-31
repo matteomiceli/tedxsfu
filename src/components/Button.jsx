@@ -35,6 +35,10 @@ const Button = ({
   })();
 
   const handleButtonClick = (e) => {
+    // let the user open the link naturally if its an external link
+    if (blank) return;
+
+    // for internal routing
     e.preventDefault();
     navigate(e.target.href);
   };
