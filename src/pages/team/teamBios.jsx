@@ -7,6 +7,8 @@ import linkedIn from "../../static/images/icons/linkedIn.svg";
 import instagram from "../../static/images/icons/instagram.svg";
 import facebook from "../../static/images/icons/facebook.svg";
 
+import iconBack from "../../../static/images/icons/icon-backward.svg";
+
 function TeamBios({ location, history, pageContext }) {
   // Entries in the team.js object
   const { teamInfo } = pageContext;
@@ -20,7 +22,7 @@ function TeamBios({ location, history, pageContext }) {
         <div className="w-full mr-36 pl-24 h-full flex flex-col justify-center">
           <h1 className="text-5xl w-96 mb-8">{teamInfo.team}</h1>
           <p className="mb-8">{teamInfo.teamBio}</p>
-          <Button className="cursor-pointer w-24" href="/team" secondary>
+          <Button className="mr-auto" icon={iconBack} href="/team" secondary>
             Back
           </Button>
         </div>

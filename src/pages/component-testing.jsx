@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "../components/Button";
 
+import backIcon from "../../static/images/icons/icon-backward.svg";
+
 //@ts-check
 const ComponentTesting = () => {
   return (
@@ -39,6 +41,19 @@ const ComponentTesting = () => {
           <div>
             <Button href="https://google.com" blank>
               Visit Google
+            </Button>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <div className="mb-4">Button with icon</div>
+          <div>
+            <Button
+              className="cursor-pointer"
+              icon={backIcon}
+              href="/team"
+              secondary
+            >
+              Back
             </Button>
           </div>
         </div>
