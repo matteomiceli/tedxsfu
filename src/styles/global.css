@@ -146,6 +146,16 @@ body {
   /* background: green; */
 }
 
+  /* mobile */
+
+.mobile-panel-spacer {
+  min-width: 50vw;
+}
+
+.speaker-mobile-panel {
+  min-width: 64px;  
+}
+
 /* TEAMS */
 
 .team-scroll {
