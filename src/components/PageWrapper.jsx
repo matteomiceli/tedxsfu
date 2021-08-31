@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./nav/Navbar";
-import { motion, useAnimation } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import "../styles/global.css";
 import { useEffect } from "react";
 
@@ -13,7 +13,7 @@ const PageWrapper = ({ children }) => {
       animate={{ opacity: 1 }}
     >
       <Navbar page={1} />
-      {children}
+      <AnimatePresence exitBeforeEnter>{children}</AnimatePresence>
     </motion.div>
   );
 };

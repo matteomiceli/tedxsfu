@@ -43,6 +43,10 @@ body {
   margin-top: 0.5em;
 }
 
+.hanging-punctuation {
+  text-indent: -0.3em;
+}
+
 .outer-scroll-container {
   height: 100vh;
   overflow-y: hidden;
@@ -144,6 +148,20 @@ body {
 .glass {
   backdrop-filter: blur(15px);
   /* background: green; */
+}
+
+  /* mobile */
+
+.mobile-speaker-container {
+  scrollbar-width: none;
+}
+
+.mobile-panel-spacer {
+  min-width: calc(50vw - 31px);
+}
+
+.speaker-mobile-panel {
+  min-width: 72px; 
 }
 
 /* TEAMS */
