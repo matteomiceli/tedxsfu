@@ -40,7 +40,7 @@ const Button = ({
 
     // for internal routing
     e.preventDefault();
-    navigate(e.target.href);
+    navigate(href);
   };
 
   return (
