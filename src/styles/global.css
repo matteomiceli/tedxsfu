@@ -1,3 +1,4 @@
+@import "./hamburger.css";
 /* ./src/styles/global.css */
 
 @font-face {
@@ -150,7 +151,7 @@ body {
   /* background: green; */
 }
 
-  /* mobile */
+/* mobile */
 
 .mobile-speaker-container {
   scrollbar-width: none;
@@ -161,7 +162,7 @@ body {
 }
 
 .speaker-mobile-panel {
-  min-width: 72px; 
+  min-width: 72px;
 }
 
 /* TEAMS */
