@@ -12,7 +12,7 @@ function TeamBios({ location, history, pageContext }) {
   const { teamInfo } = pageContext;
 
   // don't build the page if teamInfo does not exist
-  if (!teamInfo) return require("../404");
+  if (!teamInfo) return require.resolve("../404");
 
   return (
     <HorizontalScrollContainer>
