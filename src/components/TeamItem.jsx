@@ -6,7 +6,7 @@ function TeamItem({ team, width, delta, scroll }) {
   return (
     <div id={`team-${team.i}`} className="team-scroll bg-black h-full">
       <div className="flex h-full w-full">
-        <div className="relative top-1/4 mt-2">
+        <div className="relative top-1/4 mt-16 h-3/4">
           <Link to={`/team/${team.href}`}>
             <Image
               className="team-image"

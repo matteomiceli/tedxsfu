@@ -201,20 +201,33 @@ body {
 .team-panel-active {
   color: white;
   border-top: 1px solid #e61b2e;
-  padding: 16px 0 10px 0;
+  padding: 12px 0 10px 0;
   margin: 0 20px 0 0;
 }
 
 .team-panel-notactive {
   color: #949494;
   border-top: 1px solid transparent;
-  padding: 16px 0 10px 0;
+  padding: 12px 0 10px 0;
   margin: 0 20px 0 0;
 }
 
 .team-image {
   max-width: 95%;
   max-height: 60vh;
+}
+
+.team-title-container {
+  width: calc(100vw - 32px);
+}
+
+.team-nav-overflow {
+  scrollbar-width: none;
+  width: calc(100vw - 32px);
+}
+
+.team-nav-container {
+  min-width: 770px;
 }
 
 /* TEAM BIOS */
@@ -328,5 +341,26 @@ body {
       margin-left: var(--desktop-margin-horizontal);
       margin-right: var(--desktop-margin-horizontal);
     }
+
+    /* teams */
+
+    .team-nav-container {
+      min-width: 770px;
+    }
+    
+    .team-panel-active {
+      color: white;
+      border-top: 1px solid #e61b2e;
+      padding: 16px 0 10px 0;
+      margin: 0 20px 0 0;
+    }
+    
+    .team-panel-notactive {
+      color: #949494;
+      border-top: 1px solid transparent;
+      padding: 16px 0 10px 0;
+      margin: 0 20px 0 0;
+    }
+    
   }
 }
