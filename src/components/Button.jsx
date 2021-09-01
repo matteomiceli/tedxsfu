@@ -19,12 +19,10 @@ const Button = ({
   ...props
 }) => {
   const [isHover, setIsHover] = useState(false);
-  const [isActive, setIsActive] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const buttonStyle = (() => {
     if (cta)
-      return "text-interactive py-2.5 px-5 bg-white text-black rounded-full relative inline-flex";
+      return "text-interactive py-2.5 px-5 text-black rounded-full relative inline-flex accent-gradient-bg";
     if (primary)
       return "text-interactive py-2 px-4 bg-white text-black rounded-full relative inline-flex";
     if (secondary)
@@ -49,19 +47,30 @@ const Button = ({
     <motion.a
       href={href}
       target={blank ? "_blank" : "_self"}
-      onMouseEnter={(e) => {
-        setIsHover(true);
-        setMousePos({ x: e.clientX, y: e.clientY });
-      }}
+      onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      onMouseDown={() => setIsActive(true)}
-      onMouseUp={() => setIsActive(false)}
+      initial={
+        cta && {
+          color: "#000",
+          backgroundImage: "url(/images/gradient-effect-white.svg)",
+        }
+      }
       whileTap={{
         scale: 0.97,
         transition: {
           duration: AnimationConfig.FAST,
           ease: AnimationConfig.EASING,
         },
+      }}
+      whileHover={
+        cta && {
+          color: "#FFF",
+          backgroundImage: "url(/images/gradient-effect.svg)",
+        }
+      }
+      transition={{
+        duration: AnimationConfig.NORMAL,
+        ease: AnimationConfig.EASING,
       }}
       {...props}
       // support custom classses
@@ -75,12 +84,14 @@ const Button = ({
           initial={{
             scaleX: 1,
             scaleY: 1,
-            borderWidth: 1,
           }}
           animate={{
             scaleX: isHover ? 1.02 : 1,
             scaleY: isHover ? 1.1 : 1,
-            borderWidth: isHover ? 1 : 1,
+          }}
+          transition={{
+            duration: AnimationConfig.NORMAL,
+            ease: AnimationConfig.EASING,
           }}
         />
       )}
@@ -91,12 +102,14 @@ const Button = ({
           initial={{
             scaleX: 1,
             scaleY: 1,
-            borderWidth: 1,
           }}
           animate={{
             scaleX: isHover ? 1.02 : 1,
             scaleY: isHover ? 1.1 : 1,
-            borderWidth: isHover ? 1 : 1,
+          }}
+          transition={{
+            duration: AnimationConfig.NORMAL,
+            ease: AnimationConfig.EASING,
           }}
         />
       )}
@@ -109,27 +122,40 @@ const Button = ({
       ) : (
         icon
       )}
-      <RippleText isActive={isHover} originPos={mousePos}>
-        {children}
-      </RippleText>
+      <RippleText isActive={isHover}>{children}</RippleText>
     </motion.a>
   );
 };
 
-const RippleText = ({ children, originPos = { x: 0, y: 0 }, isActive }) => {
-  const [boundingRect, setBoundingRect] = useState();
-  const containerRef = useRef();
-  useEffect(() => {
-    setBoundingRect(containerRef.current.getBoundingClientRect());
-  }, [isActive]);
+const RippleTextContainerVariants = {
+  initial: {
+    transition: {
+      staggerChildren: 0.015,
+    },
+  },
+  active: {
+    transition: {
+      staggerChildren: 0.015,
+    },
+  },
+};
 
-  const textLength = children.length;
+const RippleTextVariants = {
+  initial: { fontVariationSettings: `"wght" 400` },
+  active: {
+    fontVariationSettings: `"wght" 600`,
+    transition: {
+      duration: 0.2,
+      ease: AnimationConfig.EASING,
+    },
+  },
+};
 
+const RippleText = ({ children, isActive }) => {
   return (
     <span
-      ref={containerRef}
       className="relative flex-shrink-0 inline-flex justify-between items-center whitespace-nowrap"
-      // for compensating t
+      // to compensate vertical positioning of all caps
       style={{ marginTop: ".2em", lineHeight: ".55em" }}
     >
       {/* invisible placeholder for a fixed width */}
@@ -138,35 +164,20 @@ const RippleText = ({ children, originPos = { x: 0, y: 0 }, isActive }) => {
       </span>
 
       {/* container for animating span */}
-      <span className="absolute left-0 right-0 text-center">
+      <motion.span
+        className="absolute left-0 right-0 text-center"
+        variants={RippleTextContainerVariants}
+        initial="initial"
+        animate={isActive ? "active" : "initial"}
+      >
         {children.split("").map((val, index) => {
-          const originOffsetNormalized = (() => {
-            if (!boundingRect) return 0;
-            return (originPos.x - boundingRect.left) / boundingRect.width;
-          })();
-          const currentCharacterLocationNoramlized = (index + 1) / textLength;
-
-          const delayFactor = Math.abs(
-            originOffsetNormalized - currentCharacterLocationNoramlized
-          );
-
           return (
-            <motion.span
-              key={index}
-              initial={{ fontVariationSettings: `"wght" 400` }}
-              animate={{
-                fontVariationSettings:
-                  !isSSR && isActive ? `"wght" 600` : `"wght" 400`,
-                transition: {
-                  delay: !isSSR && delayFactor * 0.2,
-                },
-              }}
-            >
+            <motion.span key={index} variants={RippleTextVariants}>
               {val}
             </motion.span>
           );
         })}
-      </span>
+      </motion.span>
     </span>
   );
 };

@@ -1,0 +1,5 @@
+.accent-gradient-bg {
+  background-image: url(../../static/images/gradient-effect.svg);
+  background-position-x: center;
+  background-position-y: center;
+}
