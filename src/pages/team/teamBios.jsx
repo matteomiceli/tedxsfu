@@ -1,11 +1,12 @@
 import React from "react";
 import HorizontalScrollContainer from "../../components/HorizontalScrollContainer";
 import Button from "../../components/Button";
-import { StaticImage } from "gatsby-plugin-image";
 import arrow from "../../static/images/upArrow.svg";
 import linkedIn from "../../static/images/icons/linkedIn.svg";
 import instagram from "../../static/images/icons/instagram.svg";
 import facebook from "../../static/images/icons/facebook.svg";
+
+import Image from "../../components/Image";
 
 import iconBack from "../../../static/images/icons/icon-backward.svg";
 
@@ -48,7 +49,7 @@ function BioContainer({ member, i }) {
           : "bio-container text-white flex mr-36"
       }
     >
-      <img
+      <Image
         className={`teambio-img pr-8 self-${i % 2 === 0 ? "start" : "end"}`}
         src={member.img}
         alt=""
@@ -64,21 +65,21 @@ function BioContainer({ member, i }) {
         <div className="socials flex">
           {member.socials.linked ? (
             <a className="mr-4" href={member.socials.linked} target="_blank">
-              <img className="h-6" src={linkedIn} alt="linkedIn" />
+              <Image className="h-6" src={linkedIn} alt="linkedIn" />
             </a>
           ) : (
             ""
           )}
           {member.socials.instagram ? (
             <a className="mr-4" href={member.socials.instagram} target="_blank">
-              <img className="h-6" src={instagram} alt="instagram" />
+              <Image className="h-6" src={instagram} alt="instagram" />
             </a>
           ) : (
             ""
           )}
           {member.socials.facebook ? (
             <a className="mr-4" href={member.socials.facebook} target="_blank">
-              <img className="h-6" src={facebook} alt="facebook" />
+              <Image className="h-6" src={facebook} alt="facebook" />
             </a>
           ) : (
             ""

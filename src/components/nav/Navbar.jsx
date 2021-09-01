@@ -1,11 +1,11 @@
 import { Link } from "gatsby";
 import React, { useState } from "react";
-import Logo from "../../static/images/logo.png";
 
 import { motion } from "framer-motion";
 
 import Menu from "./Menu";
 import EventInfo from "./EventInfo";
+import Image from "../Image";
 
 import { breakpoints, useBreakpoint } from "../../hooks/useBreakpoint";
 import MobileNav from "./MobileNav";
@@ -35,7 +35,11 @@ function Navbar({ page }) {
           <div className="flex w-full md:w-auto">
             <div className="site-logo lg:w-axis mr-auto md:mr-4 lg:mr-0">
               <Link to="/">
-                <img className="site-logo" src={Logo} alt="TEDxSFU logo" />
+                <Image
+                  className="site-logo"
+                  src="/images/logo.png"
+                  alt="TEDxSFU logo"
+                />
               </Link>
             </div>
             <EventInfo />

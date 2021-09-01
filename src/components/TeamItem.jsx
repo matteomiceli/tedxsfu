@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "gatsby";
+import Image from "./Image";
 
 function TeamItem({ team, width, delta, scroll }) {
   return (
@@ -7,12 +8,18 @@ function TeamItem({ team, width, delta, scroll }) {
       <div className="flex h-full w-full">
         <div className="relative top-1/4 mt-2">
           <Link to={`/team/${team.href}`}>
-            <img
+            <Image
               className="team-image"
               src={team.img}
               alt={team.team}
               loading="lazy"
             />
+            {/* <img
+              className="team-image"
+              src={team.img}
+              alt={team.team}
+              loading="lazy"
+            /> */}
           </Link>
           <Link className="flex mt-4" to={`/team/${team.href}`}>
             <h2 className="font-semibold mr-36">{team.team}</h2>

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import HorizontalScrollContainer from "../components/HorizontalScrollContainer";
 import sponsors from "../content/sponsors";
 import Button from "../components/Button";
+import Image from "../components/Image";
 import SocialButton from "../components/SocialButton";
 import CloseIcon from "../static/images/icons/close.svg";
 import { AnimationConfig } from "../AnimationConfig";
@@ -139,7 +140,7 @@ const SponsorBig = ({
             className="cursor-pointer sm:cursor-default"
             onClick={() => isMobile && setIsModalShowing(true)}
           >
-            <img src={logo} alt={`${name}'s logo`} />
+            <Image src={logo} alt={`${name}'s logo`} />
           </a>
         </div>
         <div className="w-sponsor-text ml-8 hidden sm:flex flex-col">
@@ -187,7 +188,7 @@ const SponsorSmall = ({
             className="cursor-pointer sm:cursor-default"
             onClick={() => isMobile && setIsModalShowing(true)}
           >
-            <img
+            <Image
               className="max-h-full object-contain"
               src={logo}
               alt={`${name}'s logo`}
@@ -277,7 +278,7 @@ const SponsorInfoModal = ({
               },
             }}
           >
-            <img
+            <Image
               className="col-start-1 max-h-72 mb-4"
               src={logo}
               alt={`${name}'s logo`}
