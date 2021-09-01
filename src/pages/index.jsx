@@ -36,7 +36,10 @@ const IndexPage = () => {
         />
       ) : (
         <SpeakerMobileNav 
-          width={width}
+          spySpeaker={spySpeaker}
+          setSpeaker={setSpeaker}
+          scroll={scroll}
+          setScroll={setScroll}
         />
       )}
     </>
