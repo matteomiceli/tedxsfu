@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect} from "react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import speakers from "../content/speakers";
 
-function SpeakerMobileNav({ spySpeaker, setSpeaker }) {
+function SpeakerMobileNav({ spySpeaker, setSpeaker, scroll, setScroll }) {
   
   const [navScroll, setNavScroll] = useState(0);
 
@@ -32,9 +32,9 @@ function SpeakerMobileNav({ spySpeaker, setSpeaker }) {
     <div className="absolute text-white text-4xl w-full bottom-20">
       <div
         onScroll={(e) => handleScroll(e)}
-        className="mobile-speaker-container h-24 bg-ted-red flex overflow-x-scroll"
+        className="mobile-speaker-container h-24 bg-transparent flex overflow-x-scroll"
       >
-        <div className="mobile-panel-spacer bg-green-400 w-96"></div>
+        <div className="mobile-panel-spacer bg-transparent w-96"></div>
         {speakers.map((speaker, i) => {
           return (
             <SpeakerMobilePanel
@@ -46,7 +46,7 @@ function SpeakerMobileNav({ spySpeaker, setSpeaker }) {
             />
           );
         })}
-        <div className="mobile-panel-spacer bg-green-400 w-96"></div>
+        <div className="mobile-panel-spacer bg-transparent w-96"></div>
       </div>
     </div>
   );
@@ -59,7 +59,7 @@ function SpeakerMobilePanel({ spySpeaker, setSpeaker, speaker, i }) {
     <div
       className={`${
         spySpeaker === i + 1 ? "panel-active" : "panel-notactive"
-      } speaker-mobile-panel h-full bg-blue-400 z-10 mx-0.5`}
+      } speaker-mobile-panel mobile-speaker${i + 1} h-full bg-blue-400 z-10 mx-0.5`}
     ></div>
   );
 }

@@ -165,6 +165,26 @@ body {
   min-width: 72px;
 }
 
+.mobile-speaker1 {
+  background: url("../static/images/speakers/speaker1.png") center no-repeat;
+  background-size: 200%;
+}
+
+.mobile-speaker2 {
+  background: url("../static/images/speakers/speaker2.png") center no-repeat;
+  background-size: 150%;
+}
+
+.mobile-speaker3 {
+  background: url("../static/images/speakers/speaker3.png") center no-repeat;
+  background-size: 200%;
+}
+
+.mobile-speaker4 {
+  background: url("../static/images/speakers/speaker4.png") center no-repeat;
+  background-size: 200%;
+}
+
 /* TEAMS */
 
 .team-scroll {
