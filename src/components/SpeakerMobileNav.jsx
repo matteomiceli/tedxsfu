@@ -1,22 +1,24 @@
-import React, { useRef, useState} from "react";
-
+import React, { useRef, useState, useEffect} from "react";
+import scrollTo from "gatsby-plugin-smoothscroll";
 import speakers from "../content/speakers";
 
 function SpeakerMobileNav({ spySpeaker, setSpeaker }) {
   
   const [navScroll, setNavScroll] = useState(0);
 
-  if (typeof window === "undefined") {
-    return <></>;
-  }
+  useEffect(() => {
+    console.log(navScroll)
+  }, [navScroll])
 
   function handleScroll(e) {
-    console.log(e.currentTarget.scrollLeft);
-
-    // based on scroll left position we determine how many panels have been scrolled
+    setNavScroll(e.currentTarget.scrollLeft);
   }
 
-  const windowWidth = window.innerWidth / 2;
+  // if (typeof window === "undefined") {
+  //   return <></>;
+  // }
+
+  // const windowWidth = window.innerWidth / 2;
 
   return (
     <div className="absolute text-white text-4xl w-full bottom-20">
