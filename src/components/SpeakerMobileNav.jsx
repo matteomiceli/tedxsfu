@@ -7,8 +7,16 @@ function SpeakerMobileNav({ spySpeaker, setSpeaker }) {
   const [navScroll, setNavScroll] = useState(0);
 
   useEffect(() => {
-    console.log(navScroll)
-  }, [navScroll])
+    let panelWidth = 76;
+    let speakerPos = navScroll / panelWidth;
+    setSpeaker(speakerPos)
+    console.log(parseInt(speakerPos + 1));
+
+  }, [navScroll]);
+
+  useEffect(() => {
+    
+  }, [spySpeaker])
 
   function handleScroll(e) {
     setNavScroll(e.currentTarget.scrollLeft);
@@ -31,6 +39,7 @@ function SpeakerMobileNav({ spySpeaker, setSpeaker }) {
           return (
             <SpeakerMobilePanel
               speaker={speaker}
+              key={i}
               i={i}
               spySpeaker={spySpeaker}
               setSpeaker={setSpeaker}
@@ -50,7 +59,7 @@ function SpeakerMobilePanel({ spySpeaker, setSpeaker, speaker, i }) {
     <div
       className={`${
         spySpeaker === i + 1 ? "panel-active" : "panel-notactive"
-      } speaker-mobile-panel h-full bg-blue-400 z-10 mr-1`}
+      } speaker-mobile-panel h-full bg-blue-400 z-10 mx-0.5`}
     ></div>
   );
 }
