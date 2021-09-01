@@ -8,16 +8,20 @@ const Image = ({ src, halfBreakpoint, ...props }) => {
     <picture>
       {halfBreakpoint && (
         <>
-          <source type="image/webp" srcset={srcStrippedExtension + ".webp"} />
           <source
             type="image/webp"
+            srcSet={srcStrippedExtension + ".webp"}
             media={`(min-width: ${halfBreakpoint}px)`}
-            srcset={srcStrippedExtension + "@half.webp"}
+          />
+          <source
+            type="image/webp"
+            media={`(max-width: ${halfBreakpoint - 1}px)`}
+            srcSet={srcStrippedExtension + "@half.webp"}
           />
         </>
       )}
       {!halfBreakpoint && (
-        <source type="image/webp" srcset={srcStrippedExtension + ".webp"} />
+        <source type="image/webp" srcSet={srcStrippedExtension + ".webp"} />
       )}
       <img src={src} {...props} />
     </picture>

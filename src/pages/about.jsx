@@ -2,15 +2,16 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion, useElementScroll, useTransform } from "framer-motion";
 import HorizontalScrollContainer from "../components/HorizontalScrollContainer";
 
+import Image from "../components/Image";
+
 // import assets
-import IMAGE_1 from "../../static/images/about-page-assets/past-conference.jpg";
-import IMAGE_2 from "../../static/images/about-page-assets/past-conference-2.jpg";
 import GrowingTextAnimation from "../components/animation/GrowingTextAnimation";
 import { AnimationConfig } from "../AnimationConfig";
 import {
   SimpleDivAnimation,
   SimpleSectionAnimation,
 } from "../components/animation/SimpleTransitionAnimation";
+import { breakpoints } from "../hooks/useBreakpoint";
 
 const About = () => {
   const scrollContainerRef = useRef();
@@ -174,23 +175,22 @@ const About = () => {
             “Bloom means to flourish, to mature into achievement of one’s
             potential.”
           </blockquote>
-          <img
+          <Image
             className="flex-shrink flex-grow mt-8 object-cover"
-            src={IMAGE_1}
+            src="/images/about-page-assets/past-conference.jpg"
             alt="woman dancing on stage"
           />
         </SimpleSectionAnimation>
 
         {/* 3nd page */}
         <SimpleSectionAnimation className="flex-shrink-0 h-screen flex flex-col ml-8 pb-28 pr-32">
-          <div
-            className="flex-shrink-0 flex-grow w-full"
-            style={{
-              backgroundImage: `url(${IMAGE_2})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
+          <div className="flex-shrink-0 flex-grow w-full relative">
+            <Image
+              src="/images/about-page-assets/past-conference-2.jpg"
+              className="absolute w-full h-full object-cover"
+              halfBreakpoint={breakpoints.sm}
+            />
+          </div>
           {/* <img
             className="col-span-2 flex-shrink-0 w-full object-cover"
             src={IMAGE_2}
