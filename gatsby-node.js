@@ -30,3 +30,72 @@ exports.createPages = async function ({ actions, graphql }) {
     });
   });
 };
+
+/**
+ * Converting images into webp in build time
+ */
+
+const fs = require("fs");
+const path = require("path");
+const sharp = require("sharp");
+
+const getAllFiles = (dirPath, exts, arrayOfFiles) => {
+  const files = fs.readdirSync(dirPath);
+
+  arrayOfFiles = arrayOfFiles || [];
+
+  files.forEach(function (file) {
+    if (fs.statSync(dirPath + "/" + file).isDirectory()) {
+      arrayOfFiles = getAllFiles(dirPath + "/" + file, exts, arrayOfFiles);
+      return;
+    }
+
+    // its not a directory
+    const extension = path.extname(file);
+
+    // add to record if the extension matches
+    if (exts.some((str) => `.${str}` === extension))
+      arrayOfFiles.push(path.join(__dirname, dirPath, "/", file));
+  });
+
+  return arrayOfFiles;
+};
+
+// crawl the image directory covert them to webp
+exports.onPreInit = async () => {
+  const IMAGE_DIR = "static/images/";
+  const IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "gif"];
+
+  console.log(`Gathering images under ${IMAGE_DIR}...`);
+  const allImages = getAllFiles(IMAGE_DIR, IMAGE_EXTENSIONS);
+
+  console.log(`Converting images into webp...`);
+
+  // parallel process all the images
+  await Promise.all(
+    allImages.map(async (imgPath) => {
+      const relativeImgPath = path.relative(__dirname, imgPath);
+      const extName = path.extname(relativeImgPath);
+      // const fileName = path.basename(relativeImgPath, extName);
+      const pathWithoutExt = relativeImgPath.substring(
+        0,
+        relativeImgPath.indexOf(extName)
+      );
+      const writeFilePathWebp = pathWithoutExt + ".webp";
+      const writeFilePathWebpHalf = pathWithoutExt + "@half.webp";
+
+      console.log(`Writing "${writeFilePathWebp}"`);
+      // get the image and converting it into webp
+      await sharp(relativeImgPath).webp().toFile(writeFilePathWebp);
+
+      console.log(`Writing "${writeFilePathWebpHalf}"`);
+      await sharp(relativeImgPath)
+        .metadata()
+        .then(({ width }) =>
+          sharp(relativeImgPath)
+            .resize(Math.round(width * 0.5))
+            .toFile(writeFilePathWebpHalf)
+        );
+    })
+  );
+};
