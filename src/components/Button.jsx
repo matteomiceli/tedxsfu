@@ -22,13 +22,13 @@ const Button = ({
 
   const buttonStyle = (() => {
     if (cta)
-      return "text-interactive py-2.5 px-5 text-black rounded-full relative inline-flex accent-gradient-bg";
+      return "text-interactive py-2.5 px-5 text-black rounded-full relative inline-flex accent-gradient-bg select-none";
     if (primary)
-      return "text-interactive py-2 px-4 bg-white text-black rounded-full relative inline-flex";
+      return "text-interactive py-2 px-4 bg-white text-black rounded-full relative inline-flex select-none";
     if (secondary)
-      return "text-interactive py-2 px-4 text-white rounded-full relative inline-flex border border-white";
+      return "text-interactive py-2 px-4 text-white rounded-full relative inline-flex border border-white select-none";
     if (tertiary)
-      return "text-interactive py-2 px-4 text-white rounded-full relative inline-flex";
+      return "text-interactive py-2 px-4 text-white rounded-full relative inline-flex select-none";
 
     // default as inline text button
     return "text-interactive relative inline-block";

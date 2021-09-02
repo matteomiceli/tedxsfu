@@ -34,7 +34,7 @@ const MinModule = () => (
         style={{ marginTop: 1, lineHeight: 1 }}
       >
         <span className="font-bold">Nov 20th</span> <br />
-        1-8pm
+        10am-6pm
       </div>
     </div>
   </div>
@@ -71,7 +71,7 @@ const FullModule = () => (
       className="flex flex-col px-2 justify-between border-l border-ted-red"
       style={{ height: 52 }}
     >
-      <p className="text-white text-3xl w-26 font-light">1-8 pm</p>
+      <p className="text-white text-3xl w-26 font-light">10am-6pm</p>
       <p className="text-gray-400 text-sm" style={{ lineHeight: 0.55 }}>
         Time
       </p>
