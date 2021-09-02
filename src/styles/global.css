@@ -214,8 +214,8 @@ body {
 .team-image {
   /* make the image resize base on the ratio */
   /* max-width: none !important; */
-  min-width: 320px;
-  /* width: 80vw; */
+  /* min-width: 320px; */
+  min-width: 80vw;
 }
 
 .team-nav-overflow {
@@ -358,6 +358,7 @@ body {
 
     .team-image {
       height: 50vh;
+      min-width: 0;
       object-fit: cover;
     }
   }
