@@ -18,7 +18,7 @@ function TeamItem({ team, width, delta, scroll }) {
             />
           </Link>
           <Link className="flex mt-4" to={`/team/${team.href}`}>
-            <h2 className="font-semibold mr-6 sm:mr-10 md:mr-20 lg:mr-36 text-xs sm:text-sm lg:text-base">
+            <h2 className="flex-shrink-0 font-bold mr-6 sm:mr-10 md:mr-20 lg:mr-36 text-xs sm:text-sm xl:text-base">
               {team.team}
             </h2>
             <div className="flex w-full flex-wrap">
@@ -35,12 +35,12 @@ function TeamItem({ team, width, delta, scroll }) {
 
 const TeamMembers = ({ member }) => {
   return (
-    <div className="min-w-max md:w-32 mr-3 mb-3">
-      <h2 className="font-semibold text-xs sm:text-sm lg:text-base">
+    <div className="min-w-max w-18 lg:w-32 mr-3 mb-3">
+      <h2 className="font-bold text-xs sm:text-sm xl:text-base">
         {member.name}
       </h2>
-      <p className="text-xs sm:text-sm lg:text-base">{member.pro}</p>
-      <p className="text-xs sm:text-sm lg:text-base">{member.role}</p>
+      <p className="text-xs sm:text-sm xl:text-base">{member.pro}</p>
+      <p className="text-xs sm:text-sm xl:text-base">{member.role}</p>
     </div>
   );
 };
