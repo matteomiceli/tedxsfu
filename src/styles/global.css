@@ -195,8 +195,8 @@ body {
 }
 
 .team-nav-container {
-  top: 18%;
-  width: 100%;
+  /* top: 18%; */
+  /* width: 100%; */
 }
 
 .team-panel-active {
@@ -214,8 +214,8 @@ body {
 .team-image {
   /* make the image resize base on the ratio */
   /* max-width: none !important; */
-  min-width: 320px;
-  /* width: 80vw; */
+  /* min-width: 320px; */
+  min-width: 80vw;
 }
 
 .team-nav-overflow {
@@ -282,6 +282,9 @@ body {
     .mt-flowline {
       margin-top: 25vh;
     }
+    .mt-flowline-mobile {
+      margin-top: 15vh;
+    }
     .pt-flowline-sm {
       padding-top: 6rem;
     }
@@ -342,19 +345,20 @@ body {
     .team-panel-active {
       color: white;
       border-top: 1px solid #e61b2e;
-      padding: 10px 0 10px 0;
+      padding: 10px 0 0px 0;
       margin: 0 20px 0 0;
     }
 
     .team-panel-notactive {
       color: #949494;
       border-top: 1px solid transparent;
-      padding: 10px 0 10px 0;
+      padding: 10px 0 0px 0;
       margin: 0 20px 0 0;
     }
 
     .team-image {
       height: 50vh;
+      min-width: 0;
       object-fit: cover;
     }
   }
