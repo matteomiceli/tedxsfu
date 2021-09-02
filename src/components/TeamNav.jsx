@@ -1,4 +1,4 @@
-import React, { isValidElement, useState } from "react";
+import React, { useRef, useState } from "react";
 import upArrow from "../static/images/upArrow.svg";
 import TeamPanels from "./TeamPanels";
 import teams from "../content/teams";
@@ -9,6 +9,12 @@ import GrowingAnimation from "../components/animation/GrowingTextAnimation";
 import { AnimationConfig } from "../AnimationConfig";
 
 function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
+  const [isScrolled, setIsScrolled] = useState();
+  const navContainerRef = useRef();
+  const handleNavBarScroll = () => {
+    setIsScrolled(navContainerRef.current.scrollLeft !== 0);
+  };
+
   return (
     <div className="w-full flex justify-start mt-flowline-mobile md:mt-flowline">
       <div className="team-nav-container flex flex-col items-end lg:flex-row w-full lg:ml-axis">
@@ -17,29 +23,47 @@ function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
             <GrowingAnimation delay={0.1}>Meet the Team</GrowingAnimation>
           </h1>
         </div>
-        <div className="self-start lg:self-end my-4 lg:my-0 h-full w-full relative">
+        <motion.div
+          className="self-start lg:self-end my-4 lg:my-0 h-full w-full relative"
+          initial={{
+            opacity: 0,
+            x: 20,
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+            transition: {
+              duration: AnimationConfig.NORMAL,
+              ease: AnimationConfig.EASING,
+            },
+          }}
+          exit={{
+            opacity: 0,
+            x: -20,
+            transition: {
+              duration: AnimationConfig.NORMAL,
+              ease: AnimationConfig.EASING_INVERTED,
+            },
+          }}
+        >
+          {/* shades to indicate scrolled — shade left */}
+          <div
+            className={
+              isScrolled
+                ? "block absolute left-0 w-8 h-full z-50 pointer-events-none shade-from-left"
+                : "hidden"
+            }
+          />
+          {/* shades to indicate scrolled — shade right */}
+          <div
+            className={
+              "block absolute right-0 w-8 h-full z-50 pointer-events-none shade-from-right"
+            }
+          />
           <motion.div
+            ref={navContainerRef}
+            onScroll={handleNavBarScroll}
             className="team-nav-overflow overflow-x-scroll lg:absolute left-0 bottom-1 2xl:bottom-2 right-0"
-            initial={{
-              opacity: 0,
-              x: 20,
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-              transition: {
-                duration: AnimationConfig.NORMAL,
-                ease: AnimationConfig.EASING,
-              },
-            }}
-            exit={{
-              opacity: 0,
-              x: -20,
-              transition: {
-                duration: AnimationConfig.NORMAL,
-                ease: AnimationConfig.EASING_INVERTED,
-              },
-            }}
           >
             <div className="flex flex-nowrap">
               {teams.map((team, index) => {
@@ -60,7 +84,7 @@ function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
               })}
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
