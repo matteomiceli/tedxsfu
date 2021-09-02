@@ -48,7 +48,9 @@ function TeamScroll({ scroll, setScroll, width, setWidth }) {
         handleScroll(e);
       }}
     >
-      <div className="inner-scroll-container flex w-full ml-8 lg:w-5/6 lg:mx-auto 2xl:pl-16">{scrolls}</div>
+      <div className="inner-scroll-container flex w-full ml-document lg:pl-axis">
+        {scrolls}
+      </div>
     </div>
   );
 }

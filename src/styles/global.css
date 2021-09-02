@@ -189,8 +189,8 @@ body {
 /* TEAMS */
 
 .team-scroll {
-  min-width: 70vw !important;
-  width: 100vw;
+  /* min-width: 70vw !important; */
+  /* width: 100vw; */
   height: 100%;
 }
 
@@ -202,34 +202,26 @@ body {
 .team-panel-active {
   color: white;
   border-top: 1px solid #e61b2e;
-  padding: 12px 0 10px 0;
   margin: 0 20px 0 0;
 }
 
 .team-panel-notactive {
   color: #949494;
   border-top: 1px solid transparent;
-  padding: 12px 0 10px 0;
   margin: 0 20px 0 0;
 }
 
 .team-image {
-  min-width: 270px;
-}
-
-.team-title-container {
-  width: calc(100vw - 32px);
+  /* make the image resize base on the ratio */
+  /* max-width: none !important; */
+  min-width: 320px;
+  /* width: 80vw; */
 }
 
 .team-nav-overflow {
   scrollbar-width: none;
-  width: calc(100vw - 32px);
+  /* width: calc(100vw - 32px); */
 }
-
-.team-nav-container {
-  min-width: 770px;
-}
-
 /* TEAM BIOS */
 
 .bio-container {
@@ -344,31 +336,26 @@ body {
 
     /* teams */
     .team-scroll {
-      min-width: 70vw !important;
+      /* width: 70vw !important; */
     }
 
-    .team-nav-container {
-      min-width: 770px;
-    }
-    
     .team-panel-active {
       color: white;
       border-top: 1px solid #e61b2e;
-      padding: 16px 0 10px 0;
+      padding: 10px 0 10px 0;
       margin: 0 20px 0 0;
     }
-    
+
     .team-panel-notactive {
       color: #949494;
       border-top: 1px solid transparent;
-      padding: 16px 0 10px 0;
+      padding: 10px 0 10px 0;
       margin: 0 20px 0 0;
     }
 
     .team-image {
-      max-width: 100%;
-      max-height: 60vh;
+      height: 50vh;
+      object-fit: cover;
     }
-    
   }
 }
