@@ -1,15 +1,18 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { motion } from "framer-motion";
 import { AnimationConfig } from "../../AnimationConfig";
+import PlayButton from "./PlayButton";
 
 const HIDE_TIMEOUT = 4000;
 
 const VideoControlBar = ({
   currentTime,
   duration,
+  isPlaying,
   onSeekBegin,
   onSeekEnd,
   onSeekChange,
+  onTogglePlay,
 }) => {
   // second total seconds in bar
   const [isHidden, setIsHidden] = useState(false);
@@ -70,7 +73,7 @@ const VideoControlBar = ({
       >
         {/* the center align module */}
         <motion.div
-          className="mr-4 w-10 text-center select-none"
+          className="mr-4 w-10 text-center select-none flex"
           initial={{ opacity: 0 }}
           animate={{
             opacity: isHoveringSeek ? 1 : 0.6,
@@ -80,7 +83,12 @@ const VideoControlBar = ({
             },
           }}
         >
-          {secToTimeString(currentTime)}
+          {/* {secToTimeString(currentTime)} */}
+          <PlayButton
+            className="my-auto"
+            onClick={onTogglePlay}
+            isPlaying={isPlaying}
+          />
         </motion.div>
         <ProgressBar
           currentTime={currentTime}
@@ -91,7 +99,7 @@ const VideoControlBar = ({
           onSeekChange={onSeekChange}
         />
         <motion.div
-          className="ml-4 w-10 text-center select-none"
+          className="ml-4 w-10 text-center align-middle pt-1 select-none"
           initial={{ opacity: 0 }}
           animate={{
             opacity: isHoveringSeek ? 1 : 0.6,
@@ -101,7 +109,7 @@ const VideoControlBar = ({
             },
           }}
         >
-          {secToTimeString(duration)}
+          {secToTimeString(duration - currentTime)}
         </motion.div>
       </motion.div>
     </motion.div>

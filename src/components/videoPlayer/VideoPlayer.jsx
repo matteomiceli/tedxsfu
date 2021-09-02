@@ -200,10 +200,12 @@ const VideoPlayer = ({
       {control && (
         <VideoControlBar
           currentTime={currentTime}
+          isPlaying={isPlaying}
           duration={duration}
           onSeekBegin={handleSeekBegin}
           onSeekEnd={handleSeekEnd}
           onSeekChange={handleSeekChange}
+          onTogglePlay={() => setIsPlaying(!isPlaying)}
         />
       )}
       <motion.video
