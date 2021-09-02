@@ -2,9 +2,15 @@ import React, { useRef, useState, useEffect} from "react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import speakers from "../content/speakers";
 
-function SpeakerMobileNav({ spySpeaker, setSpeaker, scroll, setScroll }) {
+function SpeakerMobileNav({ spySpeaker, setSpeaker, scroll, setScroll, scrollRef }) {
   
   const [navScroll, setNavScroll] = useState(0);
+
+  const width = () => {
+    if (typeof window !== undefined) {
+      return window.innerWidth;
+    }
+  }
 
   useEffect(() => {
     let panelWidth = 76;
@@ -14,7 +20,9 @@ function SpeakerMobileNav({ spySpeaker, setSpeaker, scroll, setScroll }) {
   }, [navScroll]);
 
   useEffect(() => {
-    scrollTo(`#scroll-${`speaker${spySpeaker}`}`);
+    // scrollTo(`#scroll-speaker${spySpeaker}`);
+    const 
+    
   }, [spySpeaker])
 
   function handleScroll(e) {
