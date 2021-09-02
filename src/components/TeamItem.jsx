@@ -38,7 +38,7 @@ function TeamItem({ team, width, delta, scroll }) {
 
 const TeamMembers = ({ member }) => {
   return (
-    <div className="min-w-max w-18 lg:w-32 mr-3 mb-3">
+    <div className="w-18 lg:w-32 mr-3 mb-3">
       <h2 className="font-bold text-xs sm:text-sm xl:text-base">
         {member.name}
       </h2>
