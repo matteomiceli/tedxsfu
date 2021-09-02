@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { AnimationConfig } from "../../AnimationConfig";
 
-const STAGGER_DELAY = 0.2;
+const STAGGER_DELAY = 0.1;
 
 const variants = {
   initial: { opacity: 0, x: 20 },

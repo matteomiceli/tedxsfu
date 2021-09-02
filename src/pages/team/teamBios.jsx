@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+
 import HorizontalScrollContainer from "../../components/HorizontalScrollContainer";
 import Button from "../../components/Button";
 import arrow from "../../static/images/upArrow.svg";
@@ -9,6 +11,8 @@ import facebook from "../../static/images/icons/facebook.svg";
 import Image from "../../components/Image";
 
 import iconBack from "../../../static/images/icons/icon-backward.svg";
+import GrowingTextAnimation from "../../components/animation/GrowingTextAnimation";
+import { SimpleDivAnimation } from "../../components/animation/SimpleTransitionAnimation";
 
 function TeamBios({ location, history, pageContext }) {
   // Entries in the team.js object
@@ -21,16 +25,27 @@ function TeamBios({ location, history, pageContext }) {
     <HorizontalScrollContainer>
       <div className="h-3/5 flex relative top-1/4">
         <div className="w-full mr-36 pl-24 h-full flex flex-col justify-center">
-          <h1 className="text-5xl w-96 mb-8">{teamInfo.team}</h1>
-          <p className="mb-8">{teamInfo.teamBio}</p>
-          <Button className="mr-auto" icon={iconBack} href="/team" secondary>
-            Back
-          </Button>
+          <h1 className="text-5xl w-96 mb-8">
+            <GrowingTextAnimation>{teamInfo.team}</GrowingTextAnimation>
+          </h1>
+          <SimpleDivAnimation staggerIndex={teamInfo.members.length + 1}>
+            <p className="mb-8">{teamInfo.teamBio}</p>
+            <Button className="mr-auto" icon={iconBack} href="/team" secondary>
+              Back
+            </Button>
+          </SimpleDivAnimation>
         </div>
 
         <div className="flex h-full">
           {teamInfo.members.map((member, i) => {
-            return <BioContainer member={member} i={i} key={i} />;
+            return (
+              <BioContainer
+                member={member}
+                i={i}
+                key={i}
+                total={teamInfo.members.length}
+              />
+            );
           })}
         </div>
       </div>
@@ -40,9 +55,12 @@ function TeamBios({ location, history, pageContext }) {
 
 export default TeamBios;
 
-function BioContainer({ member, i }) {
+function BioContainer({ member, i, total }) {
+  console.log(total);
+
   return (
-    <div
+    <SimpleDivAnimation
+      staggerIndex={total - i}
       className={
         member.imgWide
           ? "bio-container-wide text-white flex flex-col mr-36"
@@ -86,6 +104,6 @@ function BioContainer({ member, i }) {
           )}
         </div>
       </div>
-    </div>
+    </SimpleDivAnimation>
   );
 }
