@@ -16,15 +16,15 @@ function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
   };
 
   return (
-    <div className="w-full flex justify-start mt-flowline-mobile md:mt-flowline">
+    <div className="w-full justify-start mt-flowline-mobile md:mt-flowline">
       <div className="team-nav-container flex flex-col items-end lg:flex-row w-full lg:ml-axis">
-        <div className="self-start ml-document lg:self-end flex-shrink-0">
-          <h1 className="mr-16 2xl:mr-24 lg:my-0 text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl">
+        <div className="self-start flex-auto ml-document lg:self-end">
+          <h1 className="mr-16 2xl:mr-24 lg:my-0 text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl whitespace-nowrap">
             <GrowingAnimation delay={0.1}>Meet the Team</GrowingAnimation>
           </h1>
         </div>
         <motion.div
-          className="self-start lg:self-end my-4 lg:my-0 h-full w-full relative"
+          className="self-start flex-auto lg:self-end my-4 lg:my-0 lg:h-full w-full relative"
           initial={{
             opacity: 0,
             x: 20,

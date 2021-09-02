@@ -11,7 +11,7 @@ function TeamItem({ team, width, delta, scroll }) {
       className="team-scroll bg-black h-full mr-4 xl:mr-6"
     >
       <div className="flex h-full w-full">
-        <div className="mt-0 lg:mt-6">
+        <div className="mt-0 lg:mt-4">
           <Link to={`/team/${team.href}`}>
             <Image
               className="team-image lg:w-auto lg:max-w-none"
