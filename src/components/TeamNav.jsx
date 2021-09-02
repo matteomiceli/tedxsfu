@@ -17,8 +17,8 @@ function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
 
   return (
     <div className="w-full justify-start mt-flowline-mobile md:mt-flowline">
-      <div className="team-nav-container flex flex-col items-end lg:flex-row w-full lg:ml-axis">
-        <div className="self-start flex-auto ml-document lg:self-end">
+      <div className="team-nav-container flex flex-col items-end lg:flex-row lg:ml-axis">
+        <div className="self-start flex-shrink-0 flex-grow-0 ml-document lg:self-end">
           <h1 className="mr-16 2xl:mr-24 lg:my-0 text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl whitespace-nowrap">
             <GrowingAnimation delay={0.1}>Meet the Team</GrowingAnimation>
           </h1>
@@ -50,14 +50,14 @@ function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
           <div
             className={
               isScrolled
-                ? "block absolute left-0 w-8 h-full z-50 pointer-events-none shade-from-left"
+                ? "block absolute left-0 bottom-0 w-8 h-8 z-50 pointer-events-none shade-from-left"
                 : "hidden"
             }
           />
           {/* shades to indicate scrolled — shade right */}
           <div
             className={
-              "block absolute right-0 w-8 h-full z-50 pointer-events-none shade-from-right"
+              "block absolute right-0 bottom-0 w-8 h-8 z-50 pointer-events-none shade-from-right"
             }
           />
           <motion.div
