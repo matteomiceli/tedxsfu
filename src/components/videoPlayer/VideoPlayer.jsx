@@ -1,40 +1,60 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { AnimationConfig } from "../../AnimationConfig";
-import SeekBar from "./SeekBar";
+import VideoControlBar from "./VideoControlBar";
+
+import { clamp } from "../../utils/util";
+
+import Button from "../Button";
+import ICON_MUTED from "../../../static/images/icons/icon-muted--black.svg";
 
 // load quality footages first before
 
 //@ts-check
-const VideoPlayer = ({ src, autoPlay = true, control = true }) => {
+const VideoPlayer = ({
+  src,
+  mutedAutoPlay = true,
+  control = true,
+  keyboardInput = true,
+  className,
+}) => {
   const videoRef = useRef();
 
   const [currentTime, setCurrentTime] = useState(0);
   const [targetTime, setTargetTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+
+  // Handling the muting of the player
+  useEffect(() => {
+    const video = videoRef.current;
+    video.muted = isMuted;
+    // detect if the player is muted by the user
+    const handleMute = () =>
+      (video.isMuted || video.volume === 0) && setIsMuted(true);
+    video.addEventListener("volumechage", handleMute);
+
+    return () => {
+      video.removeEventListener("volumechange", handleMute);
+    };
+  }, [isMuted]);
 
   useEffect(() => {
     // update progress
     if (videoRef.current.fastSeek) {
       videoRef.current.fastSeek(targetTime);
-      return;
     }
     videoRef.current.currentTime = targetTime;
   }, [targetTime]);
 
-  function attemptPlay() {
-    try {
-      videoRef.current.play();
-    } catch (e) {
-      // setTimeout(attemptPlay, 1000);
-    }
-  }
-
+  /**
+   * Play/pause
+   */
   useEffect(() => {
     if (isPlaying) {
       console.log("play");
-      attemptPlay();
+      videoRef.current.play();
       return;
     }
     console.log("pause");
@@ -50,15 +70,63 @@ const VideoPlayer = ({ src, autoPlay = true, control = true }) => {
     const videoElm = videoRef.current;
     setCurrentTime(videoElm.currentTime);
     setDuration(videoElm.duration);
-    // setIsPlaying(autoPlay);
   };
 
+  /**
+   * handling keyboard navigation
+   */
+  useEffect(() => {
+    if (!keyboardInput) return;
+
+    // use left to seek left
+    function handleKeyStroke(e) {
+      const KEYBOARD_TIME_CHANGE = 5; // 5 seconds
+
+      switch (e.code) {
+        case "Space":
+          // toggle input
+          setIsPlaying(!isPlaying);
+          break;
+        case "ArrowLeft":
+          // seek 5 seconds before
+          const backwardTime = clamp(
+            videoRef.current.currentTime - KEYBOARD_TIME_CHANGE,
+            0,
+            duration
+          );
+          setTargetTime(backwardTime);
+          break;
+        case "ArrowRight":
+          // seek 5 seconds after
+          const forwardTime = clamp(
+            videoRef.current.currentTime + KEYBOARD_TIME_CHANGE,
+            0,
+            duration
+          );
+          setTargetTime(forwardTime);
+          break;
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyStroke);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyStroke);
+    };
+  }, [keyboardInput, isPlaying, duration, currentTime]);
+
+  /**
+   * handling seeking behaviour
+   */
+
   const handleSeekBegin = () => {
-    console.log("seek bgin");
+    console.log("seek begin");
     setIsPlaying(false);
   };
 
   const handleSeekChange = (progress) => {
+    progress = clamp(progress, 0, 1);
+
     console.log(progress * duration);
     setTargetTime(progress * duration);
     setCurrentTime(progress * duration);
@@ -71,7 +139,7 @@ const VideoPlayer = ({ src, autoPlay = true, control = true }) => {
 
   return (
     <motion.div
-      className="relative flex"
+      className={"relative " + className}
       initial={{
         opacity: 0,
         scale: 1.05,
@@ -93,8 +161,44 @@ const VideoPlayer = ({ src, autoPlay = true, control = true }) => {
         },
       }}
     >
+      <AnimatePresence>
+        {isMuted && (
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 flex z-10"
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: AnimationConfig.NORMAL,
+                ease: AnimationConfig.EASING,
+              },
+            }}
+            exit={{
+              opacity: 0,
+              y: 20,
+              transition: {
+                duration: AnimationConfig.NORMAL,
+                ease: AnimationConfig.EASING_INVERTED,
+              },
+            }}
+          >
+            <Button
+              className="mx-auto mb-36"
+              onClick={() => setIsMuted(false)}
+              icon={ICON_MUTED}
+              primary
+            >
+              Unmute
+            </Button>
+          </motion.div>
+        )}
+      </AnimatePresence>
       {control && (
-        <SeekBar
+        <VideoControlBar
           currentTime={currentTime}
           duration={duration}
           onSeekBegin={handleSeekBegin}
@@ -104,15 +208,17 @@ const VideoPlayer = ({ src, autoPlay = true, control = true }) => {
       )}
       <motion.video
         ref={videoRef}
+        onClick={() => setIsPlaying(!isPlaying)}
         onCanPlay={handleCanPlay}
         onTimeUpdate={updateFrameState}
-        className="w-full object-cover mt-auto mb-auto"
+        className="w-full h-full object-cover mt-auto mb-auto"
         width="1920"
         height="1080"
         loop
         muted
-        autoPlay={autoPlay}
+        autoPlay={mutedAutoPlay}
         preload
+        disablePictureInPicture
       >
         <source src={src} type="video/mp4" />
       </motion.video>

@@ -4,7 +4,7 @@ import { AnimationConfig } from "../../AnimationConfig";
 
 const HIDE_TIMEOUT = 4000;
 
-const SeekBar = ({
+const VideoControlBar = ({
   currentTime,
   duration,
   onSeekBegin,
@@ -38,7 +38,7 @@ const SeekBar = ({
 
   return (
     <motion.div
-      className="absolute bottom-0 left-0 right-0"
+      className="absolute bottom-0 left-0 right-0 z-10"
       initial={{ y: 100, opacity: 0 }}
       animate={{
         y: 0,
@@ -56,18 +56,21 @@ const SeekBar = ({
           duration: AnimationConfig.FAST,
         },
       }}
+      onMouseEnter={() => {
+        console.log("enter");
+        setIsHoveringSeek(true);
+      }}
+      onMouseLeave={() => setIsHoveringSeek(false)}
     >
       <motion.div
         className="pb-24 mx-document lg:mx-axis flex flex-row items-center"
         animate={{
           opacity: isHidden ? 0 : 1,
         }}
-        onHoverStart={() => setIsHoveringSeek(true)}
-        onHoverEnd={() => setIsHoveringSeek(false)}
       >
         {/* the center align module */}
         <motion.div
-          className="mr-4 w-10 text-center"
+          className="mr-4 w-10 text-center select-none"
           initial={{ opacity: 0 }}
           animate={{
             opacity: isHoveringSeek ? 1 : 0.6,
@@ -88,7 +91,7 @@ const SeekBar = ({
           onSeekChange={onSeekChange}
         />
         <motion.div
-          className="ml-4 w-10 text-center"
+          className="ml-4 w-10 text-center select-none"
           initial={{ opacity: 0 }}
           animate={{
             opacity: isHoveringSeek ? 1 : 0.6,
@@ -193,7 +196,8 @@ function ProgressBar({
 
 function secToTimeString(seconds) {
   const dispMinutes = Math.floor(seconds / 60);
-  const dispSeconds = dispMinutes === 0 ? Math.round(seconds) : seconds % 60;
+  const dispSeconds =
+    dispMinutes === 0 ? Math.round(seconds) : Math.round(seconds % 60);
 
   const zeroFormattedSeconds =
     dispSeconds >= 10 ? dispSeconds : "0" + dispSeconds;
@@ -201,4 +205,4 @@ function secToTimeString(seconds) {
   return `${dispMinutes}:${zeroFormattedSeconds}`;
 }
 
-export default SeekBar;
+export default VideoControlBar;
