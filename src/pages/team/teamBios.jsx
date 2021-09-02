@@ -65,7 +65,7 @@ function BioContainer({ member, i, total }) {
           : "bio-container text-white flex mr-36"
       }
     >
-      <Image
+      <img
         className={`teambio-img pr-8 self-${i % 2 === 0 ? "start" : "end"}`}
         src={member.img}
         alt=""
@@ -81,21 +81,21 @@ function BioContainer({ member, i, total }) {
         <div className="socials flex">
           {member.socials.linked ? (
             <a className="mr-4" href={member.socials.linked} target="_blank">
-              <Image className="h-6" src={linkedIn} alt="linkedIn" />
+              <img className="h-6" src={linkedIn} alt="linkedIn" />
             </a>
           ) : (
             ""
           )}
           {member.socials.instagram ? (
             <a className="mr-4" href={member.socials.instagram} target="_blank">
-              <Image className="h-6" src={instagram} alt="instagram" />
+              <img className="h-6" src={instagram} alt="instagram" />
             </a>
           ) : (
             ""
           )}
           {member.socials.facebook ? (
             <a className="mr-4" href={member.socials.facebook} target="_blank">
-              <Image className="h-6" src={facebook} alt="facebook" />
+              <img className="h-6" src={facebook} alt="facebook" />
             </a>
           ) : (
             ""
