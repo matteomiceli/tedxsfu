@@ -56,8 +56,6 @@ function TeamBios({ location, history, pageContext }) {
 export default TeamBios;
 
 function BioContainer({ member, i, total }) {
-  console.log(total);
-
   return (
     <SimpleDivAnimation
       staggerIndex={total - i}
