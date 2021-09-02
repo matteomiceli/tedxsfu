@@ -195,8 +195,8 @@ body {
 }
 
 .team-nav-container {
-  top: 18%;
-  width: 100%;
+  /* top: 18%; */
+  /* width: 100%; */
 }
 
 .team-panel-active {
@@ -345,14 +345,14 @@ body {
     .team-panel-active {
       color: white;
       border-top: 1px solid #e61b2e;
-      padding: 10px 0 10px 0;
+      padding: 10px 0 0px 0;
       margin: 0 20px 0 0;
     }
 
     .team-panel-notactive {
       color: #949494;
       border-top: 1px solid transparent;
-      padding: 10px 0 10px 0;
+      padding: 10px 0 0px 0;
       margin: 0 20px 0 0;
     }
 

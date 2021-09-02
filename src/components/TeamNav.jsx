@@ -10,16 +10,16 @@ import { AnimationConfig } from "../AnimationConfig";
 
 function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
   return (
-    <div className="w-full flex justify-start ml-document mt-flowline-mobile md:mt-flowline">
+    <div className="w-full flex justify-start mt-flowline-mobile md:mt-flowline">
       <div className="team-nav-container flex flex-col items-end lg:flex-row w-full lg:ml-axis">
-        <div className="self-start lg:self-end flex-shrink-0">
-          <h1 className="mr-4 text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl">
+        <div className="self-start ml-document lg:self-end flex-shrink-0">
+          <h1 className="mr-16 2xl:mr-24 lg:my-0 text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl">
             <GrowingAnimation delay={0.1}>Meet the Team</GrowingAnimation>
           </h1>
         </div>
-        <div className="self-start lg:self-end my-4 lg:my-0 lg:ml-8 team-nav-overflow overflow-x-scroll w-full">
+        <div className="self-start lg:self-end my-4 lg:my-0 h-full w-full relative">
           <motion.div
-            className="team-nav-container flex w-full"
+            className="team-nav-overflow overflow-x-scroll lg:absolute left-0 bottom-1 2xl:bottom-2 right-0"
             initial={{
               opacity: 0,
               x: 20,
@@ -41,20 +41,24 @@ function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
               },
             }}
           >
-            {teams.map((team, index) => {
-              return (
-                <TeamPanels
-                  team={team}
-                  key={team.i}
-                  spyTeam={spyTeam}
-                  setTeam={setTeam}
-                  scroll={scroll}
-                  setScroll={setScroll}
-                  width={width}
-                  setWidth={setWidth}
-                />
-              );
-            })}
+            <div className="flex flex-nowrap">
+              {teams.map((team, index) => {
+                return (
+                  <div className={index === 0 ? "ml-document lg:ml-0" : ""}>
+                    <TeamPanels
+                      team={team}
+                      key={team.i}
+                      spyTeam={spyTeam}
+                      setTeam={setTeam}
+                      scroll={scroll}
+                      setScroll={setScroll}
+                      width={width}
+                      setWidth={setWidth}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </motion.div>
         </div>
       </div>
