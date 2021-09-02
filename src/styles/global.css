@@ -282,6 +282,9 @@ body {
     .mt-flowline {
       margin-top: 25vh;
     }
+    .mt-flowline-mobile {
+      margin-top: 15vh;
+    }
     .pt-flowline-sm {
       padding-top: 6rem;
     }

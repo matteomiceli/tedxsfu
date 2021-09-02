@@ -10,16 +10,16 @@ import { AnimationConfig } from "../AnimationConfig";
 
 function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
   return (
-    <div className="w-full flex justify-start ml-document mt-flowline">
+    <div className="w-full flex justify-start ml-document mt-flowline-mobile md:mt-flowline">
       <div className="team-nav-container flex flex-col items-end lg:flex-row w-full lg:ml-axis">
         <div className="self-start lg:self-end flex-shrink-0">
           <h1 className="mr-4 text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl">
             <GrowingAnimation delay={0.1}>Meet the Team</GrowingAnimation>
           </h1>
         </div>
-        <div className="self-start lg:self-end my-4 lg:my-0 lg:ml-8 team-nav-overflow overflow-x-scroll">
+        <div className="self-start lg:self-end my-4 lg:my-0 lg:ml-8 team-nav-overflow overflow-x-scroll w-full">
           <motion.div
-            className="team-nav-container flex"
+            className="team-nav-container flex w-full"
             initial={{
               opacity: 0,
               x: 20,
