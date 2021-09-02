@@ -3,6 +3,36 @@ import TeamItem from "../components/TeamItem";
 import loadable from "@loadable/component";
 
 import teams from "../content/teams";
+import { motion } from "framer-motion";
+import { AnimationConfig } from "../AnimationConfig";
+
+const teamContainerVariant = {
+  initial: {},
+  animate: { transition: { staggerDirection: -1, staggerChildren: 0.02 } },
+  exit: { transition: { staggerDirection: 1, staggerChildren: 0.02 } },
+};
+const teamVariant = {
+  initial: {
+    opacity: 0,
+    x: 20,
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: AnimationConfig.SLOW,
+      ease: AnimationConfig.EASING,
+    },
+  },
+  exit: {
+    opacity: 0,
+    x: -20,
+    transition: {
+      duration: AnimationConfig.NORMAL,
+      ease: AnimationConfig.EASING_INVERTED,
+    },
+  },
+};
 
 function TeamScroll({ scroll, setScroll, width, setWidth }) {
   // mouse scroll delta value
@@ -25,21 +55,6 @@ function TeamScroll({ scroll, setScroll, width, setWidth }) {
     setDelta(0);
   }, [deltaVal]);
 
-  const scrolls = [];
-
-  for (let i = 0; i < teams.length; i++) {
-    const team = teams[i];
-    scrolls.push(
-      <TeamItem
-        team={team}
-        key={i}
-        delta={deltaVal}
-        width={width}
-        scroll={scroll}
-      />
-    );
-  }
-
   return (
     <div
       ref={scrollRef}
@@ -48,9 +63,25 @@ function TeamScroll({ scroll, setScroll, width, setWidth }) {
         handleScroll(e);
       }}
     >
-      <div className="inner-scroll-container flex w-full ml-document lg:pl-axis">
-        {scrolls}
-      </div>
+      <motion.div
+        className="inner-scroll-container flex w-full ml-document lg:pl-axis"
+        variants={teamContainerVariant}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        {teams.map((team, i) => (
+          <motion.div variants={teamVariant}>
+            <TeamItem
+              team={team}
+              key={i}
+              delta={deltaVal}
+              width={width}
+              scroll={scroll}
+            />
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
   );
 }
