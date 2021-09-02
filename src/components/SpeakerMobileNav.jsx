@@ -10,8 +10,7 @@ function SpeakerMobileNav({ spySpeaker, setSpeaker, scroll, setScroll }) {
     let panelWidth = 76;
     let speakerPos = navScroll / panelWidth;
     setSpeaker(parseInt(speakerPos + 1))
-    console.log();
-
+    console.log(spySpeaker);
   }, [navScroll]);
 
   useEffect(() => {
