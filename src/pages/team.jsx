@@ -12,7 +12,7 @@ const TeamPage = () => {
   const [scroll, setScroll] = useState(0);
 
   return (
-    <div className="fixed left-0 -right-0 bottom-0 top-0 bg-black">
+    <div className="bg-black fixed left-0 right-0 top-0 bottom-0 flex flex-col">
       <TeamNav
         spyTeam={spyTeam}
         setTeam={setTeam}

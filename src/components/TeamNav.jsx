@@ -3,32 +3,59 @@ import upArrow from "../static/images/upArrow.svg";
 import TeamPanels from "./TeamPanels";
 import teams from "../content/teams";
 
+//  for motion
+import { motion } from "framer-motion";
+import GrowingAnimation from "../components/animation/GrowingTextAnimation";
+import { AnimationConfig } from "../AnimationConfig";
+
 function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
   return (
-    <div className="w-full flex justify-start lg:justify-center">
-      <div className="team-nav-container absolute flex flex-col overflow-x-hidden justify-between items-end w-5/6 lg:flex-row">
-        <div className="self-start mb-4">
-          <h1 className="teams-title-container min-w-max ml-8 mr-10 text-3xl md:text-4xl lg:ml-0 lg:text-5xl 2xl:text-6xl 2xl:pl-16">Meet the Team</h1>
+    <div className="w-full flex justify-start ml-document mt-flowline">
+      <div className="team-nav-container flex flex-col items-end lg:flex-row w-full lg:ml-axis">
+        <div className="self-start lg:self-end flex-shrink-0">
+          <h1 className="mr-4 text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl">
+            <GrowingAnimation delay={0.1}>Meet the Team</GrowingAnimation>
+          </h1>
         </div>
-        <div className="ml-8 team-nav-overflow overflow-x-scroll self-start lg:ml-0 2xl:ml-24">
-          <div className="team-nav-container flex">
-            {teams.map((team) => {
+        <div className="self-start lg:self-end my-4 lg:my-0 lg:ml-8 team-nav-overflow overflow-x-scroll">
+          <motion.div
+            className="team-nav-container flex"
+            initial={{
+              opacity: 0,
+              x: 20,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              transition: {
+                duration: AnimationConfig.NORMAL,
+                ease: AnimationConfig.EASING,
+              },
+            }}
+            exit={{
+              opacity: 0,
+              x: -20,
+              transition: {
+                duration: AnimationConfig.NORMAL,
+                ease: AnimationConfig.EASING_INVERTED,
+              },
+            }}
+          >
+            {teams.map((team, index) => {
               return (
-                <div>
-                  <TeamPanels
-                    team={team}
-                    key={team.i}
-                    spyTeam={spyTeam}
-                    setTeam={setTeam}
-                    scroll={scroll}
-                    setScroll={setScroll}
-                    width={width}
-                    setWidth={setWidth}
-                  />
-                </div>
+                <TeamPanels
+                  team={team}
+                  key={team.i}
+                  spyTeam={spyTeam}
+                  setTeam={setTeam}
+                  scroll={scroll}
+                  setScroll={setScroll}
+                  width={width}
+                  setWidth={setWidth}
+                />
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
