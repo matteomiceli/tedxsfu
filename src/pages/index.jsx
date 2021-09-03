@@ -6,6 +6,8 @@ import { breakpoints, useBreakpoint } from "../hooks/useBreakpoint";
 import SpeakerMobileNav from "../components/SpeakerMobileNav";
 
 const IndexPage = () => {
+  // mouse scroll delta value
+  const [deltaVal, setDelta] = useState(0);
   // speaker focus
   const [spySpeaker, setSpeaker] = useState(1);
   // page width
@@ -20,6 +22,8 @@ const IndexPage = () => {
   return (
     <>
       <Scroll
+        deltaVal={deltaVal}
+        setDelta={setDelta}
         spySpeaker={spySpeaker}
         setSpeaker={setSpeaker}
         scroll={scroll}
@@ -39,6 +43,8 @@ const IndexPage = () => {
         />
       ) : (
         <SpeakerMobileNav 
+          deltaVal={deltaVal}
+          setDelta={setDelta}
           spySpeaker={spySpeaker}
           setSpeaker={setSpeaker}
           scroll={scroll}

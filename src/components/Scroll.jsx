@@ -4,13 +4,14 @@ import loadable from "@loadable/component";
 
 import speakers from "../content/speakers";
 
-function Scroll({ scroll, setScroll, width, setWidth, scrollRef }) {
+function Scroll({ scroll, setScroll, width, setWidth, scrollRef, deltaVal, setDelta }) {
   // mouse scroll delta value
-  const [deltaVal, setDelta] = useState(0);
  
   useEffect(() => {
     scrollRef.current.scrollLeft += deltaVal;
-    setDelta(0);
+    if (deltaVal === 1 || deltaVal === -1) {
+      setDelta(0);
+    }
   }, [deltaVal]);
 
   if (typeof window === undefined) {

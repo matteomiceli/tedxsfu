@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import speakers from "../content/speakers";
+import { transform } from "framer-motion";
 
 function SpeakerMobileNav({
   spySpeaker,
@@ -8,8 +9,11 @@ function SpeakerMobileNav({
   scroll,
   setScroll,
   scrollRef,
+  deltaVal,
+  setDelta
 }) {
   const navRef = useRef();
+  const [inTransit, setTransit] = useState(0);
   const [navScroll, setNavScroll] = useState(0);
   // get width and scroll position of speaker scroll container
   const container = () => {
@@ -21,25 +25,43 @@ function SpeakerMobileNav({
   };
 
   useEffect(() => {
+    setTransit(false)
+
     let panelWidth = 76;
     let speakerPos = navScroll / panelWidth;
     setSpeaker(parseInt(speakerPos + 1));
 
     // set position of scroll container to match spied speaker
-    const speakerPanelWidth = container().width / (speakers.length - 1);
-    scrollRef.current.scrollLeft =
-      speakerPanelWidth * spySpeaker - speakerPanelWidth;
-
+    if (!inTransit) {
+      const speakerPanelWidth = container().width / (speakers.length - 1);
+      scrollRef.current.scrollLeft =
+        speakerPanelWidth * spySpeaker - speakerPanelWidth;
+    } 
+    console.log(deltaVal)
   }, [navScroll]);
 
   useEffect(() => {
+    setTransit(true);
+
     // update spyspeaker when container is scrolled to speaker
     const speakerPanelWidth = container().width / (speakers.length - 1);
     let speakerPos = parseInt(scroll / speakerPanelWidth) + 1;
-    console.log(speakerPos)
-    setSpeaker(speakerPos);
 
-  }, [scroll]);
+    const navWidth = navRef.current.scrollWidth - window.innerWidth;
+    const containerNavRatio = navWidth / container().width;
+
+    if (inTransit) {
+      navRef.current.scrollLeft = scroll * containerNavRatio;
+      console.log(deltaVal)
+    }
+    
+  }, [deltaVal]);
+
+  useEffect(() => {
+    
+    // console.log(deltaVal)
+
+  }, [navScroll])
 
   function handleScroll(e) {
     setNavScroll(e.currentTarget.scrollLeft);
