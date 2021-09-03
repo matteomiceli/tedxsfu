@@ -12,7 +12,6 @@ const pushEntry = (arr, index, value) => {
 const Subtitle = ({ src, currentTime, duration }) => {
   // load subtitle from the same directory
   const [subtitle, setSubtitle] = useState();
-  const [hashedLines, setHashedLines] = useState();
   const [currentLine, setCurrentLine] = useState(0);
 
   useEffect(() => {
@@ -25,16 +24,6 @@ const Subtitle = ({ src, currentTime, duration }) => {
       // decode the subtitle
       const parsedSubtitle = parseSRT(subtitleStr);
       setSubtitle(parsedSubtitle);
-
-      let keyframesInSeconds = [];
-      parsedSubtitle.forEach((line, index) => {
-        const beginSecond = Math.floor(line.start);
-        const endSecond = Math.ceil(line.end);
-        keyframesInSeconds = pushEntry(keyframesInSeconds, beginSecond, line);
-        keyframesInSeconds = pushEntry(keyframesInSeconds, endSecond, line);
-      });
-
-      setHashedLines(keyframesInSeconds);
     }
     loadSubtitle();
   }, []);
