@@ -64,6 +64,10 @@ body {
   min-height: 100%;
 }
 
+.fill-available {
+  height: -webkit-fill-available;
+}
+
 .text-interactive {
   font-family: "NeueHaas";
   font-style: normal;

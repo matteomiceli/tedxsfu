@@ -12,12 +12,14 @@ import { useRef } from "react";
 import useClickOutside from "../hooks/useClickOutside";
 import GrowingTextAnimation from "../components/animation/GrowingTextAnimation";
 
+const MOBILE_SPONSOR_ICON_HEIGHT = "6rem";
+
 //@ts-check
 const SponsorshipPage = () => {
   const isMobile = !useMobileBreakpoint();
 
   return (
-    <div className="mt-flowline-sm sm:mt-flowline">
+    <div className="fixed left-0 top-0 bottom-0 right-0 mt-flowline-sm sm:mt-flowline">
       {isMobile && <SponsorshipHeader isMobile />}
       <HorizontalScrollContainer>
         <div className="flex flex-col sm:flex-row flex-nowrap mx-document mt-1">
@@ -102,7 +104,12 @@ const InKindTierSection = ({ sponsorList, isMobile }) => (
       </div>
       <div className="ruler" />
     </div>
-    <div className="grid grid-rows-3 sm:grid-rows-2 grid-flow-col gap-x-4 gap-y-4 sm:gap-x-24 sm:gap-y-8 mt-6 sm:mt-8">
+    <div
+      className="grid grid-rows-sponsors sm:grid-rows-2 grid-flow-col gap-x-4 gap-y-4 sm:gap-x-24 sm:gap-y-8 mt-6 sm:mt-8"
+      style={{
+        height: "50vh",
+      }}
+    >
       {sponsorList.map((sponsorInfo, index) => (
         <SponsorSmall key={index} {...sponsorInfo} isMobile={isMobile} />
       ))}
@@ -182,7 +189,7 @@ const SponsorSmall = ({
         onExit={() => setIsModalShowing(false)}
       />
       <div className="flex flex-nowrap">
-        <div className="w-32 h-32 sm:w-32 sm:h-32">
+        <div className="w-24 h-24 sm:w-32 sm:h-32">
           <a
             href="#"
             className="cursor-pointer sm:cursor-default"

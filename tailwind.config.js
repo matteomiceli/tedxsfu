@@ -43,9 +43,11 @@ module.exports = {
           },
         ],
       },
-
       gridTemplateColumns: {
         sponsorInfoModal: "auto 2rem",
+      },
+      gridTemplateRows: {
+        sponsors: `repeat(auto-fit, minmax(6rem, 1fr))`,
       },
     },
   },
