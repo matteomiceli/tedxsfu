@@ -37,7 +37,6 @@ function SpeakerMobileNav({
       scrollRef.current.scrollLeft =
         speakerPanelWidth * spySpeaker - speakerPanelWidth;
     } 
-    console.log(deltaVal)
   }, [navScroll]);
 
   useEffect(() => {
@@ -51,9 +50,8 @@ function SpeakerMobileNav({
     const containerNavRatio = navWidth / container().width;
 
     navRef.current.scrollLeft = scroll * containerNavRatio;
-    console.log(scroll)
+    console.log(scroll); 
 
-    
   }, [scroll]);
 
 
