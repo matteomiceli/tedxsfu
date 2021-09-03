@@ -146,6 +146,7 @@ const About = () => {
                 muted
                 disablePictureInPicture
                 loop
+                playsinline
               >
                 <source
                   src="/videos/bloom-reveal-low-fps.mp4"
