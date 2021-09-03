@@ -2,6 +2,20 @@
 @import "./gradient.css";
 /* ./src/styles/global.css */
 
+::selection {
+  color: #000;
+  /* background: #e61b2e; */
+  /* background-image: url(../../static/images/gradient-effect.svg); */
+  background: #fff;
+  /* background: linear-gradient(
+    90deg,
+    rgba(124, 3, 3, 0) 0%,
+    rgba(255, 61, 0, 1) 29%,
+    rgba(230, 27, 46, 1) 53%,
+    rgba(255, 0, 138, 1) 100%
+  ); */
+}
+
 @font-face {
   font-family: NeueHaas;
   src: url(../static/fonts/NeueHaasVariableV1.2.ttf);

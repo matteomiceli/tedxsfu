@@ -1,12 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import upArrow from "../static/images/upArrow.svg";
 import TeamPanels from "./TeamPanels";
 import teams from "../content/teams";
+
+import useDelayTrigger from "../hooks/useDelayTrigger";
 
 //  for motion
 import { motion } from "framer-motion";
 import GrowingAnimation from "../components/animation/GrowingTextAnimation";
 import { AnimationConfig } from "../AnimationConfig";
+import scrollIntoView from "scroll-into-view-if-needed";
 
 function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
   const [isScrolled, setIsScrolled] = useState();
@@ -14,6 +17,43 @@ function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
   const handleNavBarScroll = () => {
     setIsScrolled(navContainerRef.current.scrollLeft !== 0);
   };
+  // support wheel scroll
+  const handleNavWheel = (e) => {
+    e.stopPropagation();
+    navContainerRef.current.scrollLeft += e.deltaY;
+  };
+
+  const [isJumpingToTeam, setIsJumpingToTeam] = useState(false);
+  const resetIsJumping = useDelayTrigger(() => setIsJumpingToTeam(false));
+
+  const handleTeamSelect = (team) => {
+    // team select
+    const teamIndex = team.i;
+    const targetElm = document.querySelector(`#team-${teamIndex}`);
+    if (!targetElm) return;
+
+    scrollIntoView(targetElm, {
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    });
+    setIsJumpingToTeam(true);
+    resetIsJumping(500);
+  };
+
+  useEffect(() => {
+    if (spyTeam && !isJumpingToTeam) {
+      const targetElm = document.querySelector(`#team-${spyTeam}-button`);
+      if (!targetElm) return;
+
+      //https://www.npmjs.com/package/scroll-into-view-if-needed
+      scrollIntoView(targetElm, {
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
+    }
+  }, [spyTeam, isJumpingToTeam]);
 
   return (
     <div className="w-full justify-start mt-flowline-mobile md:mt-flowline">
@@ -25,6 +65,7 @@ function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
         </div>
         <motion.div
           className="self-start flex-auto lg:self-end my-4 lg:my-0 lg:h-full w-full relative"
+          onWheelCapture={handleNavWheel}
           initial={{
             opacity: 0,
             x: 20,
@@ -68,7 +109,10 @@ function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
             <div className="flex flex-nowrap">
               {teams.map((team, index) => {
                 return (
-                  <div className={index === 0 ? "ml-document lg:ml-0" : ""}>
+                  <div
+                    id={`team-${team.i}-button`}
+                    className={index === 0 ? "ml-document lg:ml-0" : ""}
+                  >
                     <TeamPanels
                       team={team}
                       key={team.i}
@@ -78,6 +122,7 @@ function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
                       setScroll={setScroll}
                       width={width}
                       setWidth={setWidth}
+                      onSelectTeam={handleTeamSelect}
                     />
                   </div>
                 );
