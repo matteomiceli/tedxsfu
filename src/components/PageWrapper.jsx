@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const PageWrapper = ({ children }) => {
   return (
     <motion.div
-      className="bg-black font-NeueHaas w-screen h-full"
+      className="bg-black font-NeueHaas w-screen h-full flex"
       initial={{ opacity: 0 }}
       // delay to reduce computation load
       animate={{ opacity: 1 }}
