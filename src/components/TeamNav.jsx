@@ -17,6 +17,11 @@ function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
   const handleNavBarScroll = () => {
     setIsScrolled(navContainerRef.current.scrollLeft !== 0);
   };
+  // support wheel scroll
+  const handleNavWheel = (e) => {
+    e.stopPropagation();
+    navContainerRef.current.scrollLeft += e.deltaY;
+  };
 
   const [isJumpingToTeam, setIsJumpingToTeam] = useState(false);
   const resetIsJumping = useDelayTrigger(() => setIsJumpingToTeam(false));
@@ -60,6 +65,7 @@ function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
         </div>
         <motion.div
           className="self-start flex-auto lg:self-end my-4 lg:my-0 lg:h-full w-full relative"
+          onWheelCapture={handleNavWheel}
           initial={{
             opacity: 0,
             x: 20,
