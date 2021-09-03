@@ -7,6 +7,7 @@ import { clamp } from "../../utils/util";
 
 import Button from "../Button";
 import ICON_MUTED from "../../../static/images/icons/icon-muted--black.svg";
+import Subtitle from "./Subtitle";
 
 // load quality footages first before
 
@@ -16,6 +17,7 @@ const VideoPlayer = ({
   mutedAutoPlay = true,
   control = true,
   keyboardInput = true,
+  loop = false,
   className,
 }) => {
   const videoRef = useRef();
@@ -26,10 +28,13 @@ const VideoPlayer = ({
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
 
+  const fullHDSourceURL = `${src}@1920.mp4`;
+  const subtitleURL = `${src}.srt`;
+
   // Handling the muting of the player
   useEffect(() => {
     const video = videoRef.current;
-    video.muted = isMuted;
+
     // detect if the player is muted by the user
     const handleMute = () =>
       (video.isMuted || video.volume === 0) && setIsMuted(true);
@@ -44,6 +49,7 @@ const VideoPlayer = ({
     // update progress
     if (videoRef.current.fastSeek) {
       videoRef.current.fastSeek(targetTime);
+      return;
     }
     videoRef.current.currentTime = targetTime;
   }, [targetTime]);
@@ -188,7 +194,11 @@ const VideoPlayer = ({
           >
             <Button
               className="mx-auto mb-36"
-              onClick={() => setIsMuted(false)}
+              onClick={() => {
+                setIsMuted(false);
+
+                setIsPlaying(true);
+              }}
               icon={ICON_MUTED}
               primary
             >
@@ -208,6 +218,23 @@ const VideoPlayer = ({
           onTogglePlay={() => setIsPlaying(!isPlaying)}
         />
       )}
+      <motion.div
+        className="absolute bottom-52 left-0 right-0"
+        animate={{
+          y: isMuted ? 0 : "4rem",
+          transition: {
+            ease: AnimationConfig.EASING,
+            duration: AnimationConfig.NORMAL,
+            delay: 0.4,
+          },
+        }}
+      >
+        <Subtitle
+          src={subtitleURL}
+          currentTime={currentTime}
+          duration={duration}
+        />
+      </motion.div>
       <motion.video
         ref={videoRef}
         onClick={() => setIsPlaying(!isPlaying)}
@@ -216,13 +243,13 @@ const VideoPlayer = ({
         className="w-full h-full object-cover mt-auto mb-auto"
         width="1920"
         height="1080"
-        loop
-        muted
+        loop={loop}
+        muted={isMuted}
         autoPlay={mutedAutoPlay}
         preload
         disablePictureInPicture
       >
-        <source src={src} type="video/mp4" />
+        <source src={fullHDSourceURL} type="video/mp4" />
       </motion.video>
     </motion.div>
   );
