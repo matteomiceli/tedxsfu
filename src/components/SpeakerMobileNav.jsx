@@ -50,18 +50,12 @@ function SpeakerMobileNav({
     const navWidth = navRef.current.scrollWidth - window.innerWidth;
     const containerNavRatio = navWidth / container().width;
 
-    if (inTransit) {
-      navRef.current.scrollLeft = scroll * containerNavRatio;
-      console.log(deltaVal)
-    }
-    
-  }, [deltaVal]);
+    navRef.current.scrollLeft = scroll * containerNavRatio;
+    console.log(scroll)
 
-  useEffect(() => {
     
-    // console.log(deltaVal)
+  }, [scroll]);
 
-  }, [navScroll])
 
   function handleScroll(e) {
     setNavScroll(e.currentTarget.scrollLeft);

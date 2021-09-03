@@ -18,7 +18,7 @@ function Scroll({ scroll, setScroll, width, setWidth, scrollRef, deltaVal, setDe
     return <></>;
   }
 
-  const handleScroll = (e) => {
+  const handleMouseWheel = (e) => {
     e.preventDefault();
     setDelta(e.deltaY);
     setScroll(e.currentTarget.scrollLeft);
@@ -26,6 +26,10 @@ function Scroll({ scroll, setScroll, width, setWidth, scrollRef, deltaVal, setDe
     // set width of page
     setWidth(e.currentTarget.scrollWidth - e.currentTarget.clientWidth);
   };
+
+  const handleScroll = (e) => {
+    setScroll(e.currentTarget.scrollLeft);
+  }
 
 
   const scrolls = [];
@@ -49,6 +53,9 @@ function Scroll({ scroll, setScroll, width, setWidth, scrollRef, deltaVal, setDe
       ref={scrollRef}
       className="outer-scroll-container"
       onWheel={(e) => {
+        handleMouseWheel(e);
+      }}
+      onScroll={(e) => {
         handleScroll(e);
       }}
     >
