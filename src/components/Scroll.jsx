@@ -4,10 +4,10 @@ import loadable from "@loadable/component";
 
 import speakers from "../content/speakers";
 
-function Scroll({ scroll, setScroll, width, setWidth }) {
+function Scroll({ scroll, setScroll, width, setWidth, scrollRef }) {
   // mouse scroll delta value
   const [deltaVal, setDelta] = useState(0);
-  const scrollRef = useRef();
+  
 
   const handleScroll = (e) => {
     e.preventDefault();

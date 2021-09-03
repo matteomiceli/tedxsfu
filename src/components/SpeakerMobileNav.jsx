@@ -2,20 +2,36 @@ import React, { useRef, useState, useEffect} from "react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import speakers from "../content/speakers";
 
-function SpeakerMobileNav({ spySpeaker, setSpeaker, scroll, setScroll }) {
+function SpeakerMobileNav({ spySpeaker, setSpeaker, scroll, setScroll, scrollRef }) {
   
   const [navScroll, setNavScroll] = useState(0);
+
+  
 
   useEffect(() => {
     let panelWidth = 76;
     let speakerPos = navScroll / panelWidth;
     setSpeaker(parseInt(speakerPos + 1))
-    console.log();
-
+    console.log(spySpeaker);
   }, [navScroll]);
 
   useEffect(() => {
-    scrollTo(`#scroll-${`speaker${spySpeaker}`}`);
+    // scrollTo(`#scroll-speaker${spySpeaker}`);
+    const container = () => {
+      if (scrollRef !== undefined && typeof window !== undefined) {
+        return {
+          width : scrollRef.current.scrollWidth - window.innerWidth,
+          scroll : scrollRef.current.scrollLeft
+        }
+      }
+    }
+
+    // set position of scroll container to match spied speaker
+    const speakerPanelWidth = container().width / (speakers.length - 1);
+    scrollRef.current.scrollLeft = (speakerPanelWidth * spySpeaker) - speakerPanelWidth;
+
+    console.log('scroll' + container().scroll)
+    console.log(speakerPanelWidth * spySpeaker)
   }, [spySpeaker])
 
   function handleScroll(e) {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import Scroll from "../components/Scroll";
 import Navigation from "../components/Navigation";
@@ -12,6 +12,8 @@ const IndexPage = () => {
   const [width, setWidth] = useState(0);
   // page scroll location
   const [scroll, setScroll] = useState(0);
+  // ref to scroll object
+  const scrollRef = useRef();
 
   const isFullNav = useBreakpoint(breakpoints.md);
 
@@ -24,6 +26,7 @@ const IndexPage = () => {
         setScroll={setScroll}
         width={width}
         setWidth={setWidth}
+        scrollRef={scrollRef}
       />
       {isFullNav ? (
         <Navigation
@@ -40,6 +43,7 @@ const IndexPage = () => {
           setSpeaker={setSpeaker}
           scroll={scroll}
           setScroll={setScroll}
+          scrollRef={scrollRef}
         />
       )}
     </>
