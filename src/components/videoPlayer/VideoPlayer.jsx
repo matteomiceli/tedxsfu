@@ -7,6 +7,7 @@ import { clamp } from "../../utils/util";
 
 import Button from "../Button";
 import ICON_MUTED from "../../../static/images/icons/icon-muted--black.svg";
+import Subtitle from "./Subtitle";
 
 // load quality footages first before
 
@@ -25,6 +26,9 @@ const VideoPlayer = ({
   const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
+
+  const fullHDSourceURL = `${src}@1920.mp4`;
+  const subtitleURL = `${src}.srt`;
 
   // Handling the muting of the player
   useEffect(() => {
@@ -208,6 +212,23 @@ const VideoPlayer = ({
           onTogglePlay={() => setIsPlaying(!isPlaying)}
         />
       )}
+      <motion.div
+        className="absolute bottom-52 left-0 right-0"
+        animate={{
+          y: isMuted ? 0 : "4rem",
+          transition: {
+            ease: AnimationConfig.EASING,
+            duration: AnimationConfig.NORMAL,
+            delay: 0.4,
+          },
+        }}
+      >
+        <Subtitle
+          src={subtitleURL}
+          currentTime={currentTime}
+          duration={duration}
+        />
+      </motion.div>
       <motion.video
         ref={videoRef}
         onClick={() => setIsPlaying(!isPlaying)}
@@ -222,7 +243,7 @@ const VideoPlayer = ({
         preload
         disablePictureInPicture
       >
-        <source src={src} type="video/mp4" />
+        <source src={fullHDSourceURL} type="video/mp4" />
       </motion.video>
     </motion.div>
   );
