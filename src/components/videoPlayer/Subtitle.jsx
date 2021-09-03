@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from "react";
 import parseSRT from "parse-srt";
 
-const pushEntry = (arr, index, value) => {
-  if (!arr[index]) {
-    return (arr[index] = [value]);
-  }
-  arr[index] = value;
-  return arr;
-};
-
 const Subtitle = ({ src, currentTime, duration }) => {
   // load subtitle from the same directory
   const [subtitle, setSubtitle] = useState();
