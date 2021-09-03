@@ -31,7 +31,6 @@ function Scroll({ scroll, setScroll, width, setWidth, scrollRef, deltaVal, setDe
     setScroll(e.currentTarget.scrollLeft);
   }
 
-
   const scrolls = [];
 
   for (let i = 0; i < speakers.length; i++) {
