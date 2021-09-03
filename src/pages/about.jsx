@@ -71,17 +71,17 @@ const About = () => {
   }, [isVideoReady]);
 
   return (
-    <HorizontalScrollContainer ref={scrollContainerRef}>
-      <div className="flex flex-nowrap fluid-from-screen-sm fluid-to-screen-md">
+    <HorizontalScrollContainer ref={scrollContainerRef} className="h-full">
+      <div className="flex flex-nowrap fluid-from-screen-sm fluid-to-screen-md w-screen h-full">
         {/* landing hero container */}
         <section
           ref={heroSectionContainerRef}
-          className="flex-shrink-0 relative w-screen h-screen"
+          className="flex-shrink-0 relative w-screen h-full"
           style={{ minWidth: "72rem" }}
         >
           {/* Headline */}
           <h1
-            className="relative z-10 ml-document pr-6 w-screen text-5xl to-text-6xl font-light"
+            className="relative z-10 ml-document pr-6 w-full text-5xl to-text-6xl font-light"
             style={{
               paddingTop: "28vh",
               width: "17ch",
@@ -99,7 +99,7 @@ const About = () => {
           {/* blurb overlay */}
           <SimpleDivAnimation
             staggerIndex={1}
-            className="absolute -right-32 2xl:right-64 bottom-48 2xl:bottom-64 mb-0 z-10 w-64 md:w-72"
+            className="absolute -right-32 2xl:right-64 bottom-48 2xl:bottom-64 mb-0 z-20 w-64 md:w-72"
           >
             <h2 className="text-2xl to-text-3xl mb-4 font-light">
               About Bloom
@@ -112,7 +112,7 @@ const About = () => {
           </SimpleDivAnimation>
 
           {/* landing video container */}
-          <div className="absolute leftq-0 top-0 right-0 bottom-0 z-0">
+          <div className="absolute w-full h-full left-0 top-0 right-0 bottom-0 z-0">
             {/* container that control the video sizes using padding and margins */}
             <div className="flex w-full h-full mx-document pb-28 pt-48 pl-32 md:pl-axis 2xl:pr-axis">
               <motion.video
@@ -141,12 +141,12 @@ const About = () => {
                 // autoPlay
                 width="1920"
                 height="1080"
-                autobuffer
-                preload
-                muted
-                disablePictureInPicture
-                loop
-                playsinline
+                autobuffer="true"
+                preload="true"
+                muted="true"
+                disablePictureInPicture="true"
+                loop="true"
+                playsinline="true"
               >
                 <source
                   src="/videos/bloom-reveal-low-fps.mp4"
@@ -159,13 +159,13 @@ const About = () => {
 
         {/* 2nd page */}
         <SimpleSectionAnimation
-          className="flex-shrink-0 z-10 flex flex-col justify-end h-screen ml-48 lg:ml-64 2xl:-ml-24 pb-28 pt-32"
+          className="flex-shrink-0 z-10 flex flex-col justify-end h-full ml-48 lg:ml-64 2xl:-ml-24 pb-28 pt-32"
           style={{
             maxWidth: "26rem",
           }}
           staggerIndex={0}
         >
-          <p className="text-base mt-32 w-96">
+          <p className="text-base mt-0 to-mt-32 fluid-from-screen-md fluid-to-screen-xl w-96">
             This year, TEDxSFU invites people with different backgrounds,
             domains and expertise to share their stories of resilience in the
             face of uncertainty, of initiatives reaching maturity, of new
@@ -176,15 +176,17 @@ const About = () => {
             “Bloom means to flourish, to mature into achievement of one’s
             potential.”
           </blockquote>
-          <Image
-            className="flex-shrink flex-grow mt-8 object-cover"
-            src="/images/about-page-assets/past-conference.jpg"
-            alt="woman dancing on stage"
-          />
+          <div className="flex-shrink-1 flex-grow mt-8 w-full relative">
+            <Image
+              className="absolute w-full h-full object-cover"
+              src="/images/about-page-assets/past-conference.jpg"
+              alt="woman dancing on stage"
+            />
+          </div>
         </SimpleSectionAnimation>
 
         {/* 3nd page */}
-        <SimpleSectionAnimation className="flex-shrink-0 h-screen flex flex-col ml-8 pb-28 pr-32">
+        <SimpleSectionAnimation className="flex-shrink-0 h-full flex flex-col ml-8 pb-28 pr-32">
           <div className="flex-shrink-0 flex-grow w-full relative">
             <Image
               src="/images/about-page-assets/past-conference-2.jpg"
