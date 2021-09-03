@@ -74,8 +74,8 @@ function MenuItem({ pageId, href, isCurrent, children }) {
     <Link
       className={
         isCurrent
-          ? "text-white text-sm mr-6 hover:text-gray-400 font-semibold"
-          : "text-white text-sm mr-6 hover:text-gray-400"
+          ? "text-white text-sm mr-6 font-semibold"
+          : "text-white text-sm mr-6"
       }
       to={href}
     >
