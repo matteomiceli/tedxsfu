@@ -7,7 +7,15 @@ import speakers from "../content/speakers";
 function Scroll({ scroll, setScroll, width, setWidth, scrollRef }) {
   // mouse scroll delta value
   const [deltaVal, setDelta] = useState(0);
-  
+ 
+  useEffect(() => {
+    scrollRef.current.scrollLeft += deltaVal;
+    setDelta(0);
+  }, [deltaVal]);
+
+  if (typeof window === undefined) {
+    return <></>;
+  }
 
   const handleScroll = (e) => {
     e.preventDefault();
@@ -16,14 +24,8 @@ function Scroll({ scroll, setScroll, width, setWidth, scrollRef }) {
 
     // set width of page
     setWidth(e.currentTarget.scrollWidth - e.currentTarget.clientWidth);
-    // console.log(scroll);
-    // console.log(width);
   };
 
-  useEffect(() => {
-    scrollRef.current.scrollLeft += deltaVal;
-    setDelta(0);
-  }, [deltaVal]);
 
   const scrolls = [];
 
@@ -41,6 +43,7 @@ function Scroll({ scroll, setScroll, width, setWidth, scrollRef }) {
   }
 
   return (
+   
     <div
       ref={scrollRef}
       className="outer-scroll-container"

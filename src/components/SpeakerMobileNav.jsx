@@ -33,22 +33,11 @@ function SpeakerMobileNav({
   }, [navScroll]);
 
   useEffect(() => {
-    //
-  }, [spySpeaker]);
-
-  useEffect(() => {
     // update spyspeaker when container is scrolled to speaker
     const speakerPanelWidth = container().width / (speakers.length - 1);
     let speakerPos = parseInt(scroll / speakerPanelWidth) + 1;
     console.log(speakerPos)
     setSpeaker(speakerPos);
-
-    const containerWidth = container().width;
-    const navWidth = navRef.current.scrollWidth - window.innerWidth;
-
-    const containerNavRatio = navWidth / containerWidth;
-    console.log(containerNavRatio)
-    
 
   }, [scroll]);
 
