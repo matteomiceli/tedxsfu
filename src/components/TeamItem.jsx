@@ -17,7 +17,9 @@ function TeamItem({ team, width, delta, scroll }) {
               className="team-image lg:w-auto lg:max-w-none"
               src={team.img}
               alt={team.team}
-              loading="lazy"
+              width={1920}
+              height={940}
+              loading={"lazy"}
             />
           </Link>
           <Link className="flex mt-4" to={`/team/${team.href}`}>

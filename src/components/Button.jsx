@@ -2,6 +2,7 @@ import { navigate } from "gatsby-link";
 import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { AnimationConfig } from "../AnimationConfig";
+import { preloadImage, preloadImageAll } from "../utils/util";
 
 const isSSR = typeof window === "undefined";
 
@@ -42,6 +43,15 @@ const Button = ({
     e.preventDefault();
     navigate(href);
   };
+
+  // preload gradiient background effect for cta button
+  useEffect(() => {
+    if (!cta) return;
+    preloadImageAll(
+      "/images/gradient-effect-white.svg",
+      "/images/gradient-effect.svg"
+    );
+  }, [cta]);
 
   return (
     <motion.a
