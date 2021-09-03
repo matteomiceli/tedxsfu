@@ -39,15 +39,24 @@ function TeamScroll({ scroll, setScroll, width, setWidth }) {
   const [deltaVal, setDelta] = useState(0);
   const scrollRef = useRef();
 
-  const handleScroll = (e) => {
-    e.preventDefault();
-    setDelta(e.deltaY);
-    setScroll(e.currentTarget.scrollLeft);
+  useEffect(() => {
+    // mouse
+    const handleWheel = (e) => {
+      // e.preventDefault();
+      setDelta(e.deltaY);
+    };
+    // handle wheel event
+    window.addEventListener("wheel", handleWheel);
 
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
+  const handleContentScroll = (e) => {
+    setScroll(e.currentTarget.scrollLeft);
     // set width of page
     setWidth(e.currentTarget.scrollWidth - e.currentTarget.clientWidth);
-    // console.log(scroll);
-    // console.log(width);
   };
 
   useEffect(() => {
@@ -59,9 +68,7 @@ function TeamScroll({ scroll, setScroll, width, setWidth }) {
     <div
       ref={scrollRef}
       className="outer-scroll-container"
-      onWheel={(e) => {
-        handleScroll(e);
-      }}
+      onScroll={handleContentScroll}
     >
       <motion.div
         className="inner-scroll-container flex w-full ml-document lg:pl-axis"
