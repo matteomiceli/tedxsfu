@@ -192,7 +192,10 @@ const VideoPlayer = ({
           >
             <Button
               className="mx-auto mb-36"
-              onClick={() => setIsMuted(false)}
+              onClick={() => {
+                setIsMuted(false);
+                setIsPlaying(true);
+              }}
               icon={ICON_MUTED}
               primary
             >
