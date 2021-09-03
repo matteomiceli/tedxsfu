@@ -29,7 +29,7 @@ const Subtitle = ({ src, currentTime, duration }) => {
   }, []);
 
   useEffect(() => {
-    if (!hashedLines || !subtitle || !currentTime) return;
+    if (!subtitle || !currentTime) return;
 
     function searchLine(currentTime) {
       return subtitle.findIndex(
@@ -43,7 +43,7 @@ const Subtitle = ({ src, currentTime, duration }) => {
       return;
     }
     setCurrentLine(currentLine);
-  }, [currentTime, hashedLines, subtitle]);
+  }, [currentTime, subtitle]);
 
   const isShowingSubtitle =
     subtitle && currentLine !== null && currentLine !== undefined
