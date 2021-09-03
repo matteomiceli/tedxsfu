@@ -14,7 +14,7 @@ function TeamPanels({
   // handles smooth scroll function and sets team on click
   const handleNavClick = (e) => {
     scrollTo(`#team-${team.i}`);
-    setTeam(team.i);
+    // setTeam(team.i);
   };
 
   // changes focus when div scrolled into view
