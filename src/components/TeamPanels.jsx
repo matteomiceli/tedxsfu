@@ -37,8 +37,8 @@ function TeamPanels({
       onClick={(e) => handleNavClick(e)}
       className={
         spyTeam === team.i
-          ? "team-panel-active min-w-max text-sm pt-2 2xl:text-base tracking-wider uppercase"
-          : "team-panel-notactive min-w-max text-sm pt-2 2xl:text-base tracking-wider uppercase"
+          ? "team-panel-active whitespace-nowrap text-sm pt-2 2xl:text-base tracking-wider uppercase"
+          : "team-panel-notactive whitespace-nowrap text-sm pt-2 2xl:text-base tracking-wider uppercase"
       }
     >
       {team.team}

@@ -6,9 +6,12 @@ import { motion } from "framer-motion";
 
 function TeamItem({ team, width, delta, scroll }) {
   return (
-    <div id={`team-${team.i}`} className="team-scroll bg-black h-full mr-8">
+    <div
+      id={`team-${team.i}`}
+      className="team-scroll bg-black h-full mr-4 xl:mr-6"
+    >
       <div className="flex h-full w-full">
-        <div className="mt-0 lg:mt-6">
+        <div className="mt-0 lg:mt-4">
           <Link to={`/team/${team.href}`}>
             <Image
               className="team-image lg:w-auto lg:max-w-none"
@@ -35,8 +38,8 @@ function TeamItem({ team, width, delta, scroll }) {
 
 const TeamMembers = ({ member }) => {
   return (
-    <div className="min-w-max w-18 lg:w-32 mr-3 mb-3">
-      <h2 className="font-bold text-xs sm:text-sm xl:text-base">
+    <div className="w-18 min-w-max lg:w-32 mr-3 mb-3">
+      <h2 className="font-bold text-xs sm:text-sm xl:text-base whitespace-nowrap">
         {member.name}
       </h2>
       <p className="text-xs sm:text-sm xl:text-base">{member.pro}</p>
