@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import teams from "../content/teams";
+
+import scrollIntoView from "scroll-into-view-if-needed";
 
 function TeamPanels({
   team,
@@ -10,10 +12,22 @@ function TeamPanels({
   setWidth,
   scroll,
   setScroll,
+  onSelectTeam,
 }) {
   // handles smooth scroll function and sets team on click
   const handleNavClick = (e) => {
-    scrollTo(`#team-${team.i}`);
+    onSelectTeam && onSelectTeam(team);
+    // scrollTo(`#team-${team.i}`);
+    // const targetTeam = document.querySelector(`#team-${team.i}`);
+    // if (!targetTeam) return;
+
+    // scrollIntoView(
+    //   targetTeam.scrollIntoView({
+    //     behavior: "smooth",
+    //     block: "center",
+    //     inline: "center",
+    //   })
+    // );
     // setTeam(team.i);
   };
 
@@ -37,8 +51,8 @@ function TeamPanels({
       onClick={(e) => handleNavClick(e)}
       className={
         spyTeam === team.i
-          ? "team-panel-active whitespace-nowrap text-sm pt-2 2xl:text-base tracking-wider uppercase"
-          : "team-panel-notactive whitespace-nowrap text-sm pt-2 2xl:text-base tracking-wider uppercase"
+          ? "team-panel-active rounded-none whitespace-nowrap text-sm pt-2 2xl:text-base tracking-wider uppercase"
+          : "team-panel-notactive rounded-none whitespace-nowrap text-sm pt-2 2xl:text-base tracking-wider uppercase"
       }
     >
       {team.team}
