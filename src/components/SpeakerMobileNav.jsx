@@ -1,50 +1,65 @@
-import React, { useRef, useState, useEffect} from "react";
+import React, { useRef, useState, useEffect } from "react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import speakers from "../content/speakers";
 
-function SpeakerMobileNav({ spySpeaker, setSpeaker, scroll, setScroll, scrollRef }) {
-  
+function SpeakerMobileNav({
+  spySpeaker,
+  setSpeaker,
+  scroll,
+  setScroll,
+  scrollRef,
+}) {
+  const navRef = useRef();
   const [navScroll, setNavScroll] = useState(0);
-  
+  // get width and scroll position of speaker scroll container
+  const container = () => {
+    if (scrollRef !== undefined && typeof window !== undefined) {
+      return {
+        width: scrollRef.current.scrollWidth - window.innerWidth,
+      };
+    }
+  };
+
   useEffect(() => {
     let panelWidth = 76;
     let speakerPos = navScroll / panelWidth;
-    setSpeaker(parseInt(speakerPos + 1))
-    console.log(spySpeaker);
-  }, [navScroll]);
-
-  useEffect(() => {
-    // scrollTo(`#scroll-speaker${spySpeaker}`);
-    const container = () => {
-      if (scrollRef !== undefined && typeof window !== undefined) {
-        return {
-          width : scrollRef.current.scrollWidth - window.innerWidth,
-          scroll : scrollRef.current.scrollLeft
-        }
-      }
-    }
+    setSpeaker(parseInt(speakerPos + 1));
 
     // set position of scroll container to match spied speaker
     const speakerPanelWidth = container().width / (speakers.length - 1);
-    scrollRef.current.scrollLeft = (speakerPanelWidth * spySpeaker) - speakerPanelWidth;
+    scrollRef.current.scrollLeft =
+      speakerPanelWidth * spySpeaker - speakerPanelWidth;
 
-    console.log('scroll' + container().scroll)
-    console.log(speakerPanelWidth * spySpeaker)
-  }, [spySpeaker])
+  }, [navScroll]);
+
+  useEffect(() => {
+    //
+  }, [spySpeaker]);
+
+  useEffect(() => {
+    // update spyspeaker when container is scrolled to speaker
+    const speakerPanelWidth = container().width / (speakers.length - 1);
+    let speakerPos = parseInt(scroll / speakerPanelWidth) + 1;
+    console.log(speakerPos)
+    setSpeaker(speakerPos);
+
+    const containerWidth = container().width;
+    const navWidth = navRef.current.scrollWidth - window.innerWidth;
+
+    const containerNavRatio = navWidth / containerWidth;
+    console.log(containerNavRatio)
+    
+
+  }, [scroll]);
 
   function handleScroll(e) {
     setNavScroll(e.currentTarget.scrollLeft);
   }
 
-  // if (typeof window === "undefined") {
-  //   return <></>;
-  // }
-
-  // const windowWidth = window.innerWidth / 2;
-
   return (
     <div className="absolute text-white text-4xl w-full bottom-20">
       <div
+        ref={navRef}
         onScroll={(e) => handleScroll(e)}
         className="mobile-speaker-container h-24 bg-transparent flex overflow-x-scroll"
       >
@@ -73,7 +88,9 @@ function SpeakerMobilePanel({ spySpeaker, setSpeaker, speaker, i }) {
     <div
       className={`${
         spySpeaker === i + 1 ? "panel-active" : "panel-notactive"
-      } speaker-mobile-panel mobile-speaker${i + 1} h-full bg-blue-400 z-10 mx-0.5`}
+      } speaker-mobile-panel mobile-speaker${
+        i + 1
+      } h-full bg-blue-400 z-10 mx-0.5`}
     ></div>
   );
 }
