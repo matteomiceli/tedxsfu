@@ -165,7 +165,7 @@ const About = () => {
           }}
           staggerIndex={0}
         >
-          <p className="text-base mt-0 to-mt-32 fluid-from-screen-md fluid-to-screen-xl w-96">
+          <p className="text-base mt-0 to-mt-32 fluid-from-screen-md fluid-to-screen-xl w-80">
             This year, TEDxSFU invites people with different backgrounds,
             domains and expertise to share their stories of resilience in the
             face of uncertainty, of initiatives reaching maturity, of new
