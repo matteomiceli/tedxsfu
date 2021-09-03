@@ -41,6 +41,29 @@ body {
   color: white;
 }
 
+/* 
+100 vh on iOS mobile fix
+Propogate the viewport height down the DOM till the document content
+*/
+
+html {
+  height: -webkit-fill-available;
+}
+body {
+  height: -webkit-fill-available;
+}
+#___gatsby {
+  min-height: 100vh;
+  /* mobile viewport bug fix */
+  min-height: -webkit-fill-available;
+
+  /* make the children follow this full height */
+  display: flex;
+}
+#gatsby-focus-wrapper {
+  min-height: 100%;
+}
+
 .text-interactive {
   font-family: "NeueHaas";
   font-style: normal;
@@ -289,6 +312,12 @@ body {
 
 /* responsive content flow lines(the grid line where content being line) */
 @layer utilities {
+  .h-stretch-screen {
+    height: 100vh;
+    height: stretch;
+    height: -webkit-fill-available;
+  }
+
   @variants responsive {
     .mt-flowline-sm {
       margin-top: 6rem;
