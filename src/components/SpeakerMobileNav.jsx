@@ -5,9 +5,7 @@ import speakers from "../content/speakers";
 function SpeakerMobileNav({ spySpeaker, setSpeaker, scroll, setScroll, scrollRef }) {
   
   const [navScroll, setNavScroll] = useState(0);
-
   
-
   useEffect(() => {
     let panelWidth = 76;
     let speakerPos = navScroll / panelWidth;
