@@ -17,6 +17,7 @@ const VideoPlayer = ({
   mutedAutoPlay = true,
   control = true,
   keyboardInput = true,
+  loop = false,
   className,
 }) => {
   const videoRef = useRef();
@@ -33,7 +34,7 @@ const VideoPlayer = ({
   // Handling the muting of the player
   useEffect(() => {
     const video = videoRef.current;
-    video.muted = isMuted;
+
     // detect if the player is muted by the user
     const handleMute = () =>
       (video.isMuted || video.volume === 0) && setIsMuted(true);
@@ -48,6 +49,7 @@ const VideoPlayer = ({
     // update progress
     if (videoRef.current.fastSeek) {
       videoRef.current.fastSeek(targetTime);
+      return;
     }
     videoRef.current.currentTime = targetTime;
   }, [targetTime]);
@@ -194,6 +196,7 @@ const VideoPlayer = ({
               className="mx-auto mb-36"
               onClick={() => {
                 setIsMuted(false);
+
                 setIsPlaying(true);
               }}
               icon={ICON_MUTED}
@@ -240,8 +243,8 @@ const VideoPlayer = ({
         className="w-full h-full object-cover mt-auto mb-auto"
         width="1920"
         height="1080"
-        loop
-        muted
+        loop={loop}
+        muted={isMuted}
         autoPlay={mutedAutoPlay}
         preload
         disablePictureInPicture
