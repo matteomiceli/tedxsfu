@@ -131,22 +131,22 @@ body {
 /* SPEAKERS */
 
 .scroll-speaker1 {
-  background-image: url("../static/images/speakers/speaker1.png");
+  /* background-image: url("../static/images/speakers/speaker1.png"); */
   background-size: 95vh;
 }
 
 .scroll-speaker2 {
-  background-image: url("../static/images/speakers/speaker2.png");
+  /* background-image: url("../static/images/speakers/speaker2.png"); */
   background-size: 70vh;
 }
 
 .scroll-speaker3 {
-  background-image: url("../static/images/speakers/speaker3.png");
+  /* background-image: url("../static/images/speakers/speaker3.png"); */
   background-size: 80vh;
 }
 
 .scroll-speaker4 {
-  background-image: url("../static/images/speakers/speaker4.png");
+  /* background-image: url("../static/images/speakers/speaker4.png"); */
   background-size: 80vh;
 }
 
@@ -159,22 +159,22 @@ body {
 }
 
 .panel-speaker1 {
-  background: url("../static/images/speakers/speaker1.png") center no-repeat;
+  /* background: url("../static/images/speakers/speaker1.png") center no-repeat; */
   background-size: 150%;
 }
 
 .panel-speaker2 {
-  background: url("../static/images/speakers/speaker2.png") center no-repeat;
+  /* background: url("../static/images/speakers/speaker2.png") center no-repeat; */
   background-size: 110%;
 }
 
 .panel-speaker3 {
-  background: url("../static/images/speakers/speaker3.png") center no-repeat;
+  /* background: url("../static/images/speakers/speaker3.png") center no-repeat; */
   background-size: 150%;
 }
 
 .panel-speaker4 {
-  background: url("../static/images/speakers/speaker4.png") center no-repeat;
+  /* background: url("../static/images/speakers/speaker4.png") center no-repeat; */
   background-size: 150%;
 }
 
@@ -183,7 +183,7 @@ body {
 }
 
 .glass-container {
-  background: url("../static/images/speakers/speaker4.png");
+  /* background: url("../static/images/speakers/speaker4.png"); */
   background-position: center;
   border-radius: none;
 }
@@ -208,22 +208,22 @@ body {
 }
 
 .mobile-speaker1 {
-  background: url("../static/images/speakers/speaker1.png") center no-repeat;
+  /* background: url("../static/images/speakers/speaker1.png") center no-repeat; */
   background-size: 200%;
 }
 
 .mobile-speaker2 {
-  background: url("../static/images/speakers/speaker2.png") center no-repeat;
+  /* background: url("../static/images/speakers/speaker2.png") center no-repeat; */
   background-size: 150%;
 }
 
 .mobile-speaker3 {
-  background: url("../static/images/speakers/speaker3.png") center no-repeat;
+  /* background: url("../static/images/speakers/speaker3.png") center no-repeat; */
   background-size: 200%;
 }
 
 .mobile-speaker4 {
-  background: url("../static/images/speakers/speaker4.png") center no-repeat;
+  /* background: url("../static/images/speakers/speaker4.png") center no-repeat; */
   background-size: 200%;
 }
 

@@ -11,8 +11,9 @@ import GrowingAnimation from "../components/animation/GrowingTextAnimation";
 import { AnimationConfig } from "../AnimationConfig";
 import scrollIntoView from "scroll-into-view-if-needed";
 
-function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
+function TeamNav({ spyTeam, setTeam, scroll, scrollWidth }) {
   const [isScrolled, setIsScrolled] = useState();
+
   const navContainerRef = useRef();
   const handleNavBarScroll = () => {
     setIsScrolled(navContainerRef.current.scrollLeft !== 0);
@@ -119,10 +120,8 @@ function TeamNav({ spyTeam, setTeam, scroll, setScroll, width, setWidth }) {
                       spyTeam={spyTeam}
                       setTeam={setTeam}
                       scroll={scroll}
-                      setScroll={setScroll}
-                      width={width}
-                      setWidth={setWidth}
                       onSelectTeam={handleTeamSelect}
+                      scrollWidth={scrollWidth}
                     />
                   </div>
                 );

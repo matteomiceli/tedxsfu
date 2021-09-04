@@ -17,6 +17,8 @@ module.exports = {
         "sponsor-text": "600px",
         "sponsor-logo": "200px",
         "short-line": "20ch",
+        "nav-hitarea-l": "34rem",
+        "nav-hitarea-sm": "28rem",
         axis: "16rem",
       },
       margin: {
