@@ -1,6 +1,6 @@
 const speakers = [
   {
-    i: 1,
+    id: 1,
     name: "Test Name 1",
     img: "/images/speakers/noor.jpg",
     video: "",
@@ -8,7 +8,7 @@ const speakers = [
     bio: "Indigenous studies and political science student",
   },
   {
-    i: 2,
+    id: 2,
     name: "Test Name 2",
     img: "/images/speakers/len.jpg",
     video: "",
@@ -16,7 +16,7 @@ const speakers = [
     bio: "Indigenous studies and political science student",
   },
   {
-    i: 3,
+    id: 3,
     name: "Test Name 3",
     img: "/images/speakers/candida.jpg",
     video: "",
@@ -24,7 +24,7 @@ const speakers = [
     bio: "Indigenous studies and political science student",
   },
   {
-    i: 4,
+    id: 4,
     name: "Test Name 4",
     img: "/images/speakers/lisa.jpg",
     video: "",

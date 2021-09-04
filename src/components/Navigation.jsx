@@ -3,7 +3,14 @@ import upArrow from "../static/images/upArrow.svg";
 import NavPanels from "./NavPanels";
 import speakers from "../content/speakers";
 
-function Navigation({ spySpeaker, setSpeaker, scroll, setScroll, width, setWidth }) {
+function Navigation({
+  spySpeaker,
+  setSpeaker,
+  scroll,
+  setScroll,
+  width,
+  setWidth,
+}) {
   const [isActive, setActive] = useState(false);
 
   return (
@@ -28,12 +35,12 @@ function Navigation({ spySpeaker, setSpeaker, scroll, setScroll, width, setWidth
           <img src={upArrow} alt="up arrow" className="h-2 ml-2 mt-0.5" />
         </div>
       </div>
-      {speakers.map((speaker) => {
+      {speakers.map((speaker, index) => {
         return (
           <NavPanels
             speaker={speaker}
             isActive={isActive}
-            key={speaker.speaker}
+            key={index}
             spySpeaker={spySpeaker}
             setSpeaker={setSpeaker}
             scroll={scroll}

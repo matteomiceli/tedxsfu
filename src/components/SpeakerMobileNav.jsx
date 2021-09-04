@@ -3,16 +3,15 @@ import scrollTo from "gatsby-plugin-smoothscroll";
 import speakers from "../content/speakers";
 import { transform } from "framer-motion";
 
-
+import Image from "./Image";
 
 function SpeakerMobileNav({
   spySpeaker,
   onScrubBegin,
   onScrubEnd,
   onScrubChange,
-  navRef
+  navRef,
 }) {
-
   return (
     <div className="absolute text-white text-4xl w-full bottom-20">
       <div
@@ -49,6 +48,12 @@ function SpeakerMobilePanel({ spySpeaker, speaker, i }) {
       } speaker-mobile-panel mobile-speaker${
         i + 1
       } h-full bg-blue-400 z-10 mx-0.5`}
-    ></div>
+    >
+      <Image
+        src={speaker.img}
+        halfBreakpoint={1920}
+        className="h-full object-cover"
+      />
+    </div>
   );
 }

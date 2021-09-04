@@ -9,7 +9,7 @@ import PLAY_BUTTON from "../../static/images/icons/icon-play.svg";
 
 function ScrollItem({ speaker, width, scroll }) {
   return (
-    <div id={`scroll-${speaker.img}`} className={`scroll-item relative h-full`}>
+    <div id={`scroll-${speaker.id}`} className={`scroll-item relative h-full`}>
       {/* <Overlay delta={delta} width={width} scroll={scroll} /> */}
       <div className="mt-flowline-mobile ml-document absolute z-10">
         <h2 className="text-3xl leading-8">{speaker.talkTitle}</h2>
