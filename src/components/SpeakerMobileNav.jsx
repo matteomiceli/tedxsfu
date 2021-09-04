@@ -13,7 +13,7 @@ function SpeakerMobileNav({
   setDelta,
 }) {
   const navRef = useRef();
-  const [inTransit, setTransit] = useState(true);
+  const [inTransit, setTransit] = useState(false);
   const [navScroll, setNavScroll] = useState(0);
   // get width and scroll position of speaker scroll container
   const container = () => {
@@ -40,9 +40,7 @@ function SpeakerMobileNav({
   }, [navScroll]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setTransit(true);
-    }, 10);
+    setTransit(true);
 
     // update spyspeaker when container is scrolled to speaker
     const speakerPanelWidth = container().width / (speakers.length - 1);
@@ -52,7 +50,9 @@ function SpeakerMobileNav({
     const containerNavRatio = navWidth / container().width;
 
     navRef.current.scrollLeft = scroll * containerNavRatio;
-    console.log(inTransit);
+    console.log(navScroll);
+
+  
   }, [scroll]);
 
   function handleScroll(e) {
@@ -63,7 +63,7 @@ function SpeakerMobileNav({
     <div className="absolute text-white text-4xl w-full bottom-20">
       <div
         ref={navRef}
-        onScroll={(e) => handleScroll(e)}
+        onTouchMove={(e) => handleScroll(e)}
         className="mobile-speaker-container h-24 bg-transparent flex overflow-x-scroll"
       >
         <div className="mobile-panel-spacer bg-transparent w-96"></div>
