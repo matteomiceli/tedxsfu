@@ -13,7 +13,7 @@ function SpeakerMobileNav({
   setDelta
 }) {
   const navRef = useRef();
-  const [inTransit, setTransit] = useState(0);
+  const [inTransit, setTransit] = useState(true);
   const [navScroll, setNavScroll] = useState(0);
   // get width and scroll position of speaker scroll container
   const container = () => {
@@ -25,7 +25,7 @@ function SpeakerMobileNav({
   };
 
   useEffect(() => {
-    setTransit(false)
+    // setTransit(false)
 
     let panelWidth = 76;
     let speakerPos = navScroll / panelWidth;
