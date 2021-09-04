@@ -104,10 +104,10 @@ function MenuItem({ pageId, href, isCurrent, children }) {
         <motion.div
           className="mb-1 text-xs"
           initial={{
-            fontVariationSettings: `"wght" 300`,
+            fontVariationSettings: `"wght" 400`,
           }}
           animate={{
-            fontVariationSettings: `"wght" ${isCurrent ? 600 : 300}`,
+            fontVariationSettings: `"wght" ${isCurrent ? 600 : 400}`,
             transition: transition,
           }}
         >
@@ -125,10 +125,10 @@ function MenuItem({ pageId, href, isCurrent, children }) {
           <motion.div
             className={"absolute left-0 top-0"}
             initial={{
-              fontVariationSettings: `"wght" 300`,
+              fontVariationSettings: `"wght" 400`,
             }}
             animate={{
-              fontVariationSettings: `"wght" ${isCurrent ? 600 : 300}`,
+              fontVariationSettings: `"wght" ${isCurrent ? 600 : 400}`,
               transition: transition,
             }}
           >
