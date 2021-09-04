@@ -52,12 +52,7 @@ function SpeakerMobileNav({
     const containerNavRatio = navWidth / container().width;
 
     navRef.current.scrollLeft = scroll * containerNavRatio;
-<<<<<<< HEAD
-    console.log(scroll)
-    
-=======
     console.log(inTransit);
->>>>>>> develop
   }, [scroll]);
 
   function handleScroll(e) {
