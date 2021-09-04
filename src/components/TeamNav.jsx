@@ -103,6 +103,7 @@ function TeamNav({ spyTeam, setTeam, scroll, scrollWidth }) {
             }
           />
           <motion.div
+            ref={navContainerRef}
             onScroll={handleNavBarScroll}
             className="team-nav-overflow overflow-x-scroll lg:absolute left-0 bottom-1 2xl:bottom-2 right-0"
           >
