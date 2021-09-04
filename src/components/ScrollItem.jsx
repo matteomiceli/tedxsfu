@@ -11,7 +11,7 @@ function ScrollItem({ speaker, width, scroll }) {
   return (
     <div id={`scroll-${speaker.img}`} className={`scroll-item relative h-full`}>
       {/* <Overlay delta={delta} width={width} scroll={scroll} /> */}
-      <div className="mt-flowline-mobile ml-document absolute z-20">
+      <div className="mt-flowline-mobile ml-document absolute z-10">
         <h2 className="text-3xl leading-8">{speaker.talkTitle}</h2>
         <h3 className="mt-2 text-sm">{speaker.name}</h3>
         <h3 className="mt-1 text-sm w-48 leading-4 opacity-60">
