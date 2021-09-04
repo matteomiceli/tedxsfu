@@ -3,67 +3,65 @@ import scrollTo from "gatsby-plugin-smoothscroll";
 import speakers from "../content/speakers";
 import { transform } from "framer-motion";
 
+
+
 function SpeakerMobileNav({
   spySpeaker,
-  setSpeaker,
-  scroll,
-  setScroll,
-  scrollRef,
-  deltaVal,
-  setDelta,
+  onScrubBegin,
+  onScrubEnd,
+  onScrubChange,
+  navRef
 }) {
-  const navRef = useRef();
-  const [inTransit, setTransit] = useState(false);
-  const [navScroll, setNavScroll] = useState(0);
+  // const [inTransit, setTransit] = useState(false);
+  // const [navScroll, setNavScroll] = useState(0);
   // get width and scroll position of speaker scroll container
-  const container = () => {
-    if (scrollRef !== undefined && typeof window !== undefined) {
-      return {
-        width: scrollRef.current.scrollWidth - window.innerWidth,
-      };
-    }
-  };
+  // const container = () => {
+  //   if (scrollRef !== undefined && typeof window !== undefined) {
+  //     return {
+  //       width: scrollRef.current.scrollWidth - window.innerWidth,
+  //     };
+  //   }
+  // };
 
-  useEffect(() => {
-    setTransit(false);
+  // looking for on touch event for mainScroll and on navScroll 
+  // switching between the two nav options. Prevnting elements from racing 
 
-    let panelWidth = 76;
-    let speakerPos = navScroll / panelWidth;
-    setSpeaker(parseInt(speakerPos + 1));
+  // useEffect(() => {
+  //   setTransit(false);
 
-    // set position of scroll container to match spied speaker
-    if (!inTransit) {
-      const speakerPanelWidth = container().width / (speakers.length - 1);
-      scrollRef.current.scrollLeft =
-        speakerPanelWidth * spySpeaker - speakerPanelWidth;
-    }
-  }, [navScroll]);
+  //   let panelWidth = 76;
+  //   let speakerPos = navScroll / panelWidth;
+  //   setSpeaker(parseInt(speakerPos + 1));
 
-  useEffect(() => {
-    setTransit(true);
+  //   // set position of scroll container to match spied speaker
+  //   if (!inTransit) {
+  //     const speakerPanelWidth = container().width / (speakers.length - 1);
+  //     scrollRef.current.scrollLeft =
+  //       speakerPanelWidth * spySpeaker - speakerPanelWidth;
+  //   }
+  // }, [navScroll]);
 
-    // update spyspeaker when container is scrolled to speaker
-    const speakerPanelWidth = container().width / (speakers.length - 1);
-    let speakerPos = parseInt(scroll / speakerPanelWidth) + 1;
+  // useEffect(() => {
+  //   setTransit(true);
 
-    const navWidth = navRef.current.scrollWidth - window.innerWidth;
-    const containerNavRatio = navWidth / container().width;
+  //   // update spyspeaker when container is scrolled to speaker
+  //   const speakerPanelWidth = container().width / (speakers.length - 1);
+  //   let speakerPos = parseInt(scroll / speakerPanelWidth) + 1;
 
-    navRef.current.scrollLeft = scroll * containerNavRatio;
-    console.log(navScroll);
+  //   const navWidth = navRef.current.scrollWidth - window.innerWidth;
+  //   const containerNavRatio = navWidth / container().width;
 
-  
-  }, [scroll]);
-
-  function handleScroll(e) {
-    setNavScroll(e.currentTarget.scrollLeft);
-  }
+  //   navRef.current.scrollLeft = scroll * containerNavRatio;
+  //   console.log(navScroll);
+  // }, [scroll])
 
   return (
     <div className="absolute text-white text-4xl w-full bottom-20">
       <div
         ref={navRef}
-        onTouchMove={(e) => handleScroll(e)}
+        onTouchStart={onScrubBegin}
+        onTouchMove={onScrubChange}
+        onTouchEnd={onScrubEnd}
         className="mobile-speaker-container h-24 bg-transparent flex overflow-x-scroll"
       >
         <div className="mobile-panel-spacer bg-transparent w-96"></div>
@@ -74,7 +72,6 @@ function SpeakerMobileNav({
               key={i}
               i={i}
               spySpeaker={spySpeaker}
-              setSpeaker={setSpeaker}
             />
           );
         })}
@@ -86,7 +83,7 @@ function SpeakerMobileNav({
 
 export default SpeakerMobileNav;
 
-function SpeakerMobilePanel({ spySpeaker, setSpeaker, speaker, i }) {
+function SpeakerMobilePanel({ spySpeaker, speaker, i }) {
   return (
     <div
       className={`${
