@@ -9,7 +9,6 @@ const HorizontalScrollContainer = React.forwardRef(
     const scrollRef = useRef();
 
     const handleScroll = (e) => {
-      // e.preventDefault();
       setDelta(e.deltaY);
     };
     // set up global scroll listener

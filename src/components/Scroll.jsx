@@ -31,7 +31,6 @@ function Scroll({
   }
 
   const handleMouseWheel = (e) => {
-    e.preventDefault();
     setDelta(e.deltaY);
   };
 
