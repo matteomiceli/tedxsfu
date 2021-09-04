@@ -6,6 +6,8 @@ import teams from "../content/teams";
 import { motion } from "framer-motion";
 import { AnimationConfig } from "../AnimationConfig";
 
+import { mergeRefs } from "../utils/util";
+
 const teamContainerVariant = {
   initial: {},
   animate: { transition: { staggerDirection: -1, staggerChildren: 0.02 } },
@@ -34,10 +36,10 @@ const teamVariant = {
   },
 };
 
-function TeamScroll({ scroll, setScroll, width, setWidth }) {
+function TeamScroll({ scroll, setScroll, scrollRef }) {
   // mouse scroll delta value
   const [deltaVal, setDelta] = useState(0);
-  const scrollRef = useRef();
+  const scrolRefInternal = useRef();
 
   useEffect(() => {
     // mouse
@@ -55,12 +57,10 @@ function TeamScroll({ scroll, setScroll, width, setWidth }) {
 
   const handleContentScroll = (e) => {
     setScroll(e.currentTarget.scrollLeft);
-    // set width of page
-    setWidth(e.currentTarget.scrollWidth - e.currentTarget.clientWidth);
   };
 
   useEffect(() => {
-    scrollRef.current.scrollLeft += deltaVal;
+    scrolRefInternal.current.scrollLeft += deltaVal;
     setDelta(0);
   }, [deltaVal]);
 
@@ -79,13 +79,7 @@ function TeamScroll({ scroll, setScroll, width, setWidth }) {
       >
         {teams.map((team, i) => (
           <motion.div variants={teamVariant}>
-            <TeamItem
-              team={team}
-              key={i}
-              delta={deltaVal}
-              width={width}
-              scroll={scroll}
-            />
+            <TeamItem team={team} key={i} delta={deltaVal} scroll={scroll} />
           </motion.div>
         ))}
       </motion.div>

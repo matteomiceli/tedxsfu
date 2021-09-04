@@ -3,14 +3,7 @@ import upArrow from "../static/images/upArrow.svg";
 import NavPanels from "./NavPanels";
 import speakers from "../content/speakers";
 
-function Navigation({
-  spySpeaker,
-  setSpeaker,
-  scroll,
-  setScroll,
-  width,
-  setWidth,
-}) {
+function Navigation({ spySpeaker, setSpeaker, scroll, width }) {
   const [isActive, setActive] = useState(false);
 
   return (
@@ -44,9 +37,7 @@ function Navigation({
             spySpeaker={spySpeaker}
             setSpeaker={setSpeaker}
             scroll={scroll}
-            setScroll={setScroll}
             width={width}
-            setWidth={setWidth}
           />
         );
       })}

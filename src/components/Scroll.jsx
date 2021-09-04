@@ -33,10 +33,6 @@ function Scroll({
   const handleMouseWheel = (e) => {
     e.preventDefault();
     setDelta(e.deltaY);
-    // setScroll(e.currentTarget.scrollLeft);
-
-    // set width of page
-    setWidth(e.currentTarget.scrollWidth - e.currentTarget.clientWidth);
   };
 
   const handleScroll = (e) => {

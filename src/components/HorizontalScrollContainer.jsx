@@ -1,13 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import loadable from "@loadable/component";
+import { mergeRefs } from "../utils/util";
 
 const HorizontalScrollContainer = React.forwardRef(
   ({ children, className }, ref) => {
-    // page width
-    const [width, setWidth] = useState(0);
-    // page scroll location
-    const [scroll, setScroll] = useState(0);
-
     // mouse scroll delta value
     const [deltaVal, setDelta] = useState(0);
     const scrollRef = useRef();
@@ -15,12 +11,7 @@ const HorizontalScrollContainer = React.forwardRef(
     const handleScroll = (e) => {
       // e.preventDefault();
       setDelta(e.deltaY);
-      setScroll(e.currentTarget.scrollLeft);
-
-      // set width of page
-      setWidth(e.currentTarget.scrollWidth - e.currentTarget.clientWidth);
     };
-
     // set up global scroll listener
     useEffect(() => {
       window.addEventListener("wheel", handleScroll);
@@ -44,21 +35,5 @@ const HorizontalScrollContainer = React.forwardRef(
     );
   }
 );
-
-//https://www.davedrinks.coffee/how-do-i-use-two-react-refs/
-const mergeRefs = (...refs) => {
-  const filteredRefs = refs.filter(Boolean);
-  if (!filteredRefs.length) return null;
-  if (filteredRefs.length === 0) return filteredRefs[0];
-  return (inst) => {
-    for (const ref of filteredRefs) {
-      if (typeof ref === "function") {
-        ref(inst);
-      } else if (ref) {
-        ref.current = inst;
-      }
-    }
-  };
-};
 
 export default HorizontalScrollContainer;
