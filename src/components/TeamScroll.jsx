@@ -44,7 +44,6 @@ function TeamScroll({ scroll, setScroll, scrollRef }) {
   useEffect(() => {
     // mouse
     const handleWheel = (e) => {
-      // e.preventDefault();
       setDelta(e.deltaY);
     };
     // handle wheel event
