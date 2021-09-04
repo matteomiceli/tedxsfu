@@ -8,32 +8,18 @@ function TeamPanels({
   team,
   setTeam,
   spyTeam,
-  width,
-  setWidth,
   scroll,
-  setScroll,
   onSelectTeam,
+  scrollWidth,
 }) {
   // handles smooth scroll function and sets team on click
   const handleNavClick = (e) => {
     onSelectTeam && onSelectTeam(team);
-    // scrollTo(`#team-${team.i}`);
-    // const targetTeam = document.querySelector(`#team-${team.i}`);
-    // if (!targetTeam) return;
-
-    // scrollIntoView(
-    //   targetTeam.scrollIntoView({
-    //     behavior: "smooth",
-    //     block: "center",
-    //     inline: "center",
-    //   })
-    // );
-    // setTeam(team.i);
   };
 
   // changes focus when div scrolled into view
   useEffect(() => {
-    let teamWidth = width / teams.length;
+    let teamWidth = scrollWidth / teams.length;
     let teamPos = scroll / teamWidth;
 
     if (scroll != 0) {
@@ -41,10 +27,10 @@ function TeamPanels({
     }
 
     // if at end, spy last team (addresses bug at final scrollPos)
-    if (scroll === width && scroll != 0) {
+    if (scroll === scrollWidth && scroll != 0) {
       setTeam(teams.length);
     }
-  }, [scroll, width]);
+  }, [scroll, scrollWidth]);
 
   return (
     <button
