@@ -246,7 +246,8 @@ const VideoPlayer = ({
         loop={loop}
         muted={isMuted}
         autoPlay={mutedAutoPlay}
-        preload
+        preload={true}
+        playsInline={true}
         disablePictureInPicture
       >
         <source src={fullHDSourceURL} type="video/mp4" />
