@@ -66,7 +66,7 @@ function TeamScroll({ scroll, setScroll, scrollRef }) {
 
   return (
     <div
-      ref={scrollRef}
+      ref={mergeRefs(scrolRefInternal, scrollRef)}
       className="outer-scroll-container"
       onScroll={handleContentScroll}
     >
