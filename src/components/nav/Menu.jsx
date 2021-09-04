@@ -1,10 +1,9 @@
 import { Link } from "gatsby";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import menu from "../../static/images/menu.svg";
 import Button from "../Button";
 import MENU_ITEMS from "../../content/menuItems";
 import EventInfo from "../../content/eventInfo";
-import { AnimatePresence } from "framer-motion";
 import { AnimationConfig } from "../../AnimationConfig";
 
 import { motion } from "framer-motion";
@@ -17,49 +16,56 @@ function Menu({ isActive, setActive, page }) {
     }
   })();
 
+  const [hoveringIndex, setHoveringIndex] = useState(null);
+  const [hoverable, setHoverable] = useState(false);
+
+  useEffect(() => {
+    if (!isActive) setHoverable(false);
+  }, [isActive]);
+
   return (
     <nav className="relative">
-      {
-        <>
-          <motion.ul
-            className={`absolute right-4 top-0 flex z-40 bg-black ${
-              isActive ? "pointer-events-all" : "pointer-events-none"
-            }`}
-            onMouseEnter={() => setActive(true)}
-            initial={{
-              opacity: 0,
-              x: 20,
-            }}
-            animate={{
-              opacity: isActive ? 1 : 0,
-              x: isActive ? 0 : 20,
-              transition: {
-                ease: AnimationConfig.EASING,
-                duration: AnimationConfig.NORMAL,
-              },
-            }}
+      <motion.ul
+        className={`absolute right-4 top-0 flex z-40 bg-black ${
+          isActive ? "pointer-events-all" : "pointer-events-none"
+        }`}
+        onMouseEnter={() => setActive(true)}
+        initial={{
+          opacity: 0,
+          x: 20,
+        }}
+        animate={{
+          opacity: isActive ? 1 : 0,
+          x: isActive ? 0 : 20,
+          transition: {
+            ease: AnimationConfig.EASING,
+            duration: AnimationConfig.NORMAL,
+          },
+        }}
+        onMouseLeave={() => setHoveringIndex(null)}
+      >
+        {MENU_ITEMS.map((item, index) => (
+          <MenuItem
+            key={index}
+            href={item.href}
+            pageId={index}
+            isCurrent={item.href === currentPath}
+            currentHoveringIndex={hoveringIndex}
+            onMouseEnter={() => hoverable && setHoveringIndex(index)}
+            hoverable={hoverable}
           >
-            {MENU_ITEMS.map((item, index) => (
-              <MenuItem
-                key={index}
-                href={item.href}
-                pageId={index}
-                isCurrent={item.href === currentPath}
-              >
-                {item.label}
-              </MenuItem>
-            ))}
-          </motion.ul>
+            {item.label}
+          </MenuItem>
+        ))}
+      </motion.ul>
 
-          {/* bigger active area to prevent accidentally exiting the nav */}
-          <div
-            className={`fixed top-0 right-0 w-nav-hitarea-sm lg:w-nav-hitarea-l h-24 lg:h-28 z-30 ${
-              isActive ? "pointer-events-all" : "pointer-events-none"
-            }`}
-            onMouseLeave={() => setActive(false)}
-          />
-        </>
-      }
+      {/* bigger active area to prevent accidentally exiting the nav */}
+      <div
+        className={`fixed top-0 right-0 w-nav-hitarea-sm lg:w-nav-hitarea-l h-24 lg:h-28 z-30 ${
+          isActive ? "pointer-events-all" : "pointer-events-none"
+        }`}
+        onMouseLeave={() => setActive(false)}
+      />
       <div
         className={
           isActive === true
@@ -76,16 +82,10 @@ function Menu({ isActive, setActive, page }) {
           className="h-8 cursor-pointer p-2 ml-6"
           src={menu}
           alt="Menu Icon"
-          onMouseEnter={() =>
-            setActive(
-              isActive === true ? (isActive = false) : (isActive = true)
-            )
-          }
-          onMouseLeave={() =>
-            setActive(
-              isActive === true ? (isActive = false) : (isActive = true)
-            )
-          }
+          onMouseEnter={() => {
+            setActive(true);
+            setTimeout(() => setHoverable(true), 300);
+          }}
         />
       </div>
     </nav>
@@ -97,17 +97,29 @@ const transition = {
   ease: AnimationConfig.EASING,
 };
 
-function MenuItem({ pageId, href, isCurrent, children }) {
+function MenuItem({
+  pageId,
+  href,
+  isCurrent,
+  hoverable,
+  currentHoveringIndex,
+  onMouseEnter,
+  children,
+}) {
+  const isHovering = currentHoveringIndex === pageId;
+  const hoveringSomething = currentHoveringIndex !== null;
+
   return (
     <li>
-      <Link to={href} className="block mr-6">
+      <Link to={href} className="block mr-6" onMouseEnter={onMouseEnter}>
         <motion.div
           className="mb-1 text-xs"
           initial={{
             fontVariationSettings: `"wght" 400`,
           }}
           animate={{
-            fontVariationSettings: `"wght" ${isCurrent ? 600 : 400}`,
+            opacity: !hoverable || !hoveringSomething || isHovering ? 1 : 0.6,
+            fontVariationSettings: `"wght" ${isCurrent ? 800 : 400}`,
             transition: transition,
           }}
         >
@@ -128,7 +140,8 @@ function MenuItem({ pageId, href, isCurrent, children }) {
               fontVariationSettings: `"wght" 400`,
             }}
             animate={{
-              fontVariationSettings: `"wght" ${isCurrent ? 600 : 400}`,
+              fontVariationSettings: `"wght" ${isCurrent ? 800 : 400}`,
+              opacity: !hoverable || !hoveringSomething || isHovering ? 1 : 0.6,
               transition: transition,
             }}
           >
