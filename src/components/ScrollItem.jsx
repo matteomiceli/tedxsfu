@@ -5,6 +5,8 @@ import loadable from "@loadable/component";
 import Image from "./Image";
 import Button from "./Button";
 
+import PLAY_BUTTON from "../../static/images/icons/icon-play.svg";
+
 function ScrollItem({ speaker, width, scroll }) {
   return (
     <div id={`scroll-${speaker.img}`} className={`scroll-item relative h-full`}>
@@ -15,9 +17,16 @@ function ScrollItem({ speaker, width, scroll }) {
         <h3 className="mt-1 text-sm w-48 leading-4 opacity-60">
           {speaker.bio}
         </h3>
-        <Button secondary className="mt-6 transform text-xs px-2">
-          Watch Trailer
-        </Button>
+        <div className="transform scale-75 sm:scale-100 origin-top-left">
+          <Button
+            secondary
+            icon={PLAY_BUTTON}
+            className="mt-6 px-2"
+            href={"/video"}
+          >
+            Watch Trailer
+          </Button>
+        </div>
       </div>
       <Image
         src={speaker.img}
