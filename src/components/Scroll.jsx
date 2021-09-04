@@ -13,7 +13,7 @@ function Scroll({
   width,
   setWidth,
   scrollRef,
-  onMouseWheel
+  onMouseWheel,
 }) {
   // mouse scroll delta value
   const [deltaVal, setDelta] = useState(0);
@@ -41,24 +41,7 @@ function Scroll({
 
   const handleScroll = (e) => {
     onScroll(e.currentTarget.scrollLeft);
-  }
-
-
-
-  const scrolls = [];
-
-  for (let i = 0; i < speakers.length; i++) {
-    const speaker = speakers[i];
-    scrolls.push(
-      <ScrollItem
-        speaker={speaker}
-        key={i}
-        delta={deltaVal}
-        width={width}
-        scroll={scroll}
-      />
-    );
-  }
+  };
 
   return (
     <div
@@ -74,7 +57,16 @@ function Scroll({
       onTouchEnd={onScrollEnd}
       onTouchMove={onScrollChange}
     >
-      <div className="inner-scroll-container flex">{scrolls}</div>
+      <div className="inner-scroll-container flex">
+        {speakers.map((speaker, index) => (
+          <ScrollItem
+            speaker={speaker}
+            key={index}
+            width={width}
+            scroll={scroll}
+          />
+        ))}
+      </div>
     </div>
   );
 }
