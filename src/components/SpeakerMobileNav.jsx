@@ -12,48 +12,6 @@ function SpeakerMobileNav({
   onScrubChange,
   navRef
 }) {
-  // const [inTransit, setTransit] = useState(false);
-  // const [navScroll, setNavScroll] = useState(0);
-  // get width and scroll position of speaker scroll container
-  // const container = () => {
-  //   if (scrollRef !== undefined && typeof window !== undefined) {
-  //     return {
-  //       width: scrollRef.current.scrollWidth - window.innerWidth,
-  //     };
-  //   }
-  // };
-
-  // looking for on touch event for mainScroll and on navScroll 
-  // switching between the two nav options. Prevnting elements from racing 
-
-  // useEffect(() => {
-  //   setTransit(false);
-
-  //   let panelWidth = 76;
-  //   let speakerPos = navScroll / panelWidth;
-  //   setSpeaker(parseInt(speakerPos + 1));
-
-  //   // set position of scroll container to match spied speaker
-  //   if (!inTransit) {
-  //     const speakerPanelWidth = container().width / (speakers.length - 1);
-  //     scrollRef.current.scrollLeft =
-  //       speakerPanelWidth * spySpeaker - speakerPanelWidth;
-  //   }
-  // }, [navScroll]);
-
-  // useEffect(() => {
-  //   setTransit(true);
-
-  //   // update spyspeaker when container is scrolled to speaker
-  //   const speakerPanelWidth = container().width / (speakers.length - 1);
-  //   let speakerPos = parseInt(scroll / speakerPanelWidth) + 1;
-
-  //   const navWidth = navRef.current.scrollWidth - window.innerWidth;
-  //   const containerNavRatio = navWidth / container().width;
-
-  //   navRef.current.scrollLeft = scroll * containerNavRatio;
-  //   console.log(navScroll);
-  // }, [scroll])
 
   return (
     <div className="absolute text-white text-4xl w-full bottom-20">
