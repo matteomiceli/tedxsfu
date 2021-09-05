@@ -16,7 +16,7 @@ function Scroll({
   setWidth,
   scrollRef,
   onMouseWheel,
-  interactionMode
+  interactionMode,
 }) {
   // mouse scroll delta value
   const [deltaVal, setDelta] = useState(0);
@@ -33,16 +33,15 @@ function Scroll({
     setDelta(e.deltaY);
   };
 
-  const attemptEndScroll = useDelayTrigger(()=> onScrollEnd(), 50);
+  const attemptEndScroll = useDelayTrigger(() => onScrollEnd(), 66);
 
   const handleScroll = (e) => {
-
-    if(interactionMode == interactionModes.IDLE) {
+    if (interactionMode == interactionModes.IDLE) {
       onScrollBegin();
       attemptEndScroll();
     }
     // when the scroll is initiated by the Scroll component
-    if(interactionMode == interactionModes.SCROLL) {
+    if (interactionMode == interactionModes.SCROLL) {
       onScrollChange();
       attemptEndScroll();
     }

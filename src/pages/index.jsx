@@ -55,7 +55,6 @@ const IndexPage = () => {
   // TODO: LOGGING OUT THE INTERACTION MODE
   useEffect(() => console.log(interactionMode), [interactionMode]);
 
-
   // SCROLL
 
   const handleScrollBegin = () => {
@@ -64,9 +63,9 @@ const IndexPage = () => {
   };
 
   const handleScrollEnd = () => {
-    console.log("scroll ends")
+    console.log("scroll ends");
     setInteractionMode(interactionModes.IDLE);
-  }
+  };
 
   const handleScrollChange = () => {
     // STEP1 - update scrub bar position
@@ -83,7 +82,6 @@ const IndexPage = () => {
     setSpeaker(speakerPos);
   };
 
-
   // SCRUB
 
   const handleScrubBegin = () => {
@@ -94,7 +92,7 @@ const IndexPage = () => {
     setTimeout(() => {
       setInteractionMode(interactionModes.IDLE);
     }, 500);
-  }
+  };
 
   const handleScrubChange = () => {
     // STEP1 - calc the current spy speaker
@@ -110,9 +108,9 @@ const IndexPage = () => {
     setSpeaker(newSpeakerIndex);
   };
 
-  const handleSpeakerScroll = (scrollAmount)=> {
+  const handleSpeakerScroll = (scrollAmount) => {
     setScroll(scrollAmount);
-  }
+  };
 
   return (
     <>
@@ -129,6 +127,7 @@ const IndexPage = () => {
         onScrollChange={handleScrollChange}
         interactionMode={interactionMode}
       />
+      <div className="fixed top-20 left-20 z-50">{interactionMode}</div>
       {isFullNav ? (
         <Navigation
           spySpeaker={spySpeaker}
