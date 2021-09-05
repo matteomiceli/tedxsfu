@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import ScrollItem from "../components/ScrollItem";
 import loadable from "@loadable/component";
 
@@ -22,6 +22,7 @@ const Scroll = function ({
   interactionMode,
   forceModeChange,
   spySpeaker,
+  setSpeaker,
 }) {
   // mouse scroll delta value
   const [deltaVal, setDelta] = useState(0);
@@ -88,6 +89,43 @@ const Scroll = function ({
   //     true
   //   );
   // }, []);
+
+  const nextSpeaker = useCallback(() => {
+    if (spySpeaker + 1 > speakers.length) return;
+
+    scrollIntoView(document.querySelector(`#scroll-${spySpeaker + 1}`), {
+      behavior: "smooth",
+    });
+  }, [spySpeaker]);
+
+  const prevSpeaker = useCallback(() => {
+    if (spySpeaker - 1 <= 0) return;
+
+    scrollIntoView(document.querySelector(`#scroll-${spySpeaker - 1}`), {
+      behavior: "smooth",
+    });
+  }, [spySpeaker]);
+
+  // suport keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      //
+      switch (e.code) {
+        case "ArrowRight":
+          // next speaker
+          nextSpeaker();
+          break;
+        case "ArrowLeft":
+          // prev Speaker
+          prevSpeaker();
+          break;
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [spySpeaker]);
 
   return (
     <div
