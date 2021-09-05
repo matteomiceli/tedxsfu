@@ -86,7 +86,8 @@ const IndexPage = () => {
     });
 
     // STEP2 - update selected speaker position
-    let speakerPos = parseInt(scroll / speakerPanelWidth) + 1;
+    const PADDING = 20;
+    let speakerPos = parseInt((scroll + PADDING) / speakerPanelWidth) + 1;
     setSpeaker(speakerPos);
   };
 
@@ -152,6 +153,9 @@ const IndexPage = () => {
       ) : (
         <SpeakerMobileNav
           navRef={navRef}
+          onSelectSpeaker={(id) => {
+            // TODO: implement select speaker
+          }}
           spySpeaker={spySpeaker}
           onScrubBegin={handleScrubBegin}
           onScrubEnd={handleScrubEnd}

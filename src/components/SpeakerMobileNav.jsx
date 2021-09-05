@@ -6,8 +6,10 @@ import useDelayTrigger from "../hooks/useDelayTrigger";
 
 import { interactionModes } from "../pages";
 import Image from "./Image";
+import scrollIntoView from "scroll-into-view-if-needed";
 
 function SpeakerMobileNav({
+  setSpeaker,
   spySpeaker,
   onScrubBegin,
   onScrubEnd,
@@ -15,6 +17,7 @@ function SpeakerMobileNav({
   navRef,
   interactionMode,
   forceModeChange,
+  onSelectSpeaker,
 }) {
   const attemptEndScrub = useDelayTrigger(() => {
     if (forceModeChange.current === true) {
@@ -64,6 +67,7 @@ function SpeakerMobileNav({
           return (
             <SpeakerMobilePanel
               speaker={speaker}
+              onSelectSpeaker={onSelectSpeaker}
               key={i}
               i={i}
               spySpeaker={spySpeaker}
@@ -78,19 +82,26 @@ function SpeakerMobileNav({
 
 export default SpeakerMobileNav;
 
-function SpeakerMobilePanel({ spySpeaker, speaker, i }) {
+function SpeakerMobilePanel({ spySpeaker, speaker, onSelectSpeaker, i }) {
   return (
     <div
       className={`${
         spySpeaker === i + 1 ? "panel-active" : "panel-notactive"
       } speaker-mobile-panel mobile-speaker${i + 1} h-full z-10 mx-0.5`}
     >
-      <Image
-        src={speaker.img}
-        width={2560}
-        height={1706}
-        className="h-full object-cover"
-      />
+      <a
+        href={`#mobile-speaker-${i + 1}`}
+        onClick={() => {
+          onSelectSpeaker(i + 1);
+        }}
+      >
+        <Image
+          src={speaker.img}
+          width={2560}
+          height={1706}
+          className="h-full object-cover"
+        />
+      </a>
     </div>
   );
 }
