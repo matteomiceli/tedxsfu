@@ -7,6 +7,11 @@ import Button from "./Button";
 
 import PLAY_BUTTON from "../../static/images/icons/icon-play.svg";
 
+import { motion } from "framer-motion";
+import { AnimationConfig } from "../AnimationConfig";
+import GrowingTextAnimation from "../components/animation/GrowingTextAnimation";
+import { SimpleDivAnimation } from "../components/animation/SimpleTransitionAnimation";
+
 function ScrollItem({ speaker, width }) {
   return (
     <div
@@ -18,28 +23,61 @@ function ScrollItem({ speaker, width }) {
     >
       {/* <Overlay delta={delta} width={width} scroll={scroll} /> */}
       <div className="mt-flowline-mobile ml-document absolute z-10">
-        <h2 className="text-3xl leading-8">{speaker.talkTitle}</h2>
-        <h3 className="mt-2 text-sm">{speaker.name}</h3>
-        <h3 className="mt-1 text-sm w-48 leading-4 opacity-60">
-          {speaker.bio}
-        </h3>
-        <div className="transform scale-75 sm:scale-100 origin-top-left">
-          <Button
-            secondary
-            icon={PLAY_BUTTON}
-            className="mt-6 px-2"
-            href={"/video"}
+        <h2 className="text-3xl leading-8">
+          <GrowingTextAnimation>{speaker.talkTitle}</GrowingTextAnimation>
+        </h2>
+        <SimpleDivAnimation>
+          <h3 className="mt-2 text-sm">{speaker.name}</h3>
+
+          <h3 className="mt-1 text-sm w-48 leading-4 opacity-60">
+            {speaker.bio}
+          </h3>
+          <div
+            staggerIndex={1}
+            className="transform scale-75 sm:scale-100 origin-top-left"
           >
-            Watch Trailer
-          </Button>
-        </div>
+            <Button
+              secondary
+              icon={PLAY_BUTTON}
+              className="mt-6 px-2"
+              href={"/video"}
+            >
+              Watch Trailer
+            </Button>
+          </div>
+        </SimpleDivAnimation>
       </div>
-      <Image
-        src={speaker.img}
-        width={2560}
-        height={1706}
-        className="absolute top-0 left-0 right-0 bottom-0 object-cover h-full w-full z-0"
-      />
+      <motion.div
+        className="absolute top-0 left-0 right-0 bottom-0 h-full w-full z-0"
+        initial={{
+          opacity: 0,
+          scale: 1.05,
+        }}
+        animate={{
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          transition: {
+            duration: AnimationConfig.SLOW,
+            ease: AnimationConfig.EASING,
+          },
+        }}
+        exit={{
+          opacity: 0,
+          scale: 1.05,
+          transition: {
+            duration: AnimationConfig.NORMAL,
+            ease: AnimationConfig.EASING_INVERTED,
+          },
+        }}
+      >
+        <Image
+          src={speaker.img}
+          width={2560}
+          height={1706}
+          className=" object-cover h-full w-full z-0"
+        />
+      </motion.div>
     </div>
   );
 }

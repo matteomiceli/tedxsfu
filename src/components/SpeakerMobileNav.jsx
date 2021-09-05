@@ -1,12 +1,53 @@
 import React, { useRef, useState, useEffect } from "react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import speakers from "../content/speakers";
-import { transform } from "framer-motion";
+import { motion } from "framer-motion";
 import useDelayTrigger from "../hooks/useDelayTrigger";
 
 import { interactionModes } from "../pages";
 import Image from "./Image";
-import scrollIntoView from "scroll-into-view-if-needed";
+import { AnimationConfig } from "../AnimationConfig";
+
+const navContainerVariant = {
+  initial: {
+    transition: {
+      staggerChildren: 0.015,
+    },
+  },
+  animate: {
+    transition: {
+      staggerDirection: -1,
+      staggerChildren: 0.02,
+    },
+  },
+  exit: {
+    transition: {
+      staggerDirection: -1,
+      staggerChildren: 0.02,
+    },
+  },
+};
+const navPanelVariant = {
+  initial: { opacity: 0, y: 0, x: 50 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    x: 0,
+    transition: {
+      duration: AnimationConfig.SLOW,
+      ease: AnimationConfig.EASING,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -0,
+    x: -0,
+    transition: {
+      duration: AnimationConfig.NORMAL,
+      ease: AnimationConfig.EASING,
+    },
+  },
+};
 
 function SpeakerMobileNav({
   setSpeaker,
@@ -49,7 +90,7 @@ function SpeakerMobileNav({
 
   return (
     <div className="absolute text-white text-4xl w-full bottom-20">
-      <div
+      <motion.div
         ref={navRef}
         onTouchStart={() => {
           onScrubBegin();
@@ -61,6 +102,10 @@ function SpeakerMobileNav({
         }}
         onScroll={handleNavScroll}
         className="mobile-speaker-container h-24 bg-transparent flex overflow-x-scroll"
+        variants={navContainerVariant}
+        initial="initial"
+        animate="animate"
+        exit="exit"
       >
         <div className="mobile-panel-spacer bg-transparent w-96"></div>
         {speakers.map((speaker, i) => {
@@ -75,7 +120,7 @@ function SpeakerMobileNav({
           );
         })}
         <div className="mobile-panel-spacer bg-transparent w-96"></div>
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -84,7 +129,8 @@ export default SpeakerMobileNav;
 
 function SpeakerMobilePanel({ spySpeaker, speaker, onSelectSpeaker, i }) {
   return (
-    <div
+    <motion.div
+      variants={navPanelVariant}
       className={`${
         spySpeaker === i + 1 ? "panel-active" : "panel-notactive"
       } speaker-mobile-panel mobile-speaker${i + 1} h-full z-10 mx-0.5`}
@@ -102,6 +148,6 @@ function SpeakerMobilePanel({ spySpeaker, speaker, onSelectSpeaker, i }) {
           className="h-full object-cover"
         />
       </a>
-    </div>
+    </motion.div>
   );
 }
