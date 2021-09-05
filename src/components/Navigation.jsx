@@ -64,18 +64,36 @@ function Navigation({ spySpeaker, setSpeaker, scroll, width }) {
       animate="animate"
       exit="exit"
     >
-      <div
+      <motion.div
         className={
           isActive
             ? "opacity-0 text-white absolute font-NeueHaas w-full h-full flex justify-center top-8 transition-all transform translate-y-28 duration-200 ease-in-out z-10"
             : "opacity-100 text-white absolute font-NeueHaas w-full h-full flex justify-center top-8 transition-all duration-200 ease-in-out z-10"
         }
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+          transition: {
+            duration: AnimationConfig.NORMAL,
+            ease: AnimationConfig.EASING,
+          },
+        }}
+        exit={{
+          opacity: 0,
+          y: 20,
+          transition: {
+            duration: AnimationConfig.FAST,
+            ease: AnimationConfig.EASING_INVERTED,
+          },
+        }}
       >
         <p className="text-sm font-medium">ALL SPEAKERS</p>
         <div className="h-5">
           <img src={upArrow} alt="up arrow" className="h-2 ml-2 mt-0.5" />
         </div>
-      </div>
+      </motion.div>
       {speakers.map((speaker, index) => {
         return (
           <motion.div
