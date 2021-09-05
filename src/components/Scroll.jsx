@@ -35,11 +35,17 @@ function Scroll({
 
   const attemptEndScroll = useDelayTrigger(() => onScrollEnd(), 66);
 
+  const logRef = useRef();
+  const called = useRef(0);
+
   const handleScroll = (e) => {
-    if (interactionMode == interactionModes.IDLE) {
-      onScrollBegin();
-      attemptEndScroll();
-    }
+    called.current++;
+    logRef.current.innerHTML = called.current;
+
+    // if (interactionMode == interactionModes.IDLE) {
+    //   onScrollBegin();
+    //   attemptEndScroll();
+    // }
     // when the scroll is initiated by the Scroll component
     if (interactionMode == interactionModes.SCROLL) {
       onScrollChange();
@@ -59,10 +65,11 @@ function Scroll({
       onScrollCapture={(e) => {
         handleScroll(e);
       }}
-      // onTouchStart={onScrollBegin}
+      onTouchStart={onScrollBegin}
       // onTouchEnd={onScrollEnd}
       // onTouchMove={onScrollChange}
     >
+      <div className="fixed top-40 left-20 z-50" ref={logRef}></div>
       <div className="inner-scroll-container flex">
         {speakers.map((speaker, index) => (
           <ScrollItem

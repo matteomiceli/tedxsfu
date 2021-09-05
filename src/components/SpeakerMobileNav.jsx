@@ -17,10 +17,10 @@ function SpeakerMobileNav({
 }) {
   const attemptEndScrub = useDelayTrigger(() => onScrubEnd(), 66);
   const handleNavScroll = () => {
-    if (interactionMode == interactionModes.IDLE) {
-      onScrubBegin();
-      attemptEndScrub();
-    }
+    // if (interactionMode == interactionModes.IDLE) {
+    //   onScrubBegin();
+    //   attemptEndScrub();
+    // }
     // when the scroll is initiated by the Scrub component
     if (interactionMode == interactionModes.SCRUB) {
       onScrubChange();
@@ -32,7 +32,7 @@ function SpeakerMobileNav({
     <div className="absolute text-white text-4xl w-full bottom-20">
       <div
         ref={navRef}
-        // onTouchStart={onScrubBegin}
+        onTouchStart={onScrubBegin}
         // onTouchMove={onScrubChange}
         // onTouchEnd={onScrubEnd}
         onScroll={handleNavScroll}
