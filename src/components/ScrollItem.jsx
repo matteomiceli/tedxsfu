@@ -23,18 +23,20 @@ function ScrollItem({ speaker, width }) {
     >
       {/* <Overlay delta={delta} width={width} scroll={scroll} /> */}
       <div className="mt-flowline-mobile ml-document absolute z-10">
-        <h2 className="text-3xl leading-8">
+        <h2
+          className="text-3xl leading-8 lg:mt-speakerDesktop 2xl:ml-axis"
+          style={{ maxWidth: "24rem" }}
+        >
           <GrowingTextAnimation>{speaker.talkTitle}</GrowingTextAnimation>
         </h2>
         <SimpleDivAnimation>
-          <h3 className="mt-2 text-sm">{speaker.name}</h3>
-
-          <h3 className="mt-1 text-sm w-48 leading-4 opacity-60">
+          <h3 className="mt-2 text-sm 2xl:ml-axis">{speaker.name}</h3>
+          <h3 className="mt-1 text-sm w-48 leading-4 opacity-60 2xl:ml-axis">
             {speaker.bio}
           </h3>
           <div
             staggerIndex={1}
-            className="transform scale-75 sm:scale-100 origin-top-left"
+            className="transform scale-75 sm:scale-100 origin-top-left 2xl:ml-axis"
           >
             <Button
               secondary
