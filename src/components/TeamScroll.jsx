@@ -70,7 +70,7 @@ function TeamScroll({ scroll, setScroll, scrollRef }) {
       onScroll={handleContentScroll}
     >
       <motion.div
-        className="inner-scroll-container flex w-full ml-document lg:pl-axis"
+        className="inner-scroll-container flex w-full ml-document lg:pl-16 xl:pl-axis"
         variants={teamContainerVariant}
         initial="initial"
         animate="animate"

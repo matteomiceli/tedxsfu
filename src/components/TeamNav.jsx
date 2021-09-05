@@ -57,8 +57,8 @@ function TeamNav({ spyTeam, setTeam, scroll, scrollWidth }) {
   }, [spyTeam, isJumpingToTeam]);
 
   return (
-    <div className="w-full justify-start mt-flowline-mobile md:mt-flowline">
-      <div className="team-nav-container flex flex-col items-end lg:flex-row lg:ml-axis">
+    <div className="w-full justify-start mt-flowline-mobile lg:mt-flowline-lg xl:mt-flowline">
+      <div className="team-nav-container flex flex-col items-end lg:flex-row lg:pl-16 xl:pl-axis">
         <div className="self-start flex-shrink-0 flex-grow-0 ml-document lg:self-end">
           <h1 className="mr-16 2xl:mr-24 lg:my-0 text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl whitespace-nowrap">
             <GrowingAnimation delay={0.1}>Meet the Team</GrowingAnimation>

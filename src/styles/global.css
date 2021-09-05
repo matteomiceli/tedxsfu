@@ -347,6 +347,9 @@ body {
     .mt-flowline {
       margin-top: 25vh;
     }
+    .mt-flowline-lg{
+      margin-top: 20vh;
+    }
     .mt-flowline-mobile {
       margin-top: 15vh;
     }
