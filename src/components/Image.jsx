@@ -51,7 +51,7 @@ const Image = ({ src, halfBreakpoint, width, height, onLoad, ...props }) => {
     if (loadingState === imageState.LOADED) onLoad && onLoad();
   }, [loadingState]);
 
-  console.log(`${src} — cached:${isFullSizeImageCached.current}`);
+  // console.log(`${src} — cached:${isFullSizeImageCached.current}`);
 
   return (
     <div

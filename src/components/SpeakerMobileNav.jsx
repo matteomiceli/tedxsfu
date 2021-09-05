@@ -2,7 +2,9 @@ import React, { useRef, useState, useEffect } from "react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import speakers from "../content/speakers";
 import { transform } from "framer-motion";
+import useDelayTrigger from "../hooks/useDelayTrigger";
 
+import { interactionModes } from "../pages";
 import Image from "./Image";
 
 function SpeakerMobileNav({
@@ -11,14 +13,30 @@ function SpeakerMobileNav({
   onScrubEnd,
   onScrubChange,
   navRef,
+  interactionMode
 }) {
+
+  const attemptEndScrub = useDelayTrigger(()=> onScrubEnd(), 50);
+  const handleNavScroll = ()=> {
+     if(interactionMode == interactionModes.IDLE) {
+      onScrubBegin();
+      attemptEndScrub();
+    }
+    // when the scroll is initiated by the Scrub component
+    if(interactionMode == interactionModes.SCRUB) {
+      onScrubChange();
+      attemptEndScrub();
+    }
+  }
+
   return (
     <div className="absolute text-white text-4xl w-full bottom-20">
       <div
         ref={navRef}
-        onTouchStart={onScrubBegin}
-        onTouchMove={onScrubChange}
-        onTouchEnd={onScrubEnd}
+        // onTouchStart={onScrubBegin}
+        // onTouchMove={onScrubChange}
+        // onTouchEnd={onScrubEnd}
+        onScroll={handleNavScroll}
         className="mobile-speaker-container h-24 bg-transparent flex overflow-x-scroll"
       >
         <div className="mobile-panel-spacer bg-transparent w-96"></div>

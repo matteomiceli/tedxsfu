@@ -7,7 +7,7 @@ import SpeakerMobileNav from "../components/SpeakerMobileNav";
 
 import speakers from "../content/speakers";
 
-const interactionModes = {
+export const interactionModes = {
   IDLE: "IDLE", // not interacting
   SCRUB: "SCRUB", // for mobile nav
   SCROLL: "SCROLL", // for swipping the speaker
@@ -55,11 +55,18 @@ const IndexPage = () => {
   // TODO: LOGGING OUT THE INTERACTION MODE
   useEffect(() => console.log(interactionMode), [interactionMode]);
 
+
+  // SCROLL
+
   const handleScrollBegin = () => {
     if (interactionMode !== interactionModes.SCRUB)
       setInteractionMode(interactionModes.SCROLL);
   };
-  const handleScrollEnd = () => setInteractionMode(interactionModes.IDLE);
+
+  const handleScrollEnd = () => {
+    console.log("scroll ends")
+    setInteractionMode(interactionModes.IDLE);
+  }
 
   const handleScrollChange = () => {
     // STEP1 - update scrub bar position
@@ -69,8 +76,6 @@ const IndexPage = () => {
 
     requestAnimationFrame(() => {
       navRef.current.scrollLeft = scroll * containerNavRatio;
-      // const leftValue = scroll * containerNavRatio;
-      // navRef.current.style.transform = `translate3d(${-leftValue}px, 0, 0)`;
     });
 
     // STEP2 - update selected speaker position
@@ -78,11 +83,18 @@ const IndexPage = () => {
     setSpeaker(speakerPos);
   };
 
+
+  // SCRUB
+
   const handleScrubBegin = () => {
     if (interactionMode !== interactionModes.SCROLL)
       setInteractionMode(interactionModes.SCRUB);
   };
-  const handleScrubEnd = () => setInteractionMode(interactionModes.IDLE);
+  const handleScrubEnd = () => {
+    setTimeout(() => {
+      setInteractionMode(interactionModes.IDLE);
+    }, 500);
+  }
 
   const handleScrubChange = () => {
     // STEP1 - calc the current spy speaker
@@ -98,19 +110,24 @@ const IndexPage = () => {
     setSpeaker(newSpeakerIndex);
   };
 
+  const handleSpeakerScroll = (scrollAmount)=> {
+    setScroll(scrollAmount);
+  }
+
   return (
     <>
       <Scroll
         spySpeaker={spySpeaker}
         setSpeaker={setSpeaker}
         scroll={scroll}
-        onScroll={setScroll}
+        onScroll={handleSpeakerScroll}
         width={width}
         setWidth={setWidth}
         scrollRef={scrollRef}
         onScrollBegin={handleScrollBegin}
         onScrollEnd={handleScrollEnd}
         onScrollChange={handleScrollChange}
+        interactionMode={interactionMode}
       />
       {isFullNav ? (
         <Navigation
@@ -126,6 +143,7 @@ const IndexPage = () => {
           onScrubBegin={handleScrubBegin}
           onScrubEnd={handleScrubEnd}
           onScrubChange={handleScrubChange}
+          interactionMode={interactionMode}
         />
       )}
     </>
