@@ -23,9 +23,9 @@ function TeamBios({ location, history, pageContext }) {
 
   return (
     <HorizontalScrollContainer>
-      <div className="h-3/5 flex relative top-1/4">
-        <div className="w-full mr-36 pl-24 h-full flex flex-col justify-center">
-          <h1 className="text-5xl w-96 mb-8">
+      <div className="h-2/5 flex relative top-1/4 transform lg:h-3/5 lg:translate-y-0">
+        <div className="w-full mr-36 pl-8 lg:pl-24 h-full flex flex-col justify-center">
+          <h1 className="text-4xl lg:text-5xl w-96 mb-8">
             <GrowingTextAnimation>{teamInfo.team}</GrowingTextAnimation>
           </h1>
           <SimpleDivAnimation staggerIndex={teamInfo.members.length + 1}>
@@ -66,7 +66,7 @@ function BioContainer({ member, i, total }) {
       }
     >
       <img
-        className={`teambio-img pr-8 self-${i % 2 === 0 ? "start" : "end"}`}
+        className={`teambio-img pr-8 self-${i % 2 === 0 ? "start" : member.imgWide  ? 'start' : "end"}`}
         src={member.img}
         alt=""
       />
@@ -75,9 +75,9 @@ function BioContainer({ member, i, total }) {
           member.imgWide ? "mt-6" : ""
         }`}
       >
-        <h3 className="text-lg">{member.name}</h3>
-        <p className="text-gray-400 mb-4 text-sm">{member.role}</p>
-        <p className="mb-6 text-sm">{member.bio}</p>
+        <h3 className="text-base lg:text-lg">{member.name}</h3>
+        <p className="text-gray-400 mb-4 text-xs lg:text-sm">{member.role}</p>
+        <p className="mb-6 text-xs lg:text-sm">{member.bio}</p>
         <div className="socials flex">
           {member.socials.linked ? (
             <a className="mr-4" href={member.socials.linked} target="_blank">

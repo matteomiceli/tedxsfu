@@ -266,17 +266,35 @@ body {
 /* TEAM BIOS */
 
 .bio-container {
-  min-width: 700px;
-}
-
-.bio-container-wide {
   min-width: 500px;
 }
 
-.teambio-img {
-  max-height: 450px;
-  max-width: 500px;
+.bio-container-wide {
+  min-width: 300px;
 }
+
+.teambio-img {
+  max-height: 300px;
+  max-width: 325px;
+}
+
+  /* bios mobile */
+@media only screen and (min-width: 1025px) {
+  .bio-container {
+    min-width: 700px;
+  }
+  
+  .bio-container-wide {
+    min-width: 500px;
+  }
+
+  .teambio-img {
+    max-height: 450px;
+    max-width: 500px;
+  }
+}
+
+
 
 @tailwind base;
 @tailwind components;
