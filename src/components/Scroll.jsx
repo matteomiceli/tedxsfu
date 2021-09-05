@@ -52,13 +52,13 @@ const Scroll = function ({
     }
   }, 100);
 
-  const logRef = useRef();
-  const logRef2 = useRef();
-  const called = useRef(0);
+  // const logRef = useRef();
+  // const logRef2 = useRef();
+  // const called = useRef(0);
 
   const handleScroll = (e) => {
-    called.current++;
-    logRef.current.innerHTML = called.current;
+    // called.current++;
+    // logRef.current.innerHTML = called.current;
 
     if (interactionMode === interactionModes.IDLE) {
       onScrollBegin();
@@ -114,8 +114,9 @@ const Scroll = function ({
         display: "flex",
       }}
     >
-      <div className="fixed top-40 left-20 z-50" ref={logRef}></div>
-      <div className="fixed top-60 left-20 z-50" ref={logRef2}></div>
+      {/* DEBUG */}
+      {/* <div className="fixed top-40 left-20 z-50" ref={logRef}></div>
+      <div className="fixed top-60 left-20 z-50" ref={logRef2}></div> */}
       <div className="inner-scroll-container flex">
         {speakers.map((speaker, index) => (
           <ScrollItem speaker={speaker} key={index} width={width} />

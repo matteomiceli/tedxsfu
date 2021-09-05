@@ -2,13 +2,6 @@
 @import "./gradient.css";
 /* ./src/styles/global.css */
 
-* {
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
-}
-
 ::selection {
   color: #000;
   /* background: #e61b2e; */

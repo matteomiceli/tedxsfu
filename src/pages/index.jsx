@@ -140,7 +140,8 @@ const IndexPage = () => {
         interactionMode={interactionMode}
         forceModeChange={forceModeChange}
       />
-      <div className="fixed top-20 left-20 z-50">{interactionMode}</div>
+      {/* debug */}
+      {/* <div className="fixed top-20 left-20 z-50">{interactionMode}</div> */}
       {isFullNav ? (
         <Navigation
           spySpeaker={spySpeaker}
