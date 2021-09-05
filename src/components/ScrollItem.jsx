@@ -25,7 +25,7 @@ function ScrollItem({ speaker, width }) {
       <div className="mt-flowline-mobile ml-document absolute z-10">
         <h2
           className="text-3xl leading-8 lg:mt-speakerDesktop 2xl:ml-axis"
-          style={{ maxWidth: "24rem" }}
+          style={{ maxWidth: "21ch" }}
         >
           <GrowingTextAnimation>{speaker.talkTitle}</GrowingTextAnimation>
         </h2>
