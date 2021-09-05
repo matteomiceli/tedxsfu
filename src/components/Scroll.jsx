@@ -37,10 +37,6 @@ const Scroll = function ({
 
   // mouse scroll delta value
   const [isWheeling, setIsWheeling] = useState();
-  const handleMouseWheel = (e) => {
-    setDelta(e.deltaY);
-    setIsWheeling(true);
-  };
 
   const attemptEndScroll = useDelayTrigger(() => {
     if (forceModeChange.current === true) {
@@ -127,13 +123,19 @@ const Scroll = function ({
     };
   }, [spySpeaker]);
 
+  useEffect(() => {
+    const handleWheel = (e) => {
+      setDelta(e.deltaY);
+      setIsWheeling(true);
+    };
+    window.addEventListener("wheel", handleWheel);
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, []);
+
   return (
     <div
       ref={scrollRef}
       className="outer-scroll-container"
-      onWheel={(e) => {
-        handleMouseWheel(e);
-      }}
       onScroll={(e) => {
         handleScroll(e);
       }}
