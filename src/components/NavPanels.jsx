@@ -50,7 +50,7 @@ function NavPanels({
             }`
       }
     >
-      <Image src={speaker.img} className="h-full object-cover" />
+      <img src={speaker.img} className="h-full object-cover" />
     </button>
   );
 }

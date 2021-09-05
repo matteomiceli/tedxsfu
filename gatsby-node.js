@@ -83,6 +83,7 @@ exports.onPreInit = async () => {
       );
       const writeFilePathWebp = pathWithoutExt + ".webp";
       const writeFilePathWebpHalf = pathWithoutExt + "@half.webp";
+      const writeFileLoading = pathWithoutExt + "@loading.webp";
 
       console.log(`Writing "${writeFilePathWebp}"`);
       // get the image and converting it into webp
@@ -96,6 +97,9 @@ exports.onPreInit = async () => {
             .resize(Math.round(width * 0.5))
             .toFile(writeFilePathWebpHalf)
         );
+
+      console.log(`Writing "${writeFileLoading}"`);
+      await sharp(relativeImgPath).resize(16).blur(3).toFile(writeFileLoading);
     })
   );
 };

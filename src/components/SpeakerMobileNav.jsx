@@ -51,7 +51,8 @@ function SpeakerMobilePanel({ spySpeaker, speaker, i }) {
     >
       <Image
         src={speaker.img}
-        halfBreakpoint={1920}
+        width={2560}
+        height={1706}
         className="h-full object-cover"
       />
     </div>
