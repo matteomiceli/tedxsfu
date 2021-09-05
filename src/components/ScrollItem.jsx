@@ -7,9 +7,15 @@ import Button from "./Button";
 
 import PLAY_BUTTON from "../../static/images/icons/icon-play.svg";
 
-function ScrollItem({ speaker, width, scroll }) {
+function ScrollItem({ speaker, width }) {
   return (
-    <div id={`scroll-${speaker.id}`} className={`scroll-item relative h-full`}>
+    <div
+      id={`scroll-${speaker.id}`}
+      className={`scroll-item relative h-full`}
+      style={{
+        scrollSnapAlign: "center",
+      }}
+    >
       {/* <Overlay delta={delta} width={width} scroll={scroll} /> */}
       <div className="mt-flowline-mobile ml-document absolute z-10">
         <h2 className="text-3xl leading-8">{speaker.talkTitle}</h2>

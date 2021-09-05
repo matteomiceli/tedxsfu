@@ -14,8 +14,15 @@ function SpeakerMobileNav({
   onScrubChange,
   navRef,
   interactionMode,
+  forceModeChange,
 }) {
   const attemptEndScrub = useDelayTrigger(() => {
+    if (forceModeChange.current === true) {
+      onScrubEnd();
+      forceModeChange.current = false;
+      return;
+    }
+
     if (isPointerDown.current === true) {
       // keep the scroll state sustained if the user haven't lift up their figure
       attemptEndScrub();

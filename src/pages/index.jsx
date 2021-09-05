@@ -6,6 +6,7 @@ import { breakpoints, useBreakpoint } from "../hooks/useBreakpoint";
 import SpeakerMobileNav from "../components/SpeakerMobileNav";
 
 import speakers from "../content/speakers";
+import useDelayTrigger from "../hooks/useDelayTrigger";
 
 export const interactionModes = {
   IDLE: "IDLE", // not interacting
@@ -24,6 +25,8 @@ const IndexPage = () => {
   const scrollRef = useRef();
   // ref to nav scrub object
   const navRef = useRef();
+
+  const forceModeChange = useRef(false);
 
   const scrollContainerWidth = () => {
     if (scrollRef !== undefined && typeof window !== undefined) {
@@ -60,6 +63,7 @@ const IndexPage = () => {
   const handleScrollBegin = () => {
     // if (interactionMode !== interactionModes.SCRUB)
     setInteractionMode(interactionModes.SCROLL);
+    forceModeChange.current = true;
   };
 
   const handleScrollEnd = () => {
@@ -67,6 +71,11 @@ const IndexPage = () => {
   };
 
   const handleScrollChange = () => {
+    // desktop scenario
+    if (!navRef.current) return;
+
+    forceModeChange.current = false;
+
     // STEP1 - update scrub bar position
     const speakerPanelWidth = scrollContainerWidth() / (speakers.length - 1);
     const navWidth = navRef.current.scrollWidth - window.innerWidth;
@@ -82,10 +91,10 @@ const IndexPage = () => {
   };
 
   // SCRUB
-
   const handleScrubBegin = () => {
     // if (interactionMode !== interactionModes.SCROLL)
     setInteractionMode(interactionModes.SCRUB);
+    forceModeChange.current = true;
   };
   const handleScrubEnd = () => {
     setInteractionMode(interactionModes.IDLE);
@@ -99,8 +108,14 @@ const IndexPage = () => {
 
     // STEP2 - change the scroll position to the current spy speaker
     const speakerPanelWidth = scrollContainerWidth() / (speakers.length - 1);
-    scrollRef.current.scrollLeft =
-      speakerPanelWidth * newSpeakerIndex - speakerPanelWidth;
+
+    // only update position if the speaker change
+    if (spySpeaker !== newSpeakerIndex) {
+      forceModeChange.current = false;
+      // update change
+      scrollRef.current.scrollLeft =
+        speakerPanelWidth * newSpeakerIndex - speakerPanelWidth;
+    }
 
     setSpeaker(newSpeakerIndex);
   };
@@ -123,6 +138,7 @@ const IndexPage = () => {
         onScrollEnd={handleScrollEnd}
         onScrollChange={handleScrollChange}
         interactionMode={interactionMode}
+        forceModeChange={forceModeChange}
       />
       <div className="fixed top-20 left-20 z-50">{interactionMode}</div>
       {isFullNav ? (
@@ -140,6 +156,7 @@ const IndexPage = () => {
           onScrubEnd={handleScrubEnd}
           onScrubChange={handleScrubChange}
           interactionMode={interactionMode}
+          forceModeChange={forceModeChange}
         />
       )}
     </>

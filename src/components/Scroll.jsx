@@ -5,8 +5,9 @@ import loadable from "@loadable/component";
 import useDelayTrigger from "../hooks/useDelayTrigger";
 import speakers from "../content/speakers";
 import { interactionModes } from "../pages/index";
+import { mergeRefs } from "../utils/util";
 
-function Scroll({
+const Scroll = function ({
   onScrollBegin,
   onScrollEnd,
   onScrollChange,
@@ -17,6 +18,7 @@ function Scroll({
   scrollRef,
   onMouseWheel,
   interactionMode,
+  forceModeChange,
 }) {
   // mouse scroll delta value
   const [deltaVal, setDelta] = useState(0);
@@ -35,7 +37,12 @@ function Scroll({
   };
 
   const attemptEndScroll = useDelayTrigger(() => {
-    logRef2.current.innerHTML = isPointerDown.current;
+    if (forceModeChange.current === true) {
+      onScrollEnd();
+      forceModeChange.current = false;
+      return;
+    }
+    // logRef2.current.innerHTML = isPointerDown.current;
 
     if (isPointerDown.current === true) {
       // keep the scroll state sustained if the user haven't lift up their figure
@@ -53,12 +60,12 @@ function Scroll({
     called.current++;
     logRef.current.innerHTML = called.current;
 
-    if (interactionMode == interactionModes.IDLE) {
+    if (interactionMode === interactionModes.IDLE) {
       onScrollBegin();
       attemptEndScroll();
     }
     // when the scroll is initiated by the Scroll component
-    if (interactionMode == interactionModes.SCROLL) {
+    if (interactionMode === interactionModes.SCROLL) {
       onScrollChange();
       attemptEndScroll();
     }
@@ -66,16 +73,16 @@ function Scroll({
     onScroll(e.currentTarget.scrollLeft);
   };
 
-  useEffect(() => {
-    document.addEventListener(
-      "touchstart",
-      () => {
-        isPointerDown.current = true;
-        onScrollBegin();
-      },
-      true
-    );
-  }, []);
+  // useEffect(() => {
+  //   document.addEventListener(
+  //     "touchstart",
+  //     () => {
+  //       isPointerDown.current = true;
+  //       onScrollBegin();
+  //     },
+  //     true
+  //   );
+  // }, []);
 
   return (
     <div
@@ -101,21 +108,21 @@ function Scroll({
         attemptEndScroll();
       }}
       // onTouchEnd={onScrollEnd}
+      style={{
+        scrollSnapType: "x mandatory",
+        overflowX: "scroll",
+        display: "flex",
+      }}
     >
       <div className="fixed top-40 left-20 z-50" ref={logRef}></div>
       <div className="fixed top-60 left-20 z-50" ref={logRef2}></div>
       <div className="inner-scroll-container flex">
         {speakers.map((speaker, index) => (
-          <ScrollItem
-            speaker={speaker}
-            key={index}
-            width={width}
-            scroll={scroll}
-          />
+          <ScrollItem speaker={speaker} key={index} width={width} />
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default Scroll;
