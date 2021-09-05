@@ -26,10 +26,10 @@ function SpeakerMobileNav({
   const isPointerDown = useRef(false);
 
   const handleNavScroll = () => {
-    // if (interactionMode == interactionModes.IDLE) {
-    //   onScrubBegin();
-    //   attemptEndScrub();
-    // }
+    if (interactionMode == interactionModes.IDLE) {
+      onScrubBegin();
+      attemptEndScrub();
+    }
     // when the scroll is initiated by the Scrub component
     if (interactionMode == interactionModes.SCRUB) {
       onScrubChange();

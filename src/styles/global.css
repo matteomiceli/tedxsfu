@@ -2,6 +2,13 @@
 @import "./gradient.css";
 /* ./src/styles/global.css */
 
+* {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
 ::selection {
   color: #000;
   /* background: #e61b2e; */
@@ -278,12 +285,12 @@ body {
   max-width: 325px;
 }
 
-  /* bios mobile */
+/* bios mobile */
 @media only screen and (min-width: 1025px) {
   .bio-container {
     min-width: 700px;
   }
-  
+
   .bio-container-wide {
     min-width: 500px;
   }
@@ -293,8 +300,6 @@ body {
     max-width: 500px;
   }
 }
-
-
 
 @tailwind base;
 @tailwind components;
@@ -347,7 +352,7 @@ body {
     .mt-flowline {
       margin-top: 25vh;
     }
-    .mt-flowline-lg{
+    .mt-flowline-lg {
       margin-top: 20vh;
     }
     .mt-flowline-mobile {

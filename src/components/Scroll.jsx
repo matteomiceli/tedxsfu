@@ -35,6 +35,8 @@ function Scroll({
   };
 
   const attemptEndScroll = useDelayTrigger(() => {
+    logRef2.current.innerHTML = isPointerDown.current;
+
     if (isPointerDown.current === true) {
       // keep the scroll state sustained if the user haven't lift up their figure
       attemptEndScroll();
@@ -44,16 +46,17 @@ function Scroll({
   }, 100);
 
   const logRef = useRef();
+  const logRef2 = useRef();
   const called = useRef(0);
 
   const handleScroll = (e) => {
     called.current++;
     logRef.current.innerHTML = called.current;
 
-    // if (interactionMode == interactionModes.IDLE) {
-    //   onScrollBegin();
-    //   attemptEndScroll();
-    // }
+    if (interactionMode == interactionModes.IDLE) {
+      onScrollBegin();
+      attemptEndScroll();
+    }
     // when the scroll is initiated by the Scroll component
     if (interactionMode == interactionModes.SCROLL) {
       onScrollChange();
@@ -63,6 +66,17 @@ function Scroll({
     onScroll(e.currentTarget.scrollLeft);
   };
 
+  useEffect(() => {
+    document.addEventListener(
+      "touchstart",
+      () => {
+        isPointerDown.current = true;
+        onScrollBegin();
+      },
+      true
+    );
+  }, []);
+
   return (
     <div
       ref={scrollRef}
@@ -70,7 +84,7 @@ function Scroll({
       onWheel={(e) => {
         handleMouseWheel(e);
       }}
-      onScrollCapture={(e) => {
+      onScroll={(e) => {
         handleScroll(e);
       }}
       onTouchStart={() => {
@@ -80,10 +94,16 @@ function Scroll({
       onTouchEnd={() => {
         isPointerDown.current = false;
       }}
-      // onTouchMove={onScrollChange}
+      onTouchMove={() => {
+        // sustain the scroll state
+        isPointerDown.current = true;
+        onScrollBegin();
+        attemptEndScroll();
+      }}
       // onTouchEnd={onScrollEnd}
     >
       <div className="fixed top-40 left-20 z-50" ref={logRef}></div>
+      <div className="fixed top-60 left-20 z-50" ref={logRef2}></div>
       <div className="inner-scroll-container flex">
         {speakers.map((speaker, index) => (
           <ScrollItem
