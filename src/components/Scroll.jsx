@@ -7,6 +7,8 @@ import speakers from "../content/speakers";
 import { interactionModes } from "../pages/index";
 import { mergeRefs } from "../utils/util";
 
+import scrollIntoView from "scroll-into-view-if-needed";
+
 const Scroll = function ({
   onScrollBegin,
   onScrollEnd,
@@ -19,6 +21,7 @@ const Scroll = function ({
   onMouseWheel,
   interactionMode,
   forceModeChange,
+  spySpeaker,
 }) {
   // mouse scroll delta value
   const [deltaVal, setDelta] = useState(0);
@@ -32,8 +35,10 @@ const Scroll = function ({
   }, [deltaVal]);
 
   // mouse scroll delta value
+  const [isWheeling, setIsWheeling] = useState();
   const handleMouseWheel = (e) => {
     setDelta(e.deltaY);
+    setIsWheeling(true);
   };
 
   const attemptEndScroll = useDelayTrigger(() => {
@@ -97,6 +102,7 @@ const Scroll = function ({
       onTouchStart={() => {
         isPointerDown.current = true;
         onScrollBegin();
+        setIsWheeling(false);
       }}
       onTouchEnd={() => {
         isPointerDown.current = false;
@@ -109,7 +115,7 @@ const Scroll = function ({
       }}
       // onTouchEnd={onScrollEnd}
       style={{
-        scrollSnapType: "x mandatory",
+        scrollSnapType: isWheeling ? "none" : "x mandatory",
         overflowX: "scroll",
         display: "flex",
       }}
