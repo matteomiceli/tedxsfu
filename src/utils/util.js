@@ -2,7 +2,22 @@ export function clamp(val, min, max) {
   return Math.max(min, Math.min(val, max));
 }
 
-let cachedImages = {};
+const cachedImages = {};
+
+//https://stackoverflow.com/questions/15352803/how-to-check-if-an-image-was-cached-in-js
+export function isImageCached(img_url) {
+  // Check 1 - check if we have loaded the image before
+  if (cachedImages[img_url]) {
+    return true;
+  }
+  // If the image haven't been loaded in the session,
+  // see if it need time to load
+  const imgEle = document.createElement("img");
+  imgEle.src = img_url;
+  cachedImages[img_url] = true;
+  return imgEle.complete;
+}
+
 export function preloadImage(url, error) {
   const img = document.createElement("img");
   img.src = url;

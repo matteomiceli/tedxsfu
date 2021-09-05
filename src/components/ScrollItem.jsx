@@ -30,6 +30,8 @@ function ScrollItem({ speaker, width, scroll }) {
       </div>
       <Image
         src={speaker.img}
+        width={2560}
+        height={1706}
         className="absolute top-0 left-0 right-0 bottom-0 object-cover h-full w-full z-0"
       />
     </div>
