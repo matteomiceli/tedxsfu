@@ -242,7 +242,7 @@ body {
 
 .team-panel-active {
   color: white;
-  border-top: 1px solid #e61b2e;
+  border-top: 2px solid #e61b2e;
   margin: 0 20px 0 0;
 }
 

@@ -83,9 +83,7 @@ function SpeakerMobilePanel({ spySpeaker, speaker, i }) {
     <div
       className={`${
         spySpeaker === i + 1 ? "panel-active" : "panel-notactive"
-      } speaker-mobile-panel mobile-speaker${
-        i + 1
-      } h-full bg-blue-400 z-10 mx-0.5`}
+      } speaker-mobile-panel mobile-speaker${i + 1} h-full z-10 mx-0.5`}
     >
       <Image
         src={speaker.img}
