@@ -15,7 +15,16 @@ function SpeakerMobileNav({
   navRef,
   interactionMode,
 }) {
-  const attemptEndScrub = useDelayTrigger(() => onScrubEnd(), 66);
+  const attemptEndScrub = useDelayTrigger(() => {
+    if (isPointerDown.current === true) {
+      // keep the scroll state sustained if the user haven't lift up their figure
+      attemptEndScrub();
+    } else {
+      onScrubEnd();
+    }
+  }, 100);
+  const isPointerDown = useRef(false);
+
   const handleNavScroll = () => {
     // if (interactionMode == interactionModes.IDLE) {
     //   onScrubBegin();
@@ -32,9 +41,14 @@ function SpeakerMobileNav({
     <div className="absolute text-white text-4xl w-full bottom-20">
       <div
         ref={navRef}
-        onTouchStart={onScrubBegin}
+        onTouchStart={() => {
+          onScrubBegin();
+          isPointerDown.current = true;
+        }}
         // onTouchMove={onScrubChange}
-        // onTouchEnd={onScrubEnd}
+        onTouchEnd={() => {
+          isPointerDown.current = false;
+        }}
         onScroll={handleNavScroll}
         className="mobile-speaker-container h-24 bg-transparent flex overflow-x-scroll"
       >

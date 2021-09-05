@@ -58,12 +58,11 @@ const IndexPage = () => {
   // SCROLL
 
   const handleScrollBegin = () => {
-    if (interactionMode !== interactionModes.SCRUB)
-      setInteractionMode(interactionModes.SCROLL);
+    // if (interactionMode !== interactionModes.SCRUB)
+    setInteractionMode(interactionModes.SCROLL);
   };
 
   const handleScrollEnd = () => {
-    console.log("scroll ends");
     setInteractionMode(interactionModes.IDLE);
   };
 
@@ -85,13 +84,11 @@ const IndexPage = () => {
   // SCRUB
 
   const handleScrubBegin = () => {
-    if (interactionMode !== interactionModes.SCROLL)
-      setInteractionMode(interactionModes.SCRUB);
+    // if (interactionMode !== interactionModes.SCROLL)
+    setInteractionMode(interactionModes.SCRUB);
   };
   const handleScrubEnd = () => {
-    setTimeout(() => {
-      setInteractionMode(interactionModes.IDLE);
-    }, 500);
+    setInteractionMode(interactionModes.IDLE);
   };
 
   const handleScrubChange = () => {

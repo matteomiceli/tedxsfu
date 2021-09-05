@@ -20,6 +20,7 @@ function Scroll({
 }) {
   // mouse scroll delta value
   const [deltaVal, setDelta] = useState(0);
+  const isPointerDown = useRef(false);
 
   useEffect(() => {
     scrollRef.current.scrollLeft += deltaVal;
@@ -33,7 +34,14 @@ function Scroll({
     setDelta(e.deltaY);
   };
 
-  const attemptEndScroll = useDelayTrigger(() => onScrollEnd(), 66);
+  const attemptEndScroll = useDelayTrigger(() => {
+    if (isPointerDown.current === true) {
+      // keep the scroll state sustained if the user haven't lift up their figure
+      attemptEndScroll();
+    } else {
+      onScrollEnd();
+    }
+  }, 100);
 
   const logRef = useRef();
   const called = useRef(0);
@@ -65,9 +73,15 @@ function Scroll({
       onScrollCapture={(e) => {
         handleScroll(e);
       }}
-      onTouchStart={onScrollBegin}
-      // onTouchEnd={onScrollEnd}
+      onTouchStart={() => {
+        isPointerDown.current = true;
+        onScrollBegin();
+      }}
+      onTouchEnd={() => {
+        isPointerDown.current = false;
+      }}
       // onTouchMove={onScrollChange}
+      // onTouchEnd={onScrollEnd}
     >
       <div className="fixed top-40 left-20 z-50" ref={logRef}></div>
       <div className="inner-scroll-container flex">
