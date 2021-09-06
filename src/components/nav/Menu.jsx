@@ -1,5 +1,5 @@
 import { Link } from "gatsby";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import menu from "../../static/images/menu.svg";
 import Button from "../Button";
 import MENU_ITEMS from "../../content/menuItems";
@@ -23,8 +23,15 @@ function Menu({ isActive, setActive, page }) {
     if (!isActive) setHoverable(false);
   }, [isActive]);
 
+  const isTouch = useRef(false);
+
   return (
-    <nav className="relative">
+    <nav
+      className="relative"
+      onTouchEnd={() => {
+        isTouch.current = true;
+      }}
+    >
       <motion.ul
         className={`absolute right-4 top-0 flex z-40 ${
           isActive ? "pointer-events-all" : "pointer-events-none"
@@ -53,6 +60,10 @@ function Menu({ isActive, setActive, page }) {
             currentHoveringIndex={hoveringIndex}
             onMouseEnter={() => hoverable && setHoveringIndex(index)}
             hoverable={hoverable}
+            onClick={() => {
+              console.log(isTouch.current);
+              if (isTouch.current && isActive) setActive(false);
+            }}
           >
             {item.label}
           </MenuItem>
@@ -69,8 +80,8 @@ function Menu({ isActive, setActive, page }) {
       <div
         className={
           isActive === true
-            ? "transition-all duration-300 ease-in-out max-w-0 max-h-0 opacity-0 overflow-hidden"
-            : "flex items-center transition-all duration-300 ease-in-out"
+            ? "transition-all duration-300 ease-in-out max-w-0 max-h-0 opacity-0 overflow-hidden z-50"
+            : "flex items-center transition-all duration-300 ease-in-out z-50"
         }
       >
         {!isActive && (
@@ -85,6 +96,10 @@ function Menu({ isActive, setActive, page }) {
           onMouseEnter={() => {
             setActive(true);
             setTimeout(() => setHoverable(true), 300);
+          }}
+          onTouchStart={(e) => {
+            e.preventDefault();
+            setActive(true);
           }}
         />
       </div>
@@ -105,13 +120,21 @@ function MenuItem({
   currentHoveringIndex,
   onMouseEnter,
   children,
+  onTouchEnd,
+  onClick,
 }) {
   const isHovering = currentHoveringIndex === pageId;
   const hoveringSomething = currentHoveringIndex !== null;
 
   return (
     <li>
-      <Link to={href} className="block mr-6" onMouseEnter={onMouseEnter}>
+      <Link
+        to={href}
+        className="block mr-6"
+        onMouseEnter={onMouseEnter}
+        onTouchEnd={onTouchEnd}
+        onClickCapture={onClick}
+      >
         <motion.div
           className="mb-1 text-xs"
           initial={{
