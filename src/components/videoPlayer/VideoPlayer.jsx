@@ -14,7 +14,6 @@ import Subtitle from "./Subtitle";
 //@ts-check
 const VideoPlayer = ({
   src,
-  subtitleSrc,
   mutedAutoPlay = true,
   control = true,
   keyboardInput = true,
@@ -34,7 +33,7 @@ const VideoPlayer = ({
   // const subtitleURL = `${src}.srt`;
 
   const fullHDSourceURL = `${src}@1920`;
-  const subtitleURL = subtitleSrc;
+  const subtitleURL = `${src}/caption`;
 
   // Handling the muting of the player
   useEffect(() => {
@@ -52,10 +51,10 @@ const VideoPlayer = ({
 
   useEffect(() => {
     // update progress
-    if (videoRef.current.fastSeek) {
-      videoRef.current.fastSeek(targetTime);
-      return;
-    }
+    // if (videoRef.current.fastSeek) {
+    //   videoRef.current.fastSeek(targetTime);
+    //   return;
+    // }
     videoRef.current.currentTime = targetTime;
   }, [targetTime]);
 
@@ -234,13 +233,13 @@ const VideoPlayer = ({
           },
         }}
       >
-        {subtitleURL && (
+        {
           <Subtitle
             src={subtitleURL}
             currentTime={currentTime}
             duration={duration}
           />
-        )}
+        }
       </motion.div>
       <motion.video
         ref={videoRef}
