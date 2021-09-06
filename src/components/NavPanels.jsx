@@ -5,6 +5,9 @@ import speakers from "../content/speakers";
 import Image from "./Image";
 import scrollIntoView from "scroll-into-view-if-needed";
 
+import { motion } from "framer-motion";
+import { AnimationConfig } from "../AnimationConfig";
+
 function NavPanels({
   isActive,
   speaker,
@@ -38,14 +41,25 @@ function NavPanels({
   }, [scroll, width]);
 
   return (
-    <button
+    <motion.button
       onClick={(e) => handleNavClick(e)}
       className={`h-full w-full mx-1 ${
         spySpeaker === speaker.id ? "panel-active" : "panel-notactive"
       }`}
     >
-      <img src={speaker.img} className="h-full object-cover" />
-    </button>
+      <motion.img
+        initial={{ opacity: 0.7 }}
+        animate={{
+          opacity: isActive ? 1 : 0.7,
+          transition: {
+            duration: AnimationConfig.FAST,
+            ease: AnimationConfig.EASING_SOFT,
+          },
+        }}
+        src={speaker.img}
+        className="h-full object-cover"
+      />
+    </motion.button>
   );
 }
 
