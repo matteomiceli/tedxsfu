@@ -2,7 +2,7 @@ import React from "react";
 import { useBreakpoint, breakpoints } from "../../hooks/useBreakpoint";
 
 const EventInfo = () => {
-  const isMinimizeModule = useBreakpoint(breakpoints.lg);
+  const isMinimizeModule = useBreakpoint(breakpoints.xl);
 
   return (
     <>

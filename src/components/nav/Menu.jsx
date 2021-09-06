@@ -26,7 +26,7 @@ function Menu({ isActive, setActive, page }) {
   return (
     <nav className="relative">
       <motion.ul
-        className={`absolute right-4 top-0 flex z-40 bg-black ${
+        className={`absolute right-4 top-0 flex z-40 ${
           isActive ? "pointer-events-all" : "pointer-events-none"
         }`}
         onMouseEnter={() => setActive(true)}
