@@ -65,8 +65,13 @@ const Image = ({ src, halfBreakpoint, width, height, onLoad, ...props }) => {
     if (loadingState === imageState.LOADED) onLoad && onLoad();
   }, [loadingState]);
 
+  const shouldShowBlurImage =
+    applyBlurUpEffect &&
+    !isFullSizeImageCached.current &&
+    !isHalfSizeImageCached.current;
+
   // console.log(`${src} — cached:${isFullSizeImageCached.current}`);
-  console.log(`blurr effect ${applyBlurUpEffect} ${src}`);
+  // console.log(`blurr effect ${applyBlurUpEffect} ${src}`);
   return (
     <div
       style={{
@@ -80,16 +85,12 @@ const Image = ({ src, halfBreakpoint, width, height, onLoad, ...props }) => {
           <>
             <source
               type="image/webp"
-              srcSet={
-                loadingState === imageState.LOADING ? blurredSrc : fullSizeSrc
-              }
+              srcSet={shouldShowBlurImage ? blurredSrc : fullSizeSrc}
               media={`(min-width: ${halfBreakpoint}px)`}
             />
             <source
               type="image/webp"
-              srcSet={
-                loadingState === imageState.LOADING ? blurredSrc : halfSizeSrc
-              }
+              srcSet={shouldShowBlurImage ? blurredSrc : halfSizeSrc}
               media={`(max-width: ${halfBreakpoint - 1}px)`}
             />
           </>
@@ -97,19 +98,13 @@ const Image = ({ src, halfBreakpoint, width, height, onLoad, ...props }) => {
         {!halfBreakpoint && (
           <source
             type="image/webp"
-            srcSet={
-              loadingState === imageState.LOADING ? blurredSrc : fullSizeSrc
-            }
+            srcSet={shouldShowBlurImage ? blurredSrc : fullSizeSrc}
           />
         )}
         <motion.img
           // safari need to load jpg version
-          src={
-            applyBlurUpEffect &&
-            (!isFullSizeImageCached.current || !isHalfSizeImageCached.current)
-              ? blurredSrc
-              : src
-          }
+          // src={src}
+          src={fullSizeSrc}
           {...props}
           width={width}
           height={height}
@@ -122,10 +117,7 @@ const Image = ({ src, halfBreakpoint, width, height, onLoad, ...props }) => {
                 : 1,
           }}
           animate={{
-            opacity:
-              isFullSizeImageCached.current || isHalfSizeImageCached.current
-                ? 1
-                : 0,
+            opacity: shouldShowBlurImage ? 0 : 1,
             transition: {
               duration: 0.5,
               ease: "linear",

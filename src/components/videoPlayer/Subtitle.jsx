@@ -47,7 +47,7 @@ const Subtitle = ({ src, currentTime, duration }) => {
     <div className="text-center w-full">
       {isShowingSubtitle && (
         <div
-          className="inline-block text-2xl bg-black bg-opacity-50 font-medium rounded-sm ml-document mr-document px-2 py-1 backdrop-filter backdrop-blur-lg whitespace-pre-line"
+          className="inline-block text-lg sm:text-2xl bg-black bg-opacity-50 font-medium rounded-sm ml-document mr-document px-2 py-1 backdrop-filter backdrop-blur-lg whitespace-pre-line"
           style={{ maxWidth: "50ch" }}
         >
           {subtitle[currentLine].text.replace("<br />", "\n")}
