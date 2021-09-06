@@ -5,3 +5,5 @@ public
 
 *.webp
 /.DS_Store
+
+package-lock.json

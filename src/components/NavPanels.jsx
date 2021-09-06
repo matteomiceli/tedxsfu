@@ -28,7 +28,6 @@ function NavPanels({
   useEffect(() => {
     let speakerWidth = width / speakers.length;
     let speakerPos = scroll / speakerWidth;
-    console.log(width);
 
     if (scroll != 0) {
       setSpeaker(parseInt(speakerPos) + 1);
