@@ -40,15 +40,9 @@ function NavPanels({
   return (
     <button
       onClick={(e) => handleNavClick(e)}
-      className={
-        isActive
-          ? `h-full w-full mx-1 ${
-              spySpeaker === speaker.id ? "panel-active" : "panel-notactive"
-            }`
-          : `h-full w-full mx-1 opacity-50 ${
-              spySpeaker === speaker.id ? "panel-active" : "panel-notactive"
-            }`
-      }
+      className={`h-full w-full mx-1 ${
+        spySpeaker === speaker.id ? "panel-active" : "panel-notactive"
+      }`}
     >
       <img src={speaker.img} className="h-full object-cover" />
     </button>

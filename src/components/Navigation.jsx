@@ -12,12 +12,15 @@ const navContainerVariant = {
       staggerChildren: 0.015,
     },
   },
-  animate: {
+  animate: (isActive) => ({
+    y: isActive ? "-5rem" : 0,
     transition: {
       staggerDirection: -1,
       staggerChildren: 0.015,
+      duration: AnimationConfig.NORMAL,
+      ease: AnimationConfig.EASING,
     },
-  },
+  }),
   exit: {
     transition: {
       staggerDirection: -1,
@@ -54,27 +57,21 @@ function Navigation({ spySpeaker, setSpeaker, scroll, width }) {
     <motion.div
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
-      className={
-        isActive
-          ? "absolute bottom-0 right-1/4 w-1/2 h-40 flex transition-all duration-200 ease-in-out"
-          : "absolute -bottom-20 right-1/4 w-1/2 h-40 flex transition-all duration-200 ease-in-out"
-      }
+      className={"absolute -bottom-20 right-1/4 w-1/2 h-40 flex"}
       variants={navContainerVariant}
-      initial="initial"
-      animate="animate"
+      custom={isActive}
+      initial={"initial"}
+      animate={"animate"}
       exit="exit"
     >
       <motion.div
-        className={
-          isActive
-            ? "opacity-0 text-white absolute font-NeueHaas w-full h-full flex justify-center top-8 transition-all transform translate-y-28 duration-200 ease-in-out z-10"
-            : "opacity-100 text-white absolute font-NeueHaas w-full h-full flex justify-center top-8 transition-all duration-200 ease-in-out z-10"
-        }
+        className={"absolute w-full h-full flex justify-center top-8 z-10"}
         initial={{
           opacity: 0,
         }}
         animate={{
-          opacity: 1,
+          opacity: isActive ? 0 : 1,
+          y: isActive ? "7rem" : 0,
           transition: {
             duration: AnimationConfig.NORMAL,
             ease: AnimationConfig.EASING,
