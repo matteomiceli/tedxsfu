@@ -4,7 +4,7 @@ import parseSRT from "parse-srt";
 const Subtitle = ({ src, currentTime, duration }) => {
   // load subtitle from the same directory
   const [subtitle, setSubtitle] = useState();
-  const [currentLine, setCurrentLine] = useState(0);
+  const [currentLine, setCurrentLine] = useState(null);
 
   useEffect(() => {
     // attempt loading subtitle
