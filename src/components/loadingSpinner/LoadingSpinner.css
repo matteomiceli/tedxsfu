@@ -1,6 +1,17 @@
 .loading-spinner {
   overflow: hidden;
   position: relative;
+
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0, 0.55, 0.45, 1);
+  transition-duration: 200ms;
+  transform: translate3d(0, 20px, 0);
+  opacity: 0;
+}
+
+.loading-spinner--loading {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
 }
 
 .loading-spinner__dot {
@@ -15,7 +26,7 @@
   height: 100%;
   border-radius: 9999px;
 
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-iteration-count: infinite;
 
   transform-origin: bottom center;
@@ -61,11 +72,8 @@
     transform: translate3d(var(--before-dot-pos), 0, 0)
       scale(var(--before-dot-scale));
   }
-  30% {
-    transform: translate3d(var(--before-dot-pos), 0, 0)
-      scale(var(--before-dot-scale));
-  }
-  70% {
+  50%,
+  60% {
     transform: translate3d(var(--before-dot-pos), 0, 0)
       scale(var(--before-dot-scale));
   }
@@ -79,11 +87,8 @@
     transform: translate3d(var(--first-dot-pos), 0, 0)
       scale(var(--first-dot-scale));
   }
-  30% {
-    transform: translate3d(var(--second-dot-pos), 0, 0)
-      scale(var(--second-dot-scale));
-  }
-  70% {
+  50%,
+  60% {
     transform: translate3d(var(--second-dot-pos), 0, 0)
       scale(var(--second-dot-scale));
   }
@@ -97,11 +102,8 @@
     transform: translate3d(var(--second-dot-pos), 0, 0)
       scale(var(--second-dot-scale));
   }
-  30% {
-    transform: translate3d(var(--third-dot-pos), 0, 0)
-      scale(var(--third-dot-scale));
-  }
-  70% {
+  50%,
+  60% {
     transform: translate3d(var(--third-dot-pos), 0, 0)
       scale(var(--third-dot-scale));
   }
@@ -115,11 +117,8 @@
     transform: translate3d(var(--before-dot-pos), 0, 0)
       scale(var(--before-dot-scale));
   }
-  30% {
-    transform: translate3d(var(--first-dot-pos), 0, 0)
-      scale(var(--first-dot-scale));
-  }
-  70% {
+  50%,
+  60% {
     transform: translate3d(var(--first-dot-pos), 0, 0)
       scale(var(--first-dot-scale));
   }
@@ -134,11 +133,8 @@
     transform: translate3d(var(--third-dot-pos), 0, 0)
       scale(var(--third-dot-scale));
   }
-  30% {
-    transform: translate3d(var(--exit-dot-pos), 0, 0)
-      scale(var(--exit-dot-scale));
-  }
-  70% {
+  50%,
+  60% {
     transform: translate3d(var(--exit-dot-pos), 0, 0)
       scale(var(--exit-dot-scale));
   }
