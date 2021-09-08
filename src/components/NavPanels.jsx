@@ -42,7 +42,7 @@ function NavPanels({
   return (
     <motion.button
       onClick={(e) => handleNavClick(e)}
-      className={`h-full w-full mx-1 ${
+      className={`flex h-full w-full mx-1 ${
         spySpeaker === speaker.id ? "panel-active" : "panel-notactive"
       }`}
       // whileHover={{
