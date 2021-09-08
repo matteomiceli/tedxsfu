@@ -5,7 +5,7 @@ const MenuItems = [
     href: "/",
   },
   {
-    label: "Conference",
+    label: "About",
     description: "Learn about Bloom and TEDxSFU",
     href: "/about",
   },
