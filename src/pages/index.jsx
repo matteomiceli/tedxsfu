@@ -40,7 +40,7 @@ const IndexPage = () => {
   useEffect(() => {
     if (window.location && window.location.hash) {
       const elm = document.querySelector(`${window.location.hash}`);
-      scrollIntoView(elm);
+      if (elm) scrollIntoView(elm);
     }
   }, []);
 
