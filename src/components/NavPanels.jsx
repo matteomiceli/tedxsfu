@@ -40,7 +40,7 @@ function NavPanels({
   }, [scroll, width]);
 
   return (
-    <motion.button
+    <motion.div
       onClick={(e) => handleNavClick(e)}
       className={`flex h-full w-full mx-1 ${
         spySpeaker === speaker.id ? "panel-active" : "panel-notactive"
@@ -66,7 +66,7 @@ function NavPanels({
         },
       }}
     >
-      <motion.img
+      <motion.button
         initial={{ opacity: 0.7 }}
         animate={{
           opacity: isActive ? 1 : 0.7,
@@ -75,10 +75,16 @@ function NavPanels({
             ease: AnimationConfig.EASING_SOFT,
           },
         }}
-        src={speaker.img}
-        className="h-full object-cover"
-      />
-    </motion.button>
+        className="h-full"
+      >
+        <Image
+          src={speaker.img}
+          className="h-full object-cover"
+          width={1271}
+          height={1279}
+        />
+      </motion.button>
+    </motion.div>
   );
 }
 
