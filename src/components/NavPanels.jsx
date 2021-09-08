@@ -45,6 +45,20 @@ function NavPanels({
       className={`h-full w-full mx-1 ${
         spySpeaker === speaker.id ? "panel-active" : "panel-notactive"
       }`}
+      // whileHover={{
+      //   y: -5,
+      //   transition: {
+      //     ease: AnimationConfig.EASING,
+      //     duration: AnimationConfig.FAST,
+      //   },
+      // }}
+      whileTap={{
+        y: 10,
+        transition: {
+          ease: AnimationConfig.EASING,
+          duration: AnimationConfig.VERY_FAST,
+        },
+      }}
     >
       <motion.img
         initial={{ opacity: 0.7 }}
