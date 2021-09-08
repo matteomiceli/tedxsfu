@@ -23,6 +23,7 @@ module.exports = {
       },
       margin: {
         axis: "16rem",
+        speakerDesktop: "35vh",
       },
       padding: {
         axis: "16rem",

@@ -5,6 +5,9 @@ import speakers from "../content/speakers";
 import Image from "./Image";
 import scrollIntoView from "scroll-into-view-if-needed";
 
+import { motion } from "framer-motion";
+import { AnimationConfig } from "../AnimationConfig";
+
 function NavPanels({
   isActive,
   speaker,
@@ -25,7 +28,6 @@ function NavPanels({
   useEffect(() => {
     let speakerWidth = width / speakers.length;
     let speakerPos = scroll / speakerWidth;
-    console.log(width);
 
     if (scroll != 0) {
       setSpeaker(parseInt(speakerPos) + 1);
@@ -38,20 +40,25 @@ function NavPanels({
   }, [scroll, width]);
 
   return (
-    <button
+    <motion.button
       onClick={(e) => handleNavClick(e)}
-      className={
-        isActive
-          ? `h-full w-full mx-1 ${
-              spySpeaker === speaker.id ? "panel-active" : "panel-notactive"
-            }`
-          : `h-full w-full mx-1 opacity-50 ${
-              spySpeaker === speaker.id ? "panel-active" : "panel-notactive"
-            }`
-      }
+      className={`h-full w-full mx-1 ${
+        spySpeaker === speaker.id ? "panel-active" : "panel-notactive"
+      }`}
     >
-      <img src={speaker.img} className="h-full object-cover" />
-    </button>
+      <motion.img
+        initial={{ opacity: 0.7 }}
+        animate={{
+          opacity: isActive ? 1 : 0.7,
+          transition: {
+            duration: AnimationConfig.FAST,
+            ease: AnimationConfig.EASING_SOFT,
+          },
+        }}
+        src={speaker.img}
+        className="h-full object-cover"
+      />
+    </motion.button>
   );
 }
 

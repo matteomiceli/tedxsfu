@@ -6,24 +6,29 @@ const cachedImages = {};
 
 //https://stackoverflow.com/questions/15352803/how-to-check-if-an-image-was-cached-in-js
 export function isImageCached(img_url) {
+  // support SSR
+  if (typeof window === "undefined") return false;
+
   // Check 1 - check if we have loaded the image before
   if (cachedImages[img_url]) {
     return true;
   }
   // If the image haven't been loaded in the session,
   // see if it need time to load
-  const imgEle = document.createElement("img");
-  imgEle.src = img_url;
-  cachedImages[img_url] = true;
-  return imgEle.complete;
+
+  // const imgEle = document.createElement("img");
+  // imgEle.src = img_url;
+  // cachedImages[img_url] = true;
+  // return imgEle.complete;
+  return false;
 }
 
 export function preloadImage(url, error) {
-  const img = document.createElement("img");
-  img.src = url;
-
   // use the cached image if its already loaded
   if (cachedImages[url]) return new Promise((resolve) => resolve(url));
+
+  const img = document.createElement("img");
+  img.src = url;
 
   return new Promise((resolve, reject) => {
     img.onload = function (e) {

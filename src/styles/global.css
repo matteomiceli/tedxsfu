@@ -242,7 +242,7 @@ body {
 
 .team-panel-active {
   color: white;
-  border-top: 1px solid #e61b2e;
+  border-top: 2px solid #e61b2e;
   margin: 0 20px 0 0;
 }
 
@@ -278,12 +278,12 @@ body {
   max-width: 325px;
 }
 
-  /* bios mobile */
+/* bios mobile */
 @media only screen and (min-width: 1025px) {
   .bio-container {
     min-width: 700px;
   }
-  
+
   .bio-container-wide {
     min-width: 500px;
   }
@@ -293,8 +293,6 @@ body {
     max-width: 500px;
   }
 }
-
-
 
 @tailwind base;
 @tailwind components;
@@ -347,7 +345,7 @@ body {
     .mt-flowline {
       margin-top: 25vh;
     }
-    .mt-flowline-lg{
+    .mt-flowline-lg {
       margin-top: 20vh;
     }
     .mt-flowline-mobile {

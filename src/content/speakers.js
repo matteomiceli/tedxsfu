@@ -31,6 +31,46 @@ const speakers = [
     talkTitle: "Test Title For TedxSFU 4",
     bio: "Indigenous studies and political science student",
   },
+  {
+    id: 5,
+    name: "Test Name 4",
+    img: "/images/speakers/lisa.jpg",
+    video: "",
+    talkTitle: "Test Title For TedxSFU 5",
+    bio: "Indigenous studies and political science student",
+  },
+  {
+    id: 6,
+    name: "Test Name 4",
+    img: "/images/speakers/lisa.jpg",
+    video: "",
+    talkTitle: "Test Title For TedxSFU 6",
+    bio: "Indigenous studies and political science student",
+  },
+  {
+    id: 7,
+    name: "Test Name 4",
+    img: "/images/speakers/lisa.jpg",
+    video: "",
+    talkTitle: "Test Title For TedxSFU 7",
+    bio: "Indigenous studies and political science student",
+  },
+  {
+    id: 8,
+    name: "Test Name 4",
+    img: "/images/speakers/lisa.jpg",
+    video: "",
+    talkTitle: "Test Title For TedxSFU 8",
+    bio: "Indigenous studies and political science student",
+  },
+  {
+    id: 9,
+    name: "Test Name 4",
+    img: "/images/speakers/lisa.jpg",
+    video: "",
+    talkTitle: "Test Title For TedxSFU 9",
+    bio: "Indigenous studies and political science student",
+  },
 ];
 
 export default speakers;

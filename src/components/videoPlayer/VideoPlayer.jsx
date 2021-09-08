@@ -19,6 +19,8 @@ const VideoPlayer = ({
   keyboardInput = true,
   loop = false,
   className,
+  subtitleSrc,
+  videoSrc,
 }) => {
   const videoRef = useRef();
 
@@ -28,8 +30,12 @@ const VideoPlayer = ({
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
 
-  const fullHDSourceURL = `${src}@1920.mp4`;
-  const subtitleURL = `${src}.srt`;
+  //TODO: muting the auto video for testing
+  // const fullHDSourceURL = `${src}@1920.mp4`;
+  // const subtitleURL = `${src}.srt`;
+
+  const fullHDSourceURL = videoSrc || `${src}@1920`;
+  const subtitleURL = subtitleSrc || `${src}/caption`;
 
   // Handling the muting of the player
   useEffect(() => {
@@ -47,10 +53,10 @@ const VideoPlayer = ({
 
   useEffect(() => {
     // update progress
-    if (videoRef.current.fastSeek) {
-      videoRef.current.fastSeek(targetTime);
-      return;
-    }
+    // if (videoRef.current.fastSeek) {
+    //   videoRef.current.fastSeek(targetTime);
+    //   return;
+    // }
     videoRef.current.currentTime = targetTime;
   }, [targetTime]);
 
@@ -229,11 +235,13 @@ const VideoPlayer = ({
           },
         }}
       >
-        <Subtitle
-          src={subtitleURL}
-          currentTime={currentTime}
-          duration={duration}
-        />
+        {
+          <Subtitle
+            src={subtitleURL}
+            currentTime={currentTime}
+            duration={duration}
+          />
+        }
       </motion.div>
       <motion.video
         ref={videoRef}
