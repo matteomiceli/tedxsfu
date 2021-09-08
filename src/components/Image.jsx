@@ -103,8 +103,8 @@ const Image = ({ src, halfBreakpoint, width, height, onLoad, ...props }) => {
         )}
         <motion.img
           // safari need to load jpg version
-          // src={src}
-          src={fullSizeSrc}
+          src={src}
+          // src={fullSizeSrc}
           {...props}
           width={width}
           height={height}
