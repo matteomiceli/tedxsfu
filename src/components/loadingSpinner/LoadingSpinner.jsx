@@ -1,9 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./LoadingSpinner.css";
 
-const LoadingSpinner = ({ className, id }) => {
+const LoadingSpinner = ({ className, id, show }) => {
   return (
-    <div id={id} className={`w-10 h-10 loading-spinner ${className}`}>
+    <div
+      id={id}
+      className={`w-10 h-10 loading-spinner ${className} ${
+        show ? "loading-spinner--loading" : ""
+      }`}
+    >
       <div className="loading-spinner__dot"></div>
       <div className="loading-spinner__dot"></div>
       <div className="loading-spinner__dot"></div>
