@@ -52,8 +52,14 @@ function NavPanels({
       //     duration: AnimationConfig.FAST,
       //   },
       // }}
+      initial={{
+        transition: {
+          ease: AnimationConfig.EASING,
+          duration: AnimationConfig.VERY_FAST,
+        },
+      }}
       whileTap={{
-        y: 10,
+        y: 8,
         transition: {
           ease: AnimationConfig.EASING,
           duration: AnimationConfig.VERY_FAST,
