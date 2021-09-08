@@ -180,28 +180,20 @@ function SpeakerMobilePanel({
         spySpeaker === i + 1 ? "panel-active" : "panel-notactive"
       } speaker-mobile-panel mobile-speaker${i + 1} h-full z-10 mx-0.5`}
     >
-      {!isTouch ? (
-        <a
-          href={`#${speaker.slug}`}
-          onClick={() => {
-            onSelectSpeaker(i + 1);
-          }}
-        >
-          <Image
-            src={speaker.img}
-            width={2560}
-            height={1706}
-            className="h-full object-cover"
-          />
-        </a>
-      ) : (
+      <a
+        className={"pointer-events-none"}
+        href={isTouch ? "#" : `#${speaker.slug}`}
+        onClick={() => {
+          !isTouch && onSelectSpeaker(i + 1);
+        }}
+      >
         <Image
           src={speaker.img}
           width={2560}
           height={1706}
           className="h-full object-cover"
         />
-      )}
+      </a>
     </motion.div>
   );
 }
