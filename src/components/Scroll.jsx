@@ -25,15 +25,15 @@ const Scroll = function ({
   setSpeaker,
 }) {
   // mouse scroll delta value
-  const [deltaVal, setDelta] = useState(0);
+  // const [deltaVal, setDelta] = useState(0);
   const isPointerDown = useRef(false);
 
-  useEffect(() => {
-    scrollRef.current.scrollLeft += deltaVal;
-    if (deltaVal === 1 || deltaVal === -1) {
-      setDelta(0);
-    }
-  }, [deltaVal]);
+  // useEffect(() => {
+  //   scrollRef.current.scrollLeft += deltaVal;
+  //   if (deltaVal === 1 || deltaVal === -1) {
+  //     setDelta(0);
+  //   }
+  // }, [deltaVal]);
 
   // mouse scroll delta value
   const [isWheeling, setIsWheeling] = useState();
@@ -128,7 +128,12 @@ const Scroll = function ({
 
   useEffect(() => {
     const handleWheel = (e) => {
-      setDelta(e.deltaY);
+      // setDelta(e.deltaY);
+      const deltaVal = e.deltaY;
+      scrollRef.current.scrollLeft += deltaVal;
+      // if (deltaVal === 1 || deltaVal === -1) {
+      //   setDelta(0);
+      // }
       setIsWheeling(true);
     };
     window.addEventListener("wheel", handleWheel);
