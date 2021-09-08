@@ -37,11 +37,6 @@ exports.createPages = async function ({ actions, graphql }) {
       component: require.resolve(`./src/template/VideoPageTemplate.jsx`),
       context: { speakerInfo: currentSpeakerInfo },
     });
-    // actions.createPage({
-    //   path: `/team/${currentTeamInfo.href}`,
-    //   component: require.resolve(`./src/pages/team/teamBios.jsx`),
-    //   context: { teamInfo: currentTeamInfo },
-    // });
   });
 };
 

@@ -8,6 +8,8 @@ import SpeakerMobileNav from "../components/SpeakerMobileNav";
 import speakers from "../content/speakers";
 import useDelayTrigger from "../hooks/useDelayTrigger";
 
+import scrollIntoView from "scroll-into-view-if-needed";
+
 export const interactionModes = {
   IDLE: "IDLE", // not interacting
   SCRUB: "SCRUB", // for mobile nav
@@ -33,6 +35,14 @@ const IndexPage = () => {
       return scrollRef.current.scrollWidth - window.innerWidth;
     }
   };
+
+  // manually navigate to speaker
+  useEffect(() => {
+    if (window.location && window.location.hash) {
+      const elm = document.querySelector(`${window.location.hash}`);
+      scrollIntoView(elm);
+    }
+  }, []);
 
   // set width of page
   function calcWidth() {

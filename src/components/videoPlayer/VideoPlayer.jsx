@@ -21,6 +21,7 @@ const VideoPlayer = ({
   className,
   subtitleSrc,
   videoSrc,
+  onEnded,
 }) => {
   const videoRef = useRef();
 
@@ -247,6 +248,7 @@ const VideoPlayer = ({
         ref={videoRef}
         onClick={() => setIsPlaying(!isPlaying)}
         onCanPlay={handleCanPlay}
+        onEnded={onEnded}
         onTimeUpdate={updateFrameState}
         className="w-full h-full object-cover mt-auto mb-auto"
         width="1920"

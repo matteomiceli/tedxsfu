@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { navigate } from "gatsby-link";
 import VideoPlayer from "../components/videoPlayer/VideoPlayer";
 
 const VideoPageTemplate = ({ pageContext }) => {
@@ -7,6 +8,11 @@ const VideoPageTemplate = ({ pageContext }) => {
   // let videoHostName = "192.168.1.70";
   // let videoHostName = "localhost";
   // let videoPort = "5000";
+
+  const handleVideoEnded = () => {
+    // navigate back to home page
+    navigate(`/#scroll-${speaker.id}`);
+  };
 
   return (
     <div className="relative flex items-stretch w-full h-full overflow-hidden">
@@ -17,6 +23,7 @@ const VideoPageTemplate = ({ pageContext }) => {
         // src={`http://${videoHostName}:${videoPort}/videos/video/candida`}
         videoSrc={speaker.videoSrc}
         subtitleSrc={speaker.subtitleSrc}
+        onEnded={handleVideoEnded}
       />
     </div>
   );
