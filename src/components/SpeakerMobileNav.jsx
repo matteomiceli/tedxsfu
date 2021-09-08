@@ -88,6 +88,18 @@ function SpeakerMobileNav({
     }
   };
 
+  const [isInteracting, setIsInteracting] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    const resetIsTouch = () => setIsTouch(false);
+
+    window.addEventListener("wheel", resetIsTouch, { capture: true });
+    return () => {
+      window.removeEventListener("wheel", resetIsTouch, { capture: true });
+    };
+  }, []);
+
   return (
     <div className="absolute text-white text-4xl w-full bottom-20 select-none">
       <motion.div
@@ -108,17 +120,44 @@ function SpeakerMobileNav({
         exit="exit"
       >
         <div className="mobile-panel-spacer bg-transparent w-96"></div>
-        {speakers.map((speaker, i) => {
-          return (
-            <SpeakerMobilePanel
-              speaker={speaker}
-              onSelectSpeaker={onSelectSpeaker}
-              key={i}
-              i={i}
-              spySpeaker={spySpeaker}
-            />
-          );
-        })}
+        <motion.div
+          className="flex flex-row py-1 px-1 border rounded-lg"
+          initial={{
+            borderColor: "rgba(255,255,255,0)",
+          }}
+          animate={{
+            borderColor: isInteracting
+              ? "rgba(255,255,255,.5)"
+              : "rgba(255,255,255,0)",
+            transition: {
+              duration: AnimationConfig.VERY_FAST,
+            },
+          }}
+          exit={{
+            borderColor: "rgba(255,255,255,0)",
+            transition: {
+              duration: AnimationConfig.VERY_FAST,
+            },
+          }}
+          onTouchStartCapture={() => {
+            setIsInteracting(true);
+            setIsTouch(true);
+          }}
+          onTouchEndCapture={() => setIsInteracting(false)}
+        >
+          {speakers.map((speaker, i) => {
+            return (
+              <SpeakerMobilePanel
+                speaker={speaker}
+                onSelectSpeaker={onSelectSpeaker}
+                key={i}
+                i={i}
+                spySpeaker={spySpeaker}
+                isTouch={isTouch}
+              />
+            );
+          })}
+        </motion.div>
         <div className="mobile-panel-spacer bg-transparent w-96"></div>
       </motion.div>
     </div>
@@ -127,7 +166,13 @@ function SpeakerMobileNav({
 
 export default SpeakerMobileNav;
 
-function SpeakerMobilePanel({ spySpeaker, speaker, onSelectSpeaker, i }) {
+function SpeakerMobilePanel({
+  spySpeaker,
+  speaker,
+  onSelectSpeaker,
+  i,
+  isTouch,
+}) {
   return (
     <motion.div
       variants={navPanelVariant}
@@ -136,9 +181,9 @@ function SpeakerMobilePanel({ spySpeaker, speaker, onSelectSpeaker, i }) {
       } speaker-mobile-panel mobile-speaker${i + 1} h-full z-10 mx-0.5`}
     >
       <a
-        href={`#${speaker.slug}`}
+        href={isTouch ? `#` : `#${speaker.slug}`}
         onClick={() => {
-          onSelectSpeaker(i + 1);
+          !isTouch && onSelectSpeaker(i + 1);
         }}
       >
         <Image
