@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../components/Button";
 
 import backIcon from "../../static/images/icons/icon-backward.svg";
+import LoadingSpinner from "../components/loadingSpinner/LoadingSpinner";
 
 //@ts-check
 const ComponentTesting = () => {
@@ -55,6 +56,12 @@ const ComponentTesting = () => {
             >
               Back
             </Button>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <div className="mb-4">Loading Spinner</div>
+          <div>
+            <LoadingSpinner />
           </div>
         </div>
       </div>
