@@ -89,7 +89,8 @@ const Scroll = function ({
   const nextSpeaker = useCallback(() => {
     if (spySpeaker + 1 > speakers.length) return;
 
-    scrollIntoView(document.querySelector(`#scroll-${spySpeaker + 1}`), {
+    const targetSpeaker = speakers[spySpeaker + 1];
+    scrollIntoView(document.querySelector(`#${targetSpeaker.slug}`), {
       behavior: "smooth",
     });
   }, [spySpeaker]);
@@ -97,7 +98,9 @@ const Scroll = function ({
   const prevSpeaker = useCallback(() => {
     if (spySpeaker - 1 <= 0) return;
 
-    scrollIntoView(document.querySelector(`#scroll-${spySpeaker - 1}`), {
+    const targetSpeaker = speakers[spySpeaker - 1];
+    console.log(spySpeaker);
+    scrollIntoView(document.querySelector(`#${targetSpeaker.slug}`), {
       behavior: "smooth",
     });
   }, [spySpeaker]);

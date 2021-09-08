@@ -135,6 +135,16 @@ const IndexPage = () => {
     setScroll(scrollAmount);
   };
 
+  const handleSelectSpeakerMobile = (id) => {
+    const mobileNavItem = document.querySelector(`.mobile-speaker${id}`);
+    setSpeaker(id);
+    if (mobileNavItem)
+      scrollIntoView(mobileNavItem, {
+        block: "center",
+        inline: "center",
+      });
+  };
+
   return (
     <>
       <Scroll
@@ -163,9 +173,7 @@ const IndexPage = () => {
       ) : (
         <SpeakerMobileNav
           navRef={navRef}
-          onSelectSpeaker={(id) => {
-            // TODO: implement select speaker
-          }}
+          onSelectSpeaker={handleSelectSpeakerMobile}
           spySpeaker={spySpeaker}
           onScrubBegin={handleScrubBegin}
           onScrubEnd={handleScrubEnd}

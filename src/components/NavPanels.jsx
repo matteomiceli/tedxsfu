@@ -18,7 +18,7 @@ function NavPanels({
 }) {
   // handles smooth scroll function and sets speaker on click
   const handleNavClick = (e) => {
-    scrollIntoView(document.querySelector(`#scroll-${speaker.id}`), {
+    scrollIntoView(document.querySelector(`#${speaker.slug}`), {
       behavior: "smooth",
     });
     // setSpeaker(parseInt(speaker.id));

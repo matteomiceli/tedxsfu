@@ -15,7 +15,8 @@ import { SimpleDivAnimation } from "../components/animation/SimpleTransitionAnim
 function ScrollItem({ speaker, width }) {
   return (
     <div
-      id={`scroll-${speaker.id}`}
+      // id={`speaker-${speaker.id}`}
+      id={`${speaker.slug}`}
       className={`scroll-item relative h-full`}
       style={{
         scrollSnapAlign: "center",

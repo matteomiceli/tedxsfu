@@ -136,7 +136,7 @@ function SpeakerMobilePanel({ spySpeaker, speaker, onSelectSpeaker, i }) {
       } speaker-mobile-panel mobile-speaker${i + 1} h-full z-10 mx-0.5`}
     >
       <a
-        href={`#mobile-speaker-${i + 1}`}
+        href={`#${speaker.slug}`}
         onClick={() => {
           onSelectSpeaker(i + 1);
         }}
