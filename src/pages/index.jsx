@@ -39,8 +39,17 @@ const IndexPage = () => {
   // manually navigate to speaker
   useEffect(() => {
     if (window.location && window.location.hash) {
-      const elm = document.querySelector(`${window.location.hash}`);
-      if (elm) scrollIntoView(elm);
+      // const elm = document.querySelector(`${window.location.hash}`);
+      // if (elm) {
+      //   scrollIntoView(elm);
+      // }
+      const speakerSlug = window.location.hash.replace("#", "");
+      const targetSpeaker = speakers.find(
+        (speaker) => speaker.slug === speakerSlug
+      );
+      if (targetSpeaker) {
+        selectSpeaker(targetSpeaker.id);
+      }
     }
   }, []);
 
@@ -135,7 +144,7 @@ const IndexPage = () => {
     setScroll(scrollAmount);
   };
 
-  const handleSelectSpeakerMobile = (id) => {
+  function selectSpeaker(id) {
     const mobileNavItem = document.querySelector(`.mobile-speaker${id}`);
     setSpeaker(id);
     if (mobileNavItem)
@@ -143,6 +152,10 @@ const IndexPage = () => {
         block: "center",
         inline: "center",
       });
+  }
+
+  const handleSelectSpeakerMobile = (id) => {
+    selectSpeaker(id);
   };
 
   return (
