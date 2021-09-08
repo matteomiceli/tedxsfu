@@ -89,7 +89,7 @@ function SpeakerMobileNav({
   };
 
   return (
-    <div className="absolute text-white text-4xl w-full bottom-20">
+    <div className="absolute text-white text-4xl w-full bottom-20 select-none">
       <motion.div
         ref={navRef}
         onTouchStart={() => {
