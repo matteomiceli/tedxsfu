@@ -39,10 +39,11 @@ const IndexPage = () => {
   // manually navigate to speaker
   useEffect(() => {
     if (window.location && window.location.hash) {
-      // const elm = document.querySelector(`${window.location.hash}`);
-      // if (elm) {
-      //   scrollIntoView(elm);
-      // }
+      const elm = document.querySelector(`${window.location.hash}`);
+      if (elm) {
+        scrollIntoView(elm);
+      }
+
       const speakerSlug = window.location.hash.replace("#", "");
       const targetSpeaker = speakers.find(
         (speaker) => speaker.slug === speakerSlug
