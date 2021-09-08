@@ -52,19 +52,19 @@ function NavPanels({
       //     duration: AnimationConfig.FAST,
       //   },
       // }}
-      initial={{
-        transition: {
-          ease: AnimationConfig.EASING,
-          duration: AnimationConfig.VERY_FAST,
-        },
-      }}
-      whileTap={{
-        y: 8,
-        transition: {
-          ease: AnimationConfig.EASING,
-          duration: AnimationConfig.VERY_FAST,
-        },
-      }}
+      // initial={{
+      //   transition: {
+      //     ease: AnimationConfig.EASING,
+      //     duration: AnimationConfig.VERY_FAST,
+      //   },
+      // }}
+      // whileTap={{
+      //   y: 8,
+      //   transition: {
+      //     ease: AnimationConfig.EASING,
+      //     duration: AnimationConfig.VERY_FAST,
+      //   },
+      // }}
     >
       <motion.button
         initial={{ opacity: 0.7 }}
