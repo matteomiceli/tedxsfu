@@ -19,6 +19,8 @@ const VideoPlayer = ({
   keyboardInput = true,
   loop = false,
   className,
+  subtitleSrc,
+  videoSrc,
 }) => {
   const videoRef = useRef();
 
@@ -32,8 +34,8 @@ const VideoPlayer = ({
   // const fullHDSourceURL = `${src}@1920.mp4`;
   // const subtitleURL = `${src}.srt`;
 
-  const fullHDSourceURL = `${src}@1920`;
-  const subtitleURL = `${src}/caption`;
+  const fullHDSourceURL = videoSrc || `${src}@1920`;
+  const subtitleURL = subtitleSrc || `${src}/caption`;
 
   // Handling the muting of the player
   useEffect(() => {
