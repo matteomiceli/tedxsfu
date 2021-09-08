@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import useForceUpdate from "use-force-update";
 import "./LoadingSpinner.css";
 
 const LoadingSpinner = ({ className, id }) => {
