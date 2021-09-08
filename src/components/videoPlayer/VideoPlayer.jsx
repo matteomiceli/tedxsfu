@@ -226,7 +226,7 @@ const VideoPlayer = ({
         />
       )}
       <motion.div
-        className="absolute bottom-52 left-0 right-0"
+        className="absolute bottom-52 left-0 right-0 z-10"
         animate={{
           y: isMuted ? 0 : "4rem",
           transition: {
