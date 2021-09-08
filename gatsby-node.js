@@ -22,12 +22,26 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 };
 
 exports.createPages = async function ({ actions, graphql }) {
+  // building the team bio page
   require("./src/content/teams").forEach((currentTeamInfo, index) => {
     actions.createPage({
       path: `/team/${currentTeamInfo.href}`,
       component: require.resolve(`./src/pages/team/teamBios.jsx`),
       context: { teamInfo: currentTeamInfo },
     });
+  });
+  // building video page
+  require("./src/content/speakers").forEach((currentSpeakerInfo, index) => {
+    actions.createPage({
+      path: `/${currentSpeakerInfo.slug}`,
+      component: require.resolve(`./src/template/VideoPageTemplate.jsx`),
+      context: { speakerInfo: currentSpeakerInfo },
+    });
+    // actions.createPage({
+    //   path: `/team/${currentTeamInfo.href}`,
+    //   component: require.resolve(`./src/pages/team/teamBios.jsx`),
+    //   context: { teamInfo: currentTeamInfo },
+    // });
   });
 };
 
