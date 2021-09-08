@@ -42,7 +42,7 @@ function ScrollItem({ speaker, width }) {
               secondary
               icon={PLAY_BUTTON}
               className="mt-6 px-2"
-              href={"/video"}
+              href={speaker.slug}
             >
               Watch Trailer
             </Button>
