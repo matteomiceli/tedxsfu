@@ -5,11 +5,10 @@ import { mergeRefs } from "../utils/util";
 const HorizontalScrollContainer = React.forwardRef(
   ({ children, className }, ref) => {
     // mouse scroll delta value
-    const [deltaVal, setDelta] = useState(0);
     const scrollRef = useRef();
 
     const handleScroll = (e) => {
-      setDelta(e.deltaY);
+      scrollRef.current.scrollLeft += e.deltaY;
     };
     // set up global scroll listener
     useEffect(() => {
@@ -18,11 +17,6 @@ const HorizontalScrollContainer = React.forwardRef(
         window.removeEventListener("wheel", handleScroll);
       };
     }, []);
-
-    useEffect(() => {
-      scrollRef.current.scrollLeft += deltaVal;
-      setDelta(0);
-    }, [deltaVal]);
 
     return (
       <div

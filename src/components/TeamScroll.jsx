@@ -38,13 +38,12 @@ const teamVariant = {
 
 function TeamScroll({ scroll, setScroll, scrollRef }) {
   // mouse scroll delta value
-  const [deltaVal, setDelta] = useState(0);
   const scrolRefInternal = useRef();
 
   useEffect(() => {
     // mouse
     const handleWheel = (e) => {
-      setDelta(e.deltaY);
+      scrolRefInternal.current.scrollLeft += e.deltaY;
     };
     // handle wheel event
     window.addEventListener("wheel", handleWheel);
@@ -57,11 +56,6 @@ function TeamScroll({ scroll, setScroll, scrollRef }) {
   const handleContentScroll = (e) => {
     setScroll(e.currentTarget.scrollLeft);
   };
-
-  useEffect(() => {
-    scrolRefInternal.current.scrollLeft += deltaVal;
-    setDelta(0);
-  }, [deltaVal]);
 
   return (
     <div
@@ -78,7 +72,7 @@ function TeamScroll({ scroll, setScroll, scrollRef }) {
       >
         {teams.map((team, i) => (
           <motion.div variants={teamVariant}>
-            <TeamItem team={team} key={i} delta={deltaVal} scroll={scroll} />
+            <TeamItem team={team} key={i} scroll={scroll} />
           </motion.div>
         ))}
       </motion.div>

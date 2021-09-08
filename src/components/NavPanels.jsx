@@ -18,7 +18,7 @@ function NavPanels({
 }) {
   // handles smooth scroll function and sets speaker on click
   const handleNavClick = (e) => {
-    scrollIntoView(document.querySelector(`#scroll-${speaker.id}`), {
+    scrollIntoView(document.querySelector(`#${speaker.slug}`), {
       behavior: "smooth",
     });
     // setSpeaker(parseInt(speaker.id));
@@ -40,13 +40,33 @@ function NavPanels({
   }, [scroll, width]);
 
   return (
-    <motion.button
+    <motion.div
       onClick={(e) => handleNavClick(e)}
-      className={`h-full w-full mx-1 ${
+      className={`flex h-full w-full mx-1 ${
         spySpeaker === speaker.id ? "panel-active" : "panel-notactive"
       }`}
+      // whileHover={{
+      //   y: -5,
+      //   transition: {
+      //     ease: AnimationConfig.EASING,
+      //     duration: AnimationConfig.FAST,
+      //   },
+      // }}
+      // initial={{
+      //   transition: {
+      //     ease: AnimationConfig.EASING,
+      //     duration: AnimationConfig.VERY_FAST,
+      //   },
+      // }}
+      // whileTap={{
+      //   y: 8,
+      //   transition: {
+      //     ease: AnimationConfig.EASING,
+      //     duration: AnimationConfig.VERY_FAST,
+      //   },
+      // }}
     >
-      <motion.img
+      <motion.button
         initial={{ opacity: 0.7 }}
         animate={{
           opacity: isActive ? 1 : 0.7,
@@ -55,10 +75,16 @@ function NavPanels({
             ease: AnimationConfig.EASING_SOFT,
           },
         }}
-        src={speaker.img}
-        className="h-full object-cover"
-      />
-    </motion.button>
+        className="h-full"
+      >
+        <Image
+          src={speaker.img}
+          className="h-full object-cover"
+          width={1271}
+          height={1279}
+        />
+      </motion.button>
+    </motion.div>
   );
 }
 

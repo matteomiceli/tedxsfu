@@ -15,7 +15,8 @@ import { SimpleDivAnimation } from "../components/animation/SimpleTransitionAnim
 function ScrollItem({ speaker, width }) {
   return (
     <div
-      id={`scroll-${speaker.id}`}
+      // id={`speaker-${speaker.id}`}
+      id={`${speaker.slug}`}
       className={`scroll-item relative h-full`}
       style={{
         scrollSnapAlign: "center",
@@ -25,7 +26,7 @@ function ScrollItem({ speaker, width }) {
       <div className="mt-flowline-mobile ml-document absolute z-10">
         <h2
           className="text-3xl leading-8 lg:mt-speakerDesktop 2xl:ml-axis"
-          style={{ maxWidth: "21ch" }}
+          style={{ maxWidth: "18ch" }}
         >
           <GrowingTextAnimation>{speaker.talkTitle}</GrowingTextAnimation>
         </h2>

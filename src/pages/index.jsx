@@ -39,8 +39,17 @@ const IndexPage = () => {
   // manually navigate to speaker
   useEffect(() => {
     if (window.location && window.location.hash) {
-      const elm = document.querySelector(`${window.location.hash}`);
-      scrollIntoView(elm);
+      // const elm = document.querySelector(`${window.location.hash}`);
+      // if (elm) {
+      //   scrollIntoView(elm);
+      // }
+      const speakerSlug = window.location.hash.replace("#", "");
+      const targetSpeaker = speakers.find(
+        (speaker) => speaker.slug === speakerSlug
+      );
+      if (targetSpeaker) {
+        selectSpeaker(targetSpeaker.id);
+      }
     }
   }, []);
 
@@ -135,6 +144,20 @@ const IndexPage = () => {
     setScroll(scrollAmount);
   };
 
+  function selectSpeaker(id) {
+    const mobileNavItem = document.querySelector(`.mobile-speaker${id}`);
+    setSpeaker(id);
+    if (mobileNavItem)
+      scrollIntoView(mobileNavItem, {
+        block: "center",
+        inline: "center",
+      });
+  }
+
+  const handleSelectSpeakerMobile = (id) => {
+    selectSpeaker(id);
+  };
+
   return (
     <>
       <Scroll
@@ -163,9 +186,7 @@ const IndexPage = () => {
       ) : (
         <SpeakerMobileNav
           navRef={navRef}
-          onSelectSpeaker={(id) => {
-            // TODO: implement select speaker
-          }}
+          onSelectSpeaker={handleSelectSpeakerMobile}
           spySpeaker={spySpeaker}
           onScrubBegin={handleScrubBegin}
           onScrubEnd={handleScrubEnd}

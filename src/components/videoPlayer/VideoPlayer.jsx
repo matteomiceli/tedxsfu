@@ -9,6 +9,8 @@ import Button from "../Button";
 import ICON_MUTED from "../../../static/images/icons/icon-muted--black.svg";
 import Subtitle from "./Subtitle";
 
+import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
+
 // load quality footages first before
 
 //@ts-check
@@ -29,6 +31,7 @@ const VideoPlayer = ({
   const [targetTime, setTargetTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [canPlay, setCanPlay] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
 
   //TODO: muting the auto video for testing
@@ -83,6 +86,7 @@ const VideoPlayer = ({
     const videoElm = videoRef.current;
     setCurrentTime(videoElm.currentTime);
     setDuration(videoElm.duration);
+    setCanPlay(true);
   };
 
   /**
@@ -175,7 +179,7 @@ const VideoPlayer = ({
       }}
     >
       <AnimatePresence>
-        {isMuted && (
+        {isMuted && canPlay && (
           <motion.div
             className="absolute bottom-0 left-0 right-0 flex z-10"
             initial={{
@@ -203,7 +207,6 @@ const VideoPlayer = ({
               className="mx-auto mb-36"
               onClick={() => {
                 setIsMuted(false);
-
                 setIsPlaying(true);
               }}
               icon={ICON_MUTED}
@@ -214,7 +217,10 @@ const VideoPlayer = ({
           </motion.div>
         )}
       </AnimatePresence>
-      {control && (
+      <div className="absolute left-0 right-0 top-0 bottom-0 flex pointer-events-none">
+        <LoadingSpinner show={!canPlay} className="mx-auto my-auto" />
+      </div>
+      {control && canPlay && (
         <VideoControlBar
           currentTime={currentTime}
           isPlaying={isPlaying}
@@ -222,11 +228,11 @@ const VideoPlayer = ({
           onSeekBegin={handleSeekBegin}
           onSeekEnd={handleSeekEnd}
           onSeekChange={handleSeekChange}
-          onTogglePlay={() => setIsPlaying(!isPlaying)}
+          onTogglePlay={() => canPlay && setIsPlaying(!isPlaying)}
         />
       )}
       <motion.div
-        className="absolute bottom-52 left-0 right-0"
+        className="absolute bottom-52 left-0 right-0 z-10"
         animate={{
           y: isMuted ? 0 : "4rem",
           transition: {
@@ -236,13 +242,11 @@ const VideoPlayer = ({
           },
         }}
       >
-        {
-          <Subtitle
-            src={subtitleURL}
-            currentTime={currentTime}
-            duration={duration}
-          />
-        }
+        <Subtitle
+          src={subtitleURL}
+          currentTime={currentTime}
+          duration={duration}
+        />
       </motion.div>
       <motion.video
         ref={videoRef}
@@ -259,6 +263,8 @@ const VideoPlayer = ({
         preload={true}
         playsInline={true}
         disablePictureInPicture
+        initial={{ opacity: 0 }}
+        animate={{ opacity: canPlay ? 1 : 0 }}
       >
         <source src={fullHDSourceURL} type="video/mp4" />
       </motion.video>

@@ -11,7 +11,7 @@ const VideoPageTemplate = ({ pageContext }) => {
 
   const handleVideoEnded = () => {
     // navigate back to home page
-    navigate(`/#scroll-${speaker.id}`);
+    navigate(`/#${speaker.slug}`);
   };
 
   return (

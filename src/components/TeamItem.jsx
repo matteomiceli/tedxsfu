@@ -4,7 +4,7 @@ import Image from "./Image";
 
 import { motion } from "framer-motion";
 
-function TeamItem({ team, width, delta, scroll }) {
+function TeamItem({ team, width, scroll }) {
   return (
     <div
       id={`team-${team.i}`}
