@@ -45,7 +45,7 @@ function ScrollItem({ speaker, width }) {
               className="mt-6 px-2"
               href={speaker.slug}
             >
-              Watch Trailer
+              Play Interview
             </Button>
           </div>
         </SimpleDivAnimation>
