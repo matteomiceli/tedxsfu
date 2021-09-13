@@ -148,8 +148,12 @@ const About = () => {
                 loop="true"
                 playsinline="true"
               >
-                <source
+                {/* <source
                   src="/videos/bloom-reveal-low-fps.mp4"
+                  type="video/mp4"
+                /> */}
+                <source
+                  src="https://www.sfu.ca/~kkl64/tedxsfu/bloom-reveal-low-fps.mp4"
                   type="video/mp4"
                 />
               </motion.video>
