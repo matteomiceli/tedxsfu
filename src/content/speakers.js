@@ -83,7 +83,7 @@ const speakers = [
     id: 9,
     name: "Alexandra Kitson",
     slug: "alexandra",
-    img: "/images/speakers/lisa.jpg",
+    img: "/images/speakers/alexandra.jpg",
     videoSrc: "https://www.sfu.ca/~kkl64/tedxsfu/candida@1920.mp4",
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle:
