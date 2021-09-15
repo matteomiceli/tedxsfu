@@ -34,21 +34,26 @@ function ScrollItem({ speaker, width }) {
         </h2>
         <SimpleDivAnimation>
           <h3 className="mt-2 text-sm 2xl:ml-axis">{speaker.name}</h3>
-          <h3 className="mt-1 text-sm w-48 leading-4 opacity-60 2xl:ml-axis">
+          <div className="mt-1 text-sm w-48 leading-4 opacity-60 2xl:ml-axis">
             {speaker.bio}
-          </h3>
+            {!speaker.videoReady && (
+              <div className="mt-6 opacity-50">Interview Coming Soon</div>
+            )}
+          </div>
           <div
             staggerIndex={1}
             className="transform scale-75 sm:scale-100 origin-top-left 2xl:ml-axis"
           >
-            <Button
-              secondary
-              icon={PLAY_BUTTON}
-              className="mt-6 px-2"
-              href={speaker.slug}
-            >
-              Play Interview
-            </Button>
+            {speaker.videoReady && (
+              <Button
+                secondary
+                icon={PLAY_BUTTON}
+                className="mt-6 px-2"
+                href={speaker.slug}
+              >
+                See Interview
+              </Button>
+            )}
           </div>
         </SimpleDivAnimation>
       </div>
