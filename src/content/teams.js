@@ -176,7 +176,9 @@ const teams = [
           "With a love for coffee and Studio Ghibli films, Lauren is a third-year Interactive Arts and Technology student concentrating in design. They are passionate about creating accessible design as a future UX designer. Expressing themselves through art, bullet journaling, and baking as many kinds of dessert as she can makes her Bloom. A fun fact about Lauren is that they’ve dyed their hair four different colours as of recently!",
         role: "Coordinator",
         pro: "She/They",
-        socials: "https://www.linkedin.com/in/lauren-mok-0716631ba/",
+        socials: {
+          linked: "https://www.linkedin.com/in/lauren-mok-0716631ba/",
+        },
       },
       {
         name: "Sneha Shah",
