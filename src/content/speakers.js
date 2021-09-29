@@ -8,7 +8,7 @@ const speakers = [
     videoSrc: "https://www.sfu.ca/~kkl64/tedxsfu/candida@1920.mp4",
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Healing beyond the headlines",
-    bio: "award-winning educator, spoken word poet, and public speaker",
+    bio: "Award-winning educator, spoken word poet, and public speaker",
   },
   {
     id: 2,
@@ -52,7 +52,7 @@ const speakers = [
     videoSrc: "https://www.sfu.ca/~kkl64/tedxsfu/candida@1920.mp4",
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Unpacking the Indigenous Student Experience",
-    bio: "Current undergraduate student at SFU",
+    bio: "Curent undergraduate student at SFU",
   },
   {
     id: 6,
@@ -74,7 +74,7 @@ const speakers = [
     videoSrc: "https://www.sfu.ca/~kkl64/tedxsfu/candida@1920.mp4",
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Your Menstrual Cycle is Your Superpower",
-    bio: "Indigenous studies and political science student",
+    bio: "Certified Health Coach",
   },
   {
     id: 8,
@@ -85,7 +85,7 @@ const speakers = [
     videoSrc: "https://www.sfu.ca/~kkl64/tedxsfu/candida@1920.mp4",
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Choices and Options",
-    bio: "Indigenous studies and political science student",
+    bio: "Retired professor of computational design",
   },
   {
     id: 9,
@@ -97,7 +97,18 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle:
       "Virtual reality: supporting our mental health through emotion regulation skills training",
-    bio: "Indigenous studies and political science student",
+    bio: "Post Doctoral Fellow at SFU SIAT",
+  },
+  {
+    id: 10,
+    name: "Carissa Campeotto",
+    slug: "carissa",
+    img: "/images/speakers/carissa.jpg",
+    videoReady: false,
+    videoSrc: "https://www.sfu.ca/~kkl64/tedxsfu/candida@1920.mp4",
+    subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
+    talkTitle: "How I found my bloom in a world that grows garbage",
+    bio: "Social Entrepreneur",
   },
 ];
 
