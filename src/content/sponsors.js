@@ -17,6 +17,72 @@ const sponsors = {
       website: "https://beedie.sfu.ca/",
     },
   ],
+  gold: [
+    {
+      name: "Dead Frog Brewery",
+      logo: "/images/sponsors/dead-frong-brewery.png",
+      about:
+        "Dead Frog is a locally owned, award-winning craft brewery born and raised in the Fraser Valley with 20+ craft brews on tap, fresh eats, and good times. They feature creative brews and unique eats that make you want to come back for more!",
+      website: "http://deadfrog.ca/",
+      facebook: "https://www.facebook.com/deadfrogbrewery",
+      instagram: "https://www.instagram.com/deadfrogbrewery/",
+      twitter: "https://twitter.com/DeadFrogBrewery",
+    },
+    {
+      name: "Dead Frog Brewery",
+      logo: "/images/sponsors/dead-frong-brewery.png",
+      about:
+        "Dead Frog is a locally owned, award-winning craft brewery born and raised in the Fraser Valley with 20+ craft brews on tap, fresh eats, and good times. They feature creative brews and unique eats that make you want to come back for more!",
+      website: "http://deadfrog.ca/",
+      facebook: "https://www.facebook.com/deadfrogbrewery",
+      instagram: "https://www.instagram.com/deadfrogbrewery/",
+      twitter: "https://twitter.com/DeadFrogBrewery",
+    },
+  ],
+  silver: [
+    {
+      name: "Dead Frog Brewery",
+      logo: "/images/sponsors/dead-frong-brewery.png",
+      about:
+        "Dead Frog is a locally owned, award-winning craft brewery born and raised in the Fraser Valley with 20+ craft brews on tap, fresh eats, and good times. They feature creative brews and unique eats that make you want to come back for more!",
+      website: "http://deadfrog.ca/",
+      facebook: "https://www.facebook.com/deadfrogbrewery",
+      instagram: "https://www.instagram.com/deadfrogbrewery/",
+      twitter: "https://twitter.com/DeadFrogBrewery",
+    },
+    {
+      name: "Dead Frog Brewery",
+      logo: "/images/sponsors/dead-frong-brewery.png",
+      about:
+        "Dead Frog is a locally owned, award-winning craft brewery born and raised in the Fraser Valley with 20+ craft brews on tap, fresh eats, and good times. They feature creative brews and unique eats that make you want to come back for more!",
+      website: "http://deadfrog.ca/",
+      facebook: "https://www.facebook.com/deadfrogbrewery",
+      instagram: "https://www.instagram.com/deadfrogbrewery/",
+      twitter: "https://twitter.com/DeadFrogBrewery",
+    },
+  ],
+  city: [
+    {
+      name: "Dead Frog Brewery",
+      logo: "/images/sponsors/dead-frong-brewery.png",
+      about:
+        "Dead Frog is a locally owned, award-winning craft brewery born and raised in the Fraser Valley with 20+ craft brews on tap, fresh eats, and good times. They feature creative brews and unique eats that make you want to come back for more!",
+      website: "http://deadfrog.ca/",
+      facebook: "https://www.facebook.com/deadfrogbrewery",
+      instagram: "https://www.instagram.com/deadfrogbrewery/",
+      twitter: "https://twitter.com/DeadFrogBrewery",
+    },
+    {
+      name: "Dead Frog Brewery",
+      logo: "/images/sponsors/dead-frong-brewery.png",
+      about:
+        "Dead Frog is a locally owned, award-winning craft brewery born and raised in the Fraser Valley with 20+ craft brews on tap, fresh eats, and good times. They feature creative brews and unique eats that make you want to come back for more!",
+      website: "http://deadfrog.ca/",
+      facebook: "https://www.facebook.com/deadfrogbrewery",
+      instagram: "https://www.instagram.com/deadfrogbrewery/",
+      twitter: "https://twitter.com/DeadFrogBrewery",
+    },
+  ],
   inkind: [
     {
       name: "Dead Frog Brewery",
