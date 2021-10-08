@@ -23,6 +23,7 @@ const events = "/images/teams/events-team.jpg";
 const internal = "/images/teams/internal-team.jpg";
 const marketing = "/images/teams/marketing-team.jpg";
 const pr = "/images/teams/pr-team.jpg";
+const speakerCoach = "/images/teams/speaker-coach.jpg";
 
 const teams = [
   {
@@ -351,39 +352,28 @@ const teams = [
   {
     i: 8,
     href: "coaches",
-    team: "Internal Relations",
+    team: "Speaker Coach",
     teamBio:
       "The Internal Committee ensures connectedness and inclusivity by creating a warm and welcoming environment for the entire OC. They focus on supporting everyone's growth through the team's Development Plan as well as making everyone feel connected during socials and icebreakers.",
-    img: internal,
+    img: speakerCoach,
     members: [
       {
-        name: "Christina Walker",
-        img: "/images/teambio/christina.jpg",
+        name: "Roshan Noronha",
+        img: "/images/teambio/roshan.jpg",
         imgWide: true,
         bio:
-          "Christina is a third-year Biological Sciences student with a mission to create an impact, wherever her path may take her! As a frequent worker with kids, inspiring future generations is something that truly makes her Bloom. In Christina's spare time, you can frequently find her working on earning her third degree black belt, or getting lost in a good fantasy book.",
-        role: "Director",
-        pro: "She/Her",
-        socials: {
-          linked: "https://www.linkedin.com/in/cs-walker/",
-        },
-      },
-      {
-        name: "Angela Sheenmar",
-        img: "/images/teambio/angela.jpg",
-        bio:
-          "Angela is a third-year student at SFUs Beedie School of Business. Something that makes Angela “Bloom” is when people realize their potential and live the life they used to dream of. Angela also “Blooms” when she sees people happily tapping their feet to music in public. A fun fact about Angela is that she writes a lot and will probably never stop putting a pen to paper as long as ideas run through her mind -- and they always do!",
-        role: "Coordinator",
-        pro: "She/Her",
+          "As a previous TEDxSFU speaker and speaker coach, Roshan knows what it takes to deliver an inspiring TED talk. Bringing a wealth of academic and life experiences, he's passionate about using story to communicate exciting ideas! When he’s not in a lab, Roshan enjoys exploring BC, trying new restaurants and talking about himself in third person.",
+        role: "Speaker Coach",
+        pro: "He/Him",
         socials: {},
       },
       {
-        name: "Ronak Salamat",
-        img: "/images/teambio/ronak.jpg",
+        name: "Rose Anza-Burgess",
+        img: "/images/teambio/rose.jpg",
         bio:
-          "Ronak is a third year Biology student hoping to concentrate in cells, molecules, and physiology. Being in an environment surrounded by supportive, hard working and kind people like the TEDxSFU team encourages her and makes her bloom. A fun fact about Ronak is that she can speak 4 languages!",
-        role: "Coordinator",
-        pro: "She/Her",
+          "Rosie is an emerging scholar, interdisciplinary writer, and artist. She earned her MA from the School for the Contemporary Arts, and was a TEDxSFU Speaker taking stage at the Vancouver Playhouse in 2019. She has a strong history of academic and public engagement, sharing her ongoing research at academic conferences in colleges and universities in the northwest coast of Canada and the United States. She is a professional in higher education, serves as Vice-President for the Arts Council of New Westminster, and above all a dedicated spouse.",
+        role: "Speaker Coach",
+        pro: "She/They",
         socials: {},
       },
     ],
