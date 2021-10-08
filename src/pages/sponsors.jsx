@@ -64,13 +64,19 @@ const SponsorshipPage = () => {
               isMobile={isMobile}
             />
             <SponsorSectionSecondary
-              label="City Sponsors"
+              label="City Sponsor"
               numbering="04"
               sponsorList={sponsors.city}
               isMobile={isMobile}
             />
-            <SponsorSectionTertiary
+            <SponsorSectionSecondary
+              label="AV Sponsor"
               numbering="05"
+              sponsorList={sponsors.avSponsors}
+              isMobile={isMobile}
+            />
+            <SponsorSectionTertiary
+              numbering="06"
               sponsorList={sponsors.inkind}
               isMobile={isMobile}
             />
@@ -130,7 +136,7 @@ const SponsorSectionSecondary = ({
       <div className="ruler" />
     </div>
     <div
-      className="flex mt-4 sm:mt-0 sm:items-center"
+      className="flex mt-4 sm:mt-8"
       style={{
         height: "50vh",
       }}
@@ -236,14 +242,14 @@ const SponsorMedium = ({
         onExit={() => setIsModalShowing(false)}
       />
       <div className="flex flex-nowrap flex-col">
-        <div className="w-24 h-24 sm:w-32 sm:h-32">
+        <div className="w-24 h-24 sm:w-full sm:h-32 mb-4">
           <a
             href="#"
             className="cursor-pointer sm:cursor-default"
             onClick={() => isMobile && setIsModalShowing(true)}
           >
             <Image
-              className="max-h-full object-contain"
+              className="h-full object-contain"
               src={logo}
               alt={`${name}'s logo`}
             />
