@@ -348,6 +348,46 @@ const teams = [
       },
     ],
   },
+  {
+    i: 8,
+    href: "coaches",
+    team: "Internal Relations",
+    teamBio:
+      "The Internal Committee ensures connectedness and inclusivity by creating a warm and welcoming environment for the entire OC. They focus on supporting everyone's growth through the team's Development Plan as well as making everyone feel connected during socials and icebreakers.",
+    img: internal,
+    members: [
+      {
+        name: "Christina Walker",
+        img: "/images/teambio/christina.jpg",
+        imgWide: true,
+        bio:
+          "Christina is a third-year Biological Sciences student with a mission to create an impact, wherever her path may take her! As a frequent worker with kids, inspiring future generations is something that truly makes her Bloom. In Christina's spare time, you can frequently find her working on earning her third degree black belt, or getting lost in a good fantasy book.",
+        role: "Director",
+        pro: "She/Her",
+        socials: {
+          linked: "https://www.linkedin.com/in/cs-walker/",
+        },
+      },
+      {
+        name: "Angela Sheenmar",
+        img: "/images/teambio/angela.jpg",
+        bio:
+          "Angela is a third-year student at SFUs Beedie School of Business. Something that makes Angela “Bloom” is when people realize their potential and live the life they used to dream of. Angela also “Blooms” when she sees people happily tapping their feet to music in public. A fun fact about Angela is that she writes a lot and will probably never stop putting a pen to paper as long as ideas run through her mind -- and they always do!",
+        role: "Coordinator",
+        pro: "She/Her",
+        socials: {},
+      },
+      {
+        name: "Ronak Salamat",
+        img: "/images/teambio/ronak.jpg",
+        bio:
+          "Ronak is a third year Biology student hoping to concentrate in cells, molecules, and physiology. Being in an environment surrounded by supportive, hard working and kind people like the TEDxSFU team encourages her and makes her bloom. A fun fact about Ronak is that she can speak 4 languages!",
+        role: "Coordinator",
+        pro: "She/Her",
+        socials: {},
+      },
+    ],
+  },
 ];
 
 module.exports = teams;
