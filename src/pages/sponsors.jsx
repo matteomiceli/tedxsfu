@@ -47,11 +47,36 @@ const SponsorshipPage = () => {
               },
             }}
           >
-            <PlatinumTierSection
+            <SponsorSectionPrimary
               sponsorList={sponsors.platinum}
               isMobile={isMobile}
             />
-            <InKindTierSection
+            <SponsorSectionSecondary
+              label="Gold Sponsors"
+              numbering="02"
+              sponsorList={sponsors.gold}
+              isMobile={isMobile}
+            />
+            <SponsorSectionSecondary
+              label="Silver Sponsors"
+              numbering="03"
+              sponsorList={sponsors.silver}
+              isMobile={isMobile}
+            />
+            <SponsorSectionSecondary
+              label="City Sponsor"
+              numbering="04"
+              sponsorList={sponsors.city}
+              isMobile={isMobile}
+            />
+            <SponsorSectionSecondary
+              label="AV Sponsor"
+              numbering="05"
+              sponsorList={sponsors.avSponsors}
+              isMobile={isMobile}
+            />
+            <SponsorSectionTertiary
+              numbering="06"
               sponsorList={sponsors.inkind}
               isMobile={isMobile}
             />
@@ -80,7 +105,7 @@ const SponsorshipHeader = ({ isMobile }) => (
   </motion.div>
 );
 
-const PlatinumTierSection = ({ sponsorList, isMobile }) => (
+const SponsorSectionPrimary = ({ sponsorList, isMobile }) => (
   <div className="pr-8 sm:pr-12">
     <div className="flex opacity-60">
       <div className="text-sm sm:text-base inline-block whitespace-nowrap uppercase tracking-widest mr-6 align-middle">
@@ -96,11 +121,39 @@ const PlatinumTierSection = ({ sponsorList, isMobile }) => (
   </div>
 );
 
-const InKindTierSection = ({ sponsorList, isMobile }) => (
+const SponsorSectionSecondary = ({
+  sponsorList,
+  isMobile,
+  label,
+  numbering,
+}) => (
   <div className="pr-12">
     <div className="flex opacity-60">
       <div className="text-sm sm:text-base inline-block whitespace-nowrap uppercase tracking-widest mr-6 align-middle">
-        02<span className="ml-2">In Kind Sponsors</span>
+        {numbering}
+        <span className="ml-2">{label}</span>
+      </div>
+      <div className="ruler" />
+    </div>
+    <div
+      className="flex mt-4 sm:mt-8"
+      style={{
+        height: "50vh",
+      }}
+    >
+      {sponsorList.map((sponsorInfo, index) => (
+        <SponsorMedium key={index} {...sponsorInfo} isMobile={isMobile} />
+      ))}
+    </div>
+  </div>
+);
+
+const SponsorSectionTertiary = ({ sponsorList, isMobile, numbering }) => (
+  <div className="pr-12">
+    <div className="flex opacity-60">
+      <div className="text-sm sm:text-base inline-block whitespace-nowrap uppercase tracking-widest mr-6 align-middle">
+        {numbering}
+        <span className="ml-2">In Kind Sponsors</span>
       </div>
       <div className="ruler" />
     </div>
@@ -164,6 +217,73 @@ const SponsorBig = ({
   );
 };
 
+const SponsorMedium = ({
+  name,
+  logo,
+  about,
+  website,
+  facebook,
+  twitter,
+  instagram,
+  isMobile,
+}) => {
+  const [isModalShowing, setIsModalShowing] = useState(false);
+
+  return (
+    <>
+      <SponsorInfoModal
+        name={name}
+        logo={logo}
+        about={about}
+        website={website}
+        facebook={facebook}
+        twitter={twitter}
+        isShowing={isModalShowing}
+        onExit={() => setIsModalShowing(false)}
+      />
+      <div className="flex flex-nowrap flex-col">
+        <div className="w-24 h-24 sm:w-full sm:h-32 mb-4">
+          <a
+            href="#"
+            className="cursor-pointer sm:cursor-default"
+            onClick={() => isMobile && setIsModalShowing(true)}
+          >
+            <Image
+              className="h-full object-contain"
+              src={logo}
+              alt={`${name}'s logo`}
+            />
+          </a>
+        </div>
+        <div
+          className="w-sponsor-text ml-4 hidden sm:flex flex-col"
+          style={{ maxWidth: 333 }}
+        >
+          <h3 className="text-3xl mb-4">{name}</h3>
+          <div className="text-xs mb-4">{about}</div>
+          <div className="flex items-center">
+            <Button secondary blank href={website}>
+              Visit Site
+            </Button>
+            {facebook && (
+              <SocialButton className="ml-4" href={facebook} type="facebook" />
+            )}
+            {twitter && (
+              <SocialButton className="ml-4" href={twitter} type="twitter" />
+            )}
+            {instagram && (
+              <SocialButton
+                className="ml-4"
+                href={instagram}
+                type="instagram"
+              />
+            )}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 const SponsorSmall = ({
   name,
   logo,

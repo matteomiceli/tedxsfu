@@ -23,6 +23,7 @@ const events = "/images/teams/events-team.jpg";
 const internal = "/images/teams/internal-team.jpg";
 const marketing = "/images/teams/marketing-team.jpg";
 const pr = "/images/teams/pr-team.jpg";
+const speakerCoach = "/images/teams/speaker-coach.jpg";
 
 const teams = [
   {
@@ -176,7 +177,9 @@ const teams = [
           "With a love for coffee and Studio Ghibli films, Lauren is a third-year Interactive Arts and Technology student concentrating in design. They are passionate about creating accessible design as a future UX designer. Expressing themselves through art, bullet journaling, and baking as many kinds of dessert as she can makes her Bloom. A fun fact about Lauren is that they’ve dyed their hair four different colours as of recently!",
         role: "Coordinator",
         pro: "She/They",
-        socials: "https://www.linkedin.com/in/lauren-mok-0716631ba/",
+        socials: {
+          linked: "https://www.linkedin.com/in/lauren-mok-0716631ba/",
+        },
       },
       {
         name: "Sneha Shah",
@@ -342,6 +345,35 @@ const teams = [
           "Ronak is a third year Biology student hoping to concentrate in cells, molecules, and physiology. Being in an environment surrounded by supportive, hard working and kind people like the TEDxSFU team encourages her and makes her bloom. A fun fact about Ronak is that she can speak 4 languages!",
         role: "Coordinator",
         pro: "She/Her",
+        socials: {},
+      },
+    ],
+  },
+  {
+    i: 8,
+    href: "coaches",
+    team: "Speaker Coach",
+    teamBio:
+      "The Internal Committee ensures connectedness and inclusivity by creating a warm and welcoming environment for the entire OC. They focus on supporting everyone's growth through the team's Development Plan as well as making everyone feel connected during socials and icebreakers.",
+    img: speakerCoach,
+    members: [
+      {
+        name: "Roshan Noronha",
+        img: "/images/teambio/roshan.jpg",
+        imgWide: true,
+        bio:
+          "As a previous TEDxSFU speaker and speaker coach, Roshan knows what it takes to deliver an inspiring TED talk. Bringing a wealth of academic and life experiences, he's passionate about using story to communicate exciting ideas! When he’s not in a lab, Roshan enjoys exploring BC, trying new restaurants and talking about himself in third person.",
+        role: "Speaker Coach",
+        pro: "He/Him",
+        socials: {},
+      },
+      {
+        name: "Rose Anza-Burgess",
+        img: "/images/teambio/rose.jpg",
+        bio:
+          "Rosie is an emerging scholar, interdisciplinary writer, and artist. She earned her MA from the School for the Contemporary Arts, and was a TEDxSFU Speaker taking stage at the Vancouver Playhouse in 2019. She has a strong history of academic and public engagement, sharing her ongoing research at academic conferences in colleges and universities in the northwest coast of Canada and the United States. She is a professional in higher education, serves as Vice-President for the Arts Council of New Westminster, and above all a dedicated spouse.",
+        role: "Speaker Coach",
+        pro: "She/They",
         socials: {},
       },
     ],
