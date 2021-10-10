@@ -36,9 +36,9 @@ function ScrollItem({ speaker, width }) {
           <h3 className="mt-2 text-sm 2xl:ml-axis">{speaker.name}</h3>
           <div className="mt-1 text-sm w-48 leading-4 opacity-60 2xl:ml-axis">
             {speaker.bio}
-            {!speaker.videoReady && (
+            {/* {!speaker.videoReady && (
               <div className="mt-6 opacity-50">Interview Coming Soon</div>
-            )}
+            )} */}
           </div>
           <div
             staggerIndex={1}
