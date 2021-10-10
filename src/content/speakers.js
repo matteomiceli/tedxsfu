@@ -1,17 +1,6 @@
-const speakers = [
+const speakers = [  
   {
     id: 1,
-    name: "Noor Fadel",
-    slug: "noor",
-    img: "/images/speakers/noor.jpg",
-    videoReady: false,
-    videoSrc: "https://www.sfu.ca/~kkl64/tedxsfu/candida@1920.mp4",
-    subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
-    talkTitle: "Healing beyond the headlines",
-    bio: "Award-winning educator, spoken word poet, and public speaker",
-  },
-  {
-    id: 2,
     name: "Len Pierre",
     slug: "len",
     videoReady: true,
@@ -22,7 +11,7 @@ const speakers = [
     bio: "Coast Salish consultant and cultural knowledge keeper",
   },
   {
-    id: 3,
+    id: 2,
     name: "Candida Moreira",
     slug: "candida",
     img: "/images/speakers/candida.jpg",
@@ -33,7 +22,7 @@ const speakers = [
     bio: "Relational trauma therapist and writer",
   },
   {
-    id: 4,
+    id: 3,
     name: "Lisa Bournelis",
     slug: "lisa",
     img: "/images/speakers/lisa.jpg",
@@ -44,7 +33,7 @@ const speakers = [
     bio: "Transformation leader for one of Canada’s largest health authorities",
   },
   {
-    id: 5,
+    id: 4,
     name: "Matthew Provost",
     slug: "matthew",
     img: "/images/speakers/matt.jpg",
@@ -55,18 +44,7 @@ const speakers = [
     bio: "Curent undergraduate student at SFU",
   },
   {
-    id: 6,
-    name: "Mariah-Jane Thies",
-    slug: "mariah-jane",
-    img: "/images/speakers/mariah-jane.jpg",
-    videoReady: false,
-    videoSrc: "https://www.sfu.ca/~kkl64/tedxsfu/candida@1920.mp4",
-    subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
-    talkTitle: "Moving from Surviving to Thriving",
-    bio: "Dance and movement educator",
-  },
-  {
-    id: 7,
+    id: 5,
     name: "Dinara Mukhametianova",
     slug: "dinara",
     img: "/images/speakers/dinara.jpg",
@@ -77,7 +55,7 @@ const speakers = [
     bio: "Certified Health Coach",
   },
   {
-    id: 8,
+    id: 6,
     name: "Robert Woodbury",
     slug: "robert",
     img: "/images/speakers/robert.jpg",
@@ -88,7 +66,7 @@ const speakers = [
     bio: "Retired professor of computational design",
   },
   {
-    id: 9,
+    id: 7,
     name: "Alexandra Kitson",
     slug: "alexandra",
     img: "/images/speakers/alexandra.jpg",
@@ -100,7 +78,7 @@ const speakers = [
     bio: "Post Doctoral Fellow at SFU SIAT",
   },
   {
-    id: 10,
+    id: 8,
     name: "Carissa Campeotto",
     slug: "carissa",
     img: "/images/speakers/carissa.jpg",
@@ -109,6 +87,28 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "How I found my bloom in a world that grows garbage",
     bio: "Social Entrepreneur",
+  },
+  {
+    id: 9,
+    name: "Noor Fadel",
+    slug: "noor",
+    img: "/images/speakers/noor.jpg",
+    videoReady: false,
+    videoSrc: "https://www.sfu.ca/~kkl64/tedxsfu/candida@1920.mp4",
+    subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
+    talkTitle: "Healing beyond the headlines",
+    bio: "Award-winning educator, spoken word poet, and public speaker",
+  },
+  {
+    id: 10,
+    name: "Mariah-Jane Thies",
+    slug: "mariah-jane",
+    img: "/images/speakers/mariah-jane.jpg",
+    videoReady: false,
+    videoSrc: "https://www.sfu.ca/~kkl64/tedxsfu/candida@1920.mp4",
+    subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
+    talkTitle: "Moving from Surviving to Thriving",
+    bio: "Dance and movement educator",
   },
 ];
 
