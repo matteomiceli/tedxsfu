@@ -22,6 +22,7 @@ const sponsors = {
       facebook: "https://www.facebook.com/SFUBeedie/",
       instagram: "https://www.instagram.com/sfubeedie/",
       twitter: "https://twitter.com/SFUBeedie",
+      linkedIn: "https://www.linkedin.com/school/sfubeedie/"
     },
   ],
   gold: [
@@ -30,10 +31,11 @@ const sponsors = {
       logo: "/images/sponsors/sfu-alumni.png",
       about:
         "The SFU Alumni Association was founded in 1969 and has a membership of more than 165,000 grads around the world. We’re proud that more than 170,000 people have graduated from SFU! We are committed to keeping alumni informed, involved, and invested in the alumni community.",
-      website: "http://deadfrog.ca/",
-      facebook: "https://www.facebook.com/deadfrogbrewery",
-      instagram: "https://www.instagram.com/deadfrogbrewery/",
-      twitter: "https://twitter.com/DeadFrogBrewery",
+      website: "http://www.sfu.ca/alumni.html",
+      facebook: "https://www.facebook.com/sfualumni/",
+      instagram: "https://www.instagram.com/sfualumni_",
+      twitter: "https://twitter.com/sfualumni",
+      linkedIn: "https://www.linkedin.com/showcase/sfu-advancement-and-alumni-engagement/"
     },
   ],
   silver: [
@@ -42,30 +44,31 @@ const sponsors = {
       logo: "/images/sponsors/bmo-sfu.png",
       about:
         "Support your alma mater with the BMO StFX Mastercard.  Every time you make a purchase, BMO makes a contribution to the StFX Alumni Association at no additional cost to you.  It’s an easy way to show your school pride and earn rewards at the same time.",
-      website: "http://deadfrog.ca/",
-      facebook: "https://www.facebook.com/deadfrogbrewery",
-      instagram: "https://www.instagram.com/deadfrogbrewery/",
-      twitter: "https://twitter.com/DeadFrogBrewery",
+      website: "http://www.bmo.com/sfu",
+      facebook: "https://www.facebook.com/BMOcommunity",
+      instagram: "https://www.instagram.com/BMOCanada",
+      twitter: "https://twitter.com/BMO",
+      linkedIn: "https://www.linkedin.com/company/bank-of-montreal/life/b0ba8158-8cd9-4209-9f9d-a3b361584a9a/"
     },
     {
       name: "G&F Financial Group",
       logo: "/images/sponsors/gf.png",
       about:
         "With over 52,000 members, 24 locations and $4 billion in total assets under administration, G&F Financial Group proudly provides a full range of personal and business banking, investment and insurance solutions to our credit union members. With a passion for educating and empowering others to achieve their financial goals, we focus on providing advice tailored uniquely for each member and have supported members and invested in our local communities for 80 years.",
-      website: "http://deadfrog.ca/",
-      facebook: "https://www.facebook.com/deadfrogbrewery",
-      instagram: "https://www.instagram.com/deadfrogbrewery/",
-      twitter: "https://twitter.com/DeadFrogBrewery",
+      website: "https://www.gffg.com",
+      facebook: "https://www.facebook.com/GFFGcu",
+      instagram: "https://www.instagram.com/gffgcu/",
+      twitter: "https://twitter.com/gffg",
     },
     {
       name: "Office of the Vice President, Research and International",
       logo: "/images/sponsors/sfu-research-and-international.jpg",
       about:
         "Simon Fraser University's Office of the Vice-President, Research and International (VPRI) serves to encourage, facilitate, administer and promote research at SFU—nationally and internationally. We advocate and support university research, while guiding policy development at academic and government levels. As Canada’s Engaged University, we support SFU researchers as they translate their discoveries into real-world impact. Research at SFU spans eight faculties covering a broad range of fundamental, interdisciplinary and applied research topics, as outlined in our Strategic Research Plan. Our faculty members collaborate with researchers across Canada and in more than 125 countries around the world.",
-      website: "http://deadfrog.ca/",
-      facebook: "https://www.facebook.com/deadfrogbrewery",
-      instagram: "https://www.instagram.com/deadfrogbrewery/",
-      twitter: "https://twitter.com/DeadFrogBrewery",
+      website: "www.sfu.ca/research",
+      facebook: "https://www.facebook.com/SFUResearch",
+      twitter: "https://twitter.com/SFUResearch",
+      linkedIn: "https://www.linkedin.com/school/simon-fraser-university"
     },
   ],
   city: [
@@ -74,10 +77,6 @@ const sponsors = {
       logo: "/images/sponsors/new-west.png",
       about:
         "The City Partnership Grant Program is designed to assist not-for-profit incorporated organizations with delivery of major services to the community. To provide organizations with funding certainty, the City Partnership Grant will be for a term of one to three years at Council’s discretion. All recipients of City Partnership Grants will be required to submit a Statement of Accountability by December 31st of each year of the award. Applicants awarded multi-year grant terms are not required to submit applications in subsequent years provided the City has received and accepted their annual Statement of Accountability from the previous year in the prescribed format. The services must assist the city to fulfill the City Partnership Grant objectives.",
-      website: "http://deadfrog.ca/",
-      facebook: "https://www.facebook.com/deadfrogbrewery",
-      instagram: "https://www.instagram.com/deadfrogbrewery/",
-      twitter: "https://twitter.com/DeadFrogBrewery",
     },
   ],
   avSponsors: [
@@ -86,10 +85,9 @@ const sponsors = {
       logo: "/images/sponsors/mc-media.png",
       about:
         "Team McMedia is AV and so much more! Audio Visual Sales, Installations, Rentals, Design, Content, Project and Event Management. Have a project? We can help!",
-      website: "http://deadfrog.ca/",
-      facebook: "https://www.facebook.com/deadfrogbrewery",
-      instagram: "https://www.instagram.com/deadfrogbrewery/",
-      twitter: "https://twitter.com/DeadFrogBrewery",
+      website: "mcmedia-av.ca",
+      facebook: "https://www.facebook.com/McMediaAV/",
+      instagram: "https://www.instagram.com/mcmediaav/",
     },
   ],
   inkind: [
