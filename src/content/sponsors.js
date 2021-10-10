@@ -8,6 +8,10 @@ const sponsors = {
         "As a primary link between SFU and our communities, SFU External Relations pursues a comprehensive approach to the advancement of institutional priorities and promotes SFU’s reputation as the leading engaged university defined by its dynamic integration of innovative education, cutting-edge research, and far-reaching community engagement.",
       website:
         "https://www.sfu.ca/vpexternal/vice-president-external-relations.html",
+      facebook: "https://www.facebook.com/simonfraseruniversity/",
+      instagram: "https://www.instagram.com/simonfraseru/",
+      twitter: "https://twitter.com/SFU",
+      linkedIn: "https://www.linkedin.com/school/simon-fraser-university/mycompany/"
     },
     {
       name: "SFU Beedie School of Business",
@@ -15,6 +19,9 @@ const sponsors = {
       about:
         "Simon Fraser University’s Beedie School of Business is home to those who believe in the power of business to spark new ideas, fuel social innovations, and advance society. Operating across the three campuses in the major cities of Burnaby, Surrey and Vancouver, SFU Beedie is creating the business leaders of tomorrow through management educations programs for both undergraduate and graduate students through teaching and learning powered by world-class research, meaningful community engagement, and a global outlook. SFU Beedie takes business education beyond the walls of academia and empowers people from diverse backgrounds and perspectives to reimagine the role of business in tackling society’s most significant challenges.",
       website: "https://beedie.sfu.ca/",
+      facebook: "https://www.facebook.com/SFUBeedie/",
+      instagram: "https://www.instagram.com/sfubeedie/",
+      twitter: "https://twitter.com/SFUBeedie",
     },
   ],
   gold: [

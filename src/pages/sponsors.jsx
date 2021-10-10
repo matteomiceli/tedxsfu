@@ -178,6 +178,8 @@ const SponsorBig = ({
   facebook,
   twitter,
   isMobile,
+  instagram,
+  linkedIn
 }) => {
   const [isModalShowing, setIsModalShowing] = useState(false);
 
@@ -206,10 +208,30 @@ const SponsorBig = ({
         <div className="w-sponsor-text ml-8 hidden sm:flex flex-col">
           <h3 className="text-3xl mb-4">{name}</h3>
           <div className="text-base mb-4">{about}</div>
-          <div className="">
+          <div className="flex items-center">
             <Button secondary blank href={website}>
               Visit Site
             </Button>
+            {facebook && (
+              <SocialButton className="ml-4" href={facebook} type="facebook" />
+            )}
+            {twitter && (
+              <SocialButton className="ml-4" href={twitter} type="twitter" />
+            )}
+            {instagram && (
+              <SocialButton
+                className="ml-4"
+                href={instagram}
+                type="instagram"
+              />
+            )}
+            {linkedIn && (
+              <SocialButton
+                className="ml-4"
+                href={linkedIn}
+                type="linkedIn"
+              />
+            )}
           </div>
         </div>
       </div>
