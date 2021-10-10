@@ -354,7 +354,7 @@ const teams = [
     href: "coaches",
     team: "Speaker Coach",
     teamBio:
-      "The Internal Committee ensures connectedness and inclusivity by creating a warm and welcoming environment for the entire OC. They focus on supporting everyone's growth through the team's Development Plan as well as making everyone feel connected during socials and icebreakers.",
+      "Speaker Coaches are committed to helping our speakers succeed.",
     img: speakerCoach,
     members: [
       {

@@ -44,7 +44,8 @@ function ScrollItem({ speaker, width }) {
             staggerIndex={1}
             className="transform scale-75 sm:scale-100 origin-top-left 2xl:ml-axis"
           >
-            {speaker.videoReady && (
+            {/* commented out video button for now */}
+            {/* {speaker.videoReady && (
               <Button
                 secondary
                 icon={PLAY_BUTTON}
@@ -53,7 +54,7 @@ function ScrollItem({ speaker, width }) {
               >
                 See Interview
               </Button>
-            )}
+            )} */}
           </div>
         </SimpleDivAnimation>
       </div>

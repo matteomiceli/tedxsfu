@@ -65,7 +65,7 @@ const sponsors = {
       logo: "/images/sponsors/sfu-research-and-international.jpg",
       about:
         "Simon Fraser University's Office of the Vice-President, Research and International (VPRI) serves to encourage, facilitate, administer and promote research at SFU—nationally and internationally. We advocate and support university research, while guiding policy development at academic and government levels. As Canada’s Engaged University, we support SFU researchers as they translate their discoveries into real-world impact. Research at SFU spans eight faculties covering a broad range of fundamental, interdisciplinary and applied research topics, as outlined in our Strategic Research Plan. Our faculty members collaborate with researchers across Canada and in more than 125 countries around the world.",
-      website: "www.sfu.ca/research",
+      website: "https://www.sfu.ca/research",
       facebook: "https://www.facebook.com/SFUResearch",
       twitter: "https://twitter.com/SFUResearch",
       linkedIn: "https://www.linkedin.com/school/simon-fraser-university"
@@ -77,6 +77,7 @@ const sponsors = {
       logo: "/images/sponsors/new-west.png",
       about:
         "The City Partnership Grant Program is designed to assist not-for-profit incorporated organizations with delivery of major services to the community. To provide organizations with funding certainty, the City Partnership Grant will be for a term of one to three years at Council’s discretion. All recipients of City Partnership Grants will be required to submit a Statement of Accountability by December 31st of each year of the award. Applicants awarded multi-year grant terms are not required to submit applications in subsequent years provided the City has received and accepted their annual Statement of Accountability from the previous year in the prescribed format. The services must assist the city to fulfill the City Partnership Grant objectives.",
+      website: "https://www.newwestcity.ca"
     },
   ],
   avSponsors: [
@@ -85,7 +86,7 @@ const sponsors = {
       logo: "/images/sponsors/mc-media.png",
       about:
         "Team McMedia is AV and so much more! Audio Visual Sales, Installations, Rentals, Design, Content, Project and Event Management. Have a project? We can help!",
-      website: "mcmedia-av.ca",
+      website: "https://mcmedia-av.ca",
       facebook: "https://www.facebook.com/McMediaAV/",
       instagram: "https://www.instagram.com/mcmediaav/",
     },
@@ -97,7 +98,7 @@ const sponsors = {
       about:
         "Dead Frog is a locally owned, award-winning craft brewery born and raised in the Fraser Valley with 20+ craft brews on tap, fresh eats, and good times. They feature creative brews and unique eats that make you want to come back for more!",
       website: "http://deadfrog.ca/",
-      facebook: "https://www.facebook.com/deadfrogbsssssrewery",
+      facebook: "https://www.facebook.com/deadfrogbrewery",
       instagram: "https://www.instagram.com/deadfrogbrewery/",
       twitter: "https://twitter.com/DeadFrogBrewery",
     },
@@ -171,7 +172,7 @@ const sponsors = {
       name: "Nelson the Seagull",
       logo: "/images/sponsors/nelson-the-seagull.png",
       about:
-        "Skoah is a Vancouver-based skin care product company with locations in Canada and the US. Since 2001 skoah has earned recognition in many well-respected publications including Style, The New York Times, Allure, The Global and Mail, Travel and Leisure, Women’s Wear Daily and Vogue.",
+        "Nelson the Seagull is a family-run cafe + sourdough bakery with South African roots. We’re located in historic Gastown and opened our doors in 2011. We just celebrated 10 years! Our brunch + lunch menu is built around our various freshly baked sourdough breads and our drinks are made using locally roasted coffee.",
       website: "https://www.nelsontheseagull.com/",
       facebook: "https://www.facebook.com/nelsontheseagull",
       instagram: "https://www.instagram.com/nelsontheseagull/",
@@ -181,7 +182,7 @@ const sponsors = {
       name: "Everything Wine",
       logo: "/images/sponsors/everything-wine.png",
       about:
-        "Skoah is a Vancouver-based skin care product company with locations in Canada and the US. Since 2001 skoah has earned recognition in many well-respected publications including Style, The New York Times, Allure, The Global and Mail, Travel and Leisure, Women’s Wear Daily and Vogue.",
+        "Check out their website to learn more.",
       website: "https://www.everythingwine.ca/",
       facebook: "https://www.facebook.com/EverythingWineInc",
       instagram: "https://www.instagram.com/ewinebc/",
@@ -191,8 +192,8 @@ const sponsors = {
       name: "Steamworks Brewery",
       logo: "/images/sponsors/steamworks.png",
       about:
-        "Skoah is a Vancouver-based skin care product company with locations in Canada and the US. Since 2001 skoah has earned recognition in many well-respected publications including Style, The New York Times, Allure, The Global and Mail, Travel and Leisure, Women’s Wear Daily and Vogue.",
-      website: "https://steamworks.com/brewery",
+        "For over 25 years, Steamworks Brewing Co. has been at the forefront of craft brewing, innovation and taste. Named after the central steam system that powers its Gastown brewhouse and world-famous steam clock in Vancouver B.C., Steamworks proudly brews distinct, delicious, and award-winning craft beers. For more information, visit us at https://steamworks.com/",
+      website: "https://steamworks.com/",
       facebook: "https://www.facebook.com/SteamworksBeer",
       instagram: "https://www.instagram.com/steamworksbeer/",
       twitter: "https://twitter.com/steamworksbeer",
@@ -201,7 +202,7 @@ const sponsors = {
       name: "Old Spaghetti Factory",
       logo: "/images/sponsors/spaghetti-factory.png",
       about:
-        "Skoah is a Vancouver-based skin care product company with locations in Canada and the US. Since 2001 skoah has earned recognition in many well-respected publications including Style, The New York Times, Allure, The Global and Mail, Travel and Leisure, Women’s Wear Daily and Vogue.",
+        "Check out their website to learn more.",
       website: "https://oldspaghettifactory.ca/",
       facebook: "https://www.facebook.com/osfgastown",
       instagram: "https://www.instagram.com/oldspaghettifactory_gastown/",
