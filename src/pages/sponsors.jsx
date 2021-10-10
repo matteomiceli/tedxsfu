@@ -248,6 +248,7 @@ const SponsorMedium = ({
   twitter,
   instagram,
   isMobile,
+  linkedIn
 }) => {
   const [isModalShowing, setIsModalShowing] = useState(false);
 
@@ -300,6 +301,13 @@ const SponsorMedium = ({
                 type="instagram"
               />
             )}
+            {linkedIn && (
+              <SocialButton
+                className="ml-4"
+                href={linkedIn}
+                type="linkedIn"
+              />
+            )}
           </div>
         </div>
       </div>
@@ -315,6 +323,7 @@ const SponsorSmall = ({
   twitter,
   instagram,
   isMobile,
+  linkedIn
 }) => {
   const [isModalShowing, setIsModalShowing] = useState(false);
 
@@ -367,6 +376,13 @@ const SponsorSmall = ({
                 type="instagram"
               />
             )}
+            {linkedIn && (
+              <SocialButton
+                className="ml-4"
+                href={linkedIn}
+                type="linkedIn"
+              />
+            )}
           </div>
         </div>
       </div>
@@ -391,6 +407,7 @@ const SponsorInfoModal = ({
   facebook,
   twitter,
   instagram,
+  linkedIn
 }) => {
   // for quick exiting
   const containerRef = useRef();
@@ -459,6 +476,13 @@ const SponsorInfoModal = ({
                     className="ml-4"
                     href={instagram}
                     type="instagram"
+                  />
+                )}
+                {linkedIn && (
+                  <SocialButton
+                    className="ml-4"
+                    href={linkedIn}
+                    type="linkedIn"
                   />
                 )}
               </div>
