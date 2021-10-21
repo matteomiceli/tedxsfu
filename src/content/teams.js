@@ -77,7 +77,7 @@ const teams = [
         pro: "She/Her",
         socials: {
           instagram: "https://www.instagram.com/palaaakkkk/",
-          linked: "www.linkedin.com/in/palak-jain-621442206",
+          linked: "https://www.linkedin.com/in/palak-jain-621442206",
         },
       },
       {
@@ -234,8 +234,8 @@ const teams = [
         role: "Director",
         pro: "She/Her",
         socials: {
-          instagram: "www.instagram.com/_dianakulikova",
-          linked: "www.linkedin.com/in/diana-kulikova",
+          instagram: "https://www.instagram.com/_dianakulikova",
+          linked: "https://www.linkedin.com/in/diana-kulikova",
         },
       },
       {
@@ -354,7 +354,7 @@ const teams = [
     href: "coaches",
     team: "Speaker Coach",
     teamBio:
-      "Speaker Coaches are committed to helping our speakers succeed.",
+      "TEDxSFU Speaker Coaches work closely with the TEDxSFU Content Development Team, Project Leads, and with each other. Their primary responsibility is to prepare a detailed lesson plan for a minimum of five total speaker coaching sessions. Throughout these sessions, they support each of the TEDxSFU Speakers by helping their talks come to fruition.",
     img: speakerCoach,
     members: [
       {
