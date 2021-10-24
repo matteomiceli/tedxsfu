@@ -1,4 +1,4 @@
-const speakers = [  
+const speakers = [
   {
     id: 1,
     name: "Len Pierre",
@@ -9,6 +9,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/len.srt",
     talkTitle: "Cultural Safety Education as the BluePrint for Reconciliation",
     bio: "Coast Salish consultant and cultural knowledge keeper",
+    description: "Len Pierre is a Coast Salish consultant and cultural knowledge keeper specialized in decolonization, reconciliation, development of educational programs, and Indigenization. To him, Bloom means re-birth and a fresh outlook!",
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Once upon a(nother) time: a different kinda love story",
     bio: "Relational trauma therapist and writer",
+    description: "Candida Moreira is a relational trauma therapist & writer who thrives at the intersection of language and feelings. She is passionate about smashing stigmas and encouraging folx to move through the world fully owning all of who they are. She has a knack for complicating things, colouring outside the lines, & taking the scenic route.",
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "3 Questions to Change Your Life",
     bio: "Transformation leader for one of Canada’s largest health authorities",
+    description: "Lisa Bournelis is a transformation leader for one of Canada’s largest health authorities. She is also a new author, blogger, podcaster, mom, taekwondo black belt, and former humanitarian aid worker. For her, Bloom represents the growth after a period of challenge that creates a new individual, mindset, skillset and spirit.",
   },
   {
     id: 4,
@@ -42,6 +45,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Unpacking the Indigenous Student Experience",
     bio: "Curent undergraduate student at SFU",
+    description: "demo description",
   },
   {
     id: 5,
@@ -53,6 +57,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Your Menstrual Cycle is Your Superpower",
     bio: "Certified Health Coach",
+    description: "demo description",
   },
   {
     id: 6,
@@ -64,6 +69,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Choices and Options",
     bio: "Retired professor of computational design",
+    description: "demo description",
   },
   {
     id: 7,
@@ -76,6 +82,7 @@ const speakers = [
     talkTitle:
       "Virtual reality: supporting our mental health through emotion regulation skills training",
     bio: "Post Doctoral Fellow at SFU SIAT",
+    description: "demo description",
   },
   {
     id: 8,
@@ -87,6 +94,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "How I found my bloom in a world that grows garbage",
     bio: "Social Entrepreneur",
+    description: "demo description",
   },
   {
     id: 9,
@@ -98,6 +106,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Healing beyond the headlines",
     bio: "Award-winning educator, spoken word poet, and public speaker",
+    description: "demo description",
   },
   {
     id: 10,
@@ -109,6 +118,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Moving from Surviving to Thriving",
     bio: "Dance and movement educator",
+    description: "demo description",
   },
 ];
 

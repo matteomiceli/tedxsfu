@@ -33,9 +33,14 @@ function ScrollItem({ speaker, width }) {
           </GrowingTextAnimation>
         </h2>
         <SimpleDivAnimation>
-          <h3 className="mt-2 text-sm 2xl:ml-axis">{speaker.name}</h3>
-          <div className="mt-1 text-sm w-48 leading-4 opacity-60 2xl:ml-axis">
-            {speaker.bio}
+          <h3
+          className="mt-1 text-sm w-96 leading-4 2xl:ml-axis">
+          {speaker.name}
+          <span className="md:inline hidden"> | </span>
+          <span className="md:inline block">{speaker.bio}</span>
+          </h3>
+          <div className="mt-1 text-sm w-96 leading-4 2xl:ml-axis border-l-2 border-white pl-4 py-2 md:block hidden">
+            {speaker.description}
             {/* {!speaker.videoReady && (
               <div className="mt-6 opacity-50">Interview Coming Soon</div>
             )} */}
