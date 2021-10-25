@@ -44,7 +44,7 @@ function ScrollItem({ speaker, width }) {
           {speaker.name}
           <span className="md:w-96 w-48 opacity-60 block">{speaker.bio}</span>
           </h3>
-          <div className="mt-1 text-sm w-96 mt-3 leading-4 2xl:ml-axis border-l-2 border-white p-0 pl-4 md:block hidden">
+          <div className="mt-1 text-sm w-96 mt-4 leading-4 2xl:ml-axis border-l-2 border-white p-0 pl-4 md:block hidden">
             {speaker.description}
             {/* {!speaker.videoReady && (
               <div className="mt-6 opacity-50">Interview Coming Soon</div>
@@ -176,7 +176,7 @@ const SpeakerInfoModal = ({
             }}
           >
             <CloseButton className="mcol-start-2" onClick={onExit} />
-            <div className="text-xs mb-4 mt-48">{description}</div>
+            <div className="text-xs mb-4 mt-10">{description}</div>
           </motion.div>
         </motion.div>
       )}
