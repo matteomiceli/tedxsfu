@@ -176,7 +176,7 @@ const SpeakerInfoModal = ({
             }}
           >
             <CloseButton className="mcol-start-2" onClick={onExit} />
-            <div className="text-xs mb-4 mt-48">{description}</div>
+            <div className="text-xs mb-4 mt-10">{description}</div>
           </motion.div>
         </motion.div>
       )}
