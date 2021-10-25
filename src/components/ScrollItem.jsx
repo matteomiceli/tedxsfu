@@ -42,7 +42,7 @@ function ScrollItem({ speaker, width }) {
           <h3
           className="mt-1 text-sm w-96 pt-2 leading-4 2xl:ml-axis">
           {speaker.name}
-          <span className="opacity-60 block">{speaker.bio}</span>
+          <span className="md:w-96 w-48 opacity-60 block">{speaker.bio}</span>
           </h3>
           <div className="mt-1 text-sm w-96 mt-3 leading-4 2xl:ml-axis border-l-2 border-white p-0 pl-4 md:block hidden">
             {speaker.description}
@@ -51,7 +51,7 @@ function ScrollItem({ speaker, width }) {
             )} */}
           </div>
           <div className="md:hidden inline">
-            <SponsorSmall key={0} description={speaker.description} isMobile={true} />
+            <SpeakerDescription key={0} description={speaker.description} isMobile={true} />
           </div>
           <div
             staggerIndex={1}
@@ -106,7 +106,7 @@ function ScrollItem({ speaker, width }) {
   );
 }
 
-const SponsorSmall = ({
+const SpeakerDescription = ({
   id,
   description,
   isMobile,
@@ -115,7 +115,7 @@ const SponsorSmall = ({
 
   return (
     <>
-      <SponsorInfoModal
+      <SpeakerInfoModal
         description={description}
         isShowing={isModalShowing}
         onExit={() => setIsModalShowing(false)}
@@ -135,7 +135,7 @@ const SponsorSmall = ({
   );
 };
 
-const SponsorInfoModal = ({
+const SpeakerInfoModal = ({
   isShowing,
   onExit,
   description,
@@ -176,7 +176,7 @@ const SponsorInfoModal = ({
             }}
           >
             <CloseButton className="mcol-start-2" onClick={onExit} />
-            <div className="text-xs mb-4 mt-4">{description}</div>
+            <div className="text-xs mb-4 mt-48">{description}</div>
           </motion.div>
         </motion.div>
       )}
