@@ -88,7 +88,7 @@ const speakers = [
     talkTitle: "How I found my bloom in a world that grows garbage",
     bio: "Social Entrepreneur",
   },
-  {
+  /*{
     id: 9,
     name: "Noor Fadel",
     slug: "noor",
@@ -98,9 +98,9 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Healing beyond the headlines",
     bio: "Award-winning educator, spoken word poet, and public speaker",
-  },
+  },*/
   {
-    id: 10,
+    id: 9,
     name: "Mariah-Jane Thies",
     slug: "mariah-jane",
     img: "/images/speakers/mariah-jane.jpg",
