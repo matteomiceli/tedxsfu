@@ -21,7 +21,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Once upon a(nother) time: a different kinda love story",
     bio: "Relational trauma therapist and writer",
-    description: "Candida Moreira is a relational trauma therapist & writer who thrives at the intersection of language and feelings. She is passionate about smashing stigmas and encouraging folx to move through the world fully owning all of who they are. She has a knack for complicating things, colouring outside the lines, & taking the scenic route.",
+    description: "Candida Moreira is a relational trauma therapist & writer who thrives at the intersection of language and feelings. She is passionate about smashing stigmas and encouraging folx to move through the world fully owning all of who they are. She has a knack for complicating things, colouring outside the lines, & taking the scenic route. To Candida the idea of Bloom centres in honouring the story of who you are. It's about growing into yourself and not the expectations placed on us by societal beliefs or cultural norms.",
   },
   {
     id: 3,
