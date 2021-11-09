@@ -1,4 +1,4 @@
-const speakers = [  
+const speakers = [
   {
     id: 1,
     name: "Len Pierre",
@@ -9,6 +9,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/len.srt",
     talkTitle: "Cultural Safety Education as the BluePrint for Reconciliation",
     bio: "Coast Salish consultant and cultural knowledge keeper",
+    description: "Len Pierre is a Coast Salish consultant and cultural knowledge keeper specialized in decolonization, reconciliation, development of educational programs, and Indigenization. To him, Bloom means re-birth and a fresh outlook!",
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Once upon a(nother) time: a different kinda love story",
     bio: "Relational trauma therapist and writer",
+    description: "Candida Moreira is a relational trauma therapist & writer who thrives at the intersection of language and feelings. She is passionate about smashing stigmas and encouraging folx to move through the world fully owning all of who they are. She has a knack for complicating things, colouring outside the lines, & taking the scenic route. To Candida the idea of Bloom centres in honouring the story of who you are. It's about growing into yourself and not the expectations placed on us by societal beliefs or cultural norms.",
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "3 Questions to Change Your Life",
     bio: "Transformation leader for one of Canada’s largest health authorities",
+    description: "Lisa Bournelis is a transformation leader for one of Canada’s largest health authorities. She is also a new author, blogger, podcaster, mom, taekwondo black belt, and former humanitarian aid worker. For her, Bloom represents the growth after a period of challenge that creates a new individual, mindset, skillset and spirit.",
   },
   {
     id: 4,
@@ -42,6 +45,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Unpacking the Indigenous Student Experience",
     bio: "Curent undergraduate student at SFU",
+    description: "Matthew Provost is Siksikaitsitapii from Treaty 7 Territory. He is a current undergraduate student at SFU and advocates for Indigenous students within the institution. Bloom to him is being able to achieve growth regardless of circumstances, and knowing that we always have an opportunity to bloom.",
   },
   {
     id: 5,
@@ -53,6 +57,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Your Menstrual Cycle is Your Superpower",
     bio: "Certified Health Coach",
+    description: "Dinara Mukhametianova is a certified health coach passionate about educating and empowering women to take charge of their hormonal health. For her, Bloom is to flourish!",
   },
   {
     id: 6,
@@ -64,6 +69,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Choices and Options",
     bio: "Retired professor of computational design",
+    description: "Robert Woodbury is a Professor Emeritus at Simon Fraser University. Robert designs and makes things: systems, furniture, policy, programs, old car parts and books. At the core, all involve making choices among options. Bloom signals change, and the start of something new. As a designer Robert sees bloom as an apt metaphor for almost everything designers do.",
   },
   {
     id: 7,
@@ -76,6 +82,7 @@ const speakers = [
     talkTitle:
       "Virtual reality: supporting our mental health through emotion regulation skills training",
     bio: "Post Doctoral Fellow at SFU SIAT",
+    description: "Alexandra Kitson is a Postdoctoral Fellow in the School of Interactive Arts and Technology at SFU. Her multidisciplinary research across human-computer interaction, design, and psychology demonstrates how cutting-edge technologies can support positive emotions, enable connection with others, and enhance well-being. Bloom to her means self-transcendence. It's transcending our inward focus and suffering to extrinsic motivation and connecting with others.",
   },
   {
     id: 8,
@@ -87,6 +94,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "How I found my bloom in a world that grows garbage",
     bio: "Social Entrepreneur",
+    description: "Carissa Campeotto is the Co-founder and CEO of Trendi. Trendi is a company that builds and deploys robots to combat food waste. To her, Bloom is coming into our truest form and reaching our fullest potential.",
   },
   {
     id: 9,
@@ -98,6 +106,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Healing beyond the headlines",
     bio: "Award-winning educator, spoken word poet, and public speaker",
+    description: "Noor Fadel is an award-winning educator, spoken word poet, and public speaker. Noor inspires students, educators, and communities with her conviction that everyone has the right to “live unapologetically” and achieve their dreams. Drawing on personal experiences, Noor examines the role of race, culture, religion, trauma and mental health through student and racialized women experiences in Canada. Bloom to her means growing and better understanding the different types of self love and self care even with all the bumps along the journey.",
   },
   {
     id: 10,
@@ -109,6 +118,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Moving from Surviving to Thriving",
     bio: "Dance and movement educator",
+    description: "Mariah-Janes Theis is a dance and movement educator. She enjoys helping teachers to guide their students to reach their full potential. She loves animals, travel, big questions and deep conversations. To her, the act of blooming is the idea of openness, knowledge, sharing and embracing a growth mindset.",
   },
 ];
 
