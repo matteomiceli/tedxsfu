@@ -98,18 +98,6 @@ const speakers = [
   },
   {
     id: 9,
-    name: "Noor Fadel",
-    slug: "noor",
-    img: "/images/speakers/noor.jpg",
-    videoReady: false,
-    videoSrc: "https://www.sfu.ca/~kkl64/tedxsfu/candida@1920.mp4",
-    subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
-    talkTitle: "Healing beyond the headlines",
-    bio: "Award-winning educator, spoken word poet, and public speaker",
-    description: "Noor Fadel is an award-winning educator, spoken word poet, and public speaker. Noor inspires students, educators, and communities with her conviction that everyone has the right to “live unapologetically” and achieve their dreams. Drawing on personal experiences, Noor examines the role of race, culture, religion, trauma and mental health through student and racialized women experiences in Canada. Bloom to her means growing and better understanding the different types of self love and self care even with all the bumps along the journey.",
-  },
-  {
-    id: 10,
     name: "Mariah-Jane Thies",
     slug: "mariah-jane",
     img: "/images/speakers/mariah-jane.jpg",
