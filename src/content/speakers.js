@@ -3,7 +3,7 @@ const speakers = [
     id: 1,
     name: "Len Pierre",
     slug: "len",
-    videoReady: true,
+    videoReady: false,
     img: "/images/speakers/len.jpg",
     videoSrc: "https://www.sfu.ca/~kkl64/tedxsfu/len@1920.mp4",
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/len.srt",
@@ -116,9 +116,9 @@ const speakers = [
     videoReady: false,
     videoSrc: "https://www.sfu.ca/~kkl64/tedxsfu/candida@1920.mp4",
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
-    talkTitle: "Moving from Surviving to Thriving",
+    talkTitle: "Your Movement Habits Create your Life",
     bio: "Dance and movement educator",
-    description: "Mariah-Janes Theis is a dance and movement educator. She enjoys helping teachers to guide their students to reach their full potential. She loves animals, travel, big questions and deep conversations. To her, the act of blooming is the idea of openness, knowledge, sharing and embracing a growth mindset.",
+    description: "Mariah-Jane Theis is a dance and movement educator. She enjoys helping teachers to guide their students to reach their full potential. She loves animals, travel, big questions and deep conversations. To her, the act of blooming is the idea of openness, knowledge, sharing and embracing a growth mindset.",
   },
 ];
 
