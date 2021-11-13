@@ -159,26 +159,26 @@ const teams = [
     img: creative,
     members: [
       {
-        name: "Alvin Leung",
-        img: "/images/teambio/alvin.jpg",
-        bio:
-          "Alvin is a 5th year student studying Interactive Arts and Technology with a design concentration. Caffeine makes him bloom. Fun fact about Alvin is that he used to compose music before he decided to pursue design.",
-        role: "Director",
-        pro: "He/Him",
-        socials: {
-          instagram: "https://www.instagram.com/alvinn.design/",
-        },
-      },
-      {
         name: "Lauren Mok",
         img: "/images/teambio/lauren.jpg",
         imgWide: true,
         bio:
           "With a love for coffee and Studio Ghibli films, Lauren is a third-year Interactive Arts and Technology student concentrating in design. They are passionate about creating accessible design as a future UX designer. Expressing themselves through art, bullet journaling, and baking as many kinds of dessert as she can makes her Bloom. A fun fact about Lauren is that they’ve dyed their hair four different colours as of recently!",
-        role: "Coordinator",
+        role: "Director",
         pro: "She/They",
         socials: {
           linked: "https://www.linkedin.com/in/lauren-mok-0716631ba/",
+        },
+      },
+      {
+        name: "Alvin Leung",
+        img: "/images/teambio/alvin.jpg",
+        bio:
+          "Alvin is a 5th year student studying Interactive Arts and Technology with a design concentration. Caffeine makes him bloom. Fun fact about Alvin is that he used to compose music before he decided to pursue design.",
+        role: "Coordinator",
+        pro: "He/Him",
+        socials: {
+          instagram: "https://www.instagram.com/alvinn.design/",
         },
       },
       {

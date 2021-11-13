@@ -106,7 +106,7 @@ const speakers = [
     subtitleSrc: "https://www.sfu.ca/~kkl64/tedxsfu/captions/candida.srt",
     talkTitle: "Your Movement Habits Create your Life",
     bio: "Dance and movement educator",
-    description: "Mariah-Jane Theis is a dance and movement educator. She enjoys helping teachers to guide their students to reach their full potential. She loves animals, travel, big questions and deep conversations. To her, the act of blooming is the idea of openness, knowledge, sharing and embracing a growth mindset.",
+    description: "Mariah-Jane Thies is a dance and movement educator. She enjoys helping teachers to guide their students to reach their full potential. She loves animals, travel, big questions and deep conversations. To her, the act of blooming is the idea of openness, knowledge, sharing and embracing a growth mindset.",
   },
 ];
 
