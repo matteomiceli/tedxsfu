@@ -24,6 +24,7 @@ const internal = "/images/teams/internal-team.jpg";
 const marketing = "/images/teams/marketing-team.jpg";
 const pr = "/images/teams/pr-team.jpg";
 const speakerCoach = "/images/teams/speaker-coach.jpg";
+const licenseHolder = "/images/teams/license-holder.jpg";
 
 const teams = [
   {
@@ -378,6 +379,23 @@ const teams = [
       },
     ],
   },
+  {
+    i:9,
+    href: 'license',
+    team: 'License Holder',
+    teamBio: 'Special thanks to our License Holder who have also helped us in organizing this event. We couldn’t have done it without them!',
+    img: licenseHolder,
+    members: [
+      {
+        name: 'Bernhard Riecke',
+        img: licenseHolder,
+        bio: "Bernhard is a Professor and directs the iSpace Lab at SFU’s School of Interactive Arts and Technology (SIAT). He likes to go beyond traditional disciplinary boundaries, combining natural sciences approaches (being a physicist by training) with human-centered and creative approaches (drawing from Psychology, Cognitive Science, Meditation, HCI, Design, and Art) using immersive Virtual Reality (VR). Bernhard currently teaches classes on immersive environments/Virtual Reality, game design, and research methods. Fun fact: While speaker coaching for TEDxSFU he also gave a TEDx talk on “Could Virtual Reality make us more human?” at TEDxEastVan to experience the speaker coaching process from both sides.",
+        role: 'License Holder',
+        pro: 'He/Him',
+        socials: {}
+      }
+    ]
+  }
 ];
 
 module.exports = teams;
